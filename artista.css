@@ -87,9 +87,9 @@ h3{
 .login_box {
     border: 1px solid #ccc;
     width: 300px;
-    height: 150px;
+    height: 180px;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     position: relative;
     top:0;
@@ -106,7 +106,7 @@ h3{
     
     
     height: 450px;
-    border-radius: 20px;
+    border-radius: 10px;
     position: absolute;
     top:0;
     bottom: 0;
@@ -130,6 +130,31 @@ h3{
     width : 300px;
     font-size: 16px;
     z-index: 4;
+    transition: background-color 0.4s;
+}
+
+.user_choose_button:hover {
+    background-color: #53a7ea; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width : 300px;
+    font-size: 16px;
+    z-index: 4;
+    
+}
+
+.anitxt1{
+    color:#5F5F5F;
+    transition: color 0.3s;
+}
+
+.anitxt1:hover{
+    color:#f00;
 }
 
 .bg_blurredimg{
@@ -150,3 +175,5 @@ h3{
 
 }
 
+
+/*-------------- ANIMATIONS------------*/
