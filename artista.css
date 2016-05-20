@@ -91,7 +91,7 @@ h3{
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
-    position: absolute;
+    position: relative;
     top:0;
     bottom: 0;
     left: 0;
@@ -105,7 +105,7 @@ h3{
 .login_box_outer {
     
     
-    height: auto;
+    height: 450px;
     border-radius: 20px;
     position: absolute;
     top:0;
@@ -123,11 +123,6 @@ h3{
     border: none;
     color: white;
     padding: 15px 32px;
-    /*
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-left: 10px ;
-    */
     border-radius: 10px;
     text-align: center;
     text-decoration: none;
@@ -139,7 +134,7 @@ h3{
 
 .bg_blurredimg{
     background-color: #f00;
-    background-image: url("./img/bg_img1.jpg");
+    background-image: url("./img/bg_img2_low.jpg");
     background-size: cover;
     display: block;
     filter: blur(5px);
