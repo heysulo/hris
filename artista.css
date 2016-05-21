@@ -85,9 +85,9 @@ h3{
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOGIN ~~~~~~~~~~~~~~~~~*/
 .login_box {
-    border: 1px solid #ccc;
-    width: 300px;
-    height: 180px;
+    border: 4px solid #2d3e50;
+    width: 400px;
+    height: 440px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
@@ -96,25 +96,33 @@ h3{
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 3;
+    z-index: 5;
     margin: auto;
     padding: 10px;
+    opacity: 1;
+    transition:all linear 0.5s;
+    margin-bottom: 10%;
+
+}
+
+.login_box:hover {
+    border: 4px solid #f1c40f;
+
 
 }
 
 .login_box_outer {
-    
-    
-    height: 450px;
-    border-radius: 10px;
+    height: 400px;
     position: absolute;
     top:0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 3;
-    margin: auto;
+    margin: 10%;
+    margin-top: 5%;
     padding: 10px;
+
 
 }
 
@@ -130,7 +138,36 @@ h3{
     width : 300px;
     font-size: 16px;
     z-index: 4;
-    transition: background-color 0.4s;
+    transition: all 0.2s;
+}
+
+.user_choose_button_guest {
+    background-color: #34495e; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width : 300px;
+    font-size: 16px;
+    z-index: 4;
+    transition: all 0.2s;
+}
+
+.user_choose_button_guest:hover {
+    background-color: #53a7ea; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width : 90%;
+    font-size: 16px;
+    z-index: 4;
 }
 
 .user_choose_button:hover {
@@ -142,11 +179,25 @@ h3{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    width : 300px;
+    width : 90%;
     font-size: 16px;
     z-index: 4;
     
 }
+
+.spacerx{
+    height :8px;
+}
+
+.txtassist{
+    color: #365899;
+    font-family: arial;
+    text-align: justify;
+    line-height:16.08px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
 
 .anitxt1{
     color:#5F5F5F;
@@ -159,7 +210,7 @@ h3{
 
 .bg_blurredimg{
     background-color: #f00;
-    background-image: url("./img/bg_img2_low.jpg");
+    background-image: url("./img/gradient.jpg");
     background-size: cover;
     display: block;
     filter: blur(5px);
@@ -170,10 +221,41 @@ h3{
     right: 0;
     z-index: 1;
     transform: scale(1.1);
+}
 
-    /**/
+.txt_field{
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    box-sizing: border-box;
+    transition:all linear 0.2s;
 
 }
 
+.txt_field:focus{
+    border-color: #8f44ad;
+    width: 90%;
+}
+
+.hrstyle {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hrstyle:after {
+    content: " or else ";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.2em;
+    padding: 0 0.25em;
+    background: white;
+}
 
 /*-------------- ANIMATIONS------------*/
+
