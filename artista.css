@@ -101,15 +101,23 @@ h3{
     padding: 10px;
     opacity: 1;
     transition:all linear 0.5s;
-    margin-bottom: 10%;
+    
 
+}
+
+.head1{
+    text-shadow: 0 0 5px #fff;
+    transition:all linear 0.3s;
+}
+
+.head1:hover{
+    text-shadow: 0 0 25px #fff;
 }
 
 .login_box:hover {
     border: 4px solid #f1c40f;
-
-
 }
+
 
 .login_box_outer {
     height: 380px;
@@ -196,7 +204,16 @@ h3{
     line-height:16.08px;
     text-decoration: none;
     font-size: 12px;
+    border: 0px solid red;
+    outline-offset: 15px;
+    transition: all 0.2s;
 }
+.txtassist:hover{
+    color: red;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    /*border-bottom-width: 5px;*/
+}
+
 
 
 .anitxt1{
@@ -209,7 +226,7 @@ h3{
 }
 
 .bg_blurredimg{
-    background-color: #f00;
+    background-color: #ddd;
     background-image: url("./img/gradient.jpg");
     background-size: cover;
     display: block;
@@ -220,7 +237,7 @@ h3{
     position: fixed;
     right: 0;
     z-index: 1;
-    transform: scale(1.1);
+    transform: scale(1.6);
 }
 
 .txt_field{
