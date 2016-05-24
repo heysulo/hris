@@ -1,0 +1,66 @@
+Credential{
+	id_member
+	username
+	password / SHA1
+	lastlogin
+	forcepasswordreset
+	isSuspended
+}
+
+Group{
+	id_group
+	name
+	description
+	category
+	icon_id
+	members
+	roles
+	creation_date
+	creator
+}
+
+Member{
+	id_member
+	category
+	availability
+	last_seen
+
+	first_name
+	middle_name
+	last_name
+
+	DateofBirth
+	Gender
+
+	Languages
+	ReligousView
+	Office_Location
+
+	About
+
+	emailAddress
+	phoneNumber
+	last_seen
+	skills
+	college
+	current_city
+	home_town
+
+	instagram
+	twitter
+	snapchat
+	YouTube
+	LINE
+	WeChat
+	Kik
+	Pinchester
+	Tumbler
+	Ask.fm
+	Soundcloud
+	Spotify
+	LinkedIn
+	Skype
+	QQ
+	VK
+	BBM
+}
