@@ -24,6 +24,10 @@ Member{
 	category
 	availability
 	last_seen
+	batch_number
+	academicyear
+	course
+	
 
 	first_name
 	middle_name
@@ -48,19 +52,55 @@ Member{
 
 	instagram
 	twitter
-	snapchat
 	YouTube
-	LINE
-	WeChat
-	Kik
 	Pinchester
 	Tumbler
-	Ask.fm
 	Soundcloud
-	Spotify
 	LinkedIn
 	Skype
-	QQ
-	VK
-	BBM
+
+	joined_date
+	handler
+}
+
+
+//<datatype>_<section1>_<section2>__<section3>
+User_Permissions{
+	b_adminpanel_access_allow
+
+	Members{
+		//System
+		i_system_member_add_power
+
+		i_system_member_suspend_power
+		i_system_member_suspend_power_needed
+
+		i_system_member_forcepasswordchange_power
+		i_system_member_forcepasswordchange_power_needed
+
+		1_system_member_delete_power
+		i_system_member_delete_power_needed
+
+		i_system_member_suspend_power
+		i_system_member_suspend_power_needed
+
+		i_system_member_complain_power
+		i_system_member_complain_power_needed
+		b_system_member_complain_access
+
+		i_system_member_message_power
+		i_system_member_message_power_needed
+
+		i_system_global_group_create_power
+		i_system_global_group_delete_power
+		i_system_global_group_modify_power
+
+	}
+
+}
+
+System_Permission{
+	i_system_member_add_needed
+	i_system_group_create_power_needed
+	
 }
