@@ -20,87 +20,97 @@ Group{
 }
 
 Member{
-	id_member
-	category
-	availability
-	last_seen
-	batch_number
-	academicyear
-	course
-	
+	Basic{
+		id_member
+		category
+		availability
+		last_seen
+		batch_number
+		academicyear
+		course
+		first_name
+		middle_name
+		last_name
+		DateofBirth
+		Gender
+		Languages
+		ReligousView
+		Office_Location
+		About
+		emailAddress
+		phoneNumber
+		last_seen
+		skills
+		college
+		current_city
+		home_town
+		instagram
+		twitter
+		YouTube
+		Pinchester
+		Tumbler
+		Soundcloud
+		LinkedIn
+		Skype
+		joined_date
+		handler
+	}
 
-	first_name
-	middle_name
-	last_name
+	Member_Permissions{
+		System{
+			b_system_adminpanel_access
+			b_system_member_add_power
 
-	DateofBirth
-	Gender
+			i_system_member_suspend_power
+			i_system_member_suspend_power_needed
 
-	Languages
-	ReligousView
-	Office_Location
+			i_system_member_forcepasswordchange_power
+			i_system_member_forcepasswordchange_power_needed
 
-	About
+			1_system_member_delete_power
+			i_system_member_delete_power_needed
 
-	emailAddress
-	phoneNumber
-	last_seen
-	skills
-	college
-	current_city
-	home_town
+			i_system_member_suspend_power
+			i_system_member_suspend_power_needed
 
-	instagram
-	twitter
-	YouTube
-	Pinchester
-	Tumbler
-	Soundcloud
-	LinkedIn
-	Skype
+			i_system_member_complain_power
+			i_system_member_complain_power_needed
+			b_system_member_complain_access
 
-	joined_date
-	handler
+			i_system_member_message_power
+			i_system_member_message_power_needed
+
+			b_system_group_create_power
+		}
+
+		Group{
+			b_group_adminpanel_access
+
+			b_group_member_add_power
+			b_group_member_remove_power
+			b_group_member_upgrade_power
+
+			b_group_modify_power
+			b_group_notice_post_power
+			b_group_notice_delete_power
+			b_group_notice_pin_power
+			b_group_notice_unpin_power
+		}
+
+	}
 }
 
 
 //<datatype>_<section1>_<section2>__<section3>
-User_Permissions{
-	b_adminpanel_access_allow
 
-	Members{
-		//System
-		i_system_member_add_power
-
-		i_system_member_suspend_power
-		i_system_member_suspend_power_needed
-
-		i_system_member_forcepasswordchange_power
-		i_system_member_forcepasswordchange_power_needed
-
-		1_system_member_delete_power
-		i_system_member_delete_power_needed
-
-		i_system_member_suspend_power
-		i_system_member_suspend_power_needed
-
-		i_system_member_complain_power
-		i_system_member_complain_power_needed
-		b_system_member_complain_access
-
-		i_system_member_message_power
-		i_system_member_message_power_needed
-
-		i_system_global_group_create_power
-		i_system_global_group_delete_power
-		i_system_global_group_modify_power
-
-	}
-
-}
 
 System_Permission{
-	i_system_member_add_needed
-	i_system_group_create_power_needed
+
 	
+}
+
+Group_Permission{
+	i_group_member_add_power_needed
+	i_group_member_remove_power_needed
+	i_group_modify_power_needed
 }
