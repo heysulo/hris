@@ -283,17 +283,59 @@ h3{
 }
 
 /*-------------------------------------------------- DASHBOARD------------*/
-/*~~~~TOPPANE~~~~*/
+/*~~~~RIGHTPANE~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.rightPane{
+    float: left;
+    background-color: #ff0000;
+    height: 100%;
+    width: calc(100% - 260px);
+
+}
+
+.divadjustment{
+    
+}
+
+/*~~~~TOPPANE~~~~~~*/
 .panelTop{
+    float: left;
     margin: 0;
     background-color: #fff;
-    height: 40px;
-    margin-left: 300px;
+    height: 60px;
     width: 100%;
 }
 
+.topprofilecontent{
+    float:right;
+    height:100%;
+    width:500px;
+    background-color:red;
 
-/*~~~~SIDEPANE~~~~*/
+}
+
+.topprofilepicture{
+    background-image: url("./img/defimg.jpg");
+    background-size: cover;
+    background-color: pink;
+    border: 1px solid #BDC0C5;
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    float: left;
+}
+/*~~~~BOTPANE~~~~~~*/
+.panelBottom{
+    float: left;
+    margin: 0;
+    background-color: #EFF3F4;
+    height: calc(100% - 60px);
+    width: 100%;
+    overflow: auto;
+}
+
+
+
+/*~~~~LEFTPANE~~~~~~~~~~~~~~~~~~~~~*/
 .clearfix {
     margin: 0;
 }
@@ -316,16 +358,11 @@ h3{
     padding: 0;
     background-color: #2D3E50;
     height: 100%;
-    width: calc(100px + 200px);
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
     overflow: auto;
-}
-
-.rightPane{
-    float: left;
-    background-color: #ff0000;
-    height: 100%;
-    width: 500px;
-    margin-left: 300px;
+    opacity: 0.9;
 }
 
 .navbar {
@@ -376,14 +413,7 @@ h3{
 
 .td{
     float: left;
-    width: 100px;
-    height: 100%;
-    
-
-    float: left;
-
-
-    background-color: #2D3E50;
+    width:calc(100% - 300px);
     height: 100%;
 }
 
