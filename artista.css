@@ -83,7 +83,7 @@ h3{
 
 
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOGIN ~~~~~~~~~~~~~~~~~*/
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOGIN ~~~~~~~~~~~~~~~~~*/
 .login_box {
     border: 4px solid #2d3e50;
     width: 400px;
@@ -282,5 +282,106 @@ h3{
     margin-top: -3em;
 }
 
-/*-------------- ANIMATIONS------------*/
+/*-------------------------------------------------- DASHBOARD------------*/
+/*~~~~TOPPANE~~~~*/
+.panelTop{
+    margin: 0;
+    background-color: #fff;
+    height: 40px;
+    margin-left: 300px;
+    width: 100%;
+}
 
+
+/*~~~~SIDEPANE~~~~*/
+.clearfix {
+    margin: 0;
+}
+
+.ucsclogo{
+    margin-top: 30px;
+}
+
+.hrsititle{
+    color:#fff;
+    font-size:24px;
+    font-family:Arial;
+    margin:0
+}
+
+.panelSide{
+    float: left;
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    overflow: auto;
+    background-color: #2D3E50;
+    height: 150px;
+    width: calc(100px + 200px)
+}
+
+.rightPane{
+    float: righ;
+    background-color: #ff0000;
+    height: 100%;
+    width: 500px;
+    margin-left: 300px;
+}
+
+.navbar {
+    list-style-type: none;
+    margin-top: 40px;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+.navbaritemimg{
+    float: left;
+    margin-top: 10px;
+    margin-left: 35px;
+    margin-right: 15px;
+}
+
+.navbartxt{
+    padding-top: 15px;
+}
+
+.navbaritem {
+    display: block;
+    background-color: #2D3E50;
+    color: #ACB8B8;
+    height: 60px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-top: 10px;
+    font-family: Arial;
+}
+
+.navbaritem.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.navbaritem:hover:not(.active) {
+    background-color: #34495E;
+    color: white;
+}
+
+.navbaritem:click{
+    background-color: #34495E;
+    color: white;
+}
+
+.lolbox {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 3px solid #73AD21;
+}
+
+
+/*~~~~~~~~~*/
