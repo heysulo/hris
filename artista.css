@@ -434,6 +434,7 @@ h3{
     text-transform: uppercase;
     padding-top: 10px;
     font-family: Arial;
+    transition:all linear 0.2s;
 }
 
 .navbaritem.active {
