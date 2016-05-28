@@ -308,20 +308,60 @@ h3{
 .topprofilecontent{
     float:right;
     height:100%;
-    width:500px;
-    background-color:red;
+    width:350px;
+    background-color:#fff;
+    transition:all linear 0.2s;
+}
 
+.topprofilecontent:hover{
+    width:400px;
 }
 
 .topprofilepicture{
-    background-image: url("./img/defimg.jpg");
+    background-image: url("./img/oggi.png");
     background-size: cover;
     background-color: pink;
     border: 1px solid #BDC0C5;
-    height: 60px;
-    width: 60px;
+    height: 58px;
+    width: 58px;
     margin-right: 10px;
+    margin-left: 10px;
     float: left;
+}
+
+.topbox_profile_name{
+    font-size: 18px;
+    padding-top: 6px;
+    line-height: 1.4;
+    font-weight: bold;
+    color: #3B5998;
+    word-wrap: break-word;
+    white-space: nowrap; 
+    width: 12em; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.topbox_account_settings{
+    background-image: url("./img/img_dashboard.png");
+    background-size: initial;
+    background-position: center;
+    background-repeat:no-repeat;
+    float: right;
+    width: 58px;
+    height: 100%;
+    transition:all linear 0.5s;
+}
+
+.topbox_account_settings:hover{
+    transform: rotate(360deg);
+}
+
+
+.topbox_profile_role{
+    font-size: 14px;
+    color: #6D6D6D;
+    word-wrap: break-word;
 }
 /*~~~~BOTPANE~~~~~~*/
 .panelBottom{
