@@ -311,19 +311,17 @@ h3{
 
 .panelSide{
     float: left;
-    display: block;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    position: fixed;
-    overflow: auto;
     background-color: #2D3E50;
-    height: 150px;
-    width: calc(100px + 200px)
+    height: 100%;
+    width: calc(100px + 200px);
+    overflow: auto;
 }
 
 .rightPane{
-    float: righ;
+    float: left;
     background-color: #ff0000;
     height: 100%;
     width: 500px;
@@ -336,6 +334,7 @@ h3{
     padding: 0;
     width: 100%;
     background-color: #f1f1f1;
+
 }
 
 .navbaritemimg{
@@ -375,13 +374,17 @@ h3{
     color: white;
 }
 
-.lolbox {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 300px;
-    border: 3px solid #73AD21;
-}
+.td{
+    float: left;
+    width: 100px;
+    height: 100%;
+    
 
+    float: left;
+
+
+    background-color: #2D3E50;
+    height: 100%;
+}
 
 /*~~~~~~~~~*/
