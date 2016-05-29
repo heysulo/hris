@@ -343,13 +343,14 @@ h3{
 }
 
 .topbox_account_settings{
-    background-image: url("./img/img_dashboard.png");
+    background-image: url("./img/img_top_settings.png");
     background-size: initial;
     background-position: center;
     background-repeat:no-repeat;
     float: right;
     width: 58px;
     height: 100%;
+    overflow: auto;
     transition:all linear 0.5s;
 }
 
@@ -419,7 +420,9 @@ h3{
     margin-top: 10px;
     margin-left: 35px;
     margin-right: 15px;
+
 }
+
 
 .navbartxt{
     padding-top: 15px;
@@ -434,6 +437,7 @@ h3{
     text-transform: uppercase;
     padding-top: 10px;
     font-family: Arial;
+    filter: grayscale(0);
     transition:all linear 0.2s;
 }
 
@@ -444,6 +448,7 @@ h3{
 
 .navbaritem:hover:not(.active) {
     background-color: #34495E;
+    filter: grayscale(1);
     color: white;
 }
 
