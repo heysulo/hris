@@ -230,7 +230,7 @@ h3{
     background-image: url("./img/gradient.jpg");
     background-size: cover;
     display: block;
-    filter: blur(5px);
+    filter: blur(0px);
     -webkit-filter: blur(5px);
     height: 100%;
     left: 0;
@@ -238,7 +238,9 @@ h3{
     right: 0;
     z-index: 1;
     transform: scale(1.6);
+    transition: all 0.5s;
 }
+
 
 .txt_field{
     width: 300px;
