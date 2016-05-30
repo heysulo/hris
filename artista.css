@@ -237,7 +237,7 @@ h3{
     position: fixed;
     right: 0;
     z-index: 1;
-    transform: scale(1.6);
+    /*transform: scale(1.6);*/
     transition: all 0.5s;
 }
 
@@ -350,9 +350,10 @@ h3{
     background-position: center;
     background-repeat:no-repeat;
     float: right;
-    width: 58px;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     overflow: auto;
+    margin: 10px;
     transition:all linear 0.5s;
 }
 
@@ -439,7 +440,6 @@ h3{
     text-transform: uppercase;
     padding-top: 10px;
     font-family: Arial;
-    filter: grayscale(0);
     transition:all linear 0.2s;
 }
 
@@ -450,7 +450,6 @@ h3{
 
 .navbaritem:hover:not(.active) {
     background-color: #34495E;
-    filter: grayscale(1);
     color: white;
 }
 
