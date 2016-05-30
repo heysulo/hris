@@ -1,13 +1,13 @@
 body{
-	background-color: #e2e2e2;
-	color: #3a4352;
-	font-family: "Arial";
+    background-color: #e2e2e2;
+    color: #3a4352;
+    font-family: "Arial";
 }
 
 
 
 .cbox{
-	background-color: #fff;
+    background-color: #fff;
     border: 1px solid #ccc;
     max-width: 555px;
     margin: 10px;
@@ -21,7 +21,7 @@ body{
 }
 
 .cbox_header{
-	
+    
 }
 
 .cbox_profile_title{
@@ -42,9 +42,9 @@ body{
 
 
 .cbox_div_propic{
-	border: 1px solid #BDC0C5;
-	height: 40px;
-	width: 40px;
+    border: 1px solid #BDC0C5;
+    height: 40px;
+    width: 40px;
     margin-right: 10px;
     float: left;
 }
@@ -73,10 +73,10 @@ body{
 
 
 h3{
-	top:0;
-	left: 0;
+    top:0;
+    left: 0;
     float: left;
-	position: relative;
+    position: relative;
 }
 
 
