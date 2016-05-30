@@ -354,21 +354,25 @@ h3{
     height: 32px;
     overflow: auto;
     margin: 10px;
+    margin-top: 12px;
     margin-right: 15px;
     cursor: pointer;
     display: inline-block;
-    transition:all linear 0.5s;
+    transition:all ease 0.5s;
+    
 }
 
 .topbox_account_settings:hover{
-    transform: rotate(360deg);
+    transform: rotate(120deg);
+    transition-delay: 0s;
 }
 
 .top_dropdown:hover , .topbox_account_settings:hover ~.top_dropdown {
     display: block;
+    transition-delay: 0s;
     visibility:visible;
     opacity: 1;
-    top:35px;
+    top:60px;
 }
 
 .topbox_profile_role{
@@ -381,7 +385,7 @@ h3{
     display: block;
     visibility:hidden;
     float: right;
-    top:45px;
+    top:150px;
     left: calc(100% - 360px);
     position: absolute;
     background-color: #fff;
@@ -390,7 +394,8 @@ h3{
     padding: 4px;
     opacity: 0;
     z-index: 9;
-    transition:all linear 0.2s;
+    transition:all ease 0.5s;
+    transition-delay: 1s; 
 }
 /*
 .top_dropdown:hover{
