@@ -208,7 +208,7 @@ h3{
     outline-offset: 15px;
     transition: all 0.2s;
 }
-.txtassist:hover{
+.txtassist:hover
     color: red;
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
     /*border-bottom-width: 5px;*/
@@ -237,7 +237,7 @@ h3{
     position: fixed;
     right: 0;
     z-index: 1;
-    /*transform: scale(1.6);*/
+    transform: scale(1.1);
     transition: all 0.5s;
 }
 
@@ -350,10 +350,12 @@ h3{
     background-position: center;
     background-repeat:no-repeat;
     float: right;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     overflow: auto;
     margin: 10px;
+    margin-right: 15px;
+    cursor: pointer;
     display: inline-block;
     transition:all linear 0.5s;
 }
@@ -362,6 +364,12 @@ h3{
     transform: rotate(360deg);
 }
 
+.top_dropdown:hover , .topbox_account_settings:hover ~.top_dropdown {
+    display: block;
+    visibility:visible;
+    opacity: 1;
+    top:35px;
+}
 
 .topbox_profile_role{
     font-size: 14px;
@@ -369,6 +377,53 @@ h3{
     word-wrap: break-word;
 }
 
+.top_dropdown{
+    display: block;
+    visibility:hidden;
+    float: right;
+    top:45px;
+    left: calc(100% - 360px);
+    position: absolute;
+    background-color: #fff;
+    min-width: 320px;
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.4);
+    padding: 4px;
+    opacity: 0;
+    z-index: 9;
+    transition:all linear 0.2s;
+}
+/*
+.top_dropdown:hover{
+    display: block;
+    opacity: 1;
+}*/
+
+.top_dropdown_list {
+    background-color: #fff;
+    list-style-type: none;
+    padding: 0px;
+    width: 100%;
+
+}
+
+.top_dropdown_list_item {
+    display: block;
+    background-color: #fff;
+    color: #2D3E50;
+    height: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 5px;
+    padding-top: 15px;
+    padding-left: 20px;
+    font-family: Arial;
+    cursor: pointer;
+    transition:all linear 0.2s;
+}
+
+.top_dropdown_list_item:hover{
+    background-color: #EFF3F4;
+}
 
 /*~~~~BOTPANE~~~~~~*/
 .panelBottom{
