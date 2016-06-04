@@ -21,7 +21,7 @@ body{
 }
 
 .cbox_header{
-    
+
 }
 
 .cbox_profile_title{
@@ -101,7 +101,7 @@ h3{
     padding: 10px;
     opacity: 1;
     transition:all linear 0.5s;
-    
+
 
 }
 
@@ -190,7 +190,7 @@ h3{
     width : 90%;
     font-size: 16px;
     z-index: 4;
-    
+
 }
 
 .spacerx{
@@ -208,10 +208,10 @@ h3{
     outline-offset: 15px;
     transition: all 0.2s;
 }
-.txtassist:hover
-    color: red;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
-    /*border-bottom-width: 5px;*/
+.txtassist:hover{
+color:red;
+text-shadow: 0 0 5px rgba(0,0,0,0.5);
+/*border-bottom-width: 5px;*/
 }
 
 
@@ -227,7 +227,7 @@ h3{
 
 .bg_blurredimg{
     background-color: #ddd;
-    background-image: url("./img/gradient.jpg");
+    background-image: url("../img/gradient.jpg");
     background-size: cover;
     display: block;
     filter: blur(0px);
@@ -295,7 +295,7 @@ h3{
 }
 
 .divadjustment{
-    
+
 }
 
 /*~~~~TOPPANE~~~~~~*/
@@ -320,7 +320,7 @@ h3{
 }
 
 .topprofilepicture{
-    background-image: url("./img/oggi.png");
+    background-image: url("../img/oggi.png");
     background-size: cover;
     background-color: pink;
     border: 1px solid #BDC0C5;
@@ -338,14 +338,14 @@ h3{
     font-weight: bold;
     color: #3B5998;
     word-wrap: break-word;
-    white-space: nowrap; 
-    width: 12em; 
+    white-space: nowrap;
+    width: 12em;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
 }
 
 .topbox_account_settings{
-    background-image: url("./img/img_top_settings.png");
+    background-image: url("../img/img_top_settings.png");
     background-size: initial;
     background-position: center;
     background-repeat:no-repeat;
@@ -359,7 +359,7 @@ h3{
     cursor: pointer;
     display: inline-block;
     transition:all ease 0.5s;
-    
+
 }
 
 .topbox_account_settings:hover{
@@ -395,7 +395,7 @@ h3{
     opacity: 0;
     z-index: 9;
     transition:all ease 0.5s;
-    transition-delay: 1s; 
+    transition-delay: 1s;
 }
 /*
 .top_dropdown:hover{
