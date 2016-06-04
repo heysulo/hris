@@ -7,24 +7,21 @@
 </head>
 <body class="clearfix">
 
+<div id="overlay"></div>
+
 <?php include_once('side_panel.php'); ?>
 
 <?php include_once('top_pane.php'); ?>
 
-<div class="rightPane" >
 
-    <div class="panelBottom">
-        <div style="padding:10px 20px 10px 20px;">
 
-        </div>
-    </div>
-</div>
+<script src="../../../public/js/jquery-2.2.4.min.js"></script>
+<script src="../../../public/js/side_panel.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $(document.body).hide();
+    $(window).load(function () {
+        $('#overlay').fadeOut();
     });
 </script>
-
 </body>
 </html>

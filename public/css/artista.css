@@ -101,8 +101,6 @@ h3{
     padding: 10px;
     opacity: 1;
     transition:all linear 0.5s;
-
-
 }
 
 .head1{
@@ -149,35 +147,6 @@ h3{
     transition: all 0.2s;
 }
 
-.user_choose_button_guest {
-    background-color: #34495e; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    width : 300px;
-    font-size: 16px;
-    z-index: 4;
-    transition: all 0.2s;
-}
-
-.user_choose_button_guest:hover {
-    background-color: #53a7ea; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    width : 90%;
-    font-size: 16px;
-    z-index: 4;
-}
-
 .user_choose_button:hover {
     background-color: #53a7ea; /* Green */
     border: none;
@@ -204,7 +173,7 @@ h3{
     line-height:16.08px;
     text-decoration: none;
     font-size: 12px;
-    border: 0px solid red;
+   /* border: 0 solid red;*/
     outline-offset: 15px;
     transition: all 0.2s;
 }
@@ -517,11 +486,6 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
     color: white;
 }
 
-.navbaritem:click{
-    background-color: #34495E;
-    color: white;
-}
-
 .td{
     float: left;
     width:calc(100% - 300px);
@@ -529,3 +493,16 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 /*~~~~~~~~~*/
+
+/* ------- loading gif ---------*/
+#overlay{
+    position: fixed;
+    z-index: 9999;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:50% 50% no-repeat rgb(255,255,255);
+    background-image: url("../img/loading.gif");
+}
