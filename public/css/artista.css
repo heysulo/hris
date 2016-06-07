@@ -404,6 +404,7 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
 .bottomPanel{
     float: right;
     margin: 0px;
+    width: 100%;
     background-color: #eff3f4;
     width: calc(100% - 260px);
     height: calc(100% - 60px);
@@ -510,3 +511,99 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
     background:50% 50% no-repeat rgb(255,255,255);
     background-image: url("../img/loading.gif");
 }
+
+
+
+/*~~~~~~~~~ DASHBOARD~~~~~~~~~~~~~~~~~~~~~*/
+
+/*----dashboard_top.php----*/
+.txt_paneltitle{
+    font-family:'Catamaran', sans-serif;
+    font-size:52px;
+    color: #3F4E5E;
+    text-transform: uppercase;
+    margin: 20px 35px;
+    margin-left: 42px;
+    margin-top:40px;
+    height:160px;
+    text-indent: 0px;
+    transition: all 0.2s ease-in-out;
+
+
+}
+
+.txt_paneltitle:hover{
+    text-indent: 20px;
+}
+
+.dashboard_bottom{
+    float:left;
+    height:calc(100% - 120px - 15px);
+    width: calc(100% - 70px);
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 15px;
+}
+
+.dashboard_leftbox{
+    float:left;
+    width:40%;
+    height: 100%;
+
+/*    background-color: green;*/
+
+}
+
+.dashboard_rightbox{
+    float:right;
+    width:60%;
+    height: 100%;
+/*    background-color: aqua;*/
+}
+
+
+.mainsearch{
+    float: right;
+    width: 250px;
+    height: 50px;
+    margin: 25px;
+    margin-top: 55px;
+    box-sizing: border-box;
+    background-image: url('../img/ico_search.png');
+    background-position: 10px 7px; 
+    background-repeat: no-repeat;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    padding:  12px 20px 12px 50px;
+    margin-right: 45px;
+    transition: all 0.4s ease-in-out;
+
+}
+
+.mainsearch:hover{
+    border-color: #f1c40f;
+}
+
+.mainsearch:focus{
+    width: 450px;
+}
+
+
+
+
+
+
+.dbox{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    
+    width: auto;
+    margin: 10px;
+    margin-right: 0px;
+    padding: 10px;
+    height: 200px;
+    border-radius: 4px;
+
+}
+
+

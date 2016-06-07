@@ -4,6 +4,7 @@
 
     <title>HRIS UCSC</title>
     <link rel="stylesheet" type="text/css" href="../../../public/css/artista.css">
+    <link href='https://fonts.googleapis.com/css?family=Catamaran:400,200' rel='stylesheet' type='text/css'>
 </head>
 <body class="clearfix">
 	<?php include_once('side_panel.php'); ?>
