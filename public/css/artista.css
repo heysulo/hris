@@ -281,11 +281,12 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
     height:100%;
     width:350px;
     background-color:#fff;
-    transition:all linear 0.2s;
+    transition:all ease 0.2s;
 }
 
 .topprofilecontent:hover{
     width:400px;
+    background-color: #eee;
 }
 
 .topprofilepicture{
@@ -403,7 +404,7 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
 .bottomPanel{
     float: right;
     margin: 0px;
-    background-color: blue;
+    background-color: #eff3f4;
     width: calc(100% - 260px);
     height: calc(100% - 60px);
     overflow: auto;
