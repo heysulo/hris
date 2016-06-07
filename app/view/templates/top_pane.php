@@ -1,5 +1,4 @@
-<div class="rightPane" style="background-color:red">
-    <div class="panelTop">
+<div class="panelTop">
         <div class="divadjustment">
             <div class="topbox_account_settings"></div>
             <div class="top_dropdown">
@@ -17,5 +16,4 @@
             </div>
 
         </div>
-    </div>
 </div>

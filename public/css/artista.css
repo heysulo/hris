@@ -268,23 +268,12 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 /*~~~~TOPPANE~~~~~~*/
-.test{
-    background-color: red;
-    border: 1px solid red;
-    z-index: 3;
-}
-
-.test:hover{
-    background-color: blue;
-    border: 10px solid red;
-}
-
 .panelTop{
     float: left;
     margin: 0;
     background-color: #fff;
     height: 60px;
-    width: 100%;
+    width: calc(100% - 260px);
 }
 
 .topprofilecontent{
@@ -411,20 +400,23 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 /*~~~~BOTPANE~~~~~~*/
-.panelBottom{
-    float: left;
-    margin: 0;
-    background-color: #EFF3F4;
+.bottomPanel{
+    float: right;
+    margin: 0px;
+    background-color: blue;
+    width: calc(100% - 260px);
     height: calc(100% - 60px);
-    width: 100%;
     overflow: auto;
+    z-index: 3;
 }
+
 
 
 
 /*~~~~LEFTPANE~~~~~~~~~~~~~~~~~~~~~*/
 .clearfix {
     margin: 0;
+    height: 100%;
 }
 
 .ucsclogo{
