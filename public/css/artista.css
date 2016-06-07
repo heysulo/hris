@@ -21,7 +21,7 @@ body{
 }
 
 .cbox_header{
-    
+
 }
 
 .cbox_profile_title{
@@ -101,8 +101,6 @@ h3{
     padding: 10px;
     opacity: 1;
     transition:all linear 0.5s;
-    
-
 }
 
 .head1{
@@ -149,35 +147,6 @@ h3{
     transition: all 0.2s;
 }
 
-.user_choose_button_guest {
-    background-color: #34495e; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    width : 300px;
-    font-size: 16px;
-    z-index: 4;
-    transition: all 0.2s;
-}
-
-.user_choose_button_guest:hover {
-    background-color: #53a7ea; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    width : 90%;
-    font-size: 16px;
-    z-index: 4;
-}
-
 .user_choose_button:hover {
     background-color: #53a7ea; /* Green */
     border: none;
@@ -190,7 +159,7 @@ h3{
     width : 90%;
     font-size: 16px;
     z-index: 4;
-    
+
 }
 
 .spacerx{
@@ -204,14 +173,14 @@ h3{
     line-height:16.08px;
     text-decoration: none;
     font-size: 12px;
-    border: 0px solid red;
+   /* border: 0 solid red;*/
     outline-offset: 15px;
     transition: all 0.2s;
 }
-.txtassist:hover
-    color: red;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
-    /*border-bottom-width: 5px;*/
+.txtassist:hover{
+color:red;
+text-shadow: 0 0 5px rgba(0,0,0,0.5);
+/*border-bottom-width: 5px;*/
 }
 
 
@@ -227,7 +196,7 @@ h3{
 
 .bg_blurredimg{
     background-color: #ddd;
-    background-image: url("./img/gradient.jpg");
+    background-image: url("../img/gradient.jpg");
     background-size: cover;
     display: block;
     filter: blur(0px);
@@ -295,10 +264,21 @@ h3{
 }
 
 .divadjustment{
-    
+
 }
 
 /*~~~~TOPPANE~~~~~~*/
+.test{
+    background-color: red;
+    border: 1px solid red;
+    z-index: 3;
+}
+
+.test:hover{
+    background-color: blue;
+    border: 10px solid red;
+}
+
 .panelTop{
     float: left;
     margin: 0;
@@ -320,7 +300,7 @@ h3{
 }
 
 .topprofilepicture{
-    background-image: url("./img/oggi.png");
+    background-image: url("../img/oggi.png");
     background-size: cover;
     background-color: pink;
     border: 1px solid #BDC0C5;
@@ -338,14 +318,14 @@ h3{
     font-weight: bold;
     color: #3B5998;
     word-wrap: break-word;
-    white-space: nowrap; 
-    width: 12em; 
+    white-space: nowrap;
+    width: 12em;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
 }
 
 .topbox_account_settings{
-    background-image: url("./img/img_top_settings.png");
+    background-image: url("../img/img_top_settings.png");
     background-size: initial;
     background-position: center;
     background-repeat:no-repeat;
@@ -359,7 +339,7 @@ h3{
     cursor: pointer;
     display: inline-block;
     transition:all ease 0.5s;
-    
+
 }
 
 .topbox_account_settings:hover{
@@ -395,7 +375,7 @@ h3{
     opacity: 0;
     z-index: 9;
     transition:all ease 0.5s;
-    transition-delay: 1s; 
+    transition-delay: 1s;
 }
 /*
 .top_dropdown:hover{
@@ -517,11 +497,6 @@ h3{
     color: white;
 }
 
-.navbaritem:click{
-    background-color: #34495E;
-    color: white;
-}
-
 .td{
     float: left;
     width:calc(100% - 300px);
@@ -529,3 +504,16 @@ h3{
 }
 
 /*~~~~~~~~~*/
+
+/* ------- loading gif ---------*/
+#overlay{
+    position: fixed;
+    z-index: 9999;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:50% 50% no-repeat rgb(255,255,255);
+    background-image: url("../img/loading.gif");
+}
