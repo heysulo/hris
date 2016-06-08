@@ -4,7 +4,7 @@
     </div>
     <div class="dashboard_bottom"> 
     	<div class="dashboard_leftbox">
-            <div class="dbox"></div>
+            <?php include_once('box_availability_status.php'); ?>
             <div class="dbox"></div>
         </div>
         <div class="dashboard_rightbox">
@@ -12,4 +12,4 @@
         </div>
     </div>
 
-</div2
+</div>

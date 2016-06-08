@@ -609,7 +609,7 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
     margin-right: 0px;
     padding: 10px;
     height: 200px;
-    border-radius: 4px;
+    border-radius: 10px;
     transition: all 0.2s linear;
 
 }
@@ -618,4 +618,107 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
     border-color: #f1c40f;
 }
 
+.dboxheader{
+    
+    background-image: url('../img/ico_availability.png');
+    background-position: 4px 9px; 
+    background-repeat: no-repeat;
+    height:160px;
+    text-indent: 0px;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.dboxtitle{
+    font-family:'Catamaran', sans-serif;
+    font-weight: normal;
+    font-size:24px;
+    color: #3F4E5E;
+    margin-left: 32px;
+}
+
+
+/*-------AVAILABILITY STATUS----*/
+
+.cur_availability_icon{
+    
+    height: 16px;
+    width: 16px;
+    border: 2px solid #3F4E5E;
+    border-radius: 10px;
+}
+
+.availability_button {
+    float: left;
+    padding: 12px;
+    background-color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.availability_dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.availability_dropdown_item{
+    height: auto;
+    width: 250px;
+    clear: left;
+    width:100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+.availability_dropdown a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.availability_dropdown_item_text{
+    float: left;
+}
+
+.availability_dropdown:hover .availability_dropdown_content{
+    display: block;
+}
+
+.availability_dropdown_content {
+    display: none;
+    top:45px;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom:  10px; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    width:200px;
+}
+
+.availability_dropdown:hover .availability_button{
+    background-color: #eff3f4;
+}
+
+
+.customstatus{
+    font-size: 18px;
+    width: 100%;
+    margin-top: 8px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #F1F1F1;
+    transition: all 0.2s linear;
+}
+
+.customstatus:focus{
+    border-bottom: 2px solid #3f4e5e;
+}
 
