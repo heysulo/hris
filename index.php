@@ -19,20 +19,20 @@
                 which will enhance the communications between the academic staff and the students of UCSC</p>
         </div>
         <div class="login_box">
-            <form action="action_page.php">
+            <form action="login.php">
                 <div>
                     <center style="font-size:13px;color:#5F5F5F;"><p class="anitxt1">Login to the Human Resource
                             Information Center of UCSC as a registered member and access the full features.</p></center>
-                    <input class="txt_field" type="text" id="fname" name="firstname" placeholder="Email Address">
-                    <input class="txt_field" type="password" id="lname" name="lastname" placeholder="Password">
+                    <input class="txt_field" type="text" id="email" name="email" placeholder="Email Address">
+                    <input class="txt_field" type="password" id="password" name="password" placeholder="Password">
                     <div class="spacerx"></div>
                     <div class="spacerx"></div>
-                    <input type="button" class="user_choose_button" value="Login as Member">
+                    <input type="submit" name="loginbtn" class="user_choose_button" value="Login as Member">
                     <div class="spacerx"></div>
                     <div>
-                        <a class="txtassist" href="Google.lk" style="text-align: left;">Forgot your password</a>
+                        <a class="txtassist" href="#" style="text-align: left;">Forgot your password</a>
                         &nbsp; &nbsp; &nbsp; &nbsp;
-                        <a class="txtassist" href="Google.lk" style="text-align: right; ">Contact Administrator</a>
+                        <a class="txtassist" href="#" style="text-align: right; ">Contact Administrator</a>
                     </div>
                     <div class="spacerx"></div>
                     <div class="spacerx"></div>
@@ -40,14 +40,14 @@
                     <div class="spacerx"></div>
                     <center style="font-size:13px;color:#5F5F5F;"><p class="anitxt1">Login to the Human Resource
                             Information Center of UCSC as guest and access the skill directory.</p></center>
-                    <a href="app/view/templates/profile.php">
+                    <a href="app/view/profile.php">
                         <input type="button" class="user_choose_button" value="General Public"></a>
                 </div>
                 <div class="spacerx"></div>
 
             </form>
             <div>
-                <p style="padding-top:35px;color:#555;font-size:13px;">Development conducted by Team Helix</p>
+                <p style="padding-top:35px;color:#f1f1f1;font-size:13px;">Development conducted by Team Helix</p>
 
     </center>
 </div>
