@@ -1,4 +1,3 @@
-<!DOCTYPR>
 <html>
 <head>
     <title>HRIS UCSC</title>
@@ -14,15 +13,19 @@
 
         <img src="public/img/ucsc_logo.png">
         <h1 class="head1" style="color:#000">Human Resource Information System</h1>
-        <div style="max-width: 600px;color:#5F5F5F;">
-            <p style="color:#000">A Human Resource Information System for University of Colombo School of Computing
+        <div>
+            <p class="logindesc">A Human Resource Information System for University of Colombo School of Computing
                 which will enhance the communications between the academic staff and the students of UCSC</p>
         </div>
         <div class="login_box">
             <form action="action_page.php">
                 <div>
-                    <center style="font-size:13px;color:#5F5F5F;"><p class="anitxt1">Login to the Human Resource
-                            Information Center of UCSC as a registered member and access the full features.</p></center>
+                    <div style="max-width:300px;">
+                        <center>
+                            <p class="anitxt1">Login to the Human Resource
+                            Information Center of UCSC as a registered member and access the full features.</p>
+                        </center>
+                    </div>
                     <input class="txt_field" type="text" id="fname" name="firstname" placeholder="Email Address">
                     <input class="txt_field" type="password" id="lname" name="lastname" placeholder="Password">
                     <div class="spacerx"></div>
@@ -43,11 +46,8 @@
                     <a href="app/view/templates/profile.php">
                         <input type="button" class="user_choose_button" value="General Public"></a>
                 </div>
-                <div class="spacerx"></div>
-
             </form>
-            <div>
-                <p style="padding-top:35px;color:#555;font-size:13px;">Development conducted by Team Helix</p>
+        </div>
 
     </center>
 </div>

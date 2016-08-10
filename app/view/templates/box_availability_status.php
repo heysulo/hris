@@ -10,6 +10,8 @@
 				</button>
 				<div style="float:left;width:80%;">
 					<input class="customstatus">
+					<button>Set</button>
+					<button>Save</button>
 				</div>
 
 

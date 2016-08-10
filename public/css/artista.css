@@ -85,9 +85,9 @@ h3{
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOGIN ~~~~~~~~~~~~~~~~~*/
 .login_box {
-    border: 4px solid #2d3e50;
-    width: 400px;
-    height: 440px;
+    border: 2px solid #2d3e50;
+    width: 360px;
+    height: auto;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
@@ -99,11 +99,16 @@ h3{
     z-index: 5;
     margin: auto;
     padding: 10px;
-    opacity: 1;
-    transition:all linear 0.5s;
+    opacity: 0.8;
+    transition:all linear 0.4s;
+}
+
+.login_box:hover{
+    border: 2px solid #f1c40f;
 }
 
 .head1{
+    font-size: 18px;
     text-shadow: 0 0 5px #fff;
     transition:all linear 0.3s;
 }
@@ -112,8 +117,11 @@ h3{
     text-shadow: 0 0 25px #fff;
 }
 
-.login_box:hover {
-    border: 4px solid #f1c40f;
+.logindesc{
+    font-size: 12px;
+    color: #000;
+    max-width: 450px;
+
 }
 
 
@@ -136,13 +144,14 @@ h3{
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
-    border-radius: 10px;
+    padding: 0px 32px;
+    border-radius: 4px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     width : 300px;
-    font-size: 16px;
+    height: 35px;
+    font-size: 12px;
     z-index: 4;
     transition: all 0.2s;
 }
@@ -151,19 +160,14 @@ h3{
     background-color: #53a7ea; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
     width : 90%;
-    font-size: 16px;
     z-index: 4;
 
 }
 
 .spacerx{
-    height :8px;
+    height :4px;
 }
 
 .txtassist{
@@ -178,16 +182,19 @@ h3{
     transition: all 0.2s;
 }
 .txtassist:hover{
-color:red;
-text-shadow: 0 0 5px rgba(0,0,0,0.5);
-/*border-bottom-width: 5px;*/
+    color:red;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    /*border-bottom-width: 5px;*/
 }
 
 
 
 .anitxt1{
     color:#5F5F5F;
+    font-size:10.25px;
+    color:#5F5F5F;
     transition: color 0.3s;
+    max-width:  320px;
 }
 
 .anitxt1:hover{
@@ -213,12 +220,15 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
 
 .txt_field{
     width: 300px;
+    height: 35px;
     padding: 12px 20px;
     margin: 8px 0;
+    margin-top: 0px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: center;
+    font-size: 12px;
     box-sizing: border-box;
     transition:all linear 0.2s;
 
@@ -237,10 +247,11 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
 
 .hrstyle:after {
     content: " or else ";
+    font-size: 12px;
     display: inline-block;
     position: relative;
     top: -0.7em;
-    font-size: 1.2em;
+    font-size: 12px;
     padding: 0 0.25em;
     background: white;
 }
@@ -710,12 +721,14 @@ text-shadow: 0 0 5px rgba(0,0,0,0.5);
 
 .customstatus{
     font-size: 18px;
-    width: 100%;
+    width: 70%;
     margin-top: 8px;
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid #F1F1F1;
     transition: all 0.2s linear;
+
+    outline: none;
 }
 
 .customstatus:focus{
