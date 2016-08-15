@@ -134,7 +134,7 @@ h3{
     right: 0;
     z-index: 3;
     margin: 10%;
-    margin-top: 5%;
+    margin-top: 1%;
     padding: 10px;
 
 
@@ -191,7 +191,7 @@ h3{
 
 .anitxt1{
     color:#5F5F5F;
-    font-size:10.25px;
+    font-size:.75em;
     color:#5F5F5F;
     transition: color 0.3s;
     max-width:  320px;

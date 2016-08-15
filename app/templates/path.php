@@ -7,4 +7,4 @@
  */
 
 $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
-$templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/view/templates/";
+$templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
