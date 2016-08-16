@@ -1,10 +1,5 @@
 <?php
 
-include_once ("config.php");
-include_once ("../database/database.php");
-session_start();
-
-
 if(isset($_POST['loginbtn'])){
     loginUser();
 }else{
@@ -12,8 +7,29 @@ if(isset($_POST['loginbtn'])){
 }
 
 function loginUser(){
+
+    require_once ("config.php");
+    require_once ("../database/database.php");
+    session_start();
+
     if (isset($_POST['email']) && isset($_POST['password'])){
-        echo "Welcome to the palace";
+
+        //validate user input data
+        $email = mysqli_real_escape_string($conn,$_POST['email']);
+        $password = mysqli_real_escape_string($conn,$_POST['password']);
+
+        //Query to fectch user login data from database
+        $query = "SELECT username FROM user WHERE username='$email' AND password='$password'";
+
+        //Execute the query.
+        $result = mysqli_query($conn,$query);
+
+        //Check whether database send data;
+        if (mysqli_num_rows($result)){
+            echo "welcome bro";
+        }else{
+            echo "ela ela";
+        }
     }
 }
 
