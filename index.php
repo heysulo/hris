@@ -34,6 +34,14 @@
                     <!--btn to login action-->
                     <input type="submit" name="loginbtn" class="user_choose_button" value="Login as Member">
 
+                    <!--error massage for wrong user login data-->
+                    <?php
+                        if($_GET['error']){
+                            echo "<div class=\"alert\">Username password mismatch.<br>Please try again or try forget password.</div>";
+                        }
+                    ?>
+
+
                     <div class="spacerx"></div>
                     <div>
                         <a class="txtassist" href="#" style="text-align: left;">Forgot your password</a>

@@ -28,7 +28,7 @@ function loginUser(){
         if (mysqli_num_rows($result)){
             echo "welcome bro";
         }else{
-            echo "ela ela";
+            header("location:../../index.php?error=1");
         }
     }
 }

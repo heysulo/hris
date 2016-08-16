@@ -607,10 +607,6 @@ h3{
 }
 
 
-
-
-
-
 .dbox{
     background-color: #fff;
     border: 1px solid #ccc;
@@ -735,3 +731,20 @@ h3{
     border-bottom: 2px solid #3f4e5e;
 }
 
+/*------------------------------------ Alert css*/
+.alert{
+    margin-top:10px;
+    padding:5px;
+    font-size:.85em;
+    transition: color 0.2s;
+    max-width:  282px;
+    color: whitesmoke;
+    border:1px solid  #f44336;
+    border-radius: 5px;
+    background-color:  #f44336;
+}
+
+.alert:hover{
+    color:#f00;
+    background-color: whitesmoke;
+}
