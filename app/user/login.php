@@ -26,7 +26,7 @@ function loginUser(){
 
         //Check whether database send data;
         if (mysqli_num_rows($result)){
-            echo "welcome bro";
+            header('location:home.php');
         }else{
             header("location:../../index.php?error=1");
         }

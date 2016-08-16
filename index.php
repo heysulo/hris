@@ -59,14 +59,14 @@
 
             <!-- _________________ separated to two forms ______________________ -->
 
-            <form action="app/user/public_home.php" method="get">
+            <form action="app/user/public.php" method="get">
                 <div>
                     <!--btn to access public user area.-->
                     <input type="submit" class="user_choose_button" value="General Public" name="publicUserBtn">
                 </div>
             </form>
-            <div>
-                <p style="padding-top:10px;color:gray;font-size:13px;">Development conducted by Team Helix</p>
+        <div>
+        <p style="padding-top:10px;color:gray;font-size:13px;">Development conducted by Team Helix</p>
 
     </center>
 </div>

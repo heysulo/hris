@@ -2,9 +2,9 @@
 <head>
     <?php
         require_once('../templates/path.php');
-        $title = 'HRIS | USER';
         include('../templates/_header.php');
     ?>
+    <title>HRIS | HOME</title>
 </head>
 <body>
     <div class="clearfix">
