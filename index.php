@@ -1,10 +1,3 @@
-<?php
-    if(isset($_POST['loginbtn'])){
-        header('location:app/user/user_home.php');
-    }
-
-?>
-
 <!DOCTYPR>
 <html>
 <head>
@@ -26,14 +19,14 @@
                 which will enhance the communications between the academic staff and the students of UCSC</p>
         </div>
         <div class="login_box">
-            <form action="" method="POST">
+            <form action="app/user/login.php" method="POST">
                 <div>
                     <center style="font-size:1em;color:#5F5F5F;"><p class="anitxt1">Login to the Human Resource
                             Information Center of UCSC as a registered member and access the full features.</p></center>
 
                     <!--User login data input area-->
-                    <input class="txt_field" type="text" id="email" name="email" placeholder="Email Address">
-                    <input class="txt_field" type="password" id="password" name="password" placeholder="Password">
+                    <input class="txt_field" type="text" id="email" name="email" placeholder="Email Address" required>
+                    <input class="txt_field" type="password" id="password" name="password" placeholder="Password" required>
 
                     <div class="spacerx"></div>
                     <div class="spacerx"></div>
@@ -53,7 +46,13 @@
                     <div class="spacerx"></div>
                     <center style="color:#5F5F5F;"><p class="anitxt1">Login to the Human Resource
                             Information Center of UCSC as guest and access the skill directory.</p></center>
+                </div>
+            </form>
 
+            <!-- _________________ separated to two forms ______________________ -->
+
+            <form action="app/user/public_home.php" method="get">
+                <div>
                     <!--btn to access public user area.-->
                     <input type="submit" class="user_choose_button" value="General Public" name="publicUserBtn">
                 </div>
