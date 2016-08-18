@@ -8,3 +8,4 @@
 
 $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
 $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
+$imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";

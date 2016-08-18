@@ -1,3 +1,4 @@
+<?php include_once ("path.php");?>
 <div class="panelTop">
         <div class="divadjustment">
             <div class="top_dropdown">
@@ -21,9 +22,9 @@
 
             <!--User detail showing bar-->
             <div class="topprofilecontent">
-                <div class="topprofilepicture"></div>
-                <div class="topbox_profile_name">Sulochana Kodituwakku</div>
-                <div class="topbox_profile_role">System Administrator</div>
+                <div class=""><img class="topprofilepicture" src=" <?php echo "$imagePath/$pro_pic"; ?> " alt=""></div>
+                <div class="topbox_profile_name"> <?php echo "$fname $lname"?></div>
+                <div class="topbox_profile_role"><?php echo "$type"?></div>
             </div>
 
         </div>
