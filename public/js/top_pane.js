@@ -6,8 +6,8 @@ document.getElementById('setting').addEventListener("click",function () {
 });
 
 window.onclick = function (event) {
-    if (!event.target.match('topbox_account_settings')){
-        var dropdowns = document.getElementsByClassName("top_dropdown");
+    if (!event.target.matches('.topbox_account_settings')){
+        var dropdowns = document.getElementsByClassName("top_dropdown_content");
         var i;
         for (i = 0;i < dropdowns.length; i++){
             var openDropDown = dropdowns[i];
