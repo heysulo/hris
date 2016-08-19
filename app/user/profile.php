@@ -16,17 +16,17 @@
         $pro_pic = $_SESSION['pro_pic'];
 
     ?>
-    <title>HRIS | HOME</title>
+<title>HRIS | My Profile</title>
 </head>
 <body>
-    <div style="padding: 0px;">
-        <?php include_once('../templates/side_panel.php'); ?>
-        <?php include_once('../templates/top_pane.php'); ?>
-        <?php //include_once('../templates/bottom_panel.php'); ?>
-    </div>
+<div style="padding: 0px;">
+    <?php include_once('../templates/side_panel.php'); ?>
+    <?php include_once('../templates/top_pane.php'); ?>
+    <?php //include_once('../templates/bottom_panel.php'); ?>
+</div>
 
-    <?php
-        include_once('../templates/_footer.php');
-    ?>
+<?php
+include_once('../templates/_footer.php');
+?>
 </body>
 </html>

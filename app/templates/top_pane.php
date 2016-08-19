@@ -5,7 +5,7 @@
                 <div class="topbox_account_settings" id="setting"></div>
                 <div class="top_dropdown_content" id="dropdown">
                         <a href="#">Account Settings</a>
-                        <a href="#">Logout</a>
+                        <a href="logout.php">Logout</a>
                         <a href="#">Go Offline</a>
                         <a href="#">What the Shit Biscuit?</a>
                 </div>

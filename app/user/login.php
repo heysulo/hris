@@ -32,7 +32,7 @@ function loginUser(){
             $_SESSION['lname'] = $row['lastname'];
             $_SESSION['pro_pic'] = $row['pro_pic'];
             $_SESSION['type'] = $row['type'];
-            header('location:home.php');
+            header('location:dashboard.php');
         }else{
             header("location:../../index.php?error=1");
         }
