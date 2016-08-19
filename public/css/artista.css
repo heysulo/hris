@@ -521,7 +521,7 @@ h3{
 .navbaritem.active {
     background-color: #4CAF50;
     color: white;
-    border-right: 6px solid #e2e2e2;
+    border-right: 6px solid #eff3f4;
 }
 
 .navbaritem:hover:not(.active) {
@@ -631,7 +631,7 @@ h3{
 .dboxheader{
     
     background-image: url('../img/ico_availability.png');
-    background-position: 4px 9px; 
+    background-position: 4px 9px;
     background-repeat: no-repeat;
     height:160px;
     text-indent: 0px;
