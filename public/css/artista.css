@@ -81,7 +81,7 @@ h3{
 
 
 
-
+/*==========================================================================================*/
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOGIN ~~~~~~~~~~~~~~~~~*/
 .login_box {
     border: 2px solid #2d3e50;
@@ -136,7 +136,6 @@ h3{
     margin-top: 1%;
     padding: 10px;
 
-
 }
 
 .user_choose_button {
@@ -162,7 +161,6 @@ h3{
     display: inline-block;
     width : 90%;
     z-index: 4;
-
 }
 
 .spacerx{
@@ -176,17 +174,15 @@ h3{
     line-height:16.08px;
     text-decoration: none;
     font-size: 12px;
-   /* border: 0 solid red;*/
     outline-offset: 15px;
     transition: all 0.2s;
 }
+
 .txtassist:hover{
     color:red;
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
     /*border-bottom-width: 5px;*/
 }
-
-
 
 .anitxt1{
     color:#5F5F5F;
@@ -216,7 +212,6 @@ h3{
     transition: all 0.5s;
 }
 
-
 .txt_field{
     width: 300px;
     height: 35px;
@@ -230,7 +225,6 @@ h3{
     font-size: 12px;
     box-sizing: border-box;
     transition:all linear 0.2s;
-
 }
 
 .txt_field:focus{
@@ -250,36 +244,34 @@ h3{
     display: inline-block;
     position: relative;
     top: -0.7em;
-    font-size: 12px;
     padding: 0 0.25em;
     background: white;
 }
 
-.xfooter {
-    clear: both;
-    position: relative;
-    z-index: 10;
-    height: 3em;
-    margin-top: -3em;
+/*------------------------------------ Alert css*/
+.alert{
+    margin-top:10px;
+    padding:5px;
+    font-size:.85em;
+    transition: color 0.2s;
+    max-width:  282px;
+    color: whitesmoke;
+    border:1px solid  #f44336;
+    border-radius: 5px;
+    background-color:  #f44336;
 }
 
-/*-------------------------------------------------- DASHBOARD------------*/
-/*~~~~RIGHTPANE~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-.rightPane{
-    float: left;
-    background-color: #ff0000;
-    height: 100%;
-    width: calc(100% - 260px);
-
+.alert:hover{
+    color:#f00;
+    background-color: whitesmoke;
 }
 
-.divadjustment{
+/*============================================= login form  styling ends here.*/
 
-}
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-/*~~~~TOPPANE~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  TOP PANE styling ~~~~~~*/
 .panelTop{
     float: right;
     margin: 0;
@@ -443,22 +435,34 @@ h3{
     display: block;
 }
 
+/*============================================================== Top pane styling ends here */
 
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BOTPANE  ~~~~~~*/
+
+/*-------------------------------------------------- DASHBOARD------------*/
+/*~~~~RIGHTPANE~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.rightPane{
+    float: left;
+    background-color: #ff0000;
+    height: 100%;
+    width: calc(100% - 260px);
+
+}
+
+.divadjustment{
+
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  BOTTOM PANE IN DASHBOARD ~~~~~~*/
 .bottomPanel{
     float: right;
-    margin: 0px;
-    width: 100%;
     background-color: #eff3f4;
     width: calc(100% - 260px);
     height: calc(100% - 60px);
     overflow: auto;
     z-index: 3;
 }
-
-
-
 
 /*~~~~LEFTPANE~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -531,23 +535,7 @@ h3{
     height: 100%;
 }
 
-/*~~~~~~~~~*/
-
-/* ------- loading gif ---------*/
-#overlay{
-    position: fixed;
-    z-index: 9999;
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:50% 50% no-repeat rgb(255,255,255);
-    background-image: url("../img/loading.gif");
-}
-
-
-
+/*===========================================================================*/
 /*~~~~~~~~~ DASHBOARD~~~~~~~~~~~~~~~~~~~~~*/
 
 /*----dashboard_top.php----*/
@@ -585,15 +573,12 @@ h3{
     width:40%;
     height: 100%;
 
-/*    background-color: green;*/
-
 }
 
 .dashboard_rightbox{
     float:right;
     width:60%;
     height: 100%;
-/*    background-color: aqua;*/
 }
 
 
@@ -749,20 +734,11 @@ h3{
     border-bottom: 2px solid #3f4e5e;
 }
 
-/*------------------------------------ Alert css*/
-.alert{
-    margin-top:10px;
-    padding:5px;
-    font-size:.85em;
-    transition: color 0.2s;
-    max-width:  282px;
-    color: whitesmoke;
-    border:1px solid  #f44336;
-    border-radius: 5px;
-    background-color:  #f44336;
-}
 
-.alert:hover{
-    color:#f00;
-    background-color: whitesmoke;
+.xfooter {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
 }
