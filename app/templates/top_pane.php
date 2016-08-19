@@ -1,4 +1,7 @@
-<?php include_once ("path.php");?>
+<?php
+    include_once ("path.php");
+    defined('hris_access') or die(header("location:../../error.php"));
+?>
 <div class="panelTop">
         <div class="divadjustment">
             <div class="top_dropdown">

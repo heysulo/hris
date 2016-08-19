@@ -8,7 +8,7 @@ if(isset($_POST['loginbtn'])){
 
 function loginUser(){
 
-    require_once ("config.php");
+    require_once("config.conf");
     require_once ("../database/database.php");
     session_start();
 

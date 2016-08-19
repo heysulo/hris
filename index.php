@@ -1,3 +1,6 @@
+<?php
+    define(hris_access,true);
+?>
 <!DOCTYPR>
 <html>
 <head>
@@ -59,7 +62,7 @@
 
             <!-- _________________ separated to two forms ______________________ -->
 
-            <form action="app/user/public.php" method="get">
+            <form action="app/public_user/public.php" method="get">
                 <div>
                     <!--btn to access public user area.-->
                     <input type="submit" class="user_choose_button" value="General Public" name="publicUserBtn">

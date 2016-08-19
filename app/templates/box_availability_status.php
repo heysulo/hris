@@ -1,3 +1,5 @@
+<?php defined('hris_access') or die(header("location:../../error.php")); ?>
+
 <div class="dbox">
 	<div class="dboxheader">
 		<div class="dboxtitle">

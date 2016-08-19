@@ -1,5 +1,6 @@
 <?php require_once('path.php');
 
+    defined('hris_access') or die(header("location:../../error.php"));
     $filename = basename($_SERVER['PHP_SELF'],'.php');
 
     switch ($filename){
