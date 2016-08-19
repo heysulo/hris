@@ -1,7 +1,9 @@
 <!DOCTYPE>
 <html>
 <head>
-    <?php require_once('../templates/path.php');?>
+    <?php
+    define(hris_access,true);
+    require_once('../templates/path.php');?>
     <title>HRIS | PUBLIC USER</title>
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,200' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/artista.css">
