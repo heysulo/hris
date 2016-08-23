@@ -407,7 +407,7 @@ h3{
     visibility:hidden;
     float: right;
     top:150px;
-    left: calc(100% - 360px);
+    left: calc(100% - 330px);
     position: absolute;
     background-color: #fff;
     min-width: 320px;
@@ -436,14 +436,14 @@ h3{
     display: block;
     background-color: #fff;
     color: #2D3E50;
-    height: 30px;
     text-decoration: none;
     text-transform: uppercase;
     padding: 5px;
-    padding-top: 15px;
+    padding-top: 6px;
     padding-left: 20px;
     font-family: Arial;
-    height: 18px;
+    font-size: 14px;
+    height: 16px;
     cursor: pointer;
     transition:all linear 0.2s;
 }
@@ -682,12 +682,16 @@ h3{
 
 .dboxheader{
     
-    background-image: url('../img/ico_availability.png');
-    background-position: 4px 4px; 
-    background-repeat: no-repeat;
+    
     height:160px;
     text-indent: 0px;
     transition: all 0.2s ease-in-out;
+}
+
+.dbox_head_availabilitystatus{
+    background-image: url('../img/ico_availability.png');
+    background-position: 4px 4px; 
+    background-repeat: no-repeat;
 }
 
 
@@ -836,16 +840,67 @@ h3{
     overflow-y: auto;
 }
 
+
+
+
+/*----------NEWS FEED-------------*/
 .dashboard_newsfeed{
     height: 100%;
     margin-left: 40px;
 }
 
+.dbox_head_newsfeed{
+    background-image: url('../img/ico_newsfeed.png');
+    background-position: 6px 6px; 
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.newsfeed_content{
+    height: calc(100% - 30px);
+    width: 100%;
+    background-color: white;
+    overflow: auto;
+}
+
+
+.newsfeed_item_box{
+    float: left;
+    width: calc(100% - 30px);
+    background-color: white;
+    max-height: 50px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    line-height: 15px;
+    border:0px solid #b5caf3;
+    transition: all 0.2s linear;
+}
+
+.newsfeed_item_box:hover{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: #e9ebee;
+}
 
 
 
+.newsfeed_item_colorbar{
+    float: left;
+    width: 20px;
+    height: 100px;
+    background-color: #4080ff;
+}
 
-
+.newsfeed_item_content{
+    font-size: 12px;
+    width: calc(100% - 50px);
+    margin: 0px;
+    padding: 5px;
+    padding-left: 30px;
+}
 
 
 

@@ -1,5 +1,5 @@
 <div class="dbox">
-	<div class="dboxheader">
+	<div class="dboxheader dbox_head_availabilitystatus">
 		<div class="dboxtitle">
 			Availability Status
 		</div>

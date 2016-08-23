@@ -9,6 +9,6 @@
         <div class="dbox "></div>
     </div>
     <div class="dashboard_rightbox">
-            <div class="dashboard_newsfeed dbox "></div>
+            <?php include_once('news_feed.php'); ?>
     </div>
 </div>
