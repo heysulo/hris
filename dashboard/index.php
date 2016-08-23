@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>USER </title>
-    <link rel="stylesheet" type="text/css" href="../public/css/artista.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/artista.css">
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,200' rel='stylesheet' type='text/css'>
 </head>
 <body>
