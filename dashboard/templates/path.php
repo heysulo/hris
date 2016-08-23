@@ -6,5 +6,5 @@
  * Time: 1:28 PM
  */
 
-$publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
-$templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/view/templates/";
+$publicPath = "http://".$_SERVER['HTTP_HOST']."/public/";
+$templatePath = "http://".$_SERVER['HTTP_HOST']."/app/view/templates/";
