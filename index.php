@@ -1,9 +1,14 @@
+<?php
+    define(hris_access,true);
+?>
+<!DOCTYPR>
 <html>
 <head>
     <title>HRIS UCSC</title>
     <link rel="stylesheet" type="text/css" href="public/css/artista.css">
 </head>
 <body>
+<<<<<<< HEAD
     <div class="loginmaindiv">
         <div>
             <div class="introbox">
@@ -57,7 +62,6 @@
 No: 35, Reid Avenue, Colombo 7, Sri Lanka.</p>
         </center>
     </div>
-    
 
     <div class="bg_blurredimg"></div>
 

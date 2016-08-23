@@ -1,0 +1,9 @@
+# disable directory browsing
+Options All -Indexes
+
+
+#Block Access to a Comprehensive Range of Files
+<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh|conf)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
