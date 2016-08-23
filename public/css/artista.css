@@ -415,7 +415,7 @@ h3{
     padding: 4px;
     opacity: 0;
     z-index: 9;
-    transition:all ease 0.5s;
+    transition:all ease 0.2s;
     transition-delay: 1s;
 }
 /*
@@ -443,6 +443,7 @@ h3{
     padding-top: 15px;
     padding-left: 20px;
     font-family: Arial;
+    height: 18px;
     cursor: pointer;
     transition:all linear 0.2s;
 }
@@ -622,7 +623,7 @@ h3{
 
 .dashboard_rightbox{
     float:right;
-    width:60%;
+    width:65%;
     height: 100%;
 /*    background-color: aqua;*/
 }
@@ -835,7 +836,10 @@ h3{
     overflow-y: auto;
 }
 
-
+.dashboard_newsfeed{
+    height: 100%;
+    margin-left: 40px;
+}
 
 
 
