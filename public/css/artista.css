@@ -763,6 +763,18 @@ h3{
     float: left;
 }
 
+.availability_dropdown_item_text_template{
+    width:60%;
+    float:left;
+    height:auto;
+    margin:6px;
+    transition: all 0.1s linear;
+}
+.availability_dropdown_item_text_template:hover{
+    margin-left: 10px;
+    color: #ff0000;
+}
+
 .availability_dropdown:hover .availability_dropdown_content{
     display: block;
 }
@@ -780,6 +792,7 @@ h3{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     width:200px;
     left:0px;
+    z-index: 999999;
 }
 
 .availability_dropdown:hover .availability_button{
@@ -812,6 +825,40 @@ h3{
 
 }
 
+.saved_status_messages{
+    width: 100%;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    height:120px;
+    border:solid grey 0px;
+    overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~DEFAULTS~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .default_button {
     background-color:#3f4e5e;
     border-radius:3px;
