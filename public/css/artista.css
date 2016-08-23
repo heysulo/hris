@@ -375,8 +375,8 @@ h3{
     height: 24px;
     overflow: auto;
     margin: 10px;
-    margin-top: 9px;
-    margin-right: 12px;
+    margin-top: 8px;
+    margin-right: 8px;
     cursor: pointer;
     display: inline-block;
     transition:all ease 0.5s;
@@ -457,8 +457,8 @@ h3{
     margin: 0px;
     width: 100%;
     background-color: #eff3f4;
-    width: calc(100% - 260px);
-    height: calc(100% - 60px);
+    width: calc(100% - 220px);
+    height: calc(100% - 40px);
     overflow: auto;
     z-index: 3;
 }
@@ -524,6 +524,11 @@ h3{
 
 }
 
+.navbaritem:hover{
+    padding-left: 5px;
+
+}
+
 
 
 .navbaritem {
@@ -548,6 +553,7 @@ h3{
 .navbaritem:hover:not(.active) {
     background-color: #34495E;
     color: white;
+    color: gold;
 }
 
 .td{
@@ -578,15 +584,15 @@ h3{
 /*----dashboard_top.php----*/
 .txt_paneltitle{
     font-family:'Catamaran', sans-serif;
-    font-size:52px;
+    font-size:32px;
     color: #3F4E5E;
     text-transform: uppercase;
     margin: 20px 35px;
     margin-left: 42px;
-    margin-top:40px;
+    margin-top:10px;
     height:160px;
     text-indent: 0px;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s linear;
 
 
 }
@@ -607,7 +613,7 @@ h3{
 
 .dashboard_leftbox{
     float:left;
-    width:40%;
+    width:35%;
     height: 100%;
 
 /*    background-color: green;*/
@@ -625,17 +631,18 @@ h3{
 .mainsearch{
     float: right;
     width: 250px;
-    height: 50px;
-    margin: 25px;
-    margin-top: 55px;
+    height: 30px;
+    margin: 20px;
+    margin-top: 22px;
     box-sizing: border-box;
     background-image: url('../img/ico_search.png');
-    background-position: 10px 7px; 
+    font-size: 12px;
+    background-position: 10px 5px; 
     background-repeat: no-repeat;
     border: 2px solid #ccc;
-    border-radius: 25px;
-    padding:  12px 20px 12px 50px;
-    margin-right: 45px;
+    border-radius: 16px;
+    padding:  02px 0px 0px 35px;
+    margin-right: 20px;
     outline: none;
     transition: all 0.4s ease-in-out;
 
@@ -646,7 +653,7 @@ h3{
 }
 
 .mainsearch:focus{
-    width: 450px;
+    width: 350px;
 }
 
 
@@ -675,7 +682,7 @@ h3{
 .dboxheader{
     
     background-image: url('../img/ico_availability.png');
-    background-position: 4px 9px; 
+    background-position: 4px 4px; 
     background-repeat: no-repeat;
     height:160px;
     text-indent: 0px;
@@ -686,7 +693,7 @@ h3{
 .dboxtitle{
     font-family:'Catamaran', sans-serif;
     font-weight: normal;
-    font-size:24px;
+    font-size:18px;
     color: #3F4E5E;
     margin-left: 32px;
 }
@@ -695,10 +702,24 @@ h3{
 /*-------AVAILABILITY STATUS----*/
 
 .cur_availability_icon{
-    
-    height: 16px;
-    width: 16px;
-    border: 2px solid #3F4E5E;
+    position: static;
+    margin-top:8px;
+    margin-left: px;
+    height: 12px;
+    width: 12px;
+    border: 1px solid #3F4E5E;
+    background-color: #42b72a;
+    border-radius: 10px;
+}
+
+.saved_availability_icon{
+    position: static;
+    margin-top:8px;
+    margin-left: 14px;
+    height: 12px;
+    width: 12px;
+    border: 1px solid #3F4E5E;
+    background-color: #42b72a;
     border-radius: 10px;
 }
 
@@ -718,13 +739,16 @@ h3{
 }
 
 .availability_dropdown_item{
-    height: auto;
+    height: 30px;
     width: 250px;
     clear: left;
     width:100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     cursor: pointer;
+}
+.availability_dropdown_item:hover{
+    background-color: aliceblue;
 }
 
 
@@ -745,7 +769,7 @@ h3{
 
 .availability_dropdown_content {
     display: none;
-    top:45px;
+    top:40px;
     position: absolute;
     right: 0;
     background-color: #f9f9f9;
@@ -755,6 +779,7 @@ h3{
     padding-bottom:  10px; 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     width:200px;
+    left:0px;
 }
 
 .availability_dropdown:hover .availability_button{
@@ -764,8 +789,9 @@ h3{
 
 .customstatus{
     font-size: 18px;
-    width: 70%;
+    width: calc(100% - 180px);
     margin-top: 8px;
+    margin-right:2px;
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid #F1F1F1;
@@ -777,4 +803,34 @@ h3{
 .customstatus:focus{
     border-bottom: 2px solid #3f4e5e;
 }
+
+
+.availability_status_button{
+    
+    width: 60px;
+    height: 26px;
+
+}
+
+.default_button {
+    background-color:#3f4e5e;
+    border-radius:3px;
+    border:1px solid #54677b;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:13px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #154682;
+    text-transform: uppercase;
+}
+.default_button:hover {
+    background-color:#54677b;
+}
+.default_button:active {
+    position:relative;
+    top:1px;
+}
+
 
