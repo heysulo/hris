@@ -518,6 +518,13 @@ h3{
 }
 
 
+.active_navbar_item{
+    color: gold !important;
+    font-weight: bold !important;
+    background-color: #4285f4 !important;
+}
+
+
 .navbartxt{
     text-indent: 0px;
     padding-top: 10px;

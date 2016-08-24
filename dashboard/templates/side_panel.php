@@ -4,7 +4,7 @@
         <p class="hrsititle">Human Resource Information System</p>
     </center>
     <ul class="navbar">
-        <li class="navbaritem" id="dashboard">
+        <li class="active_navbar_item navbaritem" id="dashboard">
             <div>
                 <img id="lp_dashboard" class="navbaritemimg" src="../public/img/img_lp_dashboard.png">
             </div>
