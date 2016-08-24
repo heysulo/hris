@@ -12,30 +12,14 @@
 				function random_color() {
 				    return random_color_part() . random_color_part() . random_color_part();
 				}
+				
+				for ($x = 0; $x <= 40; $x++) {
+					$color = random_color();
+				    include('newsfeed_item.php');
+				} 
+			
 			?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
-			<?php include('newsfeed_item.php'); ?>
+			
 			
 		</div>		
 	</div>

@@ -857,6 +857,7 @@ h3{
 }
 
 .newsfeed_content{
+    margin-top: 10px;
     height: calc(100% - 30px);
     width: 100%;
     background-color: white;
@@ -873,7 +874,7 @@ h3{
     word-wrap: break-word;
     overflow: hidden;
     line-height: 15px;
-    border:0px solid #b5caf3;
+    border:0px solid green;
     transition: all 0.2s linear;
 }
 
@@ -889,9 +890,13 @@ h3{
 
 .newsfeed_item_colorbar{
     float: left;
-    width: 20px;
+    width: 12px;
     height: 100px;
     background-color: #4080ff;
+}
+
+.newsfeed_item_colorbar:hover{
+    wid
 }
 
 .newsfeed_item_content{
@@ -899,7 +904,7 @@ h3{
     width: calc(100% - 50px);
     margin: 0px;
     padding: 5px;
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 
