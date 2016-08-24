@@ -879,11 +879,12 @@ h3{
 }
 
 .newsfeed_item_box:hover{
+    max-height: 90px; 
     margin-top: 10px;
     margin-bottom: 10px;
     border-width: 1px;
     border-radius: 5px;
-    background-color: #e9ebee;
+    background-color: #e0e4ed;
 }
 
 
@@ -895,9 +896,6 @@ h3{
     background-color: #4080ff;
 }
 
-.newsfeed_item_colorbar:hover{
-    wid
-}
 
 .newsfeed_item_content{
     font-size: 12px;
@@ -907,7 +905,13 @@ h3{
     padding-left: 20px;
 }
 
-
+.newsfeed_item_timestamp{
+    color: #adb2bb;
+    float: right;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-right: 15px;
+}
 
 
 
