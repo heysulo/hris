@@ -1027,12 +1027,23 @@ h3{
 }
 
 .profile_section_main{
-    height: calc(100% - 190px);
+    padding-top : 20px !important;
+    height: calc(100% - 210px);
     width: 100%;
+    background-color: red;
 }
 
-.profile_main_center{
-    
+.profile_section_contactinfo{
+    margin-left: 80px;
+    width: 450px !important;
+    height: auto !important;
+}
+
+.dbox_head_profilecontactinfo{
+    background-image: url('../img/ico_contctinfo.png');
+    background-position: 4px 1px; 
+    background-repeat: no-repeat;
+    z-index: 999;
 }
 
 .nofloat{
