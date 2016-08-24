@@ -938,7 +938,7 @@ h3{
 
 .profile_section_intro{
     padding-top:25px;
-    width: 100%;
+    width: 50%;
     height: 160px;
 }
 
@@ -1016,6 +1016,19 @@ h3{
     padding-left: 25px;
     padding-top: 1px;
     color:#393939;
+}
+
+
+.profile_basic_summery{
+    font-size:14px;
+    position: relative;
+    left: 300px;
+    top: -132px
+}
+
+.profile_section_main{
+    height: calc(100% - 190px);
+    width: 100%;
 }
 
 .nofloat{

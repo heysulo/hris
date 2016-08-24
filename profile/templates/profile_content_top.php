@@ -8,4 +8,9 @@
 	<div class="profile_last_seen_box">
 		<div class="profile_last_seen_text">Last seen : 15 minutes ago</div>
 	</div>
+	<div class="profile_basic_summery">
+		Role : Student<br>
+		Academic Year : 2014/2015<br>
+		Gender : Male<br>
+	</div>
 </div>
