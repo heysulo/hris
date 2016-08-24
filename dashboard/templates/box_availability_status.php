@@ -1,4 +1,4 @@
-<div class="dbox">
+<div class="dbox availability_status_box">
 	<div class="dboxheader dbox_head_availabilitystatus">
 		<div class="dboxtitle">
 			Availability Status
@@ -11,7 +11,7 @@
 				<div>
 					<input class="customstatus">
 					<button class="default_button availability_status_button">Set</button>
-					<button class="default_button availability_status_button">Save</button>
+					<!-- <button class="default_button availability_status_button">Save</button> -->
 				</div>
 
 
@@ -64,7 +64,12 @@
 					</div>		
 				</div>
 			</div>
-			<div >
+			<center>
+				<p style="font-size:12px;">
+					Set your availability status so the others who visit your profile can get to know about your availability inside the university.
+				</p>
+			</center>
+			<!-- <div >
 				<select name="cars"  size="5" class="saved_status_messages">
 					  <option style="color:#34a853;" value="volvo">Available till 2.00 PM</option>
 					  <option style="color:#ea4335;" value="saab">Exam Duty</option>
@@ -73,6 +78,6 @@
 					  <option style="color:#4285f4;" value="saab">Lecture at W002</option>
 				  <option value="audi">Audi</option>
 				</select>
-			</div>
+			</div> -->
 		</div>
 	</div>

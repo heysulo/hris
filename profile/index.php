@@ -2,6 +2,7 @@
 <head>
 	<title>USER </title>
     <link rel="stylesheet" type="text/css" href="../public/css/artista.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet">
 </head>
 <body>
 	<div class="clearfix">

@@ -699,9 +699,8 @@ h3{
 
 .dbox_head_availabilitystatus{
     background-image: url('../img/ico_availability.png');
-    background-position: 4px 4px; 
+    background-position: 4px 1px; 
     background-repeat: no-repeat;
-    height: 20%;
 }
 
 
@@ -832,11 +831,14 @@ h3{
     border-bottom: 2px solid #3f4e5e;
 }
 
+.availability_status_box{
+    height: 120px;
+}
 
 .availability_status_button{
     
-    width: 60px;
-    height: 26px;
+    width: 120px;
+    height: 32px;
 
 }
 
@@ -861,7 +863,7 @@ h3{
 
 .dbox_head_newsfeed{
     background-image: url('../img/ico_newsfeed.png');
-    background-position: 6px 6px; 
+    background-position: 6px 2px; 
     background-repeat: no-repeat;
     height: 100%;
 }
@@ -923,6 +925,117 @@ h3{
     text-decoration: italic;
     margin-right: 15px;
 }
+
+
+
+
+/*-------------------------------*/
+/*-------------------------------*/
+/*---------PROFILE     ----------*/
+/*-------------------------------*/
+/*-------------------------------*/
+/*-------------------------------*/
+
+.profile_section_intro{
+    padding-top:25px;
+    width: 100%;
+    height: 160px;
+}
+
+.profile_profile_image{
+    margin-left: 120px;
+    background-color: grey;
+    width: 140px;
+    height: 140px;
+    border: 4px solid #fff;
+    border-radius: 4px;
+    background-image: url("../img/oggi.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 15px #42b72a;
+    transition: all 0.2s linear;
+}
+
+.profile_profile_image:hover{
+    box-shadow: 0px 0px 35px #42b72a;
+}
+
+.profile_name{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 34px;
+    position: relative;
+    left: 300px;
+    top: -140px;
+}
+
+.profile_online_status_box{
+    width: 300px;
+    height: 20px;
+    position: relative;
+    left: 300px;
+    top:-140px;
+}
+
+.profile_availability_icon{
+    float: left;
+    margin-top: 2px;
+    height: 12px;
+    width: 12px;
+    border: 2px solid #3F4E5E;
+    background-color: #42b72a;
+    border-radius: 10px;
+    
+}
+
+.profile_availability_text{
+    float: left;
+    font-size:18px;
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+
+.profile_last_seen_box{
+    width: 300px;
+    height: 20px;
+    position: relative;
+    left: 300px;
+    top:-140px;
+}
+
+.profile_last_seen_text{
+    background-image: url("../img/ico_lastseen.png");
+    filter: grayscale(100%);
+    background-position: 1px 1px;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    float: left;
+    font-size:14px;
+    margin-top: 0px;
+    padding-left: 25px;
+    padding-top: 1px;
+    color:#393939;
+}
+
+.nofloat{
+    float: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
