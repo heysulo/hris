@@ -6,7 +6,9 @@
     	<div class="dashboard_leftbox">
             <?php include_once('box_availability_status.php'); ?>
         </div>
-        <div class="dbox "></div>
+        <div class="dbox ">
+            <?php include_once('notifications.php'); ?>
+        </div>
     </div>
     <div class="dashboard_rightbox">
             <?php include_once('news_feed.php'); ?>

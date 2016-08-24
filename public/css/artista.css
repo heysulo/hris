@@ -692,6 +692,7 @@ h3{
     background-image: url('../img/ico_availability.png');
     background-position: 4px 4px; 
     background-repeat: no-repeat;
+    height: 20%;
 }
 
 
@@ -882,9 +883,9 @@ h3{
     max-height: 90px; 
     margin-top: 10px;
     margin-bottom: 10px;
-    border-width: 1px;
+    border-width: 2px;
     border-radius: 5px;
-    background-color: #e0e4ed;
+    background-color: #f6f7f9;
 }
 
 
@@ -910,6 +911,7 @@ h3{
     float: right;
     font-size: 12px;
     text-transform: uppercase;
+    text-decoration: italic;
     margin-right: 15px;
 }
 
