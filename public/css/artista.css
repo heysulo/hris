@@ -1074,9 +1074,38 @@ h3{
 
 
 .profile_section_socities{
-    
+    margin-left: 80px;
+    width: 500px !important;
+    padding-bottom: 5px;
+    margin-top: 20px;
 }
 
+.dbox_head_profile_socities{
+    background-image: url('../img/ico_socities.png');
+    background-position: 4px 2px; 
+    background-repeat: no-repeat;
+    z-index: 999;
+}
+
+.society_item_club{
+    position: relative;
+    left: 5px;
+    top: 0px;
+}
+
+.society_item_role{
+    position: relative;
+    left: 280px;
+    top: -20px;
+}
+
+.society_item{
+    width: auto;
+    height: 20px;
+    background-image: url('../img/ico_verified.png');
+    background-position: 470px 1px; 
+    background-repeat: no-repeat;
+}
 
 
 

@@ -1,16 +1,15 @@
-<div class="dbox profile_section_contactinfo">
-	<div class="dboxheader dbox_head_profilecontactinfo">
+<div class="dbox profile_section_socities">
+	<div class="dboxheader dbox_head_profile_socities">
 		<div class="dboxtitle botmarg">
-			Contact Information
+			Roles in Clubs and Socities
 		</div>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
+			<?php include("socity_item.php") ?>
+			<?php include("socity_item.php") ?>
+			<?php include("socity_item.php") ?>
+			<?php include("socity_item.php") ?>
+			<?php include("socity_item.php") ?>
+			<?php include("socity_item.php") ?>
+			<?php include("socity_item.php") ?>
+			<?php include("socity_item.php") ?>
 	</div>
 </div>
