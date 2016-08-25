@@ -966,9 +966,12 @@ h3{
     position: relative;
     left: 300px;
     top: -140px;
+    transition: all 0.2s linear;
 }
 
-
+.profile_name:hover{
+    text-shadow: 0 0 15px #42b72a;
+}
 
 .profile_online_status_box{
     width: 300px;
