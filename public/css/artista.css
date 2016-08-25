@@ -1034,8 +1034,9 @@ h3{
 
 .profile_section_contactinfo{
     margin-left: 80px;
-    width: 450px !important;
-    height: auto !important;
+    width: 500px !important;
+    padding-bottom: 25px;
+    margin-top: 20px;
 }
 
 .dbox_head_profilecontactinfo{
@@ -1050,15 +1051,31 @@ h3{
 }
 
 
+.contact_info_item{
+    width: 400px;
+    height: 20px;
+}
+
+.contact_info_item_field{
+    position: relative;
+    left: 5px;
+    top: 0px;
+}
+
+.contact_info_item_value{
+    position: relative;
+    left: 100px;
+    top: -20px;
+}
+
+.botmarg{
+    margin-bottom: 8px !important;
+}
 
 
-
-
-
-
-
-
-
+.profile_section_socities{
+    
+}
 
 
 
