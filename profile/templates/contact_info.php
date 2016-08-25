@@ -3,14 +3,15 @@
 		<div class="dboxtitle botmarg">
 			Contact Information
 		</div>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
-			<?php include("contact_info_item.php") ?>
+			
 	</div>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
 </div>

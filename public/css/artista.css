@@ -674,13 +674,13 @@ h3{
 .dbox{
     background-color: #fff;
     border: 1px solid #ccc;
-    
     width: auto;
     margin: 10px;
     margin-right: 0px;
     padding: 10px;
-    height: 200px;
     border-radius: 10px;
+
+    padding-bottom: 20px;
     transition: all 0.2s linear;
 
 }
@@ -691,8 +691,6 @@ h3{
 
 .dboxheader{
     
-    
-    height:160px;
     text-indent: 0px;
     transition: all 0.2s ease-in-out;
 }
@@ -939,7 +937,8 @@ h3{
 .profile_section_intro{
     padding-top:25px;
     width: 50%;
-    height: 160px;
+    height: 170px;
+
 }
 
 .profile_profile_image{
@@ -1029,7 +1028,6 @@ h3{
     padding-top : 20px !important;
     height: calc(100% - 210px);
     width: 100%;
-    background-color: red;
 }
 
 .profile_section_contactinfo{
@@ -1076,7 +1074,6 @@ h3{
 .profile_section_socities{
     margin-left: 80px;
     width: 500px !important;
-    padding-bottom: 5px;
     margin-top: 20px;
 }
 
@@ -1107,14 +1104,79 @@ h3{
     background-repeat: no-repeat;
 }
 
+.profile_section_main_left{
+    float: left;
+    width: 650px
+}
+
+.profile_section_main_right{
+    float: left;
+    width: calc(100% - 650px)
+}
+
+.profile_section_aboutme{
+    margin-left: -25px;
+    text-align: justify;
+    padding: 15px;
+    width: 500px !important;
+    margin-top: 20px;
+    height: auto !important;
+    max-height: 200px;
+    width: 100px;
+    transition: all 0.5s linear;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile_section_aboutme:hover{
+    max-height: 800px;
+}
+
+.dbox_head_profile_aboutme{
+    background-image: url('../img/ico_aboutme.png');
+    background-position: 4px 2px; 
+    background-repeat: no-repeat;
+}
+ 
+.profile_section_interests{
+    margin-left: -25px;
+    text-align: justify;
+    padding: 15px;
+    width: 500px !important;
+    margin-top: 20px;
+    overflow: hidden;
+}
 
 
+.dbox_head_profile_interetst{
+    background-image: url('../img/ico_skills.png');
+    background-position: 2px 0px; 
+    background-repeat: no-repeat;
+}
 
+.skill_item{
+    float: left;
+    background: #e9ebee;
+    border: 1px solid #9cb4d8;
+    border-radius: 2px;
+    color: #162643;
+    cursor: default;
+    display: block;
+    float: left;
+    height: 14px;
+    margin: 1px 4px 4px 1px;
+    padding: 0 3px;
+    position: relative;
+    white-space: nowrap;
+    font-size:12px;
+    height:14px;
+    line-height:16px;
+    transition: all 0.1s linear;
+}
 
-
-
-
-
+.skill_item:hover{
+    background: #c8d0dc;
+}
 
 
 

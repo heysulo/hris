@@ -3,13 +3,19 @@
 		<div class="dboxtitle botmarg">
 			Roles in Clubs and Socities
 		</div>
-			<?php include("socity_item.php") ?>
-			<?php include("socity_item.php") ?>
-			<?php include("socity_item.php") ?>
-			<?php include("socity_item.php") ?>
-			<?php include("socity_item.php") ?>
-			<?php include("socity_item.php") ?>
-			<?php include("socity_item.php") ?>
-			<?php include("socity_item.php") ?>
 	</div>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
+	<?php include("socity_item.php") ?>
 </div>
