@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="public/css/artista.css">
 </head>
 <body>
-<<<<<<< HEAD
     <div class="loginmaindiv">
         <div>
             <div class="introbox">

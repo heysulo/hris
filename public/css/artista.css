@@ -969,6 +969,8 @@ h3{
     top: -140px;
 }
 
+
+
 .profile_online_status_box{
     width: 300px;
     height: 20px;
@@ -978,23 +980,21 @@ h3{
 }
 
 .profile_availability_icon{
-    float: left;
     margin-top: 2px;
-    height: 12px;
+    padding-top: 4px;
+    height: 10px;
     width: 12px;
     border: 2px solid #3F4E5E;
     background-color: #42b72a;
-    border-radius: 10px;
+    border-radius: 8px;
     
 }
 
 .profile_availability_text{
-    float: left;
     font-size:18px;
-    margin-top: 0px;
-    margin-left: 10px;
+    margin-top: -19px;
+    margin-left: 25px;
 }
-
 
 .profile_last_seen_box{
     width: 300px;
@@ -1010,7 +1010,6 @@ h3{
     background-position: 1px 1px;
     background-size: 15px 15px;
     background-repeat: no-repeat;
-    float: left;
     font-size:14px;
     margin-top: 0px;
     padding-left: 25px;
@@ -1041,7 +1040,7 @@ h3{
 
 .dbox_head_profilecontactinfo{
     background-image: url('../img/ico_contctinfo.png');
-    background-position: 4px 1px; 
+    background-position: 4px 2px; 
     background-repeat: no-repeat;
     z-index: 999;
 }
