@@ -1028,6 +1028,7 @@ h3{
     padding-top : 20px !important;
     height: calc(100% - 210px);
     width: 100%;
+    clear: left;
 }
 
 .profile_section_contactinfo{
@@ -1098,10 +1099,29 @@ h3{
 
 .society_item{
     width: auto;
-    height: 20px;
+    cursor:pointer !important;
+    max-height: 20px;
     background-image: url('../img/ico_verified.png');
     background-position: 470px 1px; 
     background-repeat: no-repeat;
+    overflow: hidden;
+    transition: all 0.2s linear;
+}
+
+.society_item:active{
+    height: auto !important;
+    margin-top: 15px;
+    max-height: 200px;
+    margin-bottom: 15px;
+    background-color: #e9ebee;
+    border: 1px solid #365899;
+}
+
+.society_item_extra{
+    color: #90949c;
+    font-size: 14px;
+    padding: 5px;
+    margin-top:-20px;
 }
 
 .profile_section_main_left{

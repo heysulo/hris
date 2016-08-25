@@ -14,4 +14,13 @@
 	<?php include("contact_info_item.php") ?>
 	<?php include("contact_info_item.php") ?>
 	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
+	<?php include("contact_info_item.php") ?>
 </div>
