@@ -31,8 +31,8 @@
                                 Information Center of UCSC as a registered member and access the full features.</p>
                             </center>
                         </div>
-                        <input class="txt_field" type="text" id="fname" name="email" placeholder="Email Address" required>
-                        <input class="txt_field" type="password" id="lname" name="password" placeholder="Password" required>
+                        <input class="txt_field" type="text" name="email" placeholder="Email Address" required>
+                        <input class="txt_field" type="password" name="password" placeholder="Password" required>
                         <div class="spacerx"></div>
                         <div class="spacerx"></div>
 

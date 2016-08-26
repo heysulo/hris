@@ -16,26 +16,42 @@ function loginUser(){
 
         //validate user input data
         $email = mysqli_real_escape_string($conn,$_POST['email']);
-        $password = mysqli_real_escape_string($conn,$_POST['password']);
+        $pword = mysqli_real_escape_string($conn,$_POST['password']);
 
-        //Query to fectch user login data from database
-        $query = "SELECT firstname,lastname,type,pro_pic FROM user WHERE username='$email' AND password='$password'";
 
-        //Execute the query.
-        $result = mysqli_query($conn,$query);
+        //get hashed password from source
+        $query = "SELECT password FROM user WHERE email='$email' LIMIT 1";
+        $res = mysqli_query($conn,$query);
+        $hashed = mysqli_fetch_assoc($res);
+        $hashedPW = $hashed['password'];
 
-        //Check whether database send data;
-        if (mysqli_num_rows($result)){
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION['email'] = $email;
-            $_SESSION['fname'] = $row['firstname'];
-            $_SESSION['lname'] = $row['lastname'];
-            $_SESSION['pro_pic'] = $row['pro_pic'];
-            $_SESSION['type'] = $row['type'];
-            header('location:dashboard.php');
-        }else{
+        //Check passwords
+        $comparePW = password_verify($pword,$hashedPW);
+
+        /*echo "<script type='text/javascript'> alert($comparePW);</script>";*/
+
+        if (!$comparePW){
             header("location:../../index.php?error=1");
+        }else{
+            //Query to fectch user login data from database
+            $query = "SELECT firstname,lastname,type,pro_pic FROM user WHERE username='$email' AND password='$hashedPW'";
+
+            //Execute the query.
+            $result = mysqli_query($conn,$query);
+
+            //Check whether database send data;
+            if (mysqli_num_rows($result)){
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION['email'] = $email;
+                $_SESSION['fname'] = $row['firstname'];
+                $_SESSION['lname'] = $row['lastname'];
+                $_SESSION['pro_pic'] = $row['pro_pic'];
+                $_SESSION['type'] = $row['type'];
+                header('location:dashboard.php');
+            }
         }
+
+
     }
 }
 
