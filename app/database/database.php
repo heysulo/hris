@@ -6,7 +6,13 @@
  * Time: 10:03 PM
  */
 
-$conn = mysqli_connect($host,$username,$password,$database);
+if ($_SERVER['HTTP_HOST'] == 'localhost'){
+    $conn = mysqli_connect($_host,$_username,$_password,$_database);
+}else{
+    $conn = mysqli_connect($host,$username,$password,$database);
+
+}
+
 
 if(!$conn){
     header("location:../../error.php?error=Can't connect to database.");
