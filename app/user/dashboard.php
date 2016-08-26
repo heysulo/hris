@@ -36,6 +36,7 @@
                 <input type="text" name="search" placeholder="Search.." class="mainsearch">
             </div>
         </div>
+        <?php echo "$fname" ?>
         <?php include_once('../templates/bottom_panel.php'); ?>
     </div>
 

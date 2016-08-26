@@ -122,7 +122,7 @@ h3{
     width: 100%;
     z-index: 10;
     color: #000;
-    top:550;
+    top:550px;
     width: auto;
     font-size: 10px;
     left: calc(52% - 180px);
@@ -317,8 +317,9 @@ h3{
 .divadjustment{
 
 }
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-/*~~~~TOPPANE~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  TOP PANE styling ~~~~~~*/
 .panelTop{
     float: left;
     margin: 0;
@@ -452,6 +453,45 @@ h3{
 .top_dropdown_list_item:hover{
     background-color: #EFF3F4;
 }
+
+/*------------------------- modified drop down*/
+
+.top_dropdown_click{
+    position: relative;
+    display: inline-block;
+    float: right;
+
+}
+
+.top_dropdown_content_click{
+    display: none;
+    top:40px;
+    left: calc(100% - 260px);
+    position: absolute;
+    background-color: #fff;
+    min-width: 250px;
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.4);
+    z-index: 9;
+}
+
+.top_dropdown_content_click a {
+    display: block;
+    background-color: #fff;
+    color: #2D3E50;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.top_dropdown_click a:hover{
+    background-color: #EFF3F4;
+}
+
+.show{ /*this class add when click btn*/
+    display: block;
+}
+
 
 /*~~~~BOTPANE~~~~~~*/
 .bottomPanel{
@@ -719,7 +759,7 @@ h3{
 .cur_availability_icon{
     position: static;
     margin-top:8px;
-    margin-left: px;
+    margin-left: 0px;
     height: 12px;
     width: 12px;
     border: 1px solid #3F4E5E;
@@ -923,7 +963,7 @@ h3{
     float: right;
     font-size: 12px;
     text-transform: uppercase;
-    text-decoration: italic;
+    text-decoration: none;
     margin-right: 15px;
 }
 
