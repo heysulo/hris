@@ -58,10 +58,20 @@
                         <div class="spacerx"></div>
                         <center style="font-size:13px;color:#5F5F5F;"><p class="anitxt1">Login to the Human Resource
                                 Information Center of UCSC as guest and access the skill directory.</p></center>
+                </form>
+                        <!-- _________________ separated to two forms ______________________ -->
+
+                <!-- THis form temporary un available... Sulo.... mewa nm ain kranna epa bn... aye nm mata gahanna ba..
+                    <form action="app/public_user/public.php" method="get">
+                    <div>
+                        <!--btn to access public user area.
+                        <input type="submit" class="user_choose_button" value="General Public" name="publicUserBtn">
+                    </div>
+                </form>-->
                         <a href="./dashboard/index.php">
                             <input type="button" class="user_choose_button" value="General Public"></a>
                     </div>
-                </form>
+
             </div>
         </center> 
     </div>
