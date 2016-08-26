@@ -23,7 +23,7 @@
         </div>
         <center>
             <div class="login_box">
-                <form action="action_page.php">
+                <form action="app/user/login.php" method="post">
                     <div>
                         <div style="max-width:300px;">
                             <center>
@@ -31,11 +31,21 @@
                                 Information Center of UCSC as a registered member and access the full features.</p>
                             </center>
                         </div>
-                        <input class="txt_field" type="text" id="fname" name="firstname" placeholder="Email Address">
-                        <input class="txt_field" type="password" id="lname" name="lastname" placeholder="Password">
+                        <input class="txt_field" type="text" id="fname" name="email" placeholder="Email Address" required>
+                        <input class="txt_field" type="password" id="lname" name="password" placeholder="Password" required>
                         <div class="spacerx"></div>
                         <div class="spacerx"></div>
-                        <input type="button" class="user_choose_button" value="Login as Member">
+
+                        <!--Button to login user-->
+                        <input type="submit" name="loginbtn" class="user_choose_button" value="Login as Member">
+
+                        <!--error massage for wrong user login data-->
+                        <?php
+                        if($_GET['error']){
+                            echo "<div class=\"alert\">Username password mismatch.<br>Please try again or try forget password.</div>";
+                        }
+                        ?>
+
                         <div class="spacerx"></div>
                         <div>
                             <a class="txtassist" href="Google.lk" style="text-align: left;">Forgot your password</a>
