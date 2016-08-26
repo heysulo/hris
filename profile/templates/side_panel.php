@@ -54,5 +54,15 @@
             </div>
         </li>
         <a/>
+        <a class="nounderline" href="../advancedSearch/index.php">
+        <li class="navbaritem" id="admin">
+            <div>
+                <img id="lp_administration" class="navbaritemimg" src="../public/img/img_lp_advancedsearch.png">
+            </div>
+            <div class="navbartxt">
+                Advanced Search
+            </div>
+        </li>
+        <a/>
     </ul>
 </div>

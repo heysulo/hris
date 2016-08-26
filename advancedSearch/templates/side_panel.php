@@ -5,7 +5,7 @@
     </center>
     <ul class="navbar">
         <a class="nounderline" href="../dashboard/index.php">
-        <li class="active_navbar_item navbaritem" id="dashboard">
+        <li class=" navbaritem" id="dashboard">
             <div>
                 <img id="lp_dashboard" class="navbaritemimg" src="../public/img/img_lp_dashboard.png">
             </div>
@@ -15,7 +15,7 @@
         </li>
         </a>
         <a class="nounderline" href="../profile/index.php">
-        <li class="navbaritem" id="profile">
+        <li class="navbaritem "  id="profile">
             <div>
                 <img id="lp_profile" class="navbaritemimg" src="../public/img/img_lp_profile.png">
             </div>
@@ -54,9 +54,8 @@
             </div>
         </li>
         <a/>
-
         <a class="nounderline" href="../advancedSearch/index.php">
-        <li class="navbaritem" id="admin">
+        <li class="navbaritem active_navbar_item" id="admin">
             <div>
                 <img id="lp_administration" class="navbaritemimg" src="../public/img/img_lp_advancedsearch.png">
             </div>

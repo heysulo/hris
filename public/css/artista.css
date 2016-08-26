@@ -597,10 +597,8 @@ h3{
     font-size:32px;
     color: #3F4E5E;
     text-transform: uppercase;
-    margin: 20px 35px;
     margin-left: 42px;
     margin-top:10px;
-    height:160px;
     text-indent: 0px;
     transition: all 0.2s linear;
 
@@ -1113,9 +1111,10 @@ h3{
 
 .society_item:active{
     height: auto !important;
-    margin-top: 15px;
+    padding-top: 10px;
+    background-position: 470px 10px; 
+    padding-bottom: 8px;
     max-height: 200px;
-    margin-bottom: 15px;
     background-color: #e9ebee;
     border: 1px solid #365899;
 }
@@ -1200,6 +1199,45 @@ h3{
 .skill_item:hover{
     background: #c8d0dc;
 }
+
+
+/*********************** *******/
+/******advanced search  ********/
+/*******************************/
+.advacnedsearch_section_basic{
+    padding-left: 20px;
+    float: left;
+    width: 500px !important;
+    padding-bottom: 25px;
+    margin: 30px;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+
+.dbox_head_advancedsearch_basic{
+    background-image: url('../img/ico_contctinfo.png');
+    background-position: 4px 6px; 
+    background-repeat: no-repeat;
+}
+
+.advancedsearch_textbox{
+    margin-left: 10px;
+    margin-block-end: 5px;
+    width: 380px;
+}
+
+.advancedsearch_hr{
+    display: block;
+    height: 0px;
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+
 
 
 
