@@ -597,8 +597,10 @@ h3{
     font-size:32px;
     color: #3F4E5E;
     text-transform: uppercase;
+    margin: 20px 35px;
     margin-left: 42px;
     margin-top:10px;
+    height:160px;
     text-indent: 0px;
     transition: all 0.2s linear;
 
@@ -672,13 +674,13 @@ h3{
 .dbox{
     background-color: #fff;
     border: 1px solid #ccc;
+    
     width: auto;
     margin: 10px;
     margin-right: 0px;
     padding: 10px;
+    height: 200px;
     border-radius: 10px;
-
-    padding-bottom: 20px;
     transition: all 0.2s linear;
 
 }
@@ -689,6 +691,8 @@ h3{
 
 .dboxheader{
     
+    
+    height:160px;
     text-indent: 0px;
     transition: all 0.2s ease-in-out;
 }
@@ -935,8 +939,7 @@ h3{
 .profile_section_intro{
     padding-top:25px;
     width: 50%;
-    height: 170px;
-
+    height: 160px;
 }
 
 .profile_profile_image{
@@ -964,12 +967,9 @@ h3{
     position: relative;
     left: 300px;
     top: -140px;
-    transition: all 0.2s linear;
 }
 
-.profile_name:hover{
-    text-shadow: 0 0 15px #42b72a;
-}
+
 
 .profile_online_status_box{
     width: 300px;
@@ -1029,7 +1029,7 @@ h3{
     padding-top : 20px !important;
     height: calc(100% - 210px);
     width: 100%;
-    clear: left;
+    background-color: red;
 }
 
 .profile_section_contactinfo{
@@ -1076,6 +1076,7 @@ h3{
 .profile_section_socities{
     margin-left: 80px;
     width: 500px !important;
+    padding-bottom: 5px;
     margin-top: 20px;
 }
 
@@ -1100,142 +1101,18 @@ h3{
 
 .society_item{
     width: auto;
-    cursor:pointer !important;
-    max-height: 20px;
+    height: 20px;
     background-image: url('../img/ico_verified.png');
     background-position: 470px 1px; 
     background-repeat: no-repeat;
-    overflow: hidden;
-    transition: all 0.2s linear;
-}
-
-.society_item:active{
-    height: auto !important;
-    padding-top: 10px;
-    background-position: 470px 10px; 
-    padding-bottom: 8px;
-    max-height: 200px;
-    background-color: #e9ebee;
-    border: 1px solid #365899;
-}
-
-.society_item_extra{
-    color: #90949c;
-    font-size: 14px;
-    padding: 5px;
-    margin-top:-20px;
-}
-
-.profile_section_main_left{
-    float: left;
-    width: 650px
-}
-
-.profile_section_main_right{
-    float: left;
-    width: calc(100% - 650px)
-}
-
-.profile_section_aboutme{
-    margin-left: -25px;
-    text-align: justify;
-    padding: 15px;
-    width: 500px !important;
-    margin-top: 20px;
-    height: auto !important;
-    max-height: 200px;
-    width: 100px;
-    transition: all 0.5s linear;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.profile_section_aboutme:hover{
-    max-height: 800px;
-}
-
-.dbox_head_profile_aboutme{
-    background-image: url('../img/ico_aboutme.png');
-    background-position: 4px 2px; 
-    background-repeat: no-repeat;
-}
- 
-.profile_section_interests{
-    margin-left: -25px;
-    text-align: justify;
-    padding: 15px;
-    width: 500px !important;
-    margin-top: 20px;
-    overflow: hidden;
 }
 
 
-.dbox_head_profile_interetst{
-    background-image: url('../img/ico_skills.png');
-    background-position: 2px 0px; 
-    background-repeat: no-repeat;
-}
-
-.skill_item{
-    float: left;
-    background: #e9ebee;
-    border: 1px solid #9cb4d8;
-    border-radius: 2px;
-    color: #162643;
-    cursor: default;
-    display: block;
-    float: left;
-    height: 14px;
-    margin: 1px 4px 4px 1px;
-    padding: 0 3px;
-    position: relative;
-    white-space: nowrap;
-    font-size:12px;
-    height:14px;
-    line-height:16px;
-    transition: all 0.1s linear;
-}
-
-.skill_item:hover{
-    background: #c8d0dc;
-}
 
 
-/*********************** *******/
-/******advanced search  ********/
-/*******************************/
-.advacnedsearch_section_basic{
-    padding-left: 20px;
-    float: left;
-    width: 500px !important;
-    padding-bottom: 25px;
-    margin: 30px;
-    margin-right: 0px;
-    margin-top: 20px;
-    margin-bottom: 0px;
-}
 
 
-.dbox_head_advancedsearch_basic{
-    background-image: url('../img/ico_contctinfo.png');
-    background-position: 4px 6px; 
-    background-repeat: no-repeat;
-}
 
-.advancedsearch_textbox{
-    margin-left: 10px;
-    margin-block-end: 5px;
-    width: 380px;
-}
-
-.advancedsearch_hr{
-    display: block;
-    height: 0px;
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 0.5em 0;
-    padding: 0;
-}
 
 
 

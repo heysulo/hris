@@ -14,9 +14,6 @@
 					<!-- <button class="default_button availability_status_button">Save</button> -->
 				</div>
 
-
-
-
 				<div class="availability_dropdown_content">
 					<div class="availability_dropdown_item" >
 						<div style="width:20%;float:left;height:auto;">

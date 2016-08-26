@@ -8,6 +8,16 @@
 
 defined('hris_access') or die(header("location:../../error.php"));
 
+if ($_SERVER['HTTP_HOST'] == 'localhost'){
+    $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
+    $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
+    $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
+}else{
+    $publicPath = "http://".$_SERVER['HTTP_HOST']."/public/";
+    $templatePath = "http://".$_SERVER['HTTP_HOST']."/app/templates/";
+    $imagePath = "http://".$_SERVER['HTTP_HOST']."/app/images";
+}
+/*
 $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
 $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
-$imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
+$imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";*/
