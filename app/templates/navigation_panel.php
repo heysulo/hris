@@ -28,7 +28,7 @@
         <img class="ucsclogo" src="<?php echo $publicPath?>img/ucsc_logo_white.png">
         <p class="hrsititle">Human Resource Information System</p>
     </center>
-    <ul class="navbar">
+    <ul class="navbar" id="navbar">
         <li class="navbaritem <?php echo $dashbord;?>" id="dashboard">
             <div>
                 <img id="lp_dashboard" class="navbaritemimg" src="<?php echo $publicPath?>img/img_lp_dashboard.png">
