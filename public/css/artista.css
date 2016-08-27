@@ -932,6 +932,8 @@ h3{
 /*-------------------------------*/
 /*-------------------------------*/
 
+
+
 .profile_section_intro{
     padding-top:25px;
     width: 50%;
@@ -1274,6 +1276,103 @@ h3{
 
 }
 
+/**********************************/
+/*******************************/
+/********EDIT PROFILE*********/
+.edit_profile_button{
+    background-clip:padding-box;
+    background-color:rgb(246, 247, 249);
+    border-bottom-color:rgba(0, 0, 0, 0.4);
+    border-bottom-left-radius:2px;
+    border-bottom-right-radius:2px;
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-image-outset:0px;
+    border-image-repeat:stretch;
+    border-image-slice:100%;
+    border-image-source:none;
+    border-image-width:1;
+    border-left-color:rgba(0, 0, 0, 0.4);
+    border-left-style:solid;
+    border-left-width:1px;
+    border-right-color:rgba(0, 0, 0, 0.4);
+    border-right-style:solid;
+    border-right-width:1px;
+    border-top-color:rgba(0, 0, 0, 0.4);
+    border-top-left-radius:2px;
+    border-top-right-radius:2px;
+    border-top-style:solid;
+    border-top-width:1px;
+    box-sizing:content-box;
+    color:rgb(75, 79, 86);
+    cursor:pointer;
+    direction:ltr;
+    display:inline-block;
+    font-family:helvetica, arial, sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    height:26px;
+    line-height:26px;
+    margin-left:12px;
+    padding-bottom:0px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:0px;
+    position:relative;
+    text-align:center;
+    text-decoration:none;
+    text-shadow:none;
+    vertical-align:middle;
+    white-space:nowrap;
+    width:66px;
+    word-wrap:break-word;
+    zoom:1;
+    -webkit-font-smoothing:antialiased;
+}
+
+.edit_profile_button:hover{
+    background-color: #dddfe2;
+}
+
+
+.edit_profile_intro_section{
+
+    height: 240px !important;
+}
+
+
+.edit_profile_profile_image{
+    width: 240px !important;
+    height: 240px !important;
+}
+
+.edit_profile_profile_name{
+    left: 400px !important;
+    top: -240px !important;
+}
+
+.edit_profile_name_textbox{
+    width: 20%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+}
+
+.edit_profile_profile_basic_summery{
+    left: 400px !important;
+    top: -220px !important;
+}
+
+.edit_profile_academic_year{
+    width: 30% !important;
+}
 /*******************************/
 /*********GROUPS     ************/
 /********************************/
