@@ -28,7 +28,8 @@
 
     <!--Other content goes here-->
     <div class="bottomPanel">
-        <div style="float:left;height:120px;width:100%;">
+        <!--Title and search box area-->
+        <div style="float:left;height:80px;width:100%;">
             <div style="float:left;width:auto;height:100%;">
                 <div class="txt_paneltitle">Dashboard</div>
             </div>
@@ -36,7 +37,9 @@
                 <input type="text" name="search" placeholder="Search.." class="mainsearch">
             </div>
         </div>
-        <?php echo "$fname" ?>
+
+        <!--content goes here-->
+
         <?php include_once('../templates/bottom_panel.php'); ?>
     </div>
 
