@@ -1430,3 +1430,78 @@ h3{
     clear: right;
 }
 
+
+
+/*------------------------------------ Alert css*/
+.alert{
+    margin-top:10px;
+    padding:5px;
+    font-size:.85em;
+    transition: color 0.2s;
+    max-width:  282px;
+    color: whitesmoke;
+    border:1px solid  #f44336;
+    border-radius: 5px;
+    background-color:  #f44336;
+}
+
+.alert:hover{
+    color:#f00;
+    background-color: whitesmoke;
+}
+
+.alert-green{
+    margin-top:10px;
+    padding:5px;
+    font-size:.85em;
+    transition: color 0.2s;
+    max-width:  282px;
+    color: whitesmoke;
+    border:1px solid  forestgreen;
+    border-radius: 5px;
+    background-color:  forestgreen;
+}
+
+.alert-green:hover{
+    color:forestgreen;
+    background-color: whitesmoke;
+}
+
+/*------------------------- modified drop down*/
+
+.top_dropdown_click{
+    position: relative;
+    display: inline-block;
+    float: right;
+
+}
+
+.top_dropdown_content_click{
+    display: none;
+    top:40px;
+    left: calc(100% - 260px);
+    position: absolute;
+    background-color: #fff;
+    min-width: 250px;
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.4);
+    z-index: 9;
+}
+
+.top_dropdown_content_click a {
+    display: block;
+    background-color: #fff;
+    color: #2D3E50;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.top_dropdown_click a:hover{
+    background-color: #EFF3F4;
+}
+
+.show{ /*this class add when click btn*/
+    display: block;
+}
+
