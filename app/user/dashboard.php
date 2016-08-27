@@ -39,8 +39,8 @@
         </div>
 
         <!--content goes here-->
-
         <?php include_once('../templates/bottom_panel.php'); ?>
+
     </div>
 
 

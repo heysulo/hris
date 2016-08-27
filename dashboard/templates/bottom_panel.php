@@ -10,6 +10,8 @@
             <?php include_once('notifications.php'); ?>
         </div>
     </div>
+
+
     <div class="dashboard_rightbox">
             <?php include_once('news_feed.php'); ?>
     </div>
