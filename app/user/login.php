@@ -35,7 +35,7 @@ function loginUser(){
             header("location:../../index.php?error=1");
         }else{
             //Query to fectch user login data from database
-            $query2 = "SELECT firstname,lastname,type,pro_pic FROM user WHERE username='$email'";
+            $query2 = "SELECT * FROM user WHERE email='$email'";
 
             //Execute the query.
             $result = mysqli_query($conn,$query2);

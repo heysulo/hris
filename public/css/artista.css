@@ -342,7 +342,6 @@ h3{
 .topprofilepicture{
     background-image: url("../img/defimg.jpg");
     background-size: cover;
-    background-color: pink;
     border: 0px solid #BDC0C5;
     height: 40px;
     width: 40px;
@@ -489,13 +488,11 @@ h3{
 .panelSide{
     float: left;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     background-color: #2D3E50;
     height: 100%;
     width: 220px;
     overflow: auto;
-    opacity: 0.9;
+    position: fixed;
 }
 
 .navbar {
