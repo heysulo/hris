@@ -323,7 +323,7 @@ h3{
     margin: 0;
     background-color: #fff;
     height: 40px;
-    width: calc(100% - 220px);
+    width: calc(100%);
 }
 
 .topprofilecontent{
