@@ -949,12 +949,12 @@ h3{
     background-image: url("../img/oggi.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    box-shadow: 0px 0px 15px #42b72a;
+    box-shadow: 0px 0px 15px 5px #42b72a;
     transition: all 0.2s linear;
 }
 
 .profile_profile_image:hover{
-    box-shadow: 0px 0px 35px #42b72a;
+    box-shadow: 0px 0px 15px 10px #42b72a;
 }
 
 .profile_name{
@@ -1255,9 +1255,39 @@ h3{
     border: 1px solid #e3e3e3;
 }
 
+
+.group_searchbar{
+    width: 100%;
+}
+
+.advancedsearch_socity_representive_dropdown{
+    float: right;
+    clear: right;
+    width: 70%;
+}
+
 .testred{
     background-color: red;
 }
+
+.advancedsearch_textalign{
+
+}
+
+/*******************************/
+/*********GROUPS     ************/
+/********************************/
+
+
+.groups_content_area{
+    height: auto !important;
+}
+
+
+
+
+
+
 
 
 

@@ -5,14 +5,14 @@
 		</div>
 		<form>
 			<div class="clearfloat">
-				First name: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
+				<input type="checkbox">First name: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
 			</div>
 			<div class="clearfloat">
-				Last name: <input class="advancedsearch_textbox floatright" type="text" name="lname"><br>
+				<input type="checkbox">Last name: <input class="advancedsearch_textbox floatright" type="text" name="lname"><br>
 			
 			</div>
 			<hr class="advancedsearch_hr">
-			Birthday : 
+			<input type="checkbox">Birthday : 
 			<select>
 				<?php
 					for($i = 1900; $i < 2016; ++$i) {
@@ -27,10 +27,10 @@
 					}
 				?>
 			</select><br>
-			Gender : <input type="radio" name="gender" value="male" checked> Male
+			<input type="checkbox">Gender : <input type="radio" name="gender" value="male" checked> Male
 	  		<input type="radio" name="gender" value="female"> Female<br>
 	  		<hr class="advancedsearch_hr">
-	  		From : &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+	  		<input type="checkbox">From : &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 	  		<select>
 				<?php
 					$dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
@@ -40,7 +40,7 @@
 					}
 				?>
 			</select><br>
-			Lives in :&nbsp;&nbsp;
+			<input type="checkbox">Lives in :&nbsp;&nbsp;
 			<select>
 				<?php
 					$dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
@@ -52,17 +52,23 @@
 			</select><br>
 			<hr class="advancedsearch_hr">
 			<div class="clearfloat">
-				Skills/Interests: <br>
+				<input type="checkbox">Skills/Interests: <br>
 				<div class="advancedsearch_interestpick_area">
 				</div>
 			</div>
 			<hr class="advancedsearch_hr">
 			<div class="clearfloat">
-				Clubs and Societies: <br>
+				<input type="checkbox">Clubs and Societies: <br>
 				<div class="advancedsearch_interestpick_area">
 				</div>
 			</div>
+			<hr class="advancedsearch_hr">
+
+			<div class="clearfloat">
+				<input type="checkbox">Filter: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
+			</div>
 			<br>
+
 			<button class="default_button availability_status_button">Search</button>
 		</form>	
 	</div>
