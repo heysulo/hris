@@ -4,8 +4,13 @@
 			Search People
 		</div>
 		<form>
-			First name: <input class="advancedsearch_textbox" type="text" name="fname"><br>
-			Last name: <input class="advancedsearch_textbox" type="text" name="lname"><br>
+			<div class="clearfloat">
+				First name: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
+			</div>
+			<div class="clearfloat">
+				Last name: <input class="advancedsearch_textbox floatright" type="text" name="lname"><br>
+			
+			</div>
 			<hr class="advancedsearch_hr">
 			Birthday : 
 			<select>
@@ -45,6 +50,20 @@
 					}
 				?>
 			</select><br>
+			<hr class="advancedsearch_hr">
+			<div class="clearfloat">
+				Skills/Interests: <br>
+				<div class="advancedsearch_interestpick_area">
+				</div>
+			</div>
+			<hr class="advancedsearch_hr">
+			<div class="clearfloat">
+				Clubs and Societies: <br>
+				<div class="advancedsearch_interestpick_area">
+				</div>
+			</div>
+			<br>
+			<button class="default_button availability_status_button">Search</button>
 		</form>	
 	</div>
 </div>
