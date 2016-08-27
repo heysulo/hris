@@ -86,7 +86,6 @@ h3{
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOGIN ~~~~~~~~~~~~~~~~~*/
 
-
 .loginmaindiv{
 
 }
@@ -122,7 +121,7 @@ h3{
     width: 100%;
     z-index: 10;
     color: #000;
-    top:550px;
+    top:550;
     width: auto;
     font-size: 10px;
     left: calc(52% - 180px);
@@ -317,9 +316,8 @@ h3{
 .divadjustment{
 
 }
-/*/////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  TOP PANE styling ~~~~~~*/
+/*~~~~TOPPANE~~~~~~*/
 .panelTop{
     float: left;
     margin: 0;
@@ -453,45 +451,6 @@ h3{
 .top_dropdown_list_item:hover{
     background-color: #EFF3F4;
 }
-
-/*------------------------- modified drop down*/
-
-.top_dropdown_click{
-    position: relative;
-    display: inline-block;
-    float: right;
-
-}
-
-.top_dropdown_content_click{
-    display: none;
-    top:40px;
-    left: calc(100% - 260px);
-    position: absolute;
-    background-color: #fff;
-    min-width: 250px;
-    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.4);
-    z-index: 9;
-}
-
-.top_dropdown_content_click a {
-    display: block;
-    background-color: #fff;
-    color: #2D3E50;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 15px;
-    cursor: pointer;
-}
-
-.top_dropdown_click a:hover{
-    background-color: #EFF3F4;
-}
-
-.show{ /*this class add when click btn*/
-    display: block;
-}
-
 
 /*~~~~BOTPANE~~~~~~*/
 .bottomPanel{
@@ -638,10 +597,8 @@ h3{
     font-size:32px;
     color: #3F4E5E;
     text-transform: uppercase;
-    margin: 20px 35px;
     margin-left: 42px;
     margin-top:10px;
-    height:160px;
     text-indent: 0px;
     transition: all 0.2s linear;
 
@@ -715,13 +672,13 @@ h3{
 .dbox{
     background-color: #fff;
     border: 1px solid #ccc;
-    
     width: auto;
     margin: 10px;
     margin-right: 0px;
     padding: 10px;
-    height: 200px;
     border-radius: 10px;
+
+    padding-bottom: 20px;
     transition: all 0.2s linear;
 
 }
@@ -732,8 +689,6 @@ h3{
 
 .dboxheader{
     
-    
-    height:160px;
     text-indent: 0px;
     transition: all 0.2s ease-in-out;
 }
@@ -759,7 +714,7 @@ h3{
 .cur_availability_icon{
     position: static;
     margin-top:8px;
-    margin-left: 0px;
+    margin-left: px;
     height: 12px;
     width: 12px;
     border: 1px solid #3F4E5E;
@@ -963,7 +918,7 @@ h3{
     float: right;
     font-size: 12px;
     text-transform: uppercase;
-    text-decoration: none;
+    text-decoration: italic;
     margin-right: 15px;
 }
 
@@ -980,7 +935,8 @@ h3{
 .profile_section_intro{
     padding-top:25px;
     width: 50%;
-    height: 160px;
+    height: 170px;
+
 }
 
 .profile_profile_image{
@@ -1008,9 +964,12 @@ h3{
     position: relative;
     left: 300px;
     top: -140px;
+    transition: all 0.2s linear;
 }
 
-
+.profile_name:hover{
+    text-shadow: 0 0 15px #42b72a;
+}
 
 .profile_online_status_box{
     width: 300px;
@@ -1070,7 +1029,7 @@ h3{
     padding-top : 20px !important;
     height: calc(100% - 210px);
     width: 100%;
-    background-color: red;
+    clear: left;
 }
 
 .profile_section_contactinfo{
@@ -1117,7 +1076,6 @@ h3{
 .profile_section_socities{
     margin-left: 80px;
     width: 500px !important;
-    padding-bottom: 5px;
     margin-top: 20px;
 }
 
@@ -1142,18 +1100,142 @@ h3{
 
 .society_item{
     width: auto;
-    height: 20px;
+    cursor:pointer !important;
+    max-height: 20px;
     background-image: url('../img/ico_verified.png');
     background-position: 470px 1px; 
     background-repeat: no-repeat;
+    overflow: hidden;
+    transition: all 0.2s linear;
+}
+
+.society_item:active{
+    height: auto !important;
+    padding-top: 10px;
+    background-position: 470px 10px; 
+    padding-bottom: 8px;
+    max-height: 200px;
+    background-color: #e9ebee;
+    border: 1px solid #365899;
+}
+
+.society_item_extra{
+    color: #90949c;
+    font-size: 14px;
+    padding: 5px;
+    margin-top:-20px;
+}
+
+.profile_section_main_left{
+    float: left;
+    width: 650px
+}
+
+.profile_section_main_right{
+    float: left;
+    width: calc(100% - 650px)
+}
+
+.profile_section_aboutme{
+    margin-left: -25px;
+    text-align: justify;
+    padding: 15px;
+    width: 500px !important;
+    margin-top: 20px;
+    height: auto !important;
+    max-height: 200px;
+    width: 100px;
+    transition: all 0.5s linear;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile_section_aboutme:hover{
+    max-height: 800px;
+}
+
+.dbox_head_profile_aboutme{
+    background-image: url('../img/ico_aboutme.png');
+    background-position: 4px 2px; 
+    background-repeat: no-repeat;
+}
+ 
+.profile_section_interests{
+    margin-left: -25px;
+    text-align: justify;
+    padding: 15px;
+    width: 500px !important;
+    margin-top: 20px;
+    overflow: hidden;
 }
 
 
+.dbox_head_profile_interetst{
+    background-image: url('../img/ico_skills.png');
+    background-position: 2px 0px; 
+    background-repeat: no-repeat;
+}
+
+.skill_item{
+    float: left;
+    background: #e9ebee;
+    border: 1px solid #9cb4d8;
+    border-radius: 2px;
+    color: #162643;
+    cursor: default;
+    display: block;
+    float: left;
+    height: 14px;
+    margin: 1px 4px 4px 1px;
+    padding: 0 3px;
+    position: relative;
+    white-space: nowrap;
+    font-size:12px;
+    height:14px;
+    line-height:16px;
+    transition: all 0.1s linear;
+}
+
+.skill_item:hover{
+    background: #c8d0dc;
+}
 
 
+/*********************** *******/
+/******advanced search  ********/
+/*******************************/
+.advacnedsearch_section_basic{
+    padding-left: 20px;
+    float: left;
+    width: 500px !important;
+    padding-bottom: 25px;
+    margin: 30px;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
 
 
+.dbox_head_advancedsearch_basic{
+    background-image: url('../img/ico_contctinfo.png');
+    background-position: 4px 6px; 
+    background-repeat: no-repeat;
+}
 
+.advancedsearch_textbox{
+    margin-left: 10px;
+    margin-block-end: 5px;
+    width: 380px;
+}
+
+.advancedsearch_hr{
+    display: block;
+    height: 0px;
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 0.5em 0;
+    padding: 0;
+}
 
 
 
@@ -1187,37 +1269,3 @@ h3{
 }
 
 
-/*------------------------------------ Alert css*/
-.alert{
-    margin-top:10px;
-    padding:5px;
-    font-size:.85em;
-    transition: color 0.2s;
-    max-width:  282px;
-    color: whitesmoke;
-    border:1px solid  #f44336;
-    border-radius: 5px;
-    background-color:  #f44336;
-}
-
-.alert:hover{
-    color:#f00;
-    background-color: whitesmoke;
-}
-
-.alert-green{
-    margin-top:10px;
-    padding:5px;
-    font-size:.85em;
-    transition: color 0.2s;
-    max-width:  282px;
-    color: whitesmoke;
-    border:1px solid  forestgreen;
-    border-radius: 5px;
-    background-color:  forestgreen;
-}
-
-.alert-green:hover{
-    color:forestgreen;
-    background-color: whitesmoke;
-}
