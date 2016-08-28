@@ -1,4 +1,4 @@
-<div class="dbox profile_section_aboutme">
+<div class="dbox edit_profile_section_aboutme">
 	<div class="dboxheader dbox_head_profile_aboutme">
 		<div class="dboxtitle botmarg">
 			About Me
