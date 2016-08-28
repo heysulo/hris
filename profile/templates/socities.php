@@ -9,13 +9,4 @@
 	<?php include("socity_item.php") ?>
 	<?php include("socity_item.php") ?>
 	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
-	<?php include("socity_item.php") ?>
 </div>

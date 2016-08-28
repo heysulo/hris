@@ -1146,7 +1146,7 @@ h3{
     width: 500px !important;
     margin-top: 20px;
     height: auto !important;
-    max-height: 200px;
+    max-height: 160px;
     width: 100px;
     transition: all 0.5s linear;
     overflow: hidden;
@@ -1190,10 +1190,11 @@ h3{
     float: left;
     height: 14px;
     margin: 1px 4px 4px 1px;
-    padding: 0 3px;
+    padding: 3px 6px;
     position: relative;
     white-space: nowrap;
-    font-size:12px;
+    font-size:14px;
+    font-family: monospace;
     height:14px;
     line-height:16px;
     transition: all 0.1s linear;
@@ -1202,6 +1203,43 @@ h3{
 .skill_item:hover{
     background: #c8d0dc;
 }
+
+.profile_section_personal{
+    margin-left: -25px;
+    text-align: justify;
+    padding: 15px;
+    width: 500px !important;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.dbox_head_profile_personal{
+    background-image: url('../img/1472384996_5322_-_Sharethis.png');
+    background-position: 2px 0px; 
+    background-repeat: no-repeat;
+}
+
+.dbox_head_profile_languages{
+    background-image: url('../img/1472387597_internt_web_technology-16.png');
+    background-position: 6px 3px; 
+    background-repeat: no-repeat;
+}
+
+.profile_section_languages{
+    margin-left: 80px;
+    text-align: justify;
+    padding: 15px;
+    width: 500px !important;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.language_item{
+    background: #efd !important;
+    border-color: #9c9;
+}
+
+/*1472387597_internt_web_technology-16*/
 
 
 /*********************** *******/
@@ -1422,11 +1460,11 @@ h3{
     background-position: 0px 2px; 
     background-repeat: no-repeat;
     cursor: pointer;
-    transition: all 0.5s linear;
+    transition: all 0.2s linear;
 }
 
 .edit_profile_contactinfo_item_remove:hover{
-    transform: rotate(180deg);
+    transform: rotate(90deg);
 }
 .edit_profile_contactinfo_item{
     margin-right: 35px;
