@@ -63,6 +63,12 @@
 				</div>
 			</div>
 			<hr class="advancedsearch_hr">
+			<div class="clearfloat">
+				<input type="checkbox">Languages: <br>
+				<div class="advancedsearch_interestpick_area">
+				</div>
+			</div>
+			<hr class="advancedsearch_hr">
 
 			<div class="clearfloat">
 				<input type="checkbox">Filter: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
