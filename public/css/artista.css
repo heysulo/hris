@@ -966,9 +966,6 @@ h3{
     transition: all 0.2s linear;
 }
 
-.profile_name:hover{
-    text-shadow: 0 0 15px #42b72a;
-}
 
 .profile_online_status_box{
     width: 300px;
@@ -1406,6 +1403,9 @@ h3{
     padding-top: 12px;
     padding-bottom: 12px;
     transition: all 0.2s linear;
+    
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .edit_profile_name_textbox:focus{
@@ -1464,7 +1464,7 @@ h3{
     float: right;
     margin-right: 10px;
     margin-left: 10px;
-    background-image: url('../img/img_redcancel.png');
+    background-image: url('../img/1472404941_cross.png');
     background-position: 0px 2px; 
     background-repeat: no-repeat;
     cursor: pointer;

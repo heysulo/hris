@@ -6,16 +6,16 @@
 		<div style="width:100%;height:50px;">
 			<div class="availability_dropdown">
 				<button class="availability_button">
-					<div class="cur_availability_icon" ></div>
+					<div class="cur_availability_icon" id="availability_icon" ></div>
 				</button>
 				<div>
-					<input class="customstatus">
+					<input class="customstatus" id="txtbox_availability_text">
 					<button class="default_button availability_status_button">Set</button>
 					<!-- <button class="default_button availability_status_button">Save</button> -->
 				</div>
 
 				<div class="availability_dropdown_content">
-					<div class="availability_dropdown_item" >
+					<div class="availability_dropdown_item" onclick='document.getElementById("availability_icon").style.background="#34a853"' >
 						<div style="width:20%;float:left;height:auto;">
 							<div class="saved_availability_icon" style="background-color:#34a853;"></div>
 						</div>
@@ -24,7 +24,7 @@
 						</div>
 					</div>
 
-					<div class="availability_dropdown_item" >
+					<div class="availability_dropdown_item" onclick='document.getElementById("availability_icon").style.background="#fbbc05"'>
 						<div style="width:20%;float:left;height:auto;">
 							<div class="saved_availability_icon" style="background-color:#fbbc05;"></div>
 						</div>
@@ -33,7 +33,7 @@
 						</div>
 					</div>
 
-					<div class="availability_dropdown_item" >
+					<div class="availability_dropdown_item" onclick='document.getElementById("availability_icon").style.background="#ea4335"'>
 						<div style="width:20%;float:left;height:auto;">
 							<div class="saved_availability_icon" style="background-color:#ea4335;"></div>
 						</div>
@@ -42,7 +42,7 @@
 						</div>
 					</div>
 
-					<div class="availability_dropdown_item" >
+					<div class="availability_dropdown_item" onclick='document.getElementById("availability_icon").style.background="#4285f4"'>
 						<div style="width:20%;float:left;height:auto;">
 							<div class="saved_availability_icon" style="background-color:#4285f4;"></div>
 						</div>
@@ -51,7 +51,7 @@
 						</div>
 					</div>
 
-					<div class="availability_dropdown_item" >
+					<div class="availability_dropdown_item" onclick='document.getElementById("availability_icon").style.background="#707070"'>
 						<div style="width:20%;float:left;height:auto;">
 							<div class="saved_availability_icon" style="background-color:#707070;"></div>
 						</div>
@@ -77,4 +77,6 @@
 				</select>
 			</div> -->
 		</div>
+		
+		
 	</div>

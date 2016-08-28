@@ -12,7 +12,7 @@
             <div class="topprofilecontent">
                 <div class="topprofilepicture"></div>
                 <div class="topbox_profile_name">Sulochana Kodituwakku</div>
-                <div class="topbox_profile_role">System Administrator</div>
+                <div class="topbox_profile_role" id="top_pane_system_role">System Administrator</div>
             </div>
 
         </div>
