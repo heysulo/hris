@@ -19,6 +19,9 @@
         case 'administration';
             $administration = "active";
             break;
+        case 'advancedSearch';
+            $advancedSearch = "active";
+            break;
     }
 
 
@@ -69,5 +72,14 @@
                 Administration
             </div>
         </li>
+        <li class="navbaritem <?php echo $advancedSearch;?>" id="advancedSearch">
+            <div>
+                <img id="lp_advancedSearch" class="navbaritemimg" src="<?php echo $publicPath?>/img/img_lp_advancedsearch.png">
+            </div>
+            <div class="navbartxt">
+                Advanced Search
+            </div>
+        </li>
+
     </ul>
 </div>
