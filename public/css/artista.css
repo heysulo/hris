@@ -1405,7 +1405,11 @@ h3{
     padding-right: 20px;
     padding-top: 12px;
     padding-bottom: 12px;
+    transition: all 0.2s linear;
+}
 
+.edit_profile_name_textbox:focus{
+    width: calc(20% + 150px);
 }
 
 .edit_profile_profile_basic_summery{
@@ -1523,6 +1527,23 @@ h3{
     height: 100%;
     width: 100%;
     box-shadow: 0px 0px 15px 10px gold;
+}
+
+.edit_profile_contactinfo_item_remove_skill{
+    width: 16px;
+    height: 100%;
+    float: right;
+    margin-right: 2px;
+    margin-left: 10px;
+    cursor: pointer;
+    background-image: url('../img/1472404941_cross.png');
+    background-position: 0px -1px; 
+    background-repeat: no-repeat;
+    transition: all 0.2s linear;
+}
+
+.edit_profile_contactinfo_item_remove_skill:hover{
+    transform: rotate(90deg);
 }
 
 /*******************************/
