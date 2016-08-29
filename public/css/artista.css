@@ -1584,7 +1584,7 @@ h3{
 
 .msgbox_background{
     position: fixed;
-    height: 300px;
+    height: auto;
     width: 600px;
     left: calc(50% - 300px);
     top: 25%;
@@ -1641,7 +1641,45 @@ h3{
     filter: grayscale(0%);
 }
 
+.msgbox_section_content{
+    padding: 10px;
+    color: #333;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: helvetica, arial, sans-serif;
+    padding-top: 0px;
+}
 
+.msgbbox_section_bottom{
+    width: auto;
+    height: auto;
+    background-color: #f6f7f9;
+    padding: 10px 10px 10px 10px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.msgbox_button{
+    bottom: 0px;
+    color: #4b4f55;
+    cursor: pointer;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    border: 1px solid #ced0d4;
+    border-radius: 2px;
+    font: normal normal bold normal 12px / 22px helvetica, arial, sans-serif;
+    outline: rgb(75, 79, 86) none 0px;
+    padding: 0px 18px;
+}
+
+.msgbox_button_default{
+    background-color: #4267b2;
+    border-color: #4267b2;
+    color: white;
+    
+}
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /*~~~~~~~~~~~~~DEFAULTS~~~~~~~*/

@@ -2,7 +2,18 @@
 <div class="msgbox_background">
 	<div class="msgbox_section_title">
 		<div class="msgbox_title">Are you happy now?</div>
-		<div class="msgbox_close_button" onclick='var element = document.getElementById("msgbox");element.outerHTML = ""';delete element;"></div>
+		<div class="msgbox_close_button" onclick='closemsgbox()'></div>
+	</div>
+	<div class="msgbox_section_content">
+		<p>
+			Nunc at magna et neque fringilla viverra sed a libero. Vivamus lobortis diam dolor, nec finibus magna pharetra a. Fusce accumsan in est non sodales. Donec faucibus urna sed ex pulvinar, sed vulputate odio porttitor. Ut accumsan eu nunc in aliquet. Quisque at nisi et mauris pharetra rhoncus sit amet vitae leo. Nulla nec bibendum turpis, in mollis felis. Curabitur volutpat nisi et nibh tempor, eget placerat urna accumsan. Vivamus eget sagittis felis, non egestas magna. Aenean pulvinar urna nibh. Morbi auctor eleifend eros sollicitudin aliquet. 
+		</p>
+	</div>
+	<div class="msgbbox_section_bottom" align="right">
+
+		<button class="msgbox_button msgbox_button_default" onclick='closemsgbox();window.alert(";)");'>Continue</button>
+		<button class="msgbox_button" onclick="closemsgbox()">Cancel</button>
+
 	</div>
 
 
@@ -35,6 +46,12 @@
 			}
 			
 			var a = setInterval(fadeout,5);
+		}
+
+
+
+		function closemsgbox () {
+			var element = document.getElementById("msgbox");element.outerHTML = "";delete element;
 		}
 	</script>
 </div>
