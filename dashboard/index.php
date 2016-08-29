@@ -5,10 +5,14 @@
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
 </head>
 <body>
-	<div class="clearfix">
+
+	<?php include_once('templates/msgbox.php'); ?>
+	
+	<div class="clearfix" id="clearfix">
 		<?php include_once('templates/side_panel.php'); ?>
 		<?php include_once('templates/top_pane.php'); ?>
 		<?php include_once('templates/bottom_panel.php'); ?>
 	</div>
+
 </body>
 </html>

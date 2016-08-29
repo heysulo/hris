@@ -710,7 +710,7 @@ h3{
 
 .cur_availability_icon{
     position: static;
-    margin-top:8px;
+    margin-top:0px;
     margin-left: px;
     height: 12px;
     width: 12px;
@@ -1576,8 +1576,70 @@ h3{
 
 
 
+/***************************/
+/*********************************/
+/********MSGBOX**********/
+/*********************************/
+/*********************************/
 
+.msgbox_background{
+    position: fixed;
+    height: 300px;
+    width: 600px;
+    left: calc(50% - 300px);
+    top: 25%;
+    background-color: white;
+    box-shadow: 0px 0px 10px 2px rgba(84,81,87,0.6);
+    border: 2px solid #555356;
+    border-radius: 2px;
+    z-index: 999999;
+}
 
+.msgbox_section_title{
+    width: : 100%;
+    height: 50px;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f6f7f9;
+}
+
+.msgbox_dimmer{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: black;
+    z-index: 999;
+    opacity: 0.4;
+}
+
+.msgbox_title{
+    position: relative;
+    left: 20px;
+    top: 15px;
+    color: #4b4f56;
+    align-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: helvetica, arial, sans-serif;
+    
+}
+
+.msgbox_close_button{
+    position: relative;
+    left: 570px;
+    top:-4px;
+    width: 18px;
+    filter: grayscale(100%);
+    height: 18px;
+    cursor: pointer;
+    background-image: url('../img/1472404941_cross.png');
+    background-position: 0px -1px; 
+    background-repeat: no-repeat;
+    transition: all 0.2s linear;
+}
+
+.msgbox_close_button:hover{
+    filter: grayscale(0%);
+}
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
