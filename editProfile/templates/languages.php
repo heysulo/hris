@@ -32,7 +32,7 @@
 	function insertLanguage() {
 		var par = document.getElementById("language_item_container");
 		var val = document.getElementById("new_language_input").value;
-		var code = "<div class=\"skill_item language_item\"><div onclick='this.parentElement.outerHTML=\"\";window.alert(\"SSS\");' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
+		var code = "<div class=\"skill_item language_item\"><div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
 		par.innerHTML += code;
 	}
 </script>
