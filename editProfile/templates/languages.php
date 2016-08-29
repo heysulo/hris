@@ -12,10 +12,10 @@
 			
 	</div>
 	
-	<input id="fname" name="firstname" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text"><br><br>
-	<center><button class="default_button edit_profile_contactinfo_add_button">Add to Profile</button></center>
+	<input  id="new_language_input" name="firstname" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text"><br><br>
+	<center><button onclick="insertLanguage()" class="default_button edit_profile_contactinfo_add_button">Add to Profile</button></center>
 	<br><br>
-	<div>
+	<div id="language_item_container">
 		<?php
 			$str =  "Af-Soomaali,Afrikaans,Azərbaycan dili,Bahasa Indonesia,Bahasa Melayu,Basa Jawa,Bisaya,Bosanski,Brezhoneg";    
 			$ary = explode(',', $str);
@@ -27,3 +27,12 @@
 	<br>
 	
 </div>
+
+<script type="text/javascript">
+	function insertLanguage() {
+		var par = document.getElementById("language_item_container");
+		var val = document.getElementById("new_language_input").value;
+		var code = "<div class=\"skill_item language_item\"><div onclick='this.parentElement.outerHTML=\"\";window.alert(\"SSS\");' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
+		par.innerHTML += code;
+	}
+</script>
