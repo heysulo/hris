@@ -41,7 +41,7 @@
 
                         <!--error massage for wrong user login data-->
                         <?php
-                        if($_GET['error']){
+                        if(isset($_GET['error'])){
                             echo "<div class=\"alert\">Username password mismatch.<br>Please try again or try forget password.</div>";
                         }
                         ?>
