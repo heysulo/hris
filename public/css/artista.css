@@ -1819,11 +1819,11 @@ h3{
 }
 
 .tab-links a {
-    padding:10px;
+    padding:8px;
     display:inline-block;
     border-radius:3px 3px 0px 0px;
     background:#fff;
-    font-size:16px;
+    font-size:14px;
     font-weight:600;
     color:#4c4c4c;
     transition:all linear 0.15s;
