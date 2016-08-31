@@ -17,3 +17,7 @@ document.getElementById('groups').addEventListener("click",function () {
 document.getElementById('admin').addEventListener("click",function () {
     location.href="administration.php";
 });
+
+document.getElementById('advancedSearch').addEventListener("click",function () {
+    location.href="advancedSearch.php";
+});

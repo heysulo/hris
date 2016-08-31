@@ -19,15 +19,6 @@
                 </div>
             </div>
 
-            <!--<div class="top_dropdown" id="dropdown">
-                    <ul class="top_dropdown_list">
-                        <li class="top_dropdown_list_item">Account Settings</li>
-                        <li class="top_dropdown_list_item">Logout</li>
-                        <li class="top_dropdown_list_item">Go Offline</li>
-                        <li class="top_dropdown_list_item" style="color:red;">What the Shit Biscuit?</li>
-                    </ul>
-                </div>-->
-
             <!--User detail showing bar-->
             <div class="topprofilecontent">
                 <div class=""><img class="topprofilepicture" src=" <?php echo "$imagePath/$pro_pic"; ?> " alt=""></div>
