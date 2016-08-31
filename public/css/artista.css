@@ -659,7 +659,6 @@ h3{
     margin-right: 0px;
     padding: 10px;
     border-radius: 10px;
-
     padding-bottom: 20px;
     transition: all 0.2s linear;
 
@@ -1014,10 +1013,8 @@ h3{
 }
 
 .profile_section_contactinfo{
-    margin-left: 80px;
-    width: 500px !important;
+    margin-left: 40px;
     padding-bottom: 25px;
-    margin-top: 20px;
 }
 
 .dbox_head_profilecontactinfo{
@@ -1035,18 +1032,19 @@ h3{
 .contact_info_item{
     width: 400px;
     height: 20px;
+    padding-left: 5px;
 }
 
 .contact_info_item_field{
-    position: relative;
-    left: 5px;
-    top: 0px;
+    width:25%;
+    left: 15px;
+    float: left;
 }
 
 .contact_info_item_value{
-    position: relative;
-    left: 100px;
-    top: -20px;
+    width: 75%  ;
+    float: left;
+
 }
 
 .botmarg{
@@ -1055,9 +1053,7 @@ h3{
 
 
 .profile_section_socities{
-    margin-left: 80px;
-    width: 500px !important;
-    margin-top: 20px;
+    margin-left: 40px;
 }
 
 .dbox_head_profile_socities{
@@ -1113,12 +1109,12 @@ h3{
 
 .profile_section_main_left{
     float: left;
-    width: 650px
+    width: 45%;
 }
 
 .profile_section_main_right{
-    float: left;
-    width: calc(100% - 650px)
+    float: right;
+    width: 50%;
 }
 
 .profile_section_aboutme{
@@ -1126,10 +1122,9 @@ h3{
     text-align: justify;
     padding: 15px;
     width: 500px !important;
-    margin-top: 20px;
+    margin-top: 10px;
     height: auto !important;
     max-height: 160px;
-    width: 100px;
     transition: all 0.5s linear;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1150,7 +1145,7 @@ h3{
     text-align: justify;
     padding: 15px;
     width: 500px !important;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow: hidden;
 }
 
@@ -1191,7 +1186,7 @@ h3{
     text-align: justify;
     padding: 15px;
     width: 500px !important;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow: hidden;
 }
 
@@ -1208,11 +1203,10 @@ h3{
 }
 
 .profile_section_languages{
-    margin-left: 80px;
+    margin-left: 40px;
     text-align: justify;
     padding: 15px;
-    width: 500px !important;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow: hidden;
 }
 
