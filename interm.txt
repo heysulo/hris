@@ -1,0 +1,38 @@
+1. intro
+2. objectuves
+3. goals
+4. proposed system/finalized architectiure
+	functional requirments
+	non funct
+	complete precentage
+	remaining tasks
+	individual contribution
+5. technologies used yet
+	QA and best practices
+	Google TestResults/W3
+	testing plan
+6. deployment
+	azure web
+	?
+7. demo
+	UI
+		login - k
+		dashboard - k
+		my profile -k
+		edit profile -k
+		advanced search - k
+		group ---
+		password reset ---
+		other's profile ----
+		first access page---
+		groups page---
+		
+		search results ---
+		adminpanel ---
+		skill directory ---
+
+	Database design
+	Data Validation
+		login
+		edit profile
+
