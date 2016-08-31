@@ -121,7 +121,7 @@ h3{
     width: 100%;
     z-index: 10;
     color: #000;
-    top: 550px;
+    top:550;
     width: auto;
     font-size: 10px;
     left: calc(52% - 180px);
@@ -213,7 +213,7 @@ h3{
     line-height:16.08px;
     text-decoration: none;
     font-size: 12px;
-   /* border: 0 solid red;*/
+    /* border: 0 solid red;*/
     outline-offset: 15px;
     transition: all 0.2s;
 }
@@ -259,7 +259,7 @@ h3{
 
 .txt_field{
     width: 300px;
-    height: 38px;
+    height: 35px;
     padding: 12px 20px;
     margin: 8px 0;
     margin-top: 0px;
@@ -464,6 +464,8 @@ h3{
 }
 
 
+
+
 /*~~~~LEFTPANE~~~~~~~~~~~~~~~~~~~~~*/
 .clearfix {
     margin: 0;
@@ -567,6 +569,21 @@ h3{
     height: 100%;
 }
 
+/*~~~~~~~~~*/
+
+/* ------- loading gif ---------*/
+#overlay{
+    position: fixed;
+    z-index: 9999;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:50% 50% no-repeat rgb(255,255,255);
+    background-image: url("../img/loading.gif");
+}
+
 
 
 /*~~~~~~~~~ DASHBOARD~~~~~~~~~~~~~~~~~~~~~*/
@@ -604,7 +621,7 @@ h3{
     width:35%;
     height: 100%;
 
-/*    background-color: green;*/
+    /*    background-color: green;*/
 
 }
 
@@ -612,7 +629,7 @@ h3{
     float:right;
     width:65%;
     height: 100%;
-/*    background-color: aqua;*/
+    /*    background-color: aqua;*/
 }
 
 
@@ -625,7 +642,7 @@ h3{
     box-sizing: border-box;
     background-image: url('../img/ico_search.png');
     font-size: 12px;
-    background-position: 10px 5px; 
+    background-position: 10px 5px;
     background-repeat: no-repeat;
     border: 2px solid #ccc;
     border-radius: 16px;
@@ -657,6 +674,7 @@ h3{
     margin-right: 0px;
     padding: 10px;
     border-radius: 10px;
+
     padding-bottom: 20px;
     transition: all 0.2s linear;
 
@@ -667,14 +685,14 @@ h3{
 }
 
 .dboxheader{
-    
+
     text-indent: 0px;
     transition: all 0.2s ease-in-out;
 }
 
 .dbox_head_availabilitystatus{
     background-image: url('../img/ico_availability.png');
-    background-position: 4px 1px; 
+    background-position: 4px 1px;
     background-repeat: no-repeat;
 }
 
@@ -693,7 +711,7 @@ h3{
 .cur_availability_icon{
     position: static;
     margin-top:0px;
-    margin-left: 0px;
+    margin-left: px;
     height: 12px;
     width: 12px;
     border: 1px solid #3F4E5E;
@@ -777,7 +795,7 @@ h3{
     min-width: 160px;
     height: auto;
     padding-top: 10px;
-    padding-bottom:  10px; 
+    padding-bottom:  10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     width:200px;
     left:0px;
@@ -811,7 +829,7 @@ h3{
 }
 
 .availability_status_button{
-    
+
     width: 120px;
     height: 32px;
 
@@ -838,7 +856,7 @@ h3{
 
 .dbox_head_newsfeed{
     background-image: url('../img/ico_newsfeed.png');
-    background-position: 6px 2px; 
+    background-position: 6px 2px;
     background-repeat: no-repeat;
     height: 100%;
 }
@@ -866,7 +884,7 @@ h3{
 }
 
 .newsfeed_item_box:hover{
-    max-height: 90px; 
+    max-height: 90px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-width: 2px;
@@ -897,7 +915,7 @@ h3{
     float: right;
     font-size: 12px;
     text-transform: uppercase;
-    /*text-decoration: italic;*/
+    text-decoration: italic;
     margin-right: 15px;
 }
 
@@ -965,7 +983,7 @@ h3{
     border: 2px solid #3F4E5E;
     background-color: #42b72a;
     border-radius: 8px;
-    
+
 }
 
 .profile_availability_text{
@@ -1011,13 +1029,15 @@ h3{
 }
 
 .profile_section_contactinfo{
-    margin-left: 40px;
+    margin-left: 80px;
+    width: 500px !important;
     padding-bottom: 25px;
+    margin-top: 20px;
 }
 
 .dbox_head_profilecontactinfo{
     background-image: url('../img/ico_contctinfo.png');
-    background-position: 4px 2px; 
+    background-position: 4px 2px;
     background-repeat: no-repeat;
     z-index: 999;
 }
@@ -1030,19 +1050,18 @@ h3{
 .contact_info_item{
     width: 400px;
     height: 20px;
-    padding-left: 5px;
 }
 
 .contact_info_item_field{
-    width:25%;
-    left: 15px;
-    float: left;
+    position: relative;
+    left: 5px;
+    top: 0px;
 }
 
 .contact_info_item_value{
-    width: 75%  ;
-    float: left;
-
+    position: relative;
+    left: 100px;
+    top: -20px;
 }
 
 .botmarg{
@@ -1051,36 +1070,38 @@ h3{
 
 
 .profile_section_socities{
-    margin-left: 40px;
+    margin-left: 80px;
+    width: 500px !important;
+    margin-top: 20px;
 }
 
 .dbox_head_profile_socities{
     background-image: url('../img/ico_socities.png');
-    background-position: 4px 2px; 
+    background-position: 4px 2px;
     background-repeat: no-repeat;
     z-index: 999;
 }
 
 .society_item_club{
-    padding-left: 15px;
-    float: left;
-
+    position: relative;
+    left: 5px;
+    top: 0px;
 }
 
 .society_item_role{
-    float: left;
-    overflow: auto;
-    padding-left: 15px;
+    position: relative;
+    left: 280px;
+    top: -20px;
 }
 
 .society_item{
     width: auto;
     cursor:pointer !important;
-    /*max-height: 40px;*/
-    /*background-image: url('../img/ico_verified.png');*/
-    background-position: 470px 1px; 
+    max-height: 20px;
+    background-image: url('../img/ico_verified.png');
+    background-position: 470px 1px;
     background-repeat: no-repeat;
-    overflow: auto;
+    overflow: hidden;
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
@@ -1091,29 +1112,28 @@ h3{
 .society_item:active{
     height: auto !important;
     padding-top: 10px;
-    background-position: 470px 10px; 
+    background-position: 470px 10px;
     padding-bottom: 8px;
     max-height: 200px;
+    background-color: #e9ebee;
     border: 1px solid #365899;
-    border-radius: 4px;
 }
 
 .society_item_extra{
     color: #90949c;
     font-size: 14px;
-    padding-left: 20px;
-    width:90%;
-    float: left;
+    padding: 5px;
+    margin-top:-20px;
 }
 
 .profile_section_main_left{
     float: left;
-    width: 45%;
+    width: 650px
 }
 
 .profile_section_main_right{
-    float: right;
-    width: 50%;
+    float: left;
+    width: calc(100% - 650px)
 }
 
 .profile_section_aboutme{
@@ -1121,9 +1141,10 @@ h3{
     text-align: justify;
     padding: 15px;
     width: 500px !important;
-    margin-top: 10px;
+    margin-top: 20px;
     height: auto !important;
     max-height: 160px;
+    width: 100px;
     transition: all 0.5s linear;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1135,23 +1156,23 @@ h3{
 
 .dbox_head_profile_aboutme{
     background-image: url('../img/ico_aboutme.png');
-    background-position: 4px 2px; 
+    background-position: 4px 2px;
     background-repeat: no-repeat;
 }
- 
+
 .profile_section_interests{
     margin-left: -25px;
     text-align: justify;
     padding: 15px;
     width: 500px !important;
-    margin-top: 10px;
+    margin-top: 20px;
     overflow: hidden;
 }
 
 
 .dbox_head_profile_interetst{
     background-image: url('../img/ico_skills.png');
-    background-position: 2px 0px; 
+    background-position: 2px 0px;
     background-repeat: no-repeat;
 }
 
@@ -1185,27 +1206,28 @@ h3{
     text-align: justify;
     padding: 15px;
     width: 500px !important;
-    margin-top: 10px;
+    margin-top: 20px;
     overflow: hidden;
 }
 
 .dbox_head_profile_personal{
     background-image: url('../img/1472384996_5322_-_Sharethis.png');
-    background-position: 2px 0px; 
+    background-position: 2px 0px;
     background-repeat: no-repeat;
 }
 
 .dbox_head_profile_languages{
     background-image: url('../img/1472387597_internt_web_technology-16.png');
-    background-position: 6px 3px; 
+    background-position: 6px 3px;
     background-repeat: no-repeat;
 }
 
 .profile_section_languages{
-    margin-left: 40px;
+    margin-left: 80px;
     text-align: justify;
     padding: 15px;
-    margin-top: 10px;
+    width: 500px !important;
+    margin-top: 20px;
     overflow: hidden;
 }
 
@@ -1239,7 +1261,7 @@ h3{
 
 .dbox_head_advancedsearch_basic{
     background-image: url('../img/ico_contctinfo.png');
-    background-position: 4px 6px; 
+    background-position: 4px 6px;
     background-repeat: no-repeat;
 }
 
@@ -1381,7 +1403,7 @@ h3{
     padding-top: 12px;
     padding-bottom: 12px;
     transition: all 0.2s linear;
-    
+
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
@@ -1413,12 +1435,12 @@ h3{
     padding-top: 170px;
     padding-left: 15px;
     background-image: url('../img/img_upload_photo.png');
-    background-position: 55px 30px; 
+    background-position: 55px 30px;
     background-repeat: no-repeat;
-    
+
     cursor: pointer;
     background-color: rgba(0,0,0,0.3);
-    
+
     width: calc(100% - 15px);
     height: calc(100% - 170px);
     opacity: 0;
@@ -1443,7 +1465,7 @@ h3{
     margin-right: 10px;
     margin-left: 10px;
     background-image: url('../img/1472404941_cross.png');
-    background-position: 0px 2px; 
+    background-position: 0px 2px;
     background-repeat: no-repeat;
     cursor: pointer;
     transition: all 0.2s linear;
@@ -1487,7 +1509,7 @@ h3{
 
 .dbox_head_edit_profile_new_field{
     background-image: url('../img/1472342090_add_green.png');
-    background-position: 4px 2px; 
+    background-position: 4px 2px;
     background-repeat: no-repeat;
     z-index: 999;
 }
@@ -1518,7 +1540,7 @@ h3{
     margin-left: 10px;
     cursor: pointer;
     background-image: url('../img/1472404941_cross.png');
-    background-position: 0px -1px; 
+    background-position: 0px -1px;
     background-repeat: no-repeat;
     transition: all 0.2s linear;
 }
@@ -1598,7 +1620,7 @@ h3{
     font-weight: bold;
     font-size: 16px;
     font-family: helvetica, arial, sans-serif;
-    
+
 }
 
 .msgbox_close_button{
@@ -1610,7 +1632,7 @@ h3{
     height: 18px;
     cursor: pointer;
     background-image: url('../img/1472404941_cross.png');
-    background-position: 0px -1px; 
+    background-position: 0px -1px;
     background-repeat: no-repeat;
     transition: all 0.2s linear;
 }
@@ -1656,9 +1678,8 @@ h3{
     background-color: #4267b2;
     border-color: #4267b2;
     color: white;
-    
-}
 
+}
 
 
 /******************************/
@@ -1746,7 +1767,7 @@ h3{
 
 .welcome_step_number{
     margin: 0px;
-    font-family: font-family: helvetica, arial, sans-serif;
+    font-family: font-family, helvetica, arial, sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 14px;
