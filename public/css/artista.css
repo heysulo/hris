@@ -464,8 +464,6 @@ h3{
 }
 
 
-
-
 /*~~~~LEFTPANE~~~~~~~~~~~~~~~~~~~~~*/
 .clearfix {
     margin: 0;
@@ -1064,29 +1062,29 @@ h3{
 }
 
 .society_item_club{
-    position: relative;
-    left: 5px;
-    top: 0px;
+    padding-left: 15px;
+    float: left;
+
 }
 
 .society_item_role{
-    position: relative;
-    left: 280px;
-    top: -20px;
+    float: left;
+    overflow: auto;
+    padding-left: 15px;
 }
 
 .society_item{
     width: auto;
     cursor:pointer !important;
-    max-height: 20px;
-    background-image: url('../img/ico_verified.png');
+    /*max-height: 40px;*/
+    /*background-image: url('../img/ico_verified.png');*/
     background-position: 470px 1px; 
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow: auto;
     -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */   
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
     transition: all 0.2s linear;
 }
 
@@ -1096,15 +1094,16 @@ h3{
     background-position: 470px 10px; 
     padding-bottom: 8px;
     max-height: 200px;
-    background-color: #e9ebee;
     border: 1px solid #365899;
+    border-radius: 4px;
 }
 
 .society_item_extra{
     color: #90949c;
     font-size: 14px;
-    padding: 5px;
-    margin-top:-20px;
+    padding-left: 20px;
+    width:90%;
+    float: left;
 }
 
 .profile_section_main_left{
