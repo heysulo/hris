@@ -1696,6 +1696,10 @@ h3{
     font-family: Catamaran, monospace;
     font-size: 48px;
     padding-top: 80px;
+    color: #fff;
+    z-index:999;
+
+    position: relative;
 }
 
 
@@ -1739,8 +1743,6 @@ h3{
 
 .welcome_body{
     background-color: #eff3f4;
-    background-image: url("../img/bg_img1.jpg");
-    background-size: cover;
 }
 
 .welcome_continue_button{
@@ -1839,6 +1841,19 @@ h3{
 .welcome_dropdown{
     width: 400px;
     height: 45px;
+}
+
+
+.welcome_top_gradient{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d32998+0,ff4a17+100 */
+    background: #d32998; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #d32998 0%, #ff4a17 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  #d32998 0%,#ff4a17 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  #d32998 0%,#ff4a17 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d32998', endColorstr='#ff4a17',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    height: 40%;
+    width: 100%;
+    position: fixed;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
