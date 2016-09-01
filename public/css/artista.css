@@ -1856,6 +1856,105 @@ h3{
     position: fixed;
 }
 
+
+
+/***************************/
+/********PASSWORD RESET****/
+/***************************/
+.resetpassword_support_text{
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+    clear: both;
+}
+
+.resetpassword_errorbox_accountnotfound{
+    height: auto;
+    clear: both;
+    padding: 0px 10px;
+    width: calc(100% - 20px);
+    background-color: #ffebe8;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #dd3c10;
+}
+
+.resetpassword_account_box{
+
+}
+
+.resetpassword_account_propic{
+    width: 96px;
+    height: 96px;
+    background-image: url("../img/oggi.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 2px solid #333;
+    position: relative;
+    margin: 0px 10px 10px 60px;
+    float: left;
+    filter: grayscale(40%);
+
+}
+
+.resetpassword_account_name{
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.resetpassword_account_role{
+    color: #aaa;
+    line-height: 15px;
+    font-size: 14px;
+}
+
+.resetpassword_button_yesmyaccount{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    display: inline-block;
+    z-index: 4;
+    font-size: inherit !important;
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    max-width: 400px !important;
+    transition: all 0.2s linear;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.resetpassword_button_notmyaccount{
+    background-color: #dd3c10; /* Green */
+    border: none;
+    color: white;
+    display: inline-block;
+    z-index: 4;
+    font-size: inherit !important;
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 00px;
+    max-width: 400px !important;
+    transition: all 0.2s linear;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.resetpassword_button_notmyaccount:hover,.resetpassword_button_yesmyaccount:hover{
+    width: 350px;
+}
+
+
+.resetpassword_verification_input{
+
+    font-size: 42px;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /*~~~~~~~~~~~~~DEFAULTS~~~~~~~*/
