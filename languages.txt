@@ -1,0 +1,233 @@
+A# .NET
+ActionScript
+AppleScript
+Assembly language
+Autocoder
+Axum
+BASIC
+Batch (Windows/Dos)
+BETA
+C
+C++
+C#
+C Shell
+CFEngine
+CFML
+Citrine (programming language)
+CoffeeScriptCombined Programming Language (CPL)
+Coral 66
+CorVision
+COWSEL
+CPL
+Cryptol
+csh
+Csound
+CSP
+CUDA
+Curl
+Curry
+Cyclone
+Cython
+DASL (Datapoint's Advanced Systems Language)
+DASL (Distributed Application Specification Language)
+Dart
+DataFlex
+Datalog
+E
+E#
+Ease
+Easy PL/I
+Easy Programming Language
+EASYTRIEVE PLUS
+ECMAScript
+Edinburgh IMP
+EGL
+Eiffel
+ESPOL
+Esterel
+Etoys
+Euclid
+Euler
+Euphoria
+EusLisp Robot Programming Language
+CMS EXEC (EXEC)
+EXEC 2
+Executable UML
+F
+F#
+Factor
+Falcon
+Fantom
+FAUST
+FFP
+Fjölnir
+FL
+Flavors
+Flex
+FlooP
+FLOW-MATIC
+FOCAL
+FOCUS
+FOIL
+FORMAC
+@Formula
+Forth
+GEORGE
+GLSL
+GNU E
+GM
+Go
+Go!
+GOAL
+Gödel
+Godiva
+IBM Basic assembly language
+IBM HAScript
+IBM Informix-4GL
+IBM RPG
+Ioke
+IPL
+IPTSCRAE
+ISLISP
+ISPF
+ISWIM
+J
+J#
+J++
+JADE
+Java
+JavaScript
+JCL
+JScript
+JScript .NET
+JavaFX Script
+KRC
+KRL
+KRL (KUKA Robot Language)
+KRYPTON
+Logo
+Logtalk
+LotusScript
+LPC
+LSE
+LSL
+LiveScript
+Lua
+Lucid
+Lustre
+LYaPAS
+Lynx
+o:XML
+Oak
+Oberon
+OBJ2
+Object Lisp
+ObjectLOGO
+Object REXX
+Object Pascal
+Objective-C
+Objective-J
+OpenEdge ABL
+OPL
+OPS5
+OptimJ
+Orc
+ORCA/Modula-2
+Oriel
+Orwell
+Oxygene
+Oz
+P''
+P#
+ParaSail (programming language)
+PARI/GP
+Pascal – ISO 7185
+PCASTL
+PCF
+PEARL
+PeopleCode
+Perl
+PDL
+Perl6
+Pharo
+PHP
+PortablE
+Powerhouse
+PowerBuilder – 4GL GUI applcation generator from Sybase
+PowerShell
+PPL
+Processing
+Processing.js
+Prograph
+Progress - a 4GL
+PROIV
+Prolog
+PROMAL
+Promela
+PROSE modeling language
+PROTEL
+ProvideX
+Pro*C
+Pure
+Self
+SenseTalk
+SequenceL
+SETL
+SIMPOL
+SIGNAL
+SiMPLE
+SIMSCRIPT
+Simula
+Simulink
+SISAL
+SLIP
+SMALL
+Smalltalk
+Small Basic
+SML
+Snap!
+SNOBOL(SPITBOL)
+Snowball
+SOL
+Span
+SPARK
+TTM
+T-SQL
+Transcript
+TTCN
+Turing
+TUTOR
+TXL
+TypeScript
+Turbo C++
+TTM
+T-SQL
+Transcript
+TTCN
+Turing
+TUTOR
+TXL
+TypeScript
+Turbo C++
+
+<<<--------- Interests------------->>>
+Social Networks and Applications
+Mobile Computing
+Cloud Data
+Computer Graphics
+Image Processing
+Computer Vision
+Software engineering
+Natural Language Processing
+Text Mining
+Machine Translation
+Distributed Algorithms
+Machine Learning
+Computer Aided Software Engineering
+Modelling and Simulation
+Virtual Reality
+Computer Systems
+
+
+
+

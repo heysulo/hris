@@ -121,7 +121,7 @@ h3{
     width: 100%;
     z-index: 10;
     color: #000;
-    top: 550px;
+    top:550;
     width: auto;
     font-size: 10px;
     left: calc(52% - 180px);
@@ -213,7 +213,7 @@ h3{
     line-height:16.08px;
     text-decoration: none;
     font-size: 12px;
-   /* border: 0 solid red;*/
+    /* border: 0 solid red;*/
     outline-offset: 15px;
     transition: all 0.2s;
 }
@@ -569,6 +569,21 @@ h3{
     height: 100%;
 }
 
+/*~~~~~~~~~*/
+
+/* ------- loading gif ---------*/
+#overlay{
+    position: fixed;
+    z-index: 9999;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:50% 50% no-repeat rgb(255,255,255);
+    background-image: url("../img/loading.gif");
+}
+
 
 
 /*~~~~~~~~~ DASHBOARD~~~~~~~~~~~~~~~~~~~~~*/
@@ -606,7 +621,7 @@ h3{
     width:35%;
     height: 100%;
 
-/*    background-color: green;*/
+    /*    background-color: green;*/
 
 }
 
@@ -614,7 +629,7 @@ h3{
     float:right;
     width:65%;
     height: 100%;
-/*    background-color: aqua;*/
+    /*    background-color: aqua;*/
 }
 
 
@@ -627,7 +642,7 @@ h3{
     box-sizing: border-box;
     background-image: url('../img/ico_search.png');
     font-size: 12px;
-    background-position: 10px 5px; 
+    background-position: 10px 5px;
     background-repeat: no-repeat;
     border: 2px solid #ccc;
     border-radius: 16px;
@@ -670,14 +685,14 @@ h3{
 }
 
 .dboxheader{
-    
+
     text-indent: 0px;
     transition: all 0.2s ease-in-out;
 }
 
 .dbox_head_availabilitystatus{
     background-image: url('../img/ico_availability.png');
-    background-position: 4px 1px; 
+    background-position: 4px 1px;
     background-repeat: no-repeat;
 }
 
@@ -696,7 +711,7 @@ h3{
 .cur_availability_icon{
     position: static;
     margin-top:0px;
-    margin-left: 0px;
+    margin-left: px;
     height: 12px;
     width: 12px;
     border: 1px solid #3F4E5E;
@@ -780,7 +795,7 @@ h3{
     min-width: 160px;
     height: auto;
     padding-top: 10px;
-    padding-bottom:  10px; 
+    padding-bottom:  10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     width:200px;
     left:0px;
@@ -814,7 +829,7 @@ h3{
 }
 
 .availability_status_button{
-    
+
     width: 120px;
     height: 32px;
 
@@ -841,7 +856,7 @@ h3{
 
 .dbox_head_newsfeed{
     background-image: url('../img/ico_newsfeed.png');
-    background-position: 6px 2px; 
+    background-position: 6px 2px;
     background-repeat: no-repeat;
     height: 100%;
 }
@@ -869,7 +884,7 @@ h3{
 }
 
 .newsfeed_item_box:hover{
-    max-height: 90px; 
+    max-height: 90px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-width: 2px;
@@ -900,7 +915,7 @@ h3{
     float: right;
     font-size: 12px;
     text-transform: uppercase;
-    /*text-decoration: italic;*/
+    text-decoration: italic;
     margin-right: 15px;
 }
 
@@ -968,7 +983,7 @@ h3{
     border: 2px solid #3F4E5E;
     background-color: #42b72a;
     border-radius: 8px;
-    
+
 }
 
 .profile_availability_text{
@@ -1022,7 +1037,7 @@ h3{
 
 .dbox_head_profilecontactinfo{
     background-image: url('../img/ico_contctinfo.png');
-    background-position: 4px 2px; 
+    background-position: 4px 2px;
     background-repeat: no-repeat;
     z-index: 999;
 }
@@ -1062,7 +1077,7 @@ h3{
 
 .dbox_head_profile_socities{
     background-image: url('../img/ico_socities.png');
-    background-position: 4px 2px; 
+    background-position: 4px 2px;
     background-repeat: no-repeat;
     z-index: 999;
 }
@@ -1084,20 +1099,20 @@ h3{
     cursor:pointer !important;
     max-height: 20px;
     background-image: url('../img/ico_verified.png');
-    background-position: 470px 1px; 
+    background-position: 470px 1px;
     background-repeat: no-repeat;
     overflow: hidden;
     -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */   
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
     transition: all 0.2s linear;
 }
 
 .society_item:active{
     height: auto !important;
     padding-top: 10px;
-    background-position: 470px 10px; 
+    background-position: 470px 10px;
     padding-bottom: 8px;
     max-height: 200px;
     background-color: #e9ebee;
@@ -1141,10 +1156,10 @@ h3{
 
 .dbox_head_profile_aboutme{
     background-image: url('../img/ico_aboutme.png');
-    background-position: 4px 2px; 
+    background-position: 4px 2px;
     background-repeat: no-repeat;
 }
- 
+
 .profile_section_interests{
     margin-left: -25px;
     text-align: justify;
@@ -1157,7 +1172,7 @@ h3{
 
 .dbox_head_profile_interetst{
     background-image: url('../img/ico_skills.png');
-    background-position: 2px 0px; 
+    background-position: 2px 0px;
     background-repeat: no-repeat;
 }
 
@@ -1197,13 +1212,13 @@ h3{
 
 .dbox_head_profile_personal{
     background-image: url('../img/1472384996_5322_-_Sharethis.png');
-    background-position: 2px 0px; 
+    background-position: 2px 0px;
     background-repeat: no-repeat;
 }
 
 .dbox_head_profile_languages{
     background-image: url('../img/1472387597_internt_web_technology-16.png');
-    background-position: 6px 3px; 
+    background-position: 6px 3px;
     background-repeat: no-repeat;
 }
 
@@ -1246,7 +1261,7 @@ h3{
 
 .dbox_head_advancedsearch_basic{
     background-image: url('../img/ico_contctinfo.png');
-    background-position: 4px 6px; 
+    background-position: 4px 6px;
     background-repeat: no-repeat;
 }
 
@@ -1388,7 +1403,7 @@ h3{
     padding-top: 12px;
     padding-bottom: 12px;
     transition: all 0.2s linear;
-    
+
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
@@ -1420,12 +1435,12 @@ h3{
     padding-top: 170px;
     padding-left: 15px;
     background-image: url('../img/img_upload_photo.png');
-    background-position: 55px 30px; 
+    background-position: 55px 30px;
     background-repeat: no-repeat;
-    
+
     cursor: pointer;
     background-color: rgba(0,0,0,0.3);
-    
+
     width: calc(100% - 15px);
     height: calc(100% - 170px);
     opacity: 0;
@@ -1450,7 +1465,7 @@ h3{
     margin-right: 10px;
     margin-left: 10px;
     background-image: url('../img/1472404941_cross.png');
-    background-position: 0px 2px; 
+    background-position: 0px 2px;
     background-repeat: no-repeat;
     cursor: pointer;
     transition: all 0.2s linear;
@@ -1494,7 +1509,7 @@ h3{
 
 .dbox_head_edit_profile_new_field{
     background-image: url('../img/1472342090_add_green.png');
-    background-position: 4px 2px; 
+    background-position: 4px 2px;
     background-repeat: no-repeat;
     z-index: 999;
 }
@@ -1525,7 +1540,7 @@ h3{
     margin-left: 10px;
     cursor: pointer;
     background-image: url('../img/1472404941_cross.png');
-    background-position: 0px -1px; 
+    background-position: 0px -1px;
     background-repeat: no-repeat;
     transition: all 0.2s linear;
 }
@@ -1605,7 +1620,7 @@ h3{
     font-weight: bold;
     font-size: 16px;
     font-family: helvetica, arial, sans-serif;
-    
+
 }
 
 .msgbox_close_button{
@@ -1617,7 +1632,7 @@ h3{
     height: 18px;
     cursor: pointer;
     background-image: url('../img/1472404941_cross.png');
-    background-position: 0px -1px; 
+    background-position: 0px -1px;
     background-repeat: no-repeat;
     transition: all 0.2s linear;
 }
@@ -1663,8 +1678,129 @@ h3{
     background-color: #4267b2;
     border-color: #4267b2;
     color: white;
-    
+
 }
+
+
+/******************************/
+/********WELCOME***************/
+/*****************************/
+
+
+.welcome_section_banner{
+    width: 100%;
+    height: 100px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Catamaran, monospace;
+    font-size: 48px;
+    padding-top: 80px;
+}
+
+
+.welcome_section_maindbox{
+    padding: 20px;
+    padding-top: 30px;
+    width: 500px;
+    position: relative;
+    height: auto;
+    left: calc(50% - 280px);
+}
+
+.welcome_section_introtxt{
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+    clear: both;
+}
+
+
+.welcome_inputbox{
+    width: 400px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    transition: all 0.5s linear;
+
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+
+    text-align: center;
+}
+
+.welcome_body{
+    background-color: #eff3f4;
+}
+
+.welcome_continue_button{
+    font-size: inherit !important;
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    max-width: 400px !important;
+}
+
+.welcome_step_div{
+    height: 60px;
+    width: 115px;
+    background: #f0eeed;
+    border: 1px solid #d3d1d0;
+    float: left;
+    margin: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.welcome_step_content{
+    margin: 5px;
+}
+
+.welcome_step_number{
+    margin: 0px;
+    font-family: font-family, helvetica, arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+
+.welcome_step_description{
+    margin: 0px;
+    font-size: 12px;
+    line-height: 11px;
+}
+
+.welcome_step_active{
+    color: white;
+    background-color: #4080ff;
+    border-color: #4267b2;
+}
+
+.welcome_profile_setup_hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0));
+    margin-top: 15px;
+    margin-bottom: 15px;
+    clear: both;
+}
+
+
+
+
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /*~~~~~~~~~~~~~DEFAULTS~~~~~~~*/
