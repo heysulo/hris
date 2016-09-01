@@ -1739,6 +1739,8 @@ h3{
 
 .welcome_body{
     background-color: #eff3f4;
+    background-image: url("../img/bg_img1.jpg");
+    background-size: cover;
 }
 
 .welcome_continue_button{
@@ -1790,7 +1792,7 @@ h3{
 .welcome_step_done{
     background-color: #dae6ff;
 }
-dae6ff
+
 
 .welcome_profile_setup_hr{
     border: 0;
