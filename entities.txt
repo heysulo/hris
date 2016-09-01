@@ -16,11 +16,11 @@ Group{
 	description
 	category
 	icon_id
-	members
-	roles
+	        members --> meka enne na..
+	        roles
 	creation_date
 	creator
-	twitter_id
+	        twitter_id
 }
 
 Member{
