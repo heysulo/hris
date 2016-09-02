@@ -134,6 +134,11 @@
                         </div>
                         <div class="newsfeed_item_timestamp">Wednesday, August 24, 2016 at 2:14am</div>
                     </div>
+                    <div class="newsfeed_item_box" style = "border-color:">
+                        <div class="newsfeed_item_colorbar" style="background-color: ;border-radius: 2px"></div>
+                        <div class="newsfeed_item_content">hello hello hello </div>
+                        <div class="newsfeed_item_timestamp">Wednesday, August 24, 2016 at 2:14am</div>
+                    </div>
 
                 </div>
             </div>
@@ -150,10 +155,11 @@ include_once('../templates/_footer.php');
         $.ajax({
             type:"GET",
             url:"getGroupPost.php?group=<?php echo $group_id?>",
-            dataType:"json",
+            //dataType:"json",
             success:function (response) {
-                alert("data tika gatta..");
-                $(".newsfeed_content").appendChild(".newsfeed_item_box").$('.newsfeed_item_content').val(response[0][2]);
+                //alert("data tika gatta..");
+                //$(".newsfeed_content").appendChild(".newsfeed_item_box").$('.newsfeed_item_content').val(response[0][2]);
+                $('.newsfeed_content').html(response);
             }
         });
     })
