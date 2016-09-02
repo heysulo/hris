@@ -43,7 +43,7 @@
                   </script>";
         }else{
             echo "<script>
-                    alert('Sorru unable to add post.');
+                    alert('Sorry, Unable to add post.');
                   </script>";
         }
 
@@ -117,8 +117,8 @@
                 </div>
                 <div class="newsfeed_content">
 
-                    <div class="newsfeed_item_box" style = "border-color:#34495e;">
-                        <div class="newsfeed_item_colorbar" style="background-color:#34495e; border-radius: 2px"></div>
+                    <div class="newsfeed_item_box" style = "border-color:orangered;">
+                        <div class="newsfeed_item_colorbar" style="background-color:orangered; border-radius: 2px"></div>
                         <div class="newsfeed_item_content">
                             This is a sapmle data.. IF you see this, that means you unable to get data from database.Please check your connection of complains to remalsha@gmail.com.
                         </div>
@@ -145,7 +145,28 @@ include_once('../templates/_footer.php');
                 $('.newsfeed_content').html(response);
             }
         });
-    })
+    });
+
+
+    $('.newsfeed_content').on('click','.newsfeed_item_box',function () {
+        var state = $(this).data('state');
+
+        switch (state){
+            case 1 :
+            case undefined:
+                $(this).css("max-height","1000px");
+                $(this).css("height","100%");
+                //$(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
+                $(this).data('state',2);
+                break;
+            case 2:
+                $(this).css("max-height","50px");
+                $(this).data('state',1);
+                break;
+        }
+
+    });
+
 </script>
 
 </body>
