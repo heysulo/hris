@@ -29,6 +29,29 @@
     $type  = $_SESSION['type'];
     $email = $_SESSION['email'];
     $pro_pic = $_SESSION['pro_pic'];
+    $user_id = $_SESSION['user_id'];
+
+    //Submit post to database;
+    if (isset($_POST['add_post']) && $_POST['post_content'] !=""){
+        $post_content = $_POST['post_content'];
+        $post_query = "INSERT INTO group_post(group_id,added_user_id,post_content,added_time) VALUES('$group_id','$user_id','$post_content',NOW())";
+        $res = mysqli_query($conn,$post_query);
+
+        if ($res){
+            echo "<script>
+                    alert('Post add successfully.');
+                  </script>";
+        }else{
+            echo "<script>
+                    alert('Sorru unable to add post.');
+                  </script>";
+        }
+
+    }
+
+
+
+
 
     ?>
     <title>HRIS | Groups</title>
@@ -52,13 +75,37 @@
         </div>
     </div>
 
-    <div class="dbox">
+    <div>
+    <!--Group details-->
+    <div class="dbox" style="margin-top: 80px; width: 40%; margin-left: 20px;">
         <div class="dboxheader ">
             <div class="dboxtitle">
                 Group Details
             </div>
+            <div>
+                <p><?php echo $group_detail['g_name'] ?></p>
+                <p><?php echo $group_detail['g_description'] ?></p>
+                <p><?php echo $group_detail['g_category'] ?></p>
+            </div>
 
         </div>
+    </div>
+
+    <!--Add news of notification to group-->
+    <div class="dbox" style="margin-top: 20px; width: 40%; margin-left: 20px;">
+        <div class="dboxheader ">
+            <div class="dboxtitle">
+                Add News Feed or Notification
+            </div>
+            <div>
+                <form action="" method="post">
+                    <input type="text" name="post_content" style="padding: 8px; border-radius: 3px; border:1px solid midnightblue; width: 80%;" required>
+                    <input type="submit" name="add_post" value="POST">
+                </form>
+            </div>
+
+        </div>
+    </div>
     </div>
 
     <!--News feeds and notification area-->
@@ -70,18 +117,23 @@
                 </div>
                 <div class="newsfeed_content">
                     <?php
-
-
-                    for ($x = 0; $x <= 40; $x++) {
+                    /*for ($x = 0; $x <= 40; $x++) {
                          if ($x % 2 == 1){
                             $color = "2ecc71";
                         }else{
                             $color = "34495e";
                         }
                         include('../templates/news_feed_items.php');
-                    }
-
+                    }*/
                     ?>
+
+                    <div class="newsfeed_item_box" style = "border-color:#<?= $color;?>;">
+                        <div class="newsfeed_item_colorbar" style="background-color:#<?= $color;?> ; border-radius: 2px"></div>
+                        <div class="newsfeed_item_content">
+
+                        </div>
+                        <div class="newsfeed_item_timestamp">Wednesday, August 24, 2016 at 2:14am</div>
+                    </div>
 
                 </div>
             </div>
@@ -93,5 +145,19 @@
 <?php
 include_once('../templates/_footer.php');
 ?>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type:"GET",
+            url:"getGroupPost.php?group=<?php echo $group_id?>",
+            dataType:"json",
+            success:function (response) {
+                alert("data tika gatta..");
+                $(".newsfeed_content").appendChild(".newsfeed_item_box").$('.newsfeed_item_content').val(response[0][2]);
+            }
+        });
+    })
+</script>
+
 </body>
 </html>
