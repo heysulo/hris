@@ -6,9 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61e1cd92-7b56-47ec-ae8c-3f1bb269a8df" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/user/getGroupPost.php" afterPath="$PROJECT_DIR$/app/user/getGroupPost.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/user/mygroup.php" afterPath="$PROJECT_DIR$/app/user/mygroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hris_db.sql" afterPath="$PROJECT_DIR$/hris_db.sql" />
     </list>
     <ignored path="hris.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -95,7 +93,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getGroupPost.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getGroupPost.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/user/getGroupPost.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="431">
@@ -112,6 +110,16 @@
                 <marker date="1472831598344" expanded="true" signature="1290:1291" ph="..." />
                 <marker date="1472831598344" expanded="true" signature="1290:1380" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hris_db.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hris_db.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="153" column="63" selection-start-line="153" selection-start-column="63" selection-end-line="153" selection-end-column="63" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -158,7 +166,6 @@
         <option value="$PROJECT_DIR$/app/database/database.php" />
         <option value="$PROJECT_DIR$/app/admin/index.php" />
         <option value="$PROJECT_DIR$/app/admin/config.php" />
-        <option value="$PROJECT_DIR$/hris_db.sql" />
         <option value="$PROJECT_DIR$/app/admin/addUser.php" />
         <option value="$PROJECT_DIR$/public/js/top_pane.js" />
         <option value="$PROJECT_DIR$/app/templates/box_availability_status.php" />
@@ -193,6 +200,7 @@
         <option value="$PROJECT_DIR$/app/templates/_footer.php" />
         <option value="$PROJECT_DIR$/app/user/mygroup.php" />
         <option value="$PROJECT_DIR$/app/user/getGroupPost.php" />
+        <option value="$PROJECT_DIR$/hris_db.sql" />
       </list>
     </option>
   </component>
@@ -528,7 +536,7 @@
       <workItem from="1472664186816" duration="27000" />
       <workItem from="1472664221420" duration="9183000" />
       <workItem from="1472720611296" duration="4653000" />
-      <workItem from="1472810714679" duration="10835000" />
+      <workItem from="1472810714679" duration="11017000" />
     </task>
     <task id="LOCAL-00001" summary="add loading gif to pages">
       <created>1465084583700</created>
@@ -744,7 +752,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197047000" />
+    <option name="totallyTimeSpent" value="197229000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -821,13 +829,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/profile/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/profile/templates/bottom_panel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1225,6 +1226,14 @@
             <marker date="1472831598344" expanded="true" signature="1290:1291" ph="..." />
             <marker date="1472831598344" expanded="true" signature="1290:1380" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hris_db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="153" column="63" selection-start-line="153" selection-start-column="63" selection-end-line="153" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
