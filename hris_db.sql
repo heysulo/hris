@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 02, 2016 at 09:24 PM
+-- Generation Time: Sep 02, 2016 at 09:44 PM
 -- Server version: 5.7.13-0ubuntu0.16.04.2
 -- PHP Version: 7.0.8-0ubuntu0.16.04.2
 
@@ -33,15 +33,16 @@ CREATE TABLE `groups` (
   `g_category` varchar(50) NOT NULL,
   `g_logo` text,
   `created_date` datetime NOT NULL,
-  `g_creater_id` varchar(50) DEFAULT NULL
+  `g_creater_id` varchar(50) DEFAULT NULL,
+  `group_color` varchar(9) DEFAULT '34495e'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `groups`
 --
 
-INSERT INTO `groups` (`group_id`, `g_name`, `g_description`, `g_category`, `g_logo`, `created_date`, `g_creater_id`) VALUES
-  (1, 'ISACA Group', 'First university isaca group.', 'social', NULL, '2016-09-01 00:00:00', 'emalsha');
+INSERT INTO `groups` (`group_id`, `g_name`, `g_description`, `g_category`, `g_logo`, `created_date`, `g_creater_id`, `group_color`) VALUES
+  (1, 'ISACA Group', 'First university isaca group.', 'social', NULL, '2016-09-01 00:00:00', 'emalsha', '34495e');
 
 -- --------------------------------------------------------
 

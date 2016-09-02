@@ -116,28 +116,13 @@
                     News Feed / Activity Feed
                 </div>
                 <div class="newsfeed_content">
-                    <?php
-                    /*for ($x = 0; $x <= 40; $x++) {
-                         if ($x % 2 == 1){
-                            $color = "2ecc71";
-                        }else{
-                            $color = "34495e";
-                        }
-                        include('../templates/news_feed_items.php');
-                    }*/
-                    ?>
 
-                    <div class="newsfeed_item_box" style = "border-color:#<?= $color;?>;">
-                        <div class="newsfeed_item_colorbar" style="background-color:#<?= $color;?> ; border-radius: 2px"></div>
+                    <div class="newsfeed_item_box" style = "border-color:#34495e;">
+                        <div class="newsfeed_item_colorbar" style="background-color:#34495e; border-radius: 2px"></div>
                         <div class="newsfeed_item_content">
-
+                            This is a sapmle data.. IF you see this, that means you unable to get data from database.Please check your connection of complains to remalsha@gmail.com.
                         </div>
-                        <div class="newsfeed_item_timestamp">Wednesday, August 24, 2016 at 2:14am</div>
-                    </div>
-                    <div class="newsfeed_item_box" style = "border-color:">
-                        <div class="newsfeed_item_colorbar" style="background-color: ;border-radius: 2px"></div>
-                        <div class="newsfeed_item_content">hello hello hello </div>
-                        <div class="newsfeed_item_timestamp">Wednesday, August 24, 2016 at 2:14am</div>
+                        <div class="newsfeed_item_timestamp">Friday, September 2, 2016 at 9:32pm</div>
                     </div>
 
                 </div>
@@ -150,15 +135,13 @@
 <?php
 include_once('../templates/_footer.php');
 ?>
+//Ajax method to get all post according to this group and show...
 <script>
     $(document).ready(function () {
         $.ajax({
             type:"GET",
-            url:"getGroupPost.php?group=<?php echo $group_id?>",
-            //dataType:"json",
+            url:"getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>",
             success:function (response) {
-                //alert("data tika gatta..");
-                //$(".newsfeed_content").appendChild(".newsfeed_item_box").$('.newsfeed_item_content').val(response[0][2]);
                 $('.newsfeed_content').html(response);
             }
         });
