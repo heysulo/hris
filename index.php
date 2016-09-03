@@ -48,7 +48,7 @@
 
                         <div class="spacerx"></div>
                         <div>
-                            <a class="txtassist" href="Google.lk" style="text-align: left;">Forgot your password</a>
+                            <a class="txtassist" href="app/user/password_reset/password_reset.php" style="text-align: left;">Forgot your password</a>
                             &nbsp; &nbsp; &nbsp; &nbsp;
                             <a class="txtassist" href="Google.lk" style="text-align: right; ">Contact Administrator</a>
                         </div>
