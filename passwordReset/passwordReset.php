@@ -19,13 +19,18 @@
         In prder to reset your password please enter your Email address. This email address should be the same email address which is used to create your account.
     </div>
     <div style="text-align: center;">
-        <input id="fname" name="firstname" class="welcome_inputbox" placeholder="Email Address" type="email">
+        <form>
+            <input id="email" name="email" class="welcome_inputbox" placeholder="Email Address" type="email">
+            <input id="btnsubmit" class="user_choose_button welcome_continue_button" value="Go to Dashboard" type="button">
+        </form>
 
-        <input class="user_choose_button welcome_continue_button" value="Go to Dashboard" type="button">
     </div>
 
 </div>
 
+<?php
+
+?>
 
 
 </body>

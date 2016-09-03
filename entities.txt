@@ -27,27 +27,29 @@ Member{
 	Basic{
 		id_member
 		category
-		availability
-		last_seen
-		batch_number
 		academicyear
-		course
 		first_name
 		middle_name
 		last_name
-		DateofBirth
+		course
 		Gender
-		Languages
+		emailAddress
+		phoneNumber
+		DateofBirth
+		joined_date
+		handler
+		availability
+		last_seen
+		current_city
+		home_town
 		ReligousView
 		Office_Location
 		About
-		emailAddress
-		phoneNumber
-		last_seen
+		
+		batch_number
+		Languages
 		skills
 		college
-		current_city
-		home_town
 		instagram
 		twitter
 		YouTube
@@ -56,8 +58,6 @@ Member{
 		Soundcloud
 		LinkedIn
 		Skype
-		joined_date
-		handler
 	}
 
 	Member_Permissions{
