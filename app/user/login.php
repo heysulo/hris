@@ -47,6 +47,7 @@ function loginUser(){
             $_SESSION['lname'] = $row['lastname'];
             $_SESSION['pro_pic'] = $row['pro_pic'];
             $_SESSION['type'] = $row['type'];
+            $_SESSION['user_id'] = $row['userid'];
 
             header('location:dashboard.php');
         }
