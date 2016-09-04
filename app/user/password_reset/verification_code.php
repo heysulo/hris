@@ -50,7 +50,6 @@
     </div>
     <div>
         <?php
-        echo (strtotime(date('Y-m-d H:i:s'))-strtotime($password_reset_block))/3600;
         if (isset($_SESSION["badtry"])){
                 if($_SESSION["badtry"]==1){
                     include ("./template/invalidCode.php");

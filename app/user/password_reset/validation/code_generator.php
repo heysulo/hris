@@ -4,6 +4,8 @@
     //echo date("Ymd");
     //echo(mt_rand(10000000,99999999));
     $conn = null;
+
+    date_default_timezone_set('Asia/Colombo');
     require_once("../../config.conf");
     require_once ("../../../database/database.php");
     $_SESSION["badtry"]=0;

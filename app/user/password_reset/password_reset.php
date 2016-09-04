@@ -33,7 +33,7 @@
     </div>
     <div id="invalid_password_error" style="display:none;">
         <div class="resetpassword_errorbox_accountnotfound" >
-            <p>Your password appears to be invalid.</p>
+            <p>Your Email address appears to be invalid.</p>
         </div>
 
     </div>
