@@ -2,6 +2,8 @@
     session_start();
     //echo date("Ymd");
     //echo(mt_rand(10000000,99999999));
+
+    date_default_timezone_set('Asia/Colombo');
     $conn = null;
     require_once("../../config.conf");
     require_once ("../../../database/database.php");
@@ -30,9 +32,19 @@
         }else{
             if($reset_code_enabled == 1){
                 if($password_reset_code==$code){
+
+                    $_SESSION["validation_success"]=1;
+                    $_SESSION["badtry"]=0;
+
+                    $codegenquery ="UPDATE credential SET password_reset_attempts=3,reset_code_enabled=0 WHERE email=\"$email\";";
+                    $res = mysqli_query($conn,$codegenquery);
+                    
                     echo "match";
+                    header('Location: '."../new_password.php");
+
                 }else{
                     $password_reset_attempts -=1;
+                    $_SESSION["validation_success"]=0;
                     $_SESSION["badtry"]=1;
                     $codegenquery ="UPDATE credential SET password_reset_attempts=$password_reset_attempts WHERE email=\"$email\";";
                     $res = mysqli_query($conn,$codegenquery);
