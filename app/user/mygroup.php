@@ -9,7 +9,7 @@
     require_once ("../database/database.php");
     session_start();
 
-    if (!isset($_SESSION['email']) and !isset($_GET['group'])){
+    if (!isset($_SESSION['email']) or !isset($_GET['group'])){
         header("location:../../index.php");
     }else{
 
@@ -156,12 +156,13 @@ include_once('../templates/_footer.php');
             case undefined:
                 $(this).css("max-height","1000px");
                 $(this).css("height","100%");
-                //$(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
+                $(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
                 $(this).data('state',2);
                 break;
             case 2:
-                $(this).css("max-height","50px");
+                $(this).css("max-height","70px");
                 $(this).data('state',1);
+                $(this).children('.newsfeed_item_colorbar').css("background-color","#<?php echo $group_detail['group_color']?>");
                 break;
         }
 

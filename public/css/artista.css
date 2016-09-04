@@ -899,7 +899,7 @@ h3{
 .newsfeed_item_colorbar{
     float: left;
     width: 12px;
-    height: 100%;
+    height: 100px;
     background-color: #4080ff;
 }
 
