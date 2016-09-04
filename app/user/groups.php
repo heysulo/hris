@@ -32,15 +32,17 @@
 
         <div style="float:left;width:auto;">
             <div class="txt_paneltitle">GROUPS YOU MANAGE</div>
-
+            <div style="margin-left: 30px;">
+                <input type="button" value="Create New Group" class="green_btn" onclick="window.location.href='createGroup.php';">
+            </div>
         </div>
-        <div class="profile_section_main groups_content_area">
 
+        <div class="profile_section_main groups_content_area"></div>
 
-        </div>
+        <!--My groups -->
         <div style="float:left;width:auto;">
-            <div class="txt_paneltitle">GROUPS YOU'RE IN</div>
-            <div style="float: right; margin:auto " id="mygroups">
+            <div class="txt_paneltitle"> GROUPS YOU'RE IN </div>
+            <div style="float: left; margin-left: 20px;s " id="mygroups">
 
                 <?php
                 //get group details according to user
@@ -55,6 +57,28 @@
                 }
                 ?>
 
+            </div>
+        </div>
+
+        <div class="profile_section_main groups_content_area"></div>
+
+        <!--All groups -->
+        <div style="float:left;width:auto;">
+            <div class="txt_paneltitle">ALL GROUPS</div>
+            <div style="float: left; margin-left: 20px; " id="allgroups">
+
+                <?php
+                //get group details
+                $qry_get_groups = "SELECT * FROM groups";
+                $res = mysqli_query($conn,$qry_get_groups);
+                while($row = mysqli_fetch_assoc($res)){
+                    echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
+                    echo " <div style='padding: 3px;'><b>".$row['g_name']."</b></div>";
+                    echo " <div style='padding: 3px;'>Category : ".$row['g_category']."</div>";
+                    echo "<div style='font-size: 12px; padding: 5px;'>".$row['g_description']."</div>";
+                    echo "</div>";
+                }
+                ?>
             </div>
         </div>
     </div>

@@ -605,7 +605,7 @@ h3{
 }
 
 .txt_paneltitle:hover{
-    text-indent: 20px;
+    text-indent: 10px;
 }
 
 .dashboard_bottom{
@@ -2135,3 +2135,12 @@ li.active a, li.active a:hover {
 }
 
 /*-------------------------------------- tab css ends*/
+
+
+/* ------------------------------------- Buttom css*/
+.green_btn{
+    border-radius: 3px;
+    border: 1px solid forestgreen;
+    padding: 3px;
+    background: forestgreen;
+}
