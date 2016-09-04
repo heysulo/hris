@@ -33,7 +33,7 @@
         <div style="float:left;width:auto;">
             <div class="txt_paneltitle">GROUPS YOU MANAGE</div>
             <div style="margin-left: 30px;">
-                <input type="button" value="Create New Group" class="green_btn" onclick="window.location.href='createGroup.php';">
+                <input type="button" value="+ Create New Group" class="green_btn" onclick="window.location.href='createGroup.php';" style="font-weight: 600; color: white">
             </div>
         </div>
 
