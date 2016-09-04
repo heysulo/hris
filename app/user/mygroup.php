@@ -9,7 +9,7 @@
     require_once ("../database/database.php");
     session_start();
 
-    if (!isset($_SESSION['email']) and !isset($_GET['group'])){
+    if (!isset($_SESSION['email']) or !isset($_GET['group'])){
         header("location:../../index.php");
     }else{
 
@@ -83,24 +83,28 @@
                 Group Details
             </div>
             <div>
-                <p><?php echo $group_detail['g_name'] ?></p>
-                <p><?php echo $group_detail['g_description'] ?></p>
-                <p><?php echo $group_detail['g_category'] ?></p>
+                <?php
+
+                echo " <br><div style='padding: 3px;'><b>".$group_detail['g_name']."</b></div>";
+                echo " <div style='padding: 3px;'>Category : ".$group_detail['g_category']."</div>";
+                echo "<div style='font-size: 12px; padding: 5px;'>".$group_detail['g_description']."</div>";
+                ?>
+
             </div>
 
         </div>
     </div>
 
     <!--Add news of notification to group-->
-    <div class="dbox" style="margin-top: 20px; width: 40%; margin-left: 20px;">
+    <div class="dbox" style="margin-top: 20px; width: 40%; margin-left: 20px; padding-bottom: 30px;">
         <div class="dboxheader ">
             <div class="dboxtitle">
                 Add News Feed or Notification
             </div>
             <div>
                 <form action="" method="post">
-                    <input type="text" name="post_content" style="padding: 8px; border-radius: 3px; border:1px solid midnightblue; width: 80%;" required>
-                    <input type="submit" name="add_post" value="POST">
+                    <textarea  name="post_content" style="resize: none; padding: 6px; border-radius: 3px; border:1px solid midnightblue; width: 95%; height: 85px; margin: 5px; overflow: scroll" required></textarea>
+                    <input type="submit" name="add_post" value="POST" class="green_btn" style="float: right; margin-bottom:2px; margin-right:5px;">
                 </form>
             </div>
 
@@ -156,12 +160,13 @@ include_once('../templates/_footer.php');
             case undefined:
                 $(this).css("max-height","1000px");
                 $(this).css("height","100%");
-                //$(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
+                $(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
                 $(this).data('state',2);
                 break;
             case 2:
-                $(this).css("max-height","50px");
+                $(this).css("max-height","70px");
                 $(this).data('state',1);
+                $(this).children('.newsfeed_item_colorbar').css("background-color","#<?php echo $group_detail['group_color']?>");
                 break;
         }
 
