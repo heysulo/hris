@@ -1955,6 +1955,16 @@ h3{
     font-size: 42px;
 }
 
+.resetpassword_success_box{
+    background-color: #efffef;
+    border-color: #00ee00;
+}
+
+
+.resetpassword_fail_box{
+    background-color: #ffefef;
+    border-color: #ee0000;
+}
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /*~~~~~~~~~~~~~DEFAULTS~~~~~~~*/
