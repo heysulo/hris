@@ -121,7 +121,7 @@ h3{
     width: 100%;
     z-index: 10;
     color: #000;
-    top:550;
+    top:550px;
     width: auto;
     font-size: 10px;
     left: calc(52% - 180px);
@@ -570,8 +570,9 @@ h3{
 }
 
 /*~~~~~~~~~*/
+/*
 
-/* ------- loading gif ---------*/
+!* ------- loading gif ---------*!
 #overlay{
     position: fixed;
     z-index: 9999;
@@ -583,6 +584,7 @@ h3{
     background:50% 50% no-repeat rgb(255,255,255);
     background-image: url("../img/loading.gif");
 }
+*/
 
 
 
@@ -711,7 +713,7 @@ h3{
 .cur_availability_icon{
     position: static;
     margin-top:0px;
-    margin-left: px;
+    margin-left: 0px;
     height: 12px;
     width: 12px;
     border: 1px solid #3F4E5E;
@@ -906,8 +908,7 @@ h3{
     font-size: 12px;
     width: calc(100% - 50px);
     margin: 0px;
-    padding: 5px;
-    padding-left: 20px;
+    padding: 5px 0px 0px 20px;
 }
 
 .newsfeed_item_timestamp{
@@ -915,7 +916,6 @@ h3{
     float: right;
     font-size: 12px;
     text-transform: uppercase;
-    text-decoration: italic;
     margin-right: 15px;
 }
 
