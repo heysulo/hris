@@ -20,57 +20,58 @@
     $pro_pic = $_SESSION['pro_pic'];
     $user_id = $_SESSION['user_id'];
 
-    $target_dir = "uploads/groups/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    $g_logo = $_FILES["fileToUpload"]["name"].$imageFileType;
 
     if(isset($_POST["createGroup"])) {
 
-        $g_name = mysqli_real_escape_string($conn, $_POST['g_name']);
-        $g_description = mysqli_real_escape_string($conn, $_POST['g_description']);
-        $g_category = mysqli_real_escape_string($conn, $_POST['category']);
-        $g_color = mysqli_real_escape_string($conn, $_POST['g_color']);
+        $target_dir = "uploads/groups/";
+        $g_logo_name = basename($_FILES['g_logo']['name']);
+        $tmp_logo = $_FILES['g_logo']['tmp_name'];
 
-        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        $target_file = $target_dir.$g_logo_name;
+        $uploadOk = 1;
+
+        $check = getimagesize($tmp_logo);
         if ($check !== false) {
             $uploadOk = 1;
         } else {
-            $error = "File is not an image.";
+            $error = "File is not an image. ";
             $uploadOk = 0;
         }
 
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
+        if ($_FILES['g_logo']['size'] > 500000) {
             $error = "Sorry, your file is too large.";
             $uploadOk = 0;
         }
 
         // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"
-        ) {
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
             $error = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $uploadOk = 0;
         }
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            //$error = "Sorry, your file was not uploaded.";
+            $error = "Sorry, your file was not uploaded.";
 
-            // if everything is ok, try to upload file
+        // if everything is ok, try to upload file
         } else {
 
-            $qry = "INSERT INTO groups(g_name,g_description,g_category,g_logo,created_date,g_creater_id,group_color) VALUES('$g_name','$g_description','$g_category','$g_logo',NOW(),'$user_id','$g_color')";
+            $g_name = mysqli_real_escape_string($conn, $_POST['g_name']);
+            $g_description = mysqli_real_escape_string($conn, $_POST['g_description']);
+            $g_category = mysqli_real_escape_string($conn, $_POST['category']);
+            $g_color = mysqli_real_escape_string($conn, $_POST['g_color']);
 
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            $qry = "INSERT INTO groups(g_name,g_description,g_category,g_logo,created_date,g_creater_id,group_color) VALUES('$g_name','$g_description','$g_category','$g_logo_name',NOW(),'$user_id','$g_color')";
+            $moving = move_uploaded_file($tmp_logo,$target_file);
+            if ($moving) {
                 $res = mysqli_query($conn,$qry);
                 if ($res){
                     $note = "Your create group request sent to system administrator. When system administration accept your request your group will active.";
                 }
             }else{
-                $error = "Sorry, there was an error uploading your file.";
+                $error = "Sorry, there was an error uploading your file. $g_logo_name // $tmp_logo // $target_file // $moving";
             }
         }
 
