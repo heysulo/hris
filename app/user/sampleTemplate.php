@@ -24,6 +24,7 @@
     <?php include_once('../templates/navigation_panel.php'); ?>
     <?php include_once('../templates/top_pane.php'); ?>
     <?php //include_once('../templates/bottom_panel.php'); ?>
+    <div class="bottomPanel" style="height: 100%;"></div>
 </div>
 
 <?php

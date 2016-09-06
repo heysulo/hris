@@ -50,9 +50,9 @@
                 $res = mysqli_query($conn,$qry_to_get_groups);
                 while($row = mysqli_fetch_assoc($res)){
                     echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
-                    echo " <div style='padding: 3px;'><b>".$row['g_name']."</b></div>";
-                    echo " <div style='padding: 3px;'>Category : ".$row['g_category']."</div>";
-                    echo "<div style='font-size: 12px; padding: 5px;'>".$row['g_description']."</div>";
+                    echo "<div style='padding:3px;'><b>".$row['g_name']."</b></div>";
+                    echo "<div style='padding:3px;'>Category : ".$row['g_category']."</div>";
+                    echo "<div style='font-size:12px; padding: 5px;'>".$row['g_description']."</div>";
                     echo "</div>";
                 }
                 ?>

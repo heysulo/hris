@@ -71,7 +71,7 @@
                     $note = "Your create group request sent to system administrator. When system administration accept your request your group will active.";
                 }
             }else{
-                $error = "Sorry, there was an error uploading your file. $g_logo_name // $tmp_logo // $target_file // $moving";
+                $error = "Sorry, there was an error uploading your file. $moving";
             }
         }
 
@@ -105,7 +105,6 @@
 <div style="padding: 0px;">
     <?php include_once('../templates/navigation_panel.php'); ?>
     <?php include_once('../templates/top_pane.php'); ?>
-    <?php //include_once('../templates/bottom_panel.php'); ?>
 
     <div class="bottomPanel" style="height: 100%;">
         <div class="cbox" style="padding: 20px; width: 500px; margin-top: 50px;margin-bottom: 10px">
