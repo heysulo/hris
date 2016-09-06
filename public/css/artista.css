@@ -1752,6 +1752,7 @@ h3{
     margin-top: 10px;
     margin-bottom: 20px;
     max-width: 400px !important;
+    cursor: pointer;
 }
 
 .welcome_step_div{
@@ -1965,6 +1966,99 @@ h3{
     background-color: #ffefef;
     border-color: #ee0000;
 }
+
+
+/**************************************/
+/*****************adminpanel***********/
+/**************************************/
+
+.admin_main_content{
+    clear: both;
+}
+
+.admin_member_management_navbar{
+    list-style-type: none;
+    padding: 0px;
+    overflow: hidden;
+    border: 0px solid #c8e6c9;
+    border-bottom-width:5px
+}
+
+.admin_member_management_navbar_item{
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 10px 0px 0px 0px;
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    margin: 0px 5px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.admin_member_management_navbar_item:hover{
+    background-color: #C8E6C9;
+}
+
+.admin_member_management_navbar_item_active{
+    background-color: #81c784;
+    color: #fff;
+}
+
+.admin_member_management_content{
+    margin: 0px;
+    margin-top: -16px;
+    height: auto;
+}
+
+.admin_member_management_help_text{
+    padding: 15px 0px 0px 0px;
+    font-size: 14px;
+    color: #3e3e3e;
+    text-align: center;
+}
+
+.dbox_head_member_management{
+    background-image: url('../img/member_management.png');
+    background-position: 4px 1px;
+    background-repeat: no-repeat;
+}
+
+
+.dbox_management{
+    height: auto;
+    width:500px;
+    float: left;
+}
+
+.admin_new_member_email{
+    width: 90%;
+    position: relative;
+    left: 5%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+
+}
+
+.admin_new_member_role_select{
+    width: 90%;
+    position: relative;
+    left: 5%;
+    height: 45px;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /*~~~~~~~~~~~~~DEFAULTS~~~~~~~*/
