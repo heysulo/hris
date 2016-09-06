@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <?php
-    define(hris_access,true);
+    define('hris_access',true);
     require_once('../../templates/path.php');
     include('../../templates/_header.php');
     ?>
@@ -14,7 +14,7 @@
             header('Location: '."./password_reset.php");
         }
         $email = $_SESSION["email"];
-        $query = "SELECT password_reset_attempts,password_reset_block FROM credential WHERE email='$email'";
+        $query = "SELECT password_reset_attempts,password_reset_block FROM member WHERE email='$email'";
         $res = mysqli_query($conn,$query);
         $row = mysqli_fetch_assoc($res);
         $password_reset_block = $row['password_reset_block'];

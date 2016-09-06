@@ -12,10 +12,10 @@
     if (isset($_REQUEST["email"])){
         $_SESSION["reset_email"] = $email = mysqli_real_escape_string($conn,$_REQUEST["email"]);
         $_SESSION["pass"] = 50;
-        $query = "SELECT password FROM credential WHERE email='$email'";
+        $query = "SELECT password FROM member WHERE email='$email'";
         $res = mysqli_query($conn,$query);
         if (mysqli_num_rows($res)==1){
-            $query2 = "SELECT * FROM credential WHERE email='$email'";
+            $query2 = "SELECT * FROM member WHERE email='$email'";
 
             //Execute the query.
             $result = mysqli_query($conn,$query2);

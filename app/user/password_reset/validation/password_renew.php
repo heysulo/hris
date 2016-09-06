@@ -15,7 +15,7 @@
         if ($pass2==$pass1){
             if(strlen($pass2) > 6){
                 $hashed_password= password_hash($pass2,PASSWORD_DEFAULT);
-                $codegenquery ="UPDATE credential SET reset_code_enabled=0, password_reset_attempts=3,password='$hashed_password' WHERE email=\"$email\";";
+                $codegenquery ="UPDATE member SET reset_code_enabled=0, password_reset_attempts=3,password='$hashed_password' WHERE email=\"$email\";";
                 $res = mysqli_query($conn,$codegenquery);
                 session_destroy();
                 if ($res){
