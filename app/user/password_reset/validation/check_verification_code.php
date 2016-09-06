@@ -13,7 +13,7 @@
     $code = $_REQUEST["verification_code"];
     $target = 0;
     $email = $_SESSION["email"];
-    $query = "SELECT * FROM credential WHERE email='$email'";
+    $query = "SELECT * FROM member WHERE email='$email'";
     $res = mysqli_query($conn,$query);
     $row = mysqli_fetch_assoc($res);
     $password_reset_code = $row['password_reset_code'];
@@ -36,7 +36,7 @@
                     $_SESSION["validation_success"]=1;
                     $_SESSION["badtry"]=0;
 
-                    $codegenquery ="UPDATE credential SET password_reset_attempts=3,reset_code_enabled=0 WHERE email=\"$email\";";
+                    $codegenquery ="UPDATE member SET password_reset_attempts=3,reset_code_enabled=0 WHERE email=\"$email\";";
                     $res = mysqli_query($conn,$codegenquery);
                     
                     echo "match";
@@ -46,7 +46,7 @@
                     $password_reset_attempts -=1;
                     $_SESSION["validation_success"]=0;
                     $_SESSION["badtry"]=1;
-                    $codegenquery ="UPDATE credential SET password_reset_attempts=$password_reset_attempts WHERE email=\"$email\";";
+                    $codegenquery ="UPDATE member SET password_reset_attempts=$password_reset_attempts WHERE email=\"$email\";";
                     $res = mysqli_query($conn,$codegenquery);
 //                    if ($res){
 //                        echo "done";
@@ -57,7 +57,7 @@
                         header('Location: '."../verification_code.php");
                     }else{
                         $nowtime = date('Y-m-d H:i:s');
-                        $codegenquery ="UPDATE credential SET password_reset_block='$nowtime',password_reset_attempts=3 WHERE email=\"$email\";";
+                        $codegenquery ="UPDATE member SET password_reset_block='$nowtime',password_reset_attempts=3 WHERE email=\"$email\";";
                         $res = mysqli_query($conn,$codegenquery);
                         $_SESSION["block"]="yes";
                         $_SESSION["code_active"]=0;

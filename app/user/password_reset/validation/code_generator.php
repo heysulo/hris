@@ -12,7 +12,7 @@
     if (isset($_SESSION["email"])){
         $email = $_SESSION["email"];
         //echo $email;
-        $query = "SELECT * FROM credential WHERE email='$email'";
+        $query = "SELECT * FROM member WHERE email='$email'";
         $res = mysqli_query($conn,$query);
         if (mysqli_num_rows($res)==1){
             $row = mysqli_fetch_assoc($res);
@@ -29,7 +29,7 @@
                     $nowtd = (date('Y-m-d H:i:s'));
                     $new_code = mt_rand(10000000,99999999);
                     echo "new code $new_code applied";
-                    $codegenquery ="UPDATE credential SET code_gen_date='$nowtd', password_reset_attempts=3,  reset_code_enabled=1, password_reset_code=$new_code WHERE email=\"$email\";";
+                    $codegenquery ="UPDATE member SET code_gen_date='$nowtd', password_reset_attempts=3,  reset_code_enabled=1, password_reset_code=$new_code WHERE email=\"$email\";";
                     $res = mysqli_query($conn,$codegenquery);
                     if ($res){
                         echo "done";
@@ -43,7 +43,7 @@
                         $nowtd = (date('Y-m-d H:i:s'));
                         $new_code = mt_rand(10000000,99999999);
                         echo "new code $new_code applied";
-                        $codegenquery ="UPDATE credential SET code_gen_date='$nowtd', password_reset_attempts=3,  reset_code_enabled=1, password_reset_code=$new_code WHERE email=\"$email\";";
+                        $codegenquery ="UPDATE member SET code_gen_date='$nowtd', password_reset_attempts=3,  reset_code_enabled=1, password_reset_code=$new_code WHERE email=\"$email\";";
                         $res = mysqli_query($conn,$codegenquery);
                         if ($res){
                             echo "done";
