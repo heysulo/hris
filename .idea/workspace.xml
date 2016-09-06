@@ -6,6 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61e1cd92-7b56-47ec-ae8c-3f1bb269a8df" name="Default" comment="">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
 =======
@@ -16,6 +17,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/user/groups.php" afterPath="$PROJECT_DIR$/app/user/groups.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/user/sampleTemplate.php" afterPath="$PROJECT_DIR$/app/user/sampleTemplate.php" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/createUser.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+>>>>>>> Stashed changes
     </list>
     <ignored path="hris.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -196,9 +201,11 @@
       <file leaf-file-name="createGroup.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/user/createGroup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="165" column="179" selection-start-line="165" selection-start-column="28" selection-end-line="165" selection-end-column="179" />
+            <state relative-caret-position="-316">
+              <caret line="124" column="118" selection-start-line="124" selection-start-column="70" selection-end-line="124" selection-end-column="118" />
               <folding>
+                <element signature="n#style#0;n#table#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
                 <marker date="1473140663112" expanded="true" signature="2106:2294" ph="INSERT INTO groups... " />
                 <marker date="1473140663112" expanded="true" signature="7058:7075" ph="..." />
                 <marker date="1473140663112" expanded="true" signature="7214:7231" ph="..." />
@@ -207,22 +214,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="groups.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/user/groups.php">
+      <file leaf-file-name="artista.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/artista.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="900" column="30" selection-start-line="897" selection-start-column="4" selection-end-line="900" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createUser.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/admin/createUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
               <folding>
-                <marker date="1473142886913" expanded="true" signature="578:590" ph="..." />
-                <marker date="1473142886913" expanded="true" signature="1516:1632" ph="SELECT * FRO... groups" />
-                <marker date="1473142886913" expanded="true" signature="1821:1847" ph="..." />
-                <marker date="1473142886913" expanded="true" signature="1917:1929" ph="..." />
-                <marker date="1473142886913" expanded="true" signature="2003:2015" ph="..." />
-                <marker date="1473142886913" expanded="true" signature="2097:2126" ph="..." />
-                <marker date="1473142886913" expanded="true" signature="2637:2657" ph="SELECT * FRO... groups" />
-                <marker date="1473142886913" expanded="true" signature="2940:2953" ph="..." />
-                <marker date="1473142886913" expanded="true" signature="3028:3041" ph="..." />
-                <marker date="1473142886913" expanded="true" signature="3123:3153" ph="..." />
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#0;n#tr#0;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#td#0;n#tr#1;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#1;n#tr#2;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addUser.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/admin/addUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1638">
+              <caret line="96" column="12" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="12" />
+              <folding>
+                <marker date="1473140841403" expanded="true" signature="476:560" ph="INSERT INTO user... " />
               </folding>
             </state>
           </provider>
@@ -231,8 +256,8 @@
       <file leaf-file-name="mygroup.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/user/mygroup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="124" column="52" selection-start-line="124" selection-start-column="52" selection-end-line="124" selection-end-column="52" />
+            <state relative-caret-position="-1167">
+              <caret line="8" column="46" selection-start-line="6" selection-start-column="4" selection-end-line="8" selection-end-column="46" />
               <folding>
                 <marker date="1472987311659" expanded="true" signature="524:573" ph="SELECT * FRO... groups" />
                 <marker date="1472987311659" expanded="true" signature="1063:1186" ph="INSERT INTO group_post... " />
@@ -241,37 +266,6 @@
                 <marker date="1472987311659" expanded="true" signature="2531:2544" ph="..." />
                 <marker date="1472987311659" expanded="true" signature="2624:2637" ph="..." />
                 <marker date="1472987311659" expanded="true" signature="2724:2754" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="artista.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/artista.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="900" column="30" selection-start-line="897" selection-start-column="4" selection-end-line="900" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="approveCreatedGroup.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/admin/approveCreatedGroup.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="57" column="84" selection-start-line="57" selection-start-column="84" selection-end-line="57" selection-end-column="84" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#7;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -308,9 +302,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
         <option value="$PROJECT_DIR$/.htaccess" />
+=======
+>>>>>>> Stashed changes
         <option value="$PROJECT_DIR$/app/user/testing.php" />
         <option value="$PROJECT_DIR$/app/templates/dashboard_top.php" />
         <option value="$PROJECT_DIR$/profile/index.php" />
@@ -395,7 +392,11 @@
         <option value="$PROJECT_DIR$/app/admin/addUser.php" />
         <option value="$PROJECT_DIR$/app/user/groups.php" />
         <option value="$PROJECT_DIR$/app/admin/approveCreatedGroup.php" />
+<<<<<<< Updated upstream
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+=======
+        <option value="$PROJECT_DIR$/app/admin/createUser.php" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -471,7 +472,11 @@
       <pane id="Scope" />
 =======
       <pane id="Scratches" />
+<<<<<<< Updated upstream
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+=======
+      <pane id="Scope" />
+>>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -589,6 +594,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< Updated upstream
               <option name="myItemId" value="user" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -619,6 +625,8 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+=======
+>>>>>>> Stashed changes
               <option name="myItemId" value="admin" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
@@ -626,11 +634,14 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
       <pane id="Scratches" />
 =======
       <pane id="Scope" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+=======
+>>>>>>> Stashed changes
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -787,7 +798,12 @@
       <workItem from="1473077928589" duration="5292000" />
       <workItem from="1473101301099" duration="1102000" />
       <workItem from="1473140064436" duration="4117000" />
+<<<<<<< Updated upstream
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+=======
+      <workItem from="1473151345433" duration="624000" />
+      <workItem from="1473155260429" duration="3462000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="add loading gif to pages">
       <created>1465084583700</created>
@@ -1003,11 +1019,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="248114000" />
 =======
     <option name="totallyTimeSpent" value="252247000" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+=======
+    <option name="totallyTimeSpent" value="256333000" />
+>>>>>>> Stashed changes
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1124,6 +1144,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/templates/news_feed_items.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1415,6 +1436,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/app/user/advancedSearch.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2025">
@@ -1480,7 +1503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1488,7 +1510,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="41" column="51" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1696,6 +1717,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/admin/approveCreateGroup.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1741,6 +1763,9 @@
         </state>
       </provider>
     </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/app/admin/approveCreateGroup.php" />
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/app/admin/index.php">
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
       <provider selected="true" editor-type-id="text-editor">
@@ -1774,7 +1799,7 @@
 =======
     <entry file="file://$PROJECT_DIR$/app/user/groups.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
+        <state relative-caret-position="1134">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <marker date="1473142886913" expanded="true" signature="578:590" ph="..." />
@@ -1791,9 +1816,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/approveCreatedGroup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="827">
+          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/artista.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
+        <state relative-caret-position="18">
           <caret line="900" column="30" selection-start-line="897" selection-start-column="4" selection-end-line="900" selection-end-column="30" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
           <folding />
@@ -1809,6 +1842,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/admin_panel/templates/member_add.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1816,10 +1850,34 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
 =======
+=======
+    <entry file="file://$PROJECT_DIR$/app/user/sampleTemplate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="26" column="57" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/user/createGroup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-316">
+          <caret line="124" column="118" selection-start-line="124" selection-start-column="70" selection-end-line="124" selection-end-column="118" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <marker date="1473140663112" expanded="true" signature="2106:2294" ph="INSERT INTO groups... " />
+            <marker date="1473140663112" expanded="true" signature="7058:7075" ph="..." />
+            <marker date="1473140663112" expanded="true" signature="7214:7231" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/app/user/mygroup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="124" column="52" selection-start-line="124" selection-start-column="52" selection-end-line="124" selection-end-column="52" />
+        <state relative-caret-position="-1167">
+          <caret line="8" column="46" selection-start-line="6" selection-start-column="4" selection-end-line="8" selection-end-column="46" />
           <folding>
             <marker date="1472987311659" expanded="true" signature="524:573" ph="SELECT * FRO... groups" />
             <marker date="1472987311659" expanded="true" signature="1063:1186" ph="INSERT INTO group_post... " />
@@ -1832,19 +1890,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/user/createGroup.php">
+    <entry file="file://$PROJECT_DIR$/app/admin/addUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="165" column="179" selection-start-line="165" selection-start-column="28" selection-end-line="165" selection-end-column="179" />
+        <state relative-caret-position="1638">
+          <caret line="96" column="12" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="12" />
           <folding>
+<<<<<<< Updated upstream
             <marker date="1473140663112" expanded="true" signature="2106:2294" ph="INSERT INTO groups... " />
             <marker date="1473140663112" expanded="true" signature="7058:7075" ph="..." />
             <marker date="1473140663112" expanded="true" signature="7214:7231" ph="..." />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+=======
+            <marker date="1473140841403" expanded="true" signature="476:560" ph="INSERT INTO user... " />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -1853,20 +1916,19 @@
           <folding />
 =======
     <entry file="file://$PROJECT_DIR$/app/admin/approveCreatedGroup.php">
+=======
+    <entry file="file://$PROJECT_DIR$/app/admin/createUser.php">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="57" column="84" selection-start-line="57" selection-start-column="84" selection-end-line="57" selection-end-column="84" />
+        <state relative-caret-position="273">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#0;n#tr#0;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#td#0;n#tr#1;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#1;n#tr#2;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
           </folding>
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
         </state>
