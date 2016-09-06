@@ -1748,6 +1748,16 @@ h3{
     width: 300px;
     height: 40px;
     margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 400px !important;
+    cursor: pointer;
+}
+
+.welcome_back_button{
+    font-size: inherit !important;
+    width: 300px;
+    height: 40px;
+    margin-top: 0px;
     margin-bottom: 20px;
     max-width: 400px !important;
     cursor: pointer;

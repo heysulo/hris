@@ -6,4 +6,4 @@
  * Time: 5:32 PM
  */
 
-header("location:newpassword.php");
+header("location:setupProfile.php");
