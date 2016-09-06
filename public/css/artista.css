@@ -1971,7 +1971,7 @@ h3{
 /**************************************/
 
 .admin_main_content{
-    clear: both;
+    float: left;
 }
 
 .admin_member_management_navbar{
@@ -2056,6 +2056,61 @@ h3{
     left: 5%;
     height: 45px;
 }
+
+
+.admin_main_content_area{
+    float: left;
+    height: auto;
+    width: calc(100% - 70px);
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 15px;
+}
+
+
+.admin_selected_profile_background{
+    height: 100px;;
+    clear: both;
+    padding: 0px 10px;
+    position: relative;
+    left: calc(50% - 210px);
+    width: 400px;;
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+
+}
+
+
+.admin_selected_profile_image{
+    width: 82px;
+    height: 82px;
+    background-image: url("../img/oggi.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 2px solid #333;
+    position: relative;
+    left: 0px;
+    top: 6px;
+}
+
+.admin_selected_profile_name{
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    top : -70px;
+    left: 100px;
+}
+
+
+.admin_selected_profile_role{
+    color: #aaa;
+    margin-top: 5px;
+    position: relative;
+    font-size: 14px;
+    top : -70px;
+    left: 100px;
+}
+
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
