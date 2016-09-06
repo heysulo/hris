@@ -11,14 +11,12 @@ body{
     background-color: #fff;
     border: 1px solid #ccc;
     max-width: 555px;
-    margin: 10px;
     padding: 10px;
     left: 50%;
     width: auto;
     height: auto;
     border-radius: 4px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto;
 }
 
 .cbox_header{
@@ -2247,4 +2245,15 @@ li.active a, li.active a:hover {
     border: 1px solid forestgreen;
     padding: 3px;
     background: forestgreen;
+    font-weight:600;
+    color: white;
+}
+
+/*-------------------------------------- Text input css*/
+
+.txt_input{
+    padding:5px;
+    border:1px solid gray;
+    border-radius: 3px;
+    margin: 5px;
 }
