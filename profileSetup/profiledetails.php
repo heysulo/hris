@@ -24,9 +24,9 @@
         echo "<hr class=\"welcome_profile_setup_hr\">";
         include("./template/personal_info.php");
         echo "<hr class=\"welcome_profile_setup_hr\">";
-//        include ("./template/interetst.php");
+//        include ("./includes/interetst.php");
 //        echo "<hr class=\"welcome_profile_setup_hr\">";
-//        include ("./template/languages.php");
+//        include ("./includes/languages.php");
 //        echo "<hr class=\"welcome_profile_setup_hr\">";
         ?>
         <center>

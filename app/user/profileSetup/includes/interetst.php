@@ -13,16 +13,13 @@
 	</div>
 
 	<input id="new_skill_input" name="firstname" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text"><br><br>
-	<center><button onclick="insertSkill();" class="default_button edit_profile_contactinfo_add_button">Add to Profile</button></center>
+	<center><input type="button" onclick="insertSkill();" class="default_button edit_profile_contactinfo_add_button" value="Add to Profile"></center>
 	<br><br>
 	<div id="skill_item_container">
-		<?php
-			$str =  "Your lists will also appear in the Interests section of your bookmarks. Simply click the list's name to see all the recent posts and activity from the Pages and people featured in the list.";    
-			$ary = explode(' ', $str);
-			foreach($ary as $str){
-			   include("skill_item.php");
-			}
-		?>
+		<div class="skill_item">
+			<div class="edit_profile_contactinfo_item_remove_skill" onclick='this.parentElement.outerHTML=""'></div>
+			// item added here...
+		</div>
 	</div>
 </div>
 
