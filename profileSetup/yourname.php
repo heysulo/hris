@@ -1,4 +1,4 @@
-<html>
+    <html>
 <head>
     <title>USER </title>
     <link rel="stylesheet" type="text/css" href="../public/css/artista.css">
