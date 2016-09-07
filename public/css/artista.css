@@ -1821,7 +1821,7 @@ h3{
     height: 140px;
     border: 4px solid #fff;
     border-radius: 4px;
-    background-image: url("../img/oggi.png");
+    background-image: url("../img/defimg.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     box-shadow: 0px 0px 15px 5px #ccc;
@@ -2045,7 +2045,7 @@ h3{
 
 .admin_new_member_email{
     width: 90%;
-    position: relative;
+    /*position: relative;*/
     left: 5%;
     margin: 8px 0;
     display: inline-block;

@@ -5,8 +5,9 @@
 		</div>
 	</div>
 
+	<!--//add list here...-->
 	<div id="contact_info_item_container">
-		//add list here...
+
 	</div>
 	<hr class="advancedsearch_hr">
 	<div class="dboxheader dbox_head_edit_profile_new_field">

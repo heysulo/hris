@@ -6,12 +6,12 @@
 			
 	</div>
 	<div id="shared_info_container">
-		//LIst here
-		<div class="contact_info_item edit_profile_contactinfo_item">
+		<!--//LIst here-->
+		<!--<div class="contact_info_item edit_profile_contactinfo_item">
 			<div class="edit_profile_contactinfo_item_field">School :</div>
 			<div class="edit_profile_contactinfo_item_remove" onclick='this.parentElement.outerHTML="";'></div>
 			<div class="edit_profile_contactinfo_item_value">St. Aloysius' College, Galle</div>
-		</div>
+		</div>-->
 	</div>
 	<hr class="advancedsearch_hr">
 	<div class="dboxheader dbox_head_edit_profile_new_field">
@@ -34,17 +34,3 @@
 		<input type="button" onclick="insertsharedInfo()" class="default_button edit_profile_contactinfo_add_button" value="Add to Profile">
 	</center>
 </div>
-
-<script type="text/javascript">
-	function insertsharedInfo() {
-		var par = document.getElementById("shared_info_container");
-		var opt = document.getElementById("shared_info_opt").value;
-		var val = document.getElementById("input_shared_info").value;
-		var code = "<div class=\"contact_info_item edit_profile_contactinfo_item\">" +
-			"<div class=\"edit_profile_contactinfo_item_field\">"+opt+"</div>" +
-			"<div class=\"edit_profile_contactinfo_item_remove\" onclick=\'this.parentElement.outerHTML=\"\";\'></div>" +
-			"<div class=\"edit_profile_contactinfo_item_value\">"+val+"</div>" +
-			"</div>"
-		par.innerHTML += code;
-	}
-</script>

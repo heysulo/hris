@@ -16,21 +16,12 @@
 	<center><input type="button" onclick="insertLanguage()" class="default_button edit_profile_contactinfo_add_button" value="Add to Profile"></center>
 	<br><br>
 	<div id="language_item_container">
-		<div class="skill_item language_item">
+		<!--<div class="skill_item language_item">
 
-			<div class="edit_profile_contactinfo_item_remove_skill" onclick='this.parentElement.outerHTML=""'></div>
-			//item added here.
-		</div>
+			<!--<div class="edit_profile_contactinfo_item_remove_skill" onclick='this.parentElement.outerHTML=""'></div>-->
+			<!--//item added here.
+		</div>-->
 	</div>
 	<br>
 	
 </div>
-
-<script type="text/javascript">
-	function insertLanguage() {
-		var par = document.getElementById("language_item_container");
-		var val = document.getElementById("new_language_input").value;
-		var code = "<div class=\"skill_item language_item\"><div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
-		par.innerHTML += code;
-	}
-</script>

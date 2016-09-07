@@ -8,6 +8,16 @@
     include('../../templates/_header.php');
     session_start();
     ?>
+
+    <style>
+        input{
+            font-size: 1em;
+        }
+
+        select{
+            font-size: .9em;
+        }
+    </style>
 </head>
 
 <body class="welcome_body">
@@ -18,7 +28,18 @@
     Welcome to HRIS UCSC !
 </div>
 <div>
-    <form action="" name="welcomeForm" method="post">
+    <form action="submitForm.php" name="welcomeForm" method="post" enctype="multipart/form-data">
+
+        <!--Set email address to hiden element-->
+        <?php
+            $emailAdd = $_GET['em'];
+            $email = base64_decode($emailAdd);
+            $_SESSION['email'] = $email;
+
+            //string base64_encode ( string $data ) This how encoded email address.
+
+        ?>
+        <!--Step 1 . Get user password-->
         <div id="content_1">
 
             <div class="dbox welcome_section_maindbox">
@@ -27,17 +48,19 @@
 
                     Welcome to Human Resource Information System of University of Colombo School of Computing. Please create a password for your account in order to continue.
                 </div>
-                <div align="center"">
+                <div align="center">
                         <input type="password" id="pw" name="password" class="welcome_inputbox" placeholder="Enter Password" required><br>
                         <input type="password" id="cpw" name="com_pw" class="welcome_inputbox" placeholder="Re-Enter Your Password" required><br>
                         <input class="user_choose_button welcome_continue_button" value="Continue" type="button" id="step1">
 
                 <div class="alert" id="step1_alert" style="display: none"></div>
                 </div>
+                </div>
             </div>
         </div>
 
-        <div id="content_2" style="display: block">
+        <!--Step 2. Get user basic details.-->
+        <div id="content_2" style="display: none">
 
             <div class="dbox welcome_section_maindbox">
                 <?php include("steps.php"); ?>
@@ -46,8 +69,16 @@
                     This name will be used everywhere inside the system including searches.
                 </div>
                 <center>
-                    <div class="welcome_profile_picture"><div class="welcome_new_propic">Upload Image</div></div>
-                    <input type="text" id="fname" name="firstname" class="welcome_inputbox" placeholder="First Name" required><br>
+                    <div class="welcome_profile_picture" id="pro_pic">
+                        <div class="welcome_new_propic" id="pro_pic_text">
+                            Upload Image
+                            <input type="file" style="display: none" accept="image/*" name="pro_pic_img" id="pro_pic_img" >
+                            <input type="button" value="Browse" style="font-size: .8em" onclick="document.getElementById('pro_pic_img').click();">
+                        </div>
+                    </div>
+
+
+                    <input type="text" id="fname" name="firstName" class="welcome_inputbox" placeholder="First Name" required><br>
                     <input type="text" id="mname" name="middlename" class="welcome_inputbox" placeholder="Middle Name"><br>
                     <input type="text" id="lname" name="lastname" class="welcome_inputbox" placeholder="Last Name" required><br>
                     <div class="alert" id="step2_alert_1" style="display: none"></div>
@@ -57,7 +88,7 @@
                         Also include your academic year so the members can easily find you inside the Human Resource Information System.
                     </div>
                     <div>
-                        <select class="welcome_dropdown" id="role" required>
+                        <select class="welcome_dropdown" name="category" id="role" required>
                             <option value="">-- select --</option>
                             <option value="Student">Student</option>
                             <option value="Instructor">Instructor</option>
@@ -65,7 +96,8 @@
                             <option value="Academic Staff">Academic Staff</option>
                         </select><br>
                         <input type="text" id="aca_year" name="academic_year" class="welcome_inputbox" placeholder="Academic Year"><br>
-                        <select class="welcome_dropdown" required>
+                        <select class="welcome_dropdown" name="gender" id="gender" required>
+                            <option value="">-- select --</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select><br>
@@ -79,7 +111,9 @@
             </div>
         </div>
 
-        <div id="content_3" style="display: block">
+
+        <!--Step 3 . Get contact info and some personal info-->
+        <div id="content_3" style="display: none">
             <div class="dbox welcome_section_maindbox">
                 <?php include("steps.php"); ?>
                 <div class="welcome_section_introtxt">
@@ -101,7 +135,8 @@
             </div>
         </div>
 
-        <div id="content_4" style="display: block">
+        <!--Step 4. GEt skills and interests-->
+        <div id="content_4" style="display: none">
             <div class="dbox welcome_section_maindbox">
                 <?php include("steps.php"); ?>
                 <div class="welcome_section_introtxt">
@@ -112,10 +147,12 @@
                     echo "<hr class=\"welcome_profile_setup_hr\">";
                     include("./includes/languages.php");
                 ?>
-                <div style="text-align: center;">
+                <br>
+                <div style="text-align: center; margin-top: auto">
 
-                    <input class="user_choose_button welcome_continue_button" value="Go to Dashboard" type="button" id="step4">
+                    <input class="user_choose_button welcome_continue_button" value="Go to Dashboard" type="submit" id="step4" name="submit">
                     <input class="user_choose_button welcome_back_button" value="Back" type="button" id="back3">
+
                 </div>
 
             </div>
@@ -136,11 +173,19 @@
 
             //form validation..
             if ($('#pw').val() != "" ){
+                $('#step1_alert').css('display','none');
                 if($('#pw').val() == $('#cpw').val()){
-                    $('#content_1').fadeOut();
-                    $('#content_2').fadeIn();
-                    $('div#step2').addClass('welcome_step_active');
-                    $('div#step1').removeClass('welcome_step_active');
+                    $('#step1_alert').css('display','none');
+                    if($('#pw').val().length > 7){
+                        $('#step1_alert').css('display','none');
+                        $('#content_1').fadeOut();
+                        $('#content_2').fadeIn();
+                        $('div#step2').addClass('welcome_step_active');
+                        $('div#step1').removeClass('welcome_step_active');
+                    }else{
+                        $('#step1_alert').text("Password must be strong. Please use more than 8 characters");
+                        $('#step1_alert').css('display','block');
+                    }
                 }else{
                     $('#step1_alert').text("Password not matched.");
                     $('#step1_alert').css('display','block');
@@ -165,11 +210,19 @@
                     $('#step2_alert_2').text("Please select your roll.");
                     $('#step2_alert_2').css('display','block');
                 }else{
-                    $('#content_2').fadeOut();
-                    $('#content_3').fadeIn();
-                    $('body').scrollTop(0);
-                    $('div#step3').addClass('welcome_step_active');
-                    $('div#step2').removeClass('welcome_step_active');
+                    $('#step2_alert_2').css('display','none');
+                    if($('#gender').val() ==""){
+                        $('#step2_alert_2').text("Please select gender.");
+                        $('#step2_alert_2').css('display','block');
+                    }else{
+                        $('#step2_alert_2').css('display','none');
+                        $('#content_2').fadeOut();
+                        $('#content_3').fadeIn();
+                        $('body').scrollTop(0);
+                        $('div#step3').addClass('welcome_step_active');
+                        $('div#step2').removeClass('welcome_step_active');
+                    }
+
                 }
             }
 
@@ -183,10 +236,9 @@
             $('div#step3').removeClass('welcome_step_active');
         });
 
-        $('input#step4').click(function () {
-            $('#content_4').fadeOut();
-        });
 
+
+        /*-------------------------------------------------------------------------------*/
         /*Backward button*/
         $('input#back1').click(function () {
             $('#content_2').fadeOut();
@@ -213,10 +265,24 @@
         });
 
 
+        // Function for Preview Image.
+        $(function() {
+            $("#pro_pic_img").change(function() {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+        function imageIsLoaded(e) {
+            $('#pro_pic').css('background-image', 'url('+e.target.result+')');
+        };
+
     });
 
 
-
+    /*Contact info insert function*/
     function insertContactInfo() {
         var par = document.getElementById("contact_info_item_container");
         var val = document.getElementById("new_contact_input").value;
@@ -228,6 +294,40 @@
             "</div>";
         par.innerHTML += code;
     }
+
+
+    /*Skills data insert function*/
+    function insertSkill() {
+        var par = document.getElementById("skill_item_container");
+        var val = document.getElementById("new_skill_input").value;
+        var code = "<div class=\"skill_item\"><div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
+        par.innerHTML += code;
+    }
+
+    /*Shared info adding function*/
+    function insertsharedInfo() {
+        var par = document.getElementById("shared_info_container");
+        var opt = document.getElementById("shared_info_opt").value;
+        var val = document.getElementById("input_shared_info").value;
+        var code = "<div class=\"contact_info_item edit_profile_contactinfo_item\">" +
+            "<div class=\"edit_profile_contactinfo_item_field\">"+opt+"</div>" +
+            "<div class=\"edit_profile_contactinfo_item_remove\" onclick=\'this.parentElement.outerHTML=\"\";\'></div>" +
+            "<div class=\"edit_profile_contactinfo_item_value\">"+val+"</div>" +
+            "</div>"
+        par.innerHTML += code;
+    }
+
+    /*Language data enter function*/
+    function insertLanguage() {
+        var par = document.getElementById("language_item_container");
+        var val = document.getElementById("new_language_input").value;
+        var code = "<div class=\"skill_item language_item\"><div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
+        par.innerHTML += code;
+    }
+
+
+
+
 
 </script>
 
