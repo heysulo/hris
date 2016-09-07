@@ -51,7 +51,15 @@
 </head>
 <body>
 <div class="clearfix"  style="padding: 0px;">
-    <?php include_once('../templates/navigation_panel.php'); ?>
+
+    <div class="panelSide">
+        <center>
+            <img class="ucsclogo" src="<?php echo $publicPath?>img/ucsc_logo_white.png">
+            <p class="hrsititle">Human Resource Information System</p>
+        </center>
+        <ul class="navbar" id="navbar"></ul>
+    </div>
+
     <?php include_once('../templates/top_pane.php'); ?>
 
     <div class="bottomPanel">

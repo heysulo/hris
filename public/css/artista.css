@@ -322,6 +322,8 @@ h3{
     background-color: #fff;
     height: 40px;
     width: calc(100%);
+    position: fixed;
+    z-index: 8;
 }
 
 .topprofilecontent{
@@ -452,7 +454,7 @@ h3{
 /*~~~~BOTPANE~~~~~~*/
 .bottomPanel{
     float: right;
-    margin: 0px;
+    margin-top: 40px;
     width: 100%;
     background-color: #eff3f4;
     width: calc(100% - 220px);
@@ -491,6 +493,7 @@ h3{
     width: 220px;
     overflow: auto;
     position: fixed;
+    z-index: 10;
 }
 
 .navbar {
@@ -943,7 +946,7 @@ h3{
     height: 140px;
     border: 4px solid #fff;
     border-radius: 4px;
-    background-image: url("../img/oggi.png");
+    background-image: url("../img/defimg.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     box-shadow: 0px 0px 15px 5px #42b72a;
@@ -1027,8 +1030,8 @@ h3{
 }
 
 .profile_section_contactinfo{
-    margin-left: 80px;
-    width: 500px !important;
+    margin-left: 40px;
+    width: 450px !important;
     padding-bottom: 25px;
     margin-top: 20px;
 }
@@ -1068,8 +1071,8 @@ h3{
 
 
 .profile_section_socities{
-    margin-left: 80px;
-    width: 500px !important;
+    margin-left: 40px;
+    width: 450px !important;
     margin-top: 20px;
 }
 
@@ -1087,15 +1090,13 @@ h3{
 }
 
 .society_item_role{
-    position: relative;
-    left: 280px;
-    top: -20px;
+   padding: 5px;
 }
 
 .society_item{
     width: auto;
     cursor:pointer !important;
-    max-height: 20px;
+    max-height: 40px;
     background-image: url('../img/ico_verified.png');
     background-position: 470px 1px;
     background-repeat: no-repeat;
@@ -1126,12 +1127,12 @@ h3{
 
 .profile_section_main_left{
     float: left;
-    width: 650px
+    width: 50%;
 }
 
 .profile_section_main_right{
     float: left;
-    width: calc(100% - 650px)
+    width: 50%;
 }
 
 .profile_section_aboutme{
@@ -1221,10 +1222,9 @@ h3{
 }
 
 .profile_section_languages{
-    margin-left: 80px;
+    margin-left: 40px;
     text-align: justify;
-    padding: 15px;
-    width: 500px !important;
+    width: 450px !important;
     margin-top: 20px;
     overflow: hidden;
 }

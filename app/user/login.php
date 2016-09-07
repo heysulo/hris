@@ -21,7 +21,7 @@ function loginUser(){
 
 
         //get hashed password from source
-        $query = "SELECT password FROM user WHERE email='$email' LIMIT 1";
+        $query = "SELECT password FROM member WHERE email='$email' LIMIT 1";
         $res = mysqli_query($conn,$query);
         $hashed = mysqli_fetch_assoc($res);
         $hashedPW = $hashed['password'];
@@ -33,9 +33,10 @@ function loginUser(){
 
         if (!$comparePW){
             header("location:../../index.php?error=1");
+            //echo mysqli_error($conn);
         }else{
             //Query to fectch user login data from database
-            $query2 = "SELECT * FROM user WHERE email='$email'";
+            $query2 = "SELECT * FROM member WHERE email='$email'";
 
             //Execute the query.
             $result = mysqli_query($conn,$query2);
@@ -43,13 +44,18 @@ function loginUser(){
             $row = mysqli_fetch_assoc($result);
 
             $_SESSION['email'] = $email;
-            $_SESSION['fname'] = $row['firstname'];
-            $_SESSION['lname'] = $row['lastname'];
-            $_SESSION['pro_pic'] = $row['pro_pic'];
-            $_SESSION['type'] = $row['type'];
-            $_SESSION['user_id'] = $row['userid'];
+            $_SESSION['fname'] = $row['first_name'];
+            $_SESSION['lname'] = $row['last_name'];
+            $_SESSION['pro_pic'] = $row['profile_picture'];
+            $_SESSION['type'] = $row['category'];
+            $_SESSION['user_id'] = $row['member_id'];
+            $_SESSION['category'] = $row['category'];
+            $_SESSION['aca_year'] = $row['academic_year'];
+            $_SESSION['gender'] = $row['gender'];
+            $_SESSION['last_login'] = $row['last_login'];
 
             header('location:dashboard.php');
+            //echo mysqli_error($conn);
         }
 
     }

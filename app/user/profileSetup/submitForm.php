@@ -50,7 +50,7 @@ function createUser(){
 
     $lname = mysqli_real_escape_string($conn,$_POST['lastname']);
 
-    $username = substr(strtolower($fname),0,-2)."_".substr(strtolower($lname),0,-2);
+    $username = strtolower($fname).rand(10,100000);
 
     $category = mysqli_real_escape_string($conn,$_POST['category']);
 
@@ -71,8 +71,8 @@ function createUser(){
             header("location:../../index.php");
         }
     }else{
-        header("location:index.php");
-        //echo mysqli_error($conn);
+        //header("location:index.php");
+        echo mysqli_error($conn);
     }
 
 

@@ -23,7 +23,7 @@
 
     if(isset($_POST["createGroup"])) {
 
-        $target_dir = "uploads/groups/";
+        $target_dir = "../images/group/";
         $g_logo_name = basename($_FILES['g_logo']['name']);
         $tmp_logo = $_FILES['g_logo']['tmp_name'];
 
@@ -62,14 +62,24 @@
             $g_description = mysqli_real_escape_string($conn, $_POST['g_description']);
             $g_category = mysqli_real_escape_string($conn, $_POST['category']);
             $g_color = mysqli_real_escape_string($conn, $_POST['g_color']);
+            $g_privacy = mysqli_real_escape_string($conn, $_POST['privacy_status']);
 
-            $qry = "INSERT INTO groups(g_name,g_description,g_category,g_logo,created_date,g_creater_id,group_color) VALUES('$g_name','$g_description','$g_category','$g_logo_name',NOW(),'$user_id','$g_color')";
+            $qry = "INSERT INTO groups(name,description,category,logo,created_date,creator,color,privacy) VALUES('$g_name','$g_description','$g_category','$g_logo_name',NOW(),'$user_id','$g_color','$g_privacy')";
             $moving = move_uploaded_file($tmp_logo,$target_file);
             if ($moving) {
                 $res = mysqli_query($conn,$qry);
                 if ($res){
                     $note = "Your create group request sent to system administrator. When system administration accept your request your group will active.";
+                    $resp = mysqli_query($conn,"SELECT group_id FROM groups WHERE name='$g_name'");
+                    $data = mysqli_fetch_assoc($resp);
+                    $g_id = $data['group_id'];
+                    $qry_to_add_member = "INSERT INTO group_member VALUES ('$g_id','$user_id','Administrator',20,20,20,20,20,20,20,20,20,20,20,'Created this group in this system.',NOW())";
+                    $respo = mysqli_query($conn,$qry_to_add_member);
+                    /*$error = mysqli_error($conn);*/
+                }else{
+                    $error = mysqli_error($conn);
                 }
+
             }else{
                 $error = "Sorry, there was an error uploading your file. $moving";
             }
@@ -91,6 +101,14 @@
         input[type=text]{
             width: 300px;
             padding: 8px;
+        }
+
+        input{
+            font-size: .9em;
+        }
+
+        select{
+            font-size: .8em;
         }
 
         .div_input{
@@ -143,7 +161,7 @@
                             <th style="row-span: 2">Privacy</th>
                             <td>
                                 <label style="font-size: .9em;padding: 3px;">
-                                    <input type="radio" name="privacy_status" VALUE="public" required>
+                                    <input type="radio" name="privacy_status" VALUE="Public" required>
                                     Public
                                 </label>
                                 <div class="div_input">Anyone can see the group, its members and their posts.</div>
@@ -154,7 +172,7 @@
                             <th></th>
                             <td>
                                 <label style="font-size: .9em;padding: 3px; ">
-                                    <input type="radio" name="privacy_status" value="private" required>
+                                    <input type="radio" name="privacy_status" value="Private" required>
                                     Private
                                 </label>
                                 <div class="div_input">Anyone can find the group and see who's in it.<br> Only members can see posts.</div>
@@ -194,5 +212,8 @@
 <?php
 include_once('../templates/_footer.php');
 ?>
+
+
+
 </body>
 </html>

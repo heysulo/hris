@@ -46,13 +46,18 @@
 
                 <?php
                 //get group details according to user
-                $qry_to_get_groups = "SELECT * FROM groups WHERE group_id=(SELECT group_id FROM group_members WHERE member_id ='".$_SESSION['user_id']."')";
-                $res = mysqli_query($conn,$qry_to_get_groups);
-                while($row = mysqli_fetch_assoc($res)){
+                $qry_to_get_group_ids = "SELECT group_id FROM group_member WHERE member_id ='".$_SESSION['user_id']."'";
+                $group_ids = mysqli_query($conn, $qry_to_get_group_ids);
+
+                while($gid = mysqli_fetch_assoc($group_ids)){
+                    $qry_to_get_groups = "SELECT * FROM groups WHERE group_id='".$gid['group_id']."'";
+                    $res = mysqli_query($conn,$qry_to_get_groups);
+
+                    $row = mysqli_fetch_assoc($res);
                     echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
-                    echo "<div style='padding:3px;'><b>".$row['g_name']."</b></div>";
-                    echo "<div style='padding:3px;'>Category : ".$row['g_category']."</div>";
-                    echo "<div style='font-size:12px; padding: 5px;'>".$row['g_description']."</div>";
+                    echo "<div style='padding:3px;'><b>".$row['name']."</b></div>";
+                    echo "<div style='padding:3px;'>Category : ".$row['category']."</div>";
+                    echo "<div style='font-size:12px; padding: 5px;'>".$row['description']."</div>";
                     echo "</div>";
                 }
                 ?>
@@ -73,9 +78,9 @@
                 $res = mysqli_query($conn,$qry_get_groups);
                 while($row = mysqli_fetch_assoc($res)){
                     echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
-                    echo " <div style='padding: 3px;'><b>".$row['g_name']."</b></div>";
-                    echo " <div style='padding: 3px;'>Category : ".$row['g_category']."</div>";
-                    echo "<div style='font-size: 12px; padding: 5px;'>".$row['g_description']."</div>";
+                    echo " <div style='padding: 3px;'><b>".$row['name']."</b></div>";
+                    echo " <div style='padding: 3px;'>Category : ".$row['category']."</div>";
+                    echo "<div style='font-size: 12px; padding: 5px;'>".$row['description']."</div>";
                     echo "</div>";
                 }
                 ?>

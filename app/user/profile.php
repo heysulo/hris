@@ -14,7 +14,15 @@
         $lname = $_SESSION['lname'];
         $type  = $_SESSION['type'];
         $email = $_SESSION['email'];
-        $pro_pic = $_SESSION['pro_pic'];
+        $pro_pic= $_SESSION['pro_pic'];
+        $category = $_SESSION['category'];
+        $aca_year = $_SESSION['aca_year'];
+        $gender = $_SESSION['gender'];
+        $lastLogin = $_SESSION['last_login'];
+
+        $pro_picture = $pro_pic != "" ? $pro_pic : "defimg.jpg";
+
+        $lastLoginData = explode(" ",$lastLogin);
 
     ?>
 <title>HRIS | My Profile</title>
@@ -28,7 +36,9 @@
     <div class="bottomPanel">
         <!--Content on top area-->
         <div class="profile_section_intro">
-            <div class="profile_profile_image"></div>
+
+            <img class="profile_profile_image" src="<?php echo "$imagePath/pro_pic/$pro_picture"; ?>" alt=""></img>
+
             <div class="profile_name">
                 <?php echo $fname." ".$lname?> <!--Print user name-->
                 <button onclick="location.href='../editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
@@ -38,12 +48,12 @@
                 <div class="profile_availability_text">Available till 2.00 PM</div>
             </div>
             <div class="profile_last_seen_box">
-                <div class="profile_last_seen_text">Last seen : 15 minutes ago</div>
+                <div class="profile_last_seen_text">Last seen : <?php echo $lastLoginData[0]." at ".$lastLoginData[1]; ?> <!--15 minutes ago--></div>
             </div>
             <div class="profile_basic_summery">
-                Role : Student<br>
-                Academic Year : 2014/2015<br>
-                Gender : Male<br>
+                Role : <?php echo $category?><br>
+                <?php if($aca_year != 0000){ echo "Academic Year : $aca_year"; } ?><br>
+                Gender : <?php echo $gender ?><br>
             </div>
         </div>
 
@@ -63,14 +73,10 @@
                         <div class="contact_info_item_field">Email :</div>
                         <div class="contact_info_item_value"><?php echo $email ?></div>
                     </div>
-                    <div class="contact_info_item">
+                    <!--<div class="contact_info_item">
                         <div class="contact_info_item_field">Email :</div>
-                        <div class="contact_info_item_value"><?php echo $email ?></div>
-                    </div>
-                    <div class="contact_info_item">
-                        <div class="contact_info_item_field">Email :</div>
-                        <div class="contact_info_item_value"><?php echo $email ?></div>
-                    </div>
+                        <div class="contact_info_item_value">echo $email </div>
+                    </div>-->
 
                 </div>
 
@@ -84,8 +90,8 @@
 
                     <!--Content info add from here-->
                     <div class="society_item">
-                        <div class="society_item_club">Society : Gavel Club University of Colombo</div>
-                        <div class="society_item_role">My Role : Super Long President</div>
+                        <div class="society_item_club"><b>Society</b> : Gavel Club University of Colombo</div>
+                        <div class="society_item_role"><b>My Role</b> : Super Long President</div>
                         <br>
                         <div class="society_item_extra">
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
@@ -96,19 +102,6 @@
                     </div>
                     <hr>
 
-                    <!--Content info add from here-->
-                    <div class="society_item">
-                        <div class="society_item_club">Society : Gavel Club University of Colombo</div>
-                        <div class="society_item_role">My Role : Super Long President</div>
-                        <br>
-                        <div class="society_item_extra">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                            Nulla consequat massa quis enim.
-                        </div>
-                    </div>
-                    <hr>
                 </div>
 
                 <!--Skilled programming technology-->
@@ -119,15 +112,9 @@
                         </div>
                     </div>
                     <div>
-                        <?php
-                        $str =  "Af-Soomaali,Afrikaans,Azərbaycan dili,Bahasa Indonesia,Bahasa Melayu,Basa Jawa,Bisaya,Bosanski,Brezhoneg";
-                        $ary = explode(',', $str);
-                        foreach($ary as $str){
-                        echo "<div class='skill_item language_item'>
-	                                $str
-                              </div>";
-                        }
-                        ?>
+                        <div class='skill_item language_item'>
+                            Java
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,15 +144,7 @@
                         <div class="dboxtitle botmarg">
                             About Me
                         </div>
-                        <p>     Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                            Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                            Nulla consequat massa quis enim.
-                            Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                            In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-                            Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                            Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+                        <p> </p>
                     </div>
                 </div>
 
@@ -177,15 +156,9 @@
                         </div>
                     </div>
                     <div>
-                        <?php
-                        $str =  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.";
-                        $ary = explode(' ', $str);
-                        foreach($ary as $str){
-                            echo "<div class='skill_item'>
-                                    $str
-                                  </div>";
-                        }
-                        ?>
+                        <div class='skill_item'>
+                            Climbing
+                        </div>
 
                     </div>
                 </div>
