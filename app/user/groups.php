@@ -55,6 +55,7 @@
 
                     $row = mysqli_fetch_assoc($res);
                     echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
+                    echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:".$row['color'].";margin:0px 10px 0px 10px;  border-radius: 2px\"></div>";
                     echo "<div style='padding:3px;'><b>".$row['name']."</b></div>";
                     echo "<div style='padding:3px;'>Category : ".$row['category']."</div>";
                     echo "<div style='font-size:12px; padding: 5px;'>".$row['description']."</div>";
@@ -78,6 +79,7 @@
                 $res = mysqli_query($conn,$qry_get_groups);
                 while($row = mysqli_fetch_assoc($res)){
                     echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
+                    echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:".$row['color'].";margin:0px 10px 0px 10px;  border-radius: 2px\"></div>";
                     echo " <div style='padding: 3px;'><b>".$row['name']."</b></div>";
                     echo " <div style='padding: 3px;'>Category : ".$row['category']."</div>";
                     echo "<div style='font-size: 12px; padding: 5px;'>".$row['description']."</div>";
@@ -101,6 +103,14 @@ include_once('../templates/_footer.php');
         var new_dir = dir.replace('groups.php','');
         window.location.replace(new_dir+'mygroup.php?group='+id);
     });
+
+    $('#allgroups').on('click','.listed_group',function () {
+        var id = $(this).attr('id');
+        var dir = window.location.pathname;
+        var new_dir = dir.replace('groups.php','');
+        window.location.replace(new_dir+'mygroup.php?group='+id);
+    });
+
 </script>
 
     </body>

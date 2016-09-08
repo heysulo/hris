@@ -115,6 +115,24 @@
                         <div class='skill_item language_item'>
                             Java
                         </div>
+                        <div class='skill_item language_item'>
+                            PHP
+                        </div>
+                        <div class='skill_item language_item'>
+                            Python
+                        </div>
+                        <div class='skill_item language_item'>
+                            MYSQL
+                        </div>
+                        <div class='skill_item language_item'>
+                            AngularJS
+                        </div>
+                        <div class='skill_item language_item'>
+                            Graphic Designing
+                        </div><div class='skill_item language_item'>
+                            Networking
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -159,6 +177,24 @@
                         <div class='skill_item'>
                             Climbing
                         </div>
+                        <div class='skill_item'>
+                            Reading
+                        </div>
+                        <div class='skill_item'>
+                            PLaying Video Games
+                        </div>
+                        <div class='skill_item'>
+                            Coding
+                        </div>
+                        <div class='skill_item'>
+                            Creative Writing
+                        </div><div class='skill_item'>
+                            Singing
+                        </div><div class='skill_item'>
+                            Swimming
+                        </div>
+
+
 
                     </div>
                 </div>
