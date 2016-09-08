@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <?php
-    define('hris_access',true);
+    define(hris_access,true);
     require_once('../templates/path.php');
     include('../templates/_header.php');
     $conn = null;
@@ -35,6 +35,7 @@
     if (isset($_POST['add_post']) && $_POST['post_content'] !=""){
         $post_content = $_POST['post_content'];
         $post_query = "INSERT INTO group_post(group_id,added_user_id,content,added_time) VALUES('$group_id','$user_id','$post_content',NOW())";
+
         $res = mysqli_query($conn,$post_query);
         if ($res){
             echo "<script>
