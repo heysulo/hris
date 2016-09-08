@@ -15,6 +15,8 @@
         $type  = $_SESSION['type'];
         $email = $_SESSION['email'];
         $pro_pic = $_SESSION['pro_pic'];
+        $user_id = $_SESSION['user_id'];
+
 
     ?>
     <title>HRIS | Dashboard</title>
@@ -47,5 +49,42 @@
     <?php
         include_once('../templates/_footer.php');
     ?>
+
+    <!--Ajax method to get all post according to this group and show...-->
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type:"GET",
+                url:"getUserPost.php",
+                data:{'action':'getPost',
+                        'user_id':'6'},
+                success:function (response) {
+                    $('.newsfeed_content').html(response);
+                }
+            });
+        });
+
+
+        $('.newsfeed_content').on('click','.newsfeed_item_box',function () {
+            var state = $(this).data('state');
+
+            switch (state){
+                case 1 :
+                case undefined:
+                    $(this).css("max-height","1000px");
+                    $(this).css("height","100%");
+                    $(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
+                    $(this).data('state',2);
+                    break;
+                case 2:
+                    $(this).css("max-height","70px");
+                    $(this).data('state',1);
+                    $(this).children('.newsfeed_item_colorbar').css("background-color","#<?php echo $group_detail['group_color']?>");
+                    break;
+            }
+
+        });
+
+    </script>
 </body>
 </html>
