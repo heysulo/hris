@@ -24,8 +24,6 @@ if(session_id() !== ''){
 
     <div class="group_dbox_category">Entertainment</div>
     <div class="group_dbox_description">so I have given it a width and then margin:0 auto. It works fine with the max-sized browser but when I zoom in or resize the browser width to about half, the background of the header div starts to disappear at some point and does not fill in 100% width.</div>
-
-
 </div>
 
 
