@@ -54,14 +54,38 @@
                     $res = mysqli_query($conn,$qry_to_get_groups);
 
                     $row = mysqli_fetch_assoc($res);
+                    /*
                     echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
                     echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:".$row['color'].";margin:0px 10px 0px 10px;  border-radius: 2px\"></div>";
                     echo "<div style='padding:3px;'><b>".$row['name']."</b></div>";
                     echo "<div style='padding:3px;'>Category : ".$row['category']."</div>";
                     echo "<div style='font-size:12px; padding: 5px;'>".$row['description']."</div>";
-                    echo "</div>";
-                }
+                    echo "</div>";*/
+
+
+                    // echo "<div class=\"dbox group_group_dbox\" >";
+                    //     echo "<div class=\"group_group_dbox_image\"></div>";
+                    //     echo "<div class=\"group_dbox_title\">".$row['name']."</div>";
+                    //
+                    //     echo "<div class=\"group_dbox_category\">".$row['category']."</div>";
+                    //     echo "<div class=\"group_dbox_description\">".$row['description']."</div>";
+                    // echo "</div>";
+
+                    
+
+
+                
                 ?>
+
+                    <div class="dbox group_group_dbox" >
+                        <div class="group_group_dbox_image"></div>
+                        <div class="group_dbox_title"><?php echo $row['name'] ?></div>
+
+                        <div class="group_dbox_category"><?php echo $row['category'] ?></div>
+                        <div class="group_dbox_description"><?php echo $row['description'] ?></div>
+                    </div>
+
+                <?php } ?>
 
             </div>
         </div>
@@ -78,14 +102,25 @@
                 $qry_get_groups = "SELECT * FROM groups";
                 $res = mysqli_query($conn,$qry_get_groups);
                 while($row = mysqli_fetch_assoc($res)){
-                    echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
-                    echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:".$row['color'].";margin:0px 10px 0px 10px;  border-radius: 2px\"></div>";
-                    echo " <div style='padding: 3px;'><b>".$row['name']."</b></div>";
-                    echo " <div style='padding: 3px;'>Category : ".$row['category']."</div>";
-                    echo "<div style='font-size: 12px; padding: 5px;'>".$row['description']."</div>";
-                    echo "</div>";
-                }
-                ?>
+                    // echo "<div class=\"dbox listed_group\" style=\"float: left; width: 300px;\" id='".$row['group_id']."'>";
+                    // echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:".$row['color'].";margin:0px 10px 0px 10px;  border-radius: 2px\"></div>";
+                    // echo " <div style='padding: 3px;'><b>".$row['name']."</b></div>";
+                    // echo " <div style='padding: 3px;'>Category : ".$row['category']."</div>";
+                    // echo "<div style='font-size: 12px; padding: 5px;'>".$row['description']."</div>";
+                    // echo "</div>";
+                    $path = '../images/group/'.$row['logo'];
+                    ?>
+
+
+                    <div class="dbox group_group_dbox" style="border-top-color: <?php echo $row['color'] ?>;" id='<?php echo $row['group_id'] ?>'>
+                        <div class="group_group_dbox_image" style="background-image: url('<?php echo $path?>');"></div>
+                        <div class="group_dbox_title"><?php echo $row['name'] ?></div>
+
+                        <div class="group_dbox_category"><?php echo $row['category'] ?></div>
+                        <div class="group_dbox_description"><?php echo $row['description'] ?></div>
+                    </div>
+
+                <?php } ?>
             </div>
         </div>
     </div>
