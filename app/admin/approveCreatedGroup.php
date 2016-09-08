@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <head>
     <?php
-    define(hris_access,true);
+    define('hris_access',true);
     require_once('../templates/path.php');
     include('../templates/_header.php');
     $conn = null;
