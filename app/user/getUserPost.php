@@ -29,7 +29,7 @@ if (isset($_GET['action'])){
             $q_color = "SELECT color FROM groups WHERE group_id='".$row1['group_id']."'";
             $g_color_a = mysqli_fetch_assoc(mysqli_query($conn,$q_color));
             $g_color = $g_color_a['color'];
-            
+
             //send html as respond to ajax request
             echo "<div class=\"newsfeed_item_box\" style = \"border-color:$g_color\">";
             echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:$g_color;border-radius: 2px\"></div>";

@@ -94,10 +94,7 @@
                         <div class="society_item_role"><b>My Role</b> : Super Long President</div>
                         <br>
                         <div class="society_item_extra">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                            Nulla consequat massa quis enim.
+
                         </div>
                     </div>
                     <hr>
@@ -162,7 +159,13 @@
                         <div class="dboxtitle botmarg">
                             About Me
                         </div>
-                        <p> </p>
+                        <p>I am 19 years old and I am from Matara.
+
+                            Coming to my education qualification. I have completed 12th from st. Joseph English medium H.S school Barwani in the year 2013.
+
+                            Coming to my family background we consist 6 members including me.
+
+                            I have one brother & one sister. </p>
                     </div>
                 </div>
 
