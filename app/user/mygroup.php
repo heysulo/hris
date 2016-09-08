@@ -34,9 +34,8 @@
     //Submit post to database;
     if (isset($_POST['add_post']) && $_POST['post_content'] !=""){
         $post_content = $_POST['post_content'];
-        $post_query = "INSERT INTO group_post(group_id,added_user_id,post_content,added_time) VALUES('$group_id','$user_id','$post_content',NOW())";
+        $post_query = "INSERT INTO group_post(group_id,added_user_id,content,added_time) VALUES('$group_id','$user_id','$post_content',NOW())";
         $res = mysqli_query($conn,$post_query);
-
         if ($res){
             echo "<script>
                     alert('Post add successfully.');
@@ -48,10 +47,6 @@
         }
 
     }
-
-
-
-
 
     ?>
     <title>HRIS | Groups</title>
@@ -68,7 +63,7 @@
     <!--Title and search box area-->
     <div style="float:left;height:80px;width:100%;">
         <div style="float:left;width:auto;height:100%;">
-            <div class="txt_paneltitle"><?php echo $group_detail['g_name']; ?></div>
+            <div class="txt_paneltitle"><?php echo $group_detail['name']; ?></div>
         </div>
         <div style="float:right;width:auto;height:100%;">
             <input type="text" name="search" placeholder="Search groups " class="mainsearch">
@@ -85,9 +80,9 @@
             <div>
                 <?php
 
-                echo " <br><div style='padding: 3px;'><b>".$group_detail['g_name']."</b></div>";
-                echo " <div style='padding: 3px;'>Category : ".$group_detail['g_category']."</div>";
-                echo "<div style='font-size: 12px; padding: 5px;'>".$group_detail['g_description']."</div>";
+                echo " <br><div style='padding: 3px;'><b>".$group_detail['name']."</b></div>";
+                echo " <div style='padding: 3px;'>Category : ".$group_detail['category']."</div>";
+                echo "<div style='font-size: 12px; padding: 5px;'>".$group_detail['description']."</div>";
                 ?>
 
             </div>

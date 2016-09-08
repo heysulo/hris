@@ -21,13 +21,13 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
 
     while ($row = mysqli_fetch_assoc($res)){
         //get posted person from each post
-        $q = "SELECT firstname,lastname FROM user WHERE userid='".$row['added_user_id']."'";
+        $q = "SELECT first_name,last_name FROM member WHERE member_id='".$row['added_user_id']."'";
         $qres = mysqli_fetch_assoc(mysqli_query($conn,$q));
 
         //send html as respond to ajax request
         echo "<div class=\"newsfeed_item_box\" style = \"border-color:#$gcolor\">";
             echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:#$gcolor;border-radius: 2px\"></div>";
-            echo "<div class=\"newsfeed_item_content\"><b>".$qres['firstname']." ".$qres['lastname']."</b> </br> " .$row['post_content']." </div>";
+            echo "<div class=\"newsfeed_item_content\"><b>".$qres['first_name']." ".$qres['last_name']."</b> </br> " .$row['content']." </div>";
             echo "<div class=\"newsfeed_item_timestamp\">".$row['added_time']."</div>";
         echo "</div>";
     }
