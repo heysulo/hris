@@ -25,15 +25,17 @@ if (isset($_GET['action'])){
             $q = "SELECT first_name,last_name FROM member WHERE member_id='".$row2['added_user_id']."'";
             $qres = mysqli_fetch_assoc(mysqli_query($conn,$q));
 
-            //get group color for each post
-            $q_color = "SELECT color FROM groups WHERE group_id='".$row1['group_id']."'";
-            $g_color_a = mysqli_fetch_assoc(mysqli_query($conn,$q_color));
-            $g_color = $g_color_a['color'];
+            //get group color and group name for each post
+            $q_color_name = "SELECT color,name FROM groups WHERE group_id='".$row1['group_id']."'";
+            $g_response = mysqli_fetch_assoc(mysqli_query($conn,$q_color_name));
+            $g_color = $g_response['color'];
+            $g_name = $g_response['name'];
+
 
             //send html as respond to ajax request
             echo "<div class=\"newsfeed_item_box\" style = \"border-color:$g_color\">";
             echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:$g_color;border-radius: 2px\"></div>";
-            echo "<div class=\"newsfeed_item_content\"><b>".$qres['first_name']." ".$qres['last_name']."</b> </br> " .$row2['content']." </div>";
+            echo "<div class=\"newsfeed_item_content\"><b>".$g_name." (".$qres['first_name']." ".$qres['last_name'].")</b> </br> " .$row2['content']." </div>";
             echo "<div class=\"newsfeed_item_timestamp\">".$row2['added_time']."</div>";
             echo "</div>";
         }

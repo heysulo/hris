@@ -57,7 +57,7 @@
                 type:"GET",
                 url:"getUserPost.php",
                 data:{'action':'getPost',
-                        'user_id':'6'},
+                        'user_id':'<?php echo $user_id?>'},
                 success:function (response) {
                     $('.newsfeed_content').html(response);
                 }
@@ -67,19 +67,19 @@
 
         $('.newsfeed_content').on('click','.newsfeed_item_box',function () {
             var state = $(this).data('state');
-
+            var color = $(this).children('.newsfeed_item_colorbar').css("background-color");
             switch (state){
                 case 1 :
                 case undefined:
-                    $(this).css("max-height","1000px");
                     $(this).css("height","100%");
+                    $(this).css("max-height","500px");
                     $(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
                     $(this).data('state',2);
                     break;
                 case 2:
                     $(this).css("max-height","70px");
                     $(this).data('state',1);
-                    $(this).children('.newsfeed_item_colorbar').css("background-color","#<?php echo $group_detail['group_color']?>");
+                    $(this).children('.newsfeed_item_colorbar').css("background-color",color);
                     break;
             }
 

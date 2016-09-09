@@ -9,6 +9,8 @@
     require_once ("../database/database.php");
     session_start();
 
+    $user_id = $_SESSION['user_id'];
+
     if (!isset($_SESSION['email']) or !isset($_GET['group'])){
         header("location:../../index.php");
     }else{
@@ -21,6 +23,14 @@
         $res = mysqli_query($conn,$getGroupDetail);
         $group_detail = mysqli_fetch_assoc($res);
 
+        //get user type according to user
+        $Qry_to_getUserType = "SELECT * FROM group_member WHERE member_id='$user_id' AND group_id='$group_id'";
+        $memberDetails =mysqli_fetch_assoc(mysqli_query($conn, $Qry_to_getUserType));
+
+        if (!$memberDetails){
+            $valid = "display:none;";
+        }
+
 
     }
 
@@ -29,7 +39,7 @@
     $type  = $_SESSION['type'];
     $email = $_SESSION['email'];
     $pro_pic = $_SESSION['pro_pic'];
-    $user_id = $_SESSION['user_id'];
+
 
     //Submit post to database;
     if (isset($_POST['add_post']) && $_POST['post_content'] !=""){
@@ -92,7 +102,7 @@
     </div>
 
     <!--Add news of notification to group-->
-    <div class="dbox" style="margin-top: 20px; width: 40%; margin-left: 20px; padding-bottom: 30px;">
+    <div class="dbox" style="<?php echo $valid ?> margin-top: 20px; width: 40%; margin-left: 20px; padding-bottom: 30px;">
         <div class="dboxheader ">
             <div class="dboxtitle">
                 Add News Feed or Notification

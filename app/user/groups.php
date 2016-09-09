@@ -35,6 +35,30 @@
             <div style="margin-left: 30px;">
                 <input type="button" value="+ Create New Group" class="green_btn" onclick="window.location.href='createGroup.php';" style="font-weight: 600; color: white">
             </div>
+
+            <div style="float: left; margin-left: 20px;s " id="managedGroup">
+
+                <?php
+                //get group details according to user
+                $qry_to_get_group_ids = "SELECT * FROM groups WHERE creator ='".$_SESSION['user_id']."'";
+                $group_details = mysqli_query($conn, $qry_to_get_group_ids);
+
+                while($row = mysqli_fetch_assoc($group_details)){
+                    $path = '../images/group/'.$row['logo'];
+                    ?>
+
+                    <div class="dbox group_group_dbox" style="border-top-color: <?php echo $row['color'] ?>;" id='<?php echo $row['group_id'] ?>'>
+                        <div class="group_group_dbox_image" style="background-image: url('<?php echo $path?>'); border-top-color: <?php echo $row['color'] ?>;"></div>
+                        <div class="group_dbox_title"><?php echo $row['name'] ?></div>
+
+                        <div class="group_dbox_category"><?php echo $row['category'] ?></div>
+                        <div class="group_dbox_description"><?php echo $row['description'] ?></div>
+                    </div>
+
+                <?php } ?>
+
+            </div>
+
         </div>
 
         <div class="profile_section_main groups_content_area"></div>
@@ -70,15 +94,11 @@
                     //     echo "<div class=\"group_dbox_category\">".$row['category']."</div>";
                     //     echo "<div class=\"group_dbox_description\">".$row['description']."</div>";
                     // echo "</div>";
-
-                    
-
-
-                
+                    $path = '../images/group/'.$row['logo'];
                 ?>
 
-                    <div class="dbox group_group_dbox" >
-                        <div class="group_group_dbox_image"></div>
+                    <div class="dbox group_group_dbox" style="border-top-color: <?php echo $row['color'] ?>;" id='<?php echo $row['group_id'] ?>'>
+                        <div class="group_group_dbox_image" style="background-image: url('<?php echo $path?>'); border-top-color: <?php echo $row['color'] ?>;"></div>
                         <div class="group_dbox_title"><?php echo $row['name'] ?></div>
 
                         <div class="group_dbox_category"><?php echo $row['category'] ?></div>
@@ -132,14 +152,21 @@ include_once('../templates/_footer.php');
 ?>
 
 <script>
-    $('#mygroups').on('click','.listed_group',function () {
+    $('#mygroups').on('click','.group_group_dbox',function () {
         var id = $(this).attr('id');
         var dir = window.location.pathname;
         var new_dir = dir.replace('groups.php','');
         window.location.replace(new_dir+'mygroup.php?group='+id);
     });
 
-    $('#allgroups').on('click','.listed_group',function () {
+    $('#allgroups').on('click','.group_group_dbox',function () {
+        var id = $(this).attr('id');
+        var dir = window.location.pathname;
+        var new_dir = dir.replace('groups.php','');
+        window.location.replace(new_dir+'mygroup.php?group='+id);
+    });
+
+    $('#managedGroup').on('click','.group_group_dbox',function () {
         var id = $(this).attr('id');
         var dir = window.location.pathname;
         var new_dir = dir.replace('groups.php','');

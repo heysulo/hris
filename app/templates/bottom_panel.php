@@ -53,35 +53,6 @@
                 News Feed / Activity Feed
             </div>
             <div class="newsfeed_content">
-                <?php
-
-                /*Function to generate random colors*/
-                function random_color_part() {
-                    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
-                }
-                function random_color() {
-                    return random_color_part() . random_color_part() . random_color_part();
-                }
-
-                /*few material colors*/
-                $colorHex = array('1abc9c','2ecc71','3498db','9b59b6','34495e','16a085','27ae60','2980b9','8e44ad','2c3e50','f1c40f','e67e22','e74c3c','f39c12','d35400','c0392b');
-
-                /*for ($x = 0; $x <= 40; $x++) {
-                    //$color = random_color();
-                    //$color = $colorHex[array_rand($colorHex)];
-
-                    if ($x % 2 == 1){
-                        $color = "2ecc71";
-                    }else{
-                        $color = "34495e";
-                    }
-                    include('../templates/news_feed_items.php');
-                }*/
-
-
-
-                ?>
-
                 <!--implementaions -->
                 <div class="newsfeed_item_box" style = "border-color:orangered;">
                     <div class="newsfeed_item_colorbar" style="background-color:orangered; border-radius: 2px"></div>

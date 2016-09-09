@@ -1593,6 +1593,8 @@ h3{
     border-top-color: #fff000;
     border-top-width: 20px;
     border-top-style: solid;
+    cursor: pointer;
+
 }
 
 .group_group_dbox_image{
