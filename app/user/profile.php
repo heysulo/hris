@@ -37,19 +37,26 @@
         <!--Content on top area-->
         <div class="profile_section_intro">
 
-            <img class="profile_profile_image" src="<?php echo "$imagePath/pro_pic/$pro_picture"; ?>" alt=""></img>
+            <img class="profile_profile_image" src="<?php echo "$imagePath/pro_pic/$pro_picture"; ?>" alt="">
 
             <div class="profile_name">
                 <?php echo $fname." ".$lname?> <!--Print user name-->
                 <button onclick="location.href='../editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
             </div>
+
+            <!--Availability status area-->
             <div class="profile_online_status_box">
                 <div class="profile_availability_icon"></div>
-                <div class="profile_availability_text">Available till 2.00 PM</div>
+                <div class="profile_availability_text"></div>
+                <div class="profile_availability_text_2"></div>
             </div>
+
+            <!--last seen data area-->
             <div class="profile_last_seen_box">
                 <div class="profile_last_seen_text">Last seen : <?php echo $lastLoginData[0]." at ".$lastLoginData[1]; ?> <!--15 minutes ago--></div>
             </div>
+
+            <!--Profile basic data area-->
             <div class="profile_basic_summery">
                 Role : <?php echo $category?><br>
                 <?php if($aca_year != 0000){ echo "Academic Year : $aca_year"; } ?><br>
@@ -212,5 +219,35 @@
 <?php
 include_once('../templates/_footer.php');
 ?>
+
+<script>
+    $(document).ready(function () {
+        //Update availability status
+        $.ajax({
+            type:"POST",
+            url:"availability_status.php",
+            data:{'check':'get'},
+            dataType:"json",
+            success:function (response) {
+                //availability status updates...
+                var res = response['availability_status'];
+                var val = res.split('_');
+                var value = val[0];
+                var col = val[1];
+                $('.profile_availability_text').html(value);
+                //$('.customstatus').css('border-left','4px solid '+col);
+                //$('.customstatus').css('color',col);
+                $('.profile_availability_icon').css('background-color',col);
+                //$('.profile_availability_icon').css('border','1px solid '+col);
+                $('.profile_profile_image').css('box-shadow','0px 0px 8px 2px'+col);
+
+                //availability text update...
+                var text_res = response['availability_text'];
+                $('.profile_availability_text_2').html(text_res);
+            }
+        })
+
+    });
+</script>
 </body>
 </html>

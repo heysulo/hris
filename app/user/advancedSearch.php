@@ -117,7 +117,7 @@
                         </div>
                         <br>
 
-                        <button class="default_button availability_status_button">Search</button>
+                        <button class="default_button availability_status_button_2">Search</button>
                     </form>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                     <input class="group_searchbar" type="text" name="fname">
                     <br>
                     <br>
-                    <button class="default_button availability_status_button">Search</button>
+                    <button class="default_button availability_status_button_2">Search</button>
                 </div>
             </div>
 
@@ -165,7 +165,7 @@
                         ?>
                     </select><br>
                     <br>
-                    <button class="default_button availability_status_button">Search</button>
+                    <button class="default_button availability_status_button_2">Search</button>
                 </div>
             </div>
 

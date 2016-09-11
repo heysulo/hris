@@ -28,7 +28,7 @@ if(!isset($_SESSION['email']) && !isset($_POST['check'])) {
             break;
 
         case 'set':
-            $msg = $_POST['msg'];
+            $msg = mysqli_real_escape_string($conn,$_POST['msg']);
             //query to submit availability status
             $qry = "UPDATE member SET availability_status='$msg' WHERE member_id='$user_id'";
             if (mysqli_query($conn,$qry)){
@@ -39,7 +39,7 @@ if(!isset($_SESSION['email']) && !isset($_POST['check'])) {
             break;
 
         case 'text_set':
-            $msg = $_POST['msg'];
+            $msg = mysqli_real_escape_string($conn,$_POST['msg']);
             //query to submit availability text
             $qry = "UPDATE member SET availability_text='$msg' WHERE member_id='$user_id'";
             if (mysqli_query($conn,$qry)){
@@ -50,6 +50,4 @@ if(!isset($_SESSION['email']) && !isset($_POST['check'])) {
             break;
     }
 
-
 }
-
