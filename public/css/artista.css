@@ -717,8 +717,8 @@ h3{
     margin-left: 0px;
     height: 12px;
     width: 12px;
-    border: 1px solid #3F4E5E;
-    background-color: #42b72a;
+    border: 2px solid #3F4E5E;
+    /*background-color: #42b72a;*/
     border-radius: 10px;
 }
 
@@ -729,7 +729,6 @@ h3{
     height: 12px;
     width: 12px;
     border: 1px solid #3F4E5E;
-    background-color: #42b72a;
     border-radius: 10px;
 }
 
@@ -740,6 +739,7 @@ h3{
     font-size: 16px;
     border: none;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 .availability_dropdown {
@@ -750,7 +750,6 @@ h3{
 
 .availability_dropdown_item{
     height: 30px;
-    width: 250px;
     clear: left;
     width:100%;
     margin-top: 4px;
@@ -758,7 +757,7 @@ h3{
     cursor: pointer;
 }
 .availability_dropdown_item:hover{
-    background-color: aliceblue;
+    background-color: powderblue ;
 }
 
 
@@ -784,25 +783,28 @@ h3{
     margin-left: 10px;
     color: #ff0000;
 }
-
+/* Before edit
 .availability_dropdown:hover .availability_dropdown_content{
+    display: block;
+}*/
+
+.availability_dropdown_show{
     display: block;
 }
 
 .availability_dropdown_content {
     display: none;
-    top:40px;
+    top:35px;
     position: absolute;
     right: 0;
     background-color: #f9f9f9;
     min-width: 160px;
     height: auto;
-    padding-top: 10px;
-    padding-bottom:  10px;
+    padding-bottom:  5px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     width:200px;
     left:0px;
-    z-index: 999999;
+    z-index: 999;
 }
 
 .availability_dropdown:hover .availability_button{
@@ -811,19 +813,33 @@ h3{
 
 
 .customstatus{
-    font-size: 18px;
-    width: calc(100% - 180px);
+    font-size: .9em;
+    width: calc(100% - 250px);
     margin-top: 8px;
+    padding: 5px;
     margin-right:2px;
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid #F1F1F1;
     transition: all 0.2s linear;
-
     outline: none;
 }
 
-.customstatus:focus{
+
+.customstatus_text{
+    font-size: .8em;
+    width: calc(100% - 200px);
+    margin-top: 8px;
+    padding: 5px;
+    margin-right:2px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #F1F1F1;
+    transition: all 0.2s linear;
+    outline: none;
+}
+
+.customstatus_text:focus{
     border-bottom: 2px solid #3f4e5e;
 }
 
@@ -832,10 +848,8 @@ h3{
 }
 
 .availability_status_button{
-
-    width: 120px;
+    width: 40px;
     height: 32px;
-
 }
 
 .saved_status_messages{

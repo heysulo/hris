@@ -53,6 +53,8 @@ function loginUser(){
             $_SESSION['aca_year'] = $row['academic_year'];
             $_SESSION['gender'] = $row['gender'];
             $_SESSION['last_login'] = $row['last_login'];
+            $_SESSION['availability_status'] = $row['availability_status'];
+            $_SESSION['availability_text'] = $row['availability_text'];
 
             header('location:dashboard.php');
             //echo mysqli_error($conn);
