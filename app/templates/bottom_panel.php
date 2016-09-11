@@ -57,7 +57,7 @@
                 <div class="newsfeed_item_box" style = "border-color:orangered;">
                     <div class="newsfeed_item_colorbar" style="background-color:orangered; border-radius: 2px"></div>
                     <div class="newsfeed_item_content">
-                        This is a sapmle data.. IF you see this, that means you unable to get data from database.Please check your connection of complains to remalsha@gmail.com.
+                        This is a sapmle data.. IF you see this, that means you unable to get data from database.Please check your connection or complains to remalsha@gmail.com.
                     </div>
                     <div class="newsfeed_item_timestamp">Friday, September 2, 2016 at 9:32pm</div>
                 </div>

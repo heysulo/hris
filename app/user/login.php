@@ -56,6 +56,10 @@ function loginUser(){
             $_SESSION['availability_status'] = $row['availability_status'];
             $_SESSION['availability_text'] = $row['availability_text'];
 
+            //update last login data
+            $qry_to_update_login_time = "UPDATE member SET last_login=NOW() WHERE email='$email'";
+            mysqli_query($conn,$qry_to_update_login_time);
+
             header('location:dashboard.php');
             //echo mysqli_error($conn);
         }

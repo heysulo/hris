@@ -116,12 +116,11 @@ h3{
 
 .bottomline{
     position: fixed;
-    width: 100%;
     z-index: 10;
     color: #000;
     top:550px;
     width: auto;
-    font-size: 10px;
+    font-size: 12px;
     left: calc(52% - 180px);
     transition:all linear 0.3s;
 
@@ -185,7 +184,7 @@ h3{
     display: inline-block;
     width : 300px;
     height: 35px;
-    font-size: 12px;
+    font-size: .9em;
     z-index: 4;
     transition: all 0.2s;
 }
@@ -225,7 +224,7 @@ h3{
 
 .anitxt1{
     color:#5F5F5F;
-    font-size:10.25px;
+    font-size: .71em;
     color:#5F5F5F;
     transition: color 0.3s;
     max-width:  320px;
@@ -265,7 +264,7 @@ h3{
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: center;
-    font-size: 12px;
+    font-size: .9em;
     box-sizing: border-box;
     transition:all linear 0.2s;
 
@@ -1224,7 +1223,7 @@ h3{
 }
 
 .skill_item:hover{
-    background: #c8d0dc;
+    /*background: #c8d0dc;*/
 }
 
 .profile_section_personal{
@@ -1262,7 +1261,7 @@ h3{
 }
 
 .language_item:hover{
-    background: #afa !important;
+    /*background: #afa !important;*/
 }
 
 /*1472387597_internt_web_technology-16*/

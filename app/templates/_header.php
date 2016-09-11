@@ -3,6 +3,13 @@
 
 defined('hris_access') or die(header("location:../../error.php"));
 ?>
+<meta charset="utf-8">
+<meta name="Description" content="The Human Resource Information System is a place where you can access the shared information of the academic staff and the students of the University of Colombo School of Computing.">
+<meta name="Keywords" content="HRIS,UCSC,University Students Information,Skill Directory">
+<link rel='shortcut icon' href='/hris/favicon.ico' type='image/x-icon'/ >
+<meta name="author" content="team helix">
+
+
 <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/artista.css">
 <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
 <!--<link href='https://fonts.googleapis.com/css?family=Catamaran:400,200' rel='stylesheet' type='text/css'>
