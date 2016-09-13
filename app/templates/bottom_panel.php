@@ -10,7 +10,7 @@
 
         <!--Notification area-->
         <div class="dbox notification_box">
-            <div class="dboxheader">
+            <div class="dboxheader dbox_head_request">
                 <div class="dboxtitle">
                     Requests
                 </div>

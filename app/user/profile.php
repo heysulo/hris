@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <?php
         define('hris_access',true);
@@ -28,7 +29,7 @@
 <title>HRIS | My Profile</title>
 </head>
 <body>
-<div style="padding: 0px;">
+<div>
     <?php include_once('../templates/navigation_panel.php'); ?>
     <?php include_once('../templates/top_pane.php'); ?>
 
@@ -80,10 +81,6 @@
                         <div class="contact_info_item_field">Email :</div>
                         <div class="contact_info_item_value"><?php echo $email ?></div>
                     </div>
-                    <!--<div class="contact_info_item">
-                        <div class="contact_info_item_field">Email :</div>
-                        <div class="contact_info_item_value">echo $email </div>
-                    </div>-->
 
                 </div>
 
@@ -204,8 +201,6 @@
                             Swimming
                         </div>
 
-
-
                     </div>
                 </div>
             </div>
@@ -225,7 +220,7 @@ include_once('../templates/_footer.php');
         //Update availability status
         $.ajax({
             type:"POST",
-            url:"availability_status.php",
+            url:"getAvailabilityStatus.php",
             data:{'check':'get'},
             dataType:"json",
             success:function (response) {
@@ -235,17 +230,26 @@ include_once('../templates/_footer.php');
                 var value = val[0];
                 var col = val[1];
                 $('.profile_availability_text').html(value);
-                //$('.customstatus').css('border-left','4px solid '+col);
-                //$('.customstatus').css('color',col);
                 $('.profile_availability_icon').css('background-color',col);
-                //$('.profile_availability_icon').css('border','1px solid '+col);
                 $('.profile_profile_image').css('box-shadow','0px 0px 8px 2px'+col);
 
                 //availability text update...
                 var text_res = response['availability_text'];
                 $('.profile_availability_text_2').html(text_res);
             }
+        });
+
+        //Update user information.
+        $.ajax({
+            type:"POST",
+            url:"getUserInfo.php",
+            data:{'check':'get'},
+            dataType:"json",
+            success:function (response) {
+                console.log(response);
+            }
         })
+
 
     });
 </script>

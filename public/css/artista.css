@@ -663,11 +663,6 @@ h3{
     width: 350px;
 }
 
-
-
-
-
-
 .dbox{
     background-color: #fff;
     border: 1px solid #ccc;
@@ -687,7 +682,6 @@ h3{
 }
 
 .dboxheader{
-
     text-indent: 0px;
     transition: all 0.2s ease-in-out;
 }
@@ -707,6 +701,13 @@ h3{
     margin-left: 32px;
 }
 
+
+.dbox_head_request{
+    background-image: url('../img/ico_request.png');
+    background-position: 6px 2px;
+    background-repeat: no-repeat;
+    height: 100%;
+}
 
 /*-------AVAILABILITY STATUS----*/
 
@@ -1635,6 +1636,32 @@ h3{
 
     border-bottom-left-radius: 8px;
 }
+
+.group_manage_group_dbox{
+    text-align: center;
+    float: left ;
+    max-width: 360px;
+    padding: 0px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    height: 100px;
+    width: 200px;
+    box-sizing: border-box;
+    border-top: 10px solid #fff000;
+    cursor: pointer;
+}
+
+.group_manage_group_dbox_image{
+    background-image: url("../img/oggi.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-bottom: 5px;
+    border-bottom-left-radius: 8px;
+}
+
 
 .group_dbox_title{
     font-size: 18px;

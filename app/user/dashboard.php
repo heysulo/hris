@@ -68,7 +68,7 @@
             //Update availability status
             $.ajax({
                 type:"POST",
-                url:"availability_status.php",
+                url:"getAvailabilityStatus.php",
                 data:{'check':'get'},
                 dataType:"json",
                 success:function (response) {
@@ -132,7 +132,7 @@
             //Update availability status
             $.ajax({
                 type:"POST",
-                url:"availability_status.php",
+                url:"getAvailabilityStatus.php",
                 data:{'check':'set',
                         'msg':att_val},
                 dataType:"json",
@@ -151,7 +151,7 @@
                 //Update availability text
                 $.ajax({
                     type:"POST",
-                    url:"availability_status.php",
+                    url:"getAvailabilityStatus.php",
                     data:{'check':'text_set',
                           'msg':text},
                     dataType:"json",
