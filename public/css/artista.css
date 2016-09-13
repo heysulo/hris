@@ -814,7 +814,7 @@ h3{
 
 .customstatus{
     font-size: .9em;
-    width: calc(100% - 250px);
+    width: 30%;
     margin-top: 8px;
     padding: 5px;
     margin-right:2px;
@@ -828,7 +828,7 @@ h3{
 
 .customstatus_text{
     font-size: .8em;
-    width: calc(100% - 200px);
+    width: 40%;
     margin-top: 8px;
     padding: 5px;
     margin-right:2px;
