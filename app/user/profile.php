@@ -150,7 +150,19 @@
 
                     </div>
                     <!--Personal info content goes here.-->
-                    <div class="contact_info_item">
+                    <div class="contact_info_item" id="current_city">
+                        <div class="contact_info_item_field">Current City</div>
+                        <div class="contact_info_item_value"></div>
+                    </div>
+                    <div class="contact_info_item" id="home_town">
+                        <div class="contact_info_item_field">Hometown</div>
+                        <div class="contact_info_item_value"></div>
+                    </div>
+                    <div class="contact_info_item" id="religion">
+                        <div class="contact_info_item_field">Religion</div>
+                        <div class="contact_info_item_value"></div>
+                    </div>
+                    <div class="contact_info_item" id="">
                         <div class="contact_info_item_field">School :</div>
                         <div class="contact_info_item_value">St. Aloysius' College, Galle</div>
                     </div>
@@ -163,13 +175,7 @@
                         <div class="dboxtitle botmarg">
                             About Me
                         </div>
-                        <p>I am 19 years old and I am from Matara.
-
-                            Coming to my education qualification. I have completed 12th from st. Joseph English medium H.S school Barwani in the year 2013.
-
-                            Coming to my family background we consist 6 members including me.
-
-                            I have one brother & one sister. </p>
+                        <p id="about_me"></p>
                     </div>
                 </div>
 
@@ -245,8 +251,39 @@ include_once('../templates/_footer.php');
             url:"getUserInfo.php",
             data:{'check':'get'},
             dataType:"json",
-            success:function (response) {
-                console.log(response);
+            success:function (info) {
+                console.log(info);
+
+                //Personal info content
+                var curr_city = info['current_city'];
+                if (curr_city == null){
+                    $('#current_city').css('display','none');
+                }else{
+                    $('#current_city > .contact_info_item_value').html(' : '+curr_city);
+                }
+
+                var home_town = info['home_town'];
+                if (home_town == null){
+                    $('#home_town').css('display','none');
+                }else{
+                    $('#home_town > .contact_info_item_value').html(' : '+home_town);
+                }
+
+                var religion = info['religion'];
+                if (home_town == null){
+                    $('#religion').css('display','none');
+                }else{
+                    $('#religion > .contact_info_item_value').html(' : '+religion);
+                }
+
+                var about= info['about'];
+                if (about == null){
+                    $('#about_me').css('display','none');
+                }else{
+                    $('#about_me').html(about);
+                }
+
+
             }
         })
 

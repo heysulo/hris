@@ -1076,6 +1076,7 @@ h3{
 
 
 .contact_info_item{
+    display: block;
     width: 400px;
     height: 20px;
 }
@@ -1090,6 +1091,7 @@ h3{
     position: relative;
     left: 100px;
     top: -20px;
+    padding: 4px;
 }
 
 .botmarg{
