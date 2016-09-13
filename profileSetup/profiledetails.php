@@ -20,6 +20,8 @@
             Enter your contact details here so others can contact you when needed. These information are only available for the members of the Human Resource Information System.
         </div>
         <?php
+        include("./template/important_info.php");
+        echo "<hr class=\"welcome_profile_setup_hr\">";
         include("./template/contact_info.php");
         echo "<hr class=\"welcome_profile_setup_hr\">";
         include("./template/personal_info.php");
