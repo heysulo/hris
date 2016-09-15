@@ -121,7 +121,7 @@
 
 
         <!--Step 3 . Get contact info and some personal info-->
-        <div id="content_3" style="display: block">
+        <div id="content_3" style="display: none">
             <div class="dbox welcome_section_maindbox">
                 <?php include("steps.php"); ?>
                 <div class="welcome_section_introtxt">
