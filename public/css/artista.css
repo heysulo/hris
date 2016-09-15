@@ -1791,7 +1791,7 @@ h3{
     bottom: 0px;
     color: #4b4f55;
     cursor: pointer;
-    height: auto;
+    height: 25px;
     text-align: center;
     vertical-align: middle;
     white-space: nowrap;
@@ -2458,6 +2458,17 @@ h3{
     transition: all 0.2s linear;
 }
 
+.red_button{
+    background-color: #df3e3e !important;
+    border-color: #df3e3e !important;
+    color: white;
+}
+
+.yellow_button{
+    background-color: #fbbc05 !important;
+    border-color: #fbbc05 !important;
+    color: white;
+}
 
 .group_writer_bottom{
     width: auto;
@@ -2705,15 +2716,78 @@ h3{
 }
 
 
+.group_administration_content_field{
+    clear: both ;
+    height: auto;
+    min-height: 35px;
+    border-bottom: 1px solid #ddd;
+}
 
 
+.group_administration_content_field{
+    clear: both ;
+    height: auto;
+    min-height: 35px;
+    border-bottom: 1px solid #eee;
+    padding: 5px 0px;
+}
 
+.group_administration_content_field_name{
+    width: 200px;
+    font-size: 12px;
+    color: #666;
+    text-align: right;
+    font-weight: bold;
+    float: left;
+    margin-right: 20px;
+    line-height: 35px;
 
+}
 
+.group_administration_content_field_name_sub{
+    width: 100px;
+    font-size: 12px;
+    color: #666;
+    text-align: left;
+    font-weight: bold;
+    float: left;
+    margin-right: 20px;
+    line-height: 35px;
 
+}
 
+.group_administration_content_field_value{
+}
+.group_administration_content_field_value_sub{
+    float: left;
+}
 
+.group_administration_txtbox{
+    width: 300px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 5px;
 
+}
+
+.group_administration_dropdown{
+    margin-top: 5px;
+    width: 200px;
+    background-color: white;
+}
+
+.group_administration_textarea{
+    resize: vertical;
+    width: 400px;
+    min-height: 80px;
+    border: 1px solid #ddd;
+    padding-top: 10px;
+    height: auto;
+}
+
+.group_administration_checkbox{
+    cursor: pointer;
+}
 
 
 /*------------------------------------ Alert css*/
