@@ -17,6 +17,7 @@
         select{
             font-size: .9em;
         }
+
     </style>
 </head>
 
@@ -121,13 +122,17 @@
                     Enter your contact details here so others can contact you when needed. These information are only available for the members of the Human Resource Information System.
                 </div>
                 <?php
+                    include("./includes/important_info.php");
+                    echo "<hr class=\"welcome_profile_setup_hr\">";
                     include("./includes/contact_info.php");
                     echo "<hr class=\"welcome_profile_setup_hr\">";
                     include("./includes/personal_info.php");
                     echo "<hr class=\"welcome_profile_setup_hr\">";
 
                 ?>
+
                 <center>
+                    <div class="alert" id="step3_alert" style="display: none"></div>
                     <input class="user_choose_button welcome_continue_button" value="Continue" type="button" id="step3">
                     <input class="user_choose_button welcome_back_button" value="Back" type="button" id="back2">
                 </center>
@@ -162,6 +167,7 @@
 
 <script src="<?php echo $publicPath?>js/jquery-2.2.4.min.js"></script>
 <script src="<?php echo $publicPath?>js/jquery.validate.min.js"></script>
+<script src="<?php echo $publicPath?>js/jquery-birthday-picker.js"></script>
 <script>
 
     $(document).ready(function () {
@@ -229,11 +235,31 @@
         });
 
         $('input#step3').click(function () {
-            $('#content_3').fadeOut();
-            $('#content_4').fadeIn();
-            $('body').scrollTop(0);
-            $('div#step4').addClass('welcome_step_active');
-            $('div#step3').removeClass('welcome_step_active');
+            if ($('#birthDate').val() == 0 || $('#birthMonth').val() == 0 || $('#birthYear').val() ==0){
+                $('#step3_alert').text("Please submit your date of birth.");
+                $('#step3_alert').css('display','block');
+            }else{
+                $('#step3_alert').css('display','none');
+                if ($('#currentCity').val()==""){
+                    $('#step3_alert').text("Please select your Current City");
+                    $('#step3_alert').css('display','block');
+                }else{
+                    $('#step3_alert').css('display','none');
+                    if ($('#hometown').val()==""){
+                        $('#step3_alert').text("Please select your Home town");
+                        $('#step3_alert').css('display','block');
+                    }else {
+                        $('#step3_alert').css('display', 'none');
+                        $('#content_3').fadeOut();
+                        $('#content_4').fadeIn();
+                        $('body').scrollTop(0);
+                        $('div#step4').addClass('welcome_step_active');
+                        $('div#step3').removeClass('welcome_step_active');
+                    }
+                }
+
+            }
+
         });
 
 
@@ -278,6 +304,9 @@
         function imageIsLoaded(e) {
             $('#pro_pic').css('background-image', 'url('+e.target.result+')');
         };
+
+        //Function for check birth day fields
+        $('#birthDay').birthdayPicker();
 
     });
 
@@ -324,10 +353,6 @@
         var code = "<div class=\"skill_item language_item\"><div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
         par.innerHTML += code;
     }
-
-
-
-
 
 </script>
 
