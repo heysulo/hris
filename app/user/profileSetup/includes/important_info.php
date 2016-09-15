@@ -7,7 +7,9 @@
 			<!--<input type="number" id="birth_year" name="year" class="edit_profile_important_info_date" placeholder="YYYY" min="1900" max="2100" maxlength="4" required> &nbsp; / &nbsp;
 			<input type="number" id="birth_month" name="month" class="edit_profile_important_info_date" placeholder="MM" min="01" max="12" maxlength="2" required> &nbsp; / &nbsp;
 			<input type="number" id="birth_date" name="day" class="edit_profile_important_info_date" placeholder="DD" min="01" max="31" maxlength="2" required>-->
-			<div id="birthDay"></div> <!--Jquery birth day picker plugin use -->
+			<div id="birthDayFields"></div> <!--Jquery birth day picker plugin use -->
+			<input type="hidden" id="user_birth_day" name="user_birth_day" required>
+
 		</div>
 		<div class="dboxtitle botmarg">
 			Current City
