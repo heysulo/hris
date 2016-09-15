@@ -1616,6 +1616,34 @@ h3{
     margin-left: 10px;
     top:-6px;
 }
+
+/*jQuery birth day picker plugin style*/
+
+.birthdayPicker{
+    border: none;
+}
+
+.birthYear{
+    width: 110px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px;
+}
+
+.birthMonth{
+    width: 110px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px;
+}
+
+.birthDate{
+    width: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px;
+}
+
 /*******************************/
 /*********GROUPS     ************/
 /********************************/

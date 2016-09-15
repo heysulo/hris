@@ -22,7 +22,7 @@
 	</div>
 	<select id="shared_info_opt" class="edit_profile_contactinfo_item_fields">
 		<?php
-			$dist = "School,Date of Birth,Stream,Religion,Office Location,A\L Stream,Political Views,Blog";
+			$dist = "School,Religion,Office Location,Blog,Web Site,";
 			$ary = explode(',', $dist);
 			foreach($ary as $dist){
 			   echo "<option value='$dist'>$dist</option>";
