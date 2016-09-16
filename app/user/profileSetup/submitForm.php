@@ -1,6 +1,6 @@
 <?php
-
-if(isset($_POST['submit']) && isset($_POST['email'])){
+session_start();
+if(isset($_POST['submit']) && isset($_SESSION['email'])){
     createUser();
 }else{
     header("location:index.php");

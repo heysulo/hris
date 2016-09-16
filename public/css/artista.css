@@ -1515,7 +1515,7 @@ h3{
 
 
 .edit_profile_contactinfo_item_value_field{
-    width: 100%;
+    width: 92%;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -2354,7 +2354,7 @@ h3{
     height: 140px;
     border: 4px solid #fff;
     border-radius: 4px;
-    background-image: url("../img/defimg.jpg");
+    background-image: url("../img/def_group_img.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transition: all 0.2s linear;
@@ -2611,7 +2611,7 @@ h3{
     float: left;
     margin: 1px;
     border: 1px solid gray;
-    background-image: url("../img/oggi.png");
+    background-image: url("../img/defimg.jpg");
     background-size: cover;
     cursor: pointer;
 }

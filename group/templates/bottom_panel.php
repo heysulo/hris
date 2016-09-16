@@ -15,6 +15,7 @@
             
         </div>
     </div>
+    <!--/////////////////////////////////////////////////////-->
     <div class="group_main_menu">
         <ul>
             <li class="group_main_menu_item group_main_menu_item_active" id="main_menu_notices" onclick="activate_tab(1);">Notices</li>

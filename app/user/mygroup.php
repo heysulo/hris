@@ -22,13 +22,16 @@
 
         $res = mysqli_query($conn,$getGroupDetail);
         $group_detail = mysqli_fetch_assoc($res);
+        $path = '../images/group/'.$group_detail['logo'];
 
         //get user type according to user
         $Qry_to_getUserType = "SELECT * FROM group_member WHERE member_id='$user_id' AND group_id='$group_id'";
         $memberDetails =mysqli_fetch_assoc(mysqli_query($conn, $Qry_to_getUserType));
 
+        $userValid = 111;
         if (!$memberDetails){
             $valid = "display:none;";
+            $userValid = 000;
         }
 
 
@@ -71,55 +74,124 @@
     </div>
 <!--Other content goes here-->
 <div class="bottomPanel">
-    <!--Title and search box area-->
-    <div style="float:left;height:80px;width:100%;">
-        <div style="float:left;width:auto;height:100%;">
-            <div class="txt_paneltitle"><?php echo $group_detail['name']; ?></div>
-        </div>
-        <div style="float:right;width:auto;height:100%;">
-            <input type="text" name="search" placeholder="Search groups " class="mainsearch">
-        </div>
-    </div>
 
-    <div>
-    <!--Group details-->
-    <div class="dbox" style="margin-top: 80px; width: 40%; margin-left: 20px;">
-        <div class="dboxheader ">
-            <div class="dboxtitle">
-                Group Details
-            </div>
+    <!--Main group details-->
+    <div class="group_div_intro" style="border-left-color:<?php echo $group_detail['color']; ?> ">
+        <div class="group_logo_box" style="background-image: url('<?php echo $path ?>')"></div>
+        <div class="group_intro_content">
+            <div class="group_name"><?php echo $group_detail['name']; ?></div>
+
             <div>
-                <?php
-
-                echo " <br><div style='padding: 3px;'><b>".$group_detail['name']."</b></div>";
-                echo " <div style='padding: 3px;'>Category : ".$group_detail['category']."</div>";
-                echo "<div style='font-size: 12px; padding: 5px;'>".$group_detail['description']."</div>";
-                ?>
-
+                <?php echo $group_detail['category']; ?> Group<br>
+                12,232 Members<br>
+            </div>
+            <div class="group_short_description">
+                <?php echo $group_detail['description']; ?>
             </div>
 
         </div>
     </div>
 
-    <!--Add news of notification to group-->
-    <div class="dbox" style="<?php echo $valid ?> margin-top: 20px; width: 40%; margin-left: 20px; padding-bottom: 30px;">
-        <div class="dboxheader ">
-            <div class="dboxtitle">
-                Add News Feed or Notification
-            </div>
-            <div>
+    <!--Navigation menu -->
+    <div class="group_main_menu" style="<?PHP echo $valid ?>">
+        <ul>
+            <li class="group_main_menu_item group_main_menu_item_active" id="main_menu_notices" onclick="activate_tab(1);">Notices</li>
+            <li class="group_main_menu_item" id="main_menu_members" onclick="activate_tab(2);">Members</li>
+            <li class="group_main_menu_item" id="main_menu_administration"  onclick="activate_tab(3);">Administration</li>
+            <li class="group_main_menu_item" id="main_menu_options" onclick="activate_tab(4);" >Group Options</li>
+        </ul>
+    </div>
+
+    <!--Add new post and view current members.-->
+    <div class="group_div_content" id="tab_notices">
+
+        <!--add new post / file / photo-->
+        <div class="group_div_content_post">
+            <div class="dbox group_dbox_post"  style="<?php echo $valid?>">
+
+                <div class="group_post_writer_navbar_area">
+                    <ul class="group_post_writer_navbar">
+                        <li class="group_post_writer_navbar_item group_post_writer_text">Write Post</li>
+                        <li class="group_post_writer_navbar_item_seperator"></li>
+                        <li class="group_post_writer_navbar_item group_post_writer_image">Add Photo</li>
+                        <li class="group_post_writer_navbar_item_seperator"></li>
+                        <li class="group_post_writer_navbar_item group_post_writer_file">Add File</li>
+                    </ul>
+                </div>
                 <form action="" method="post">
-                    <textarea  name="post_content" style="resize: none; padding: 6px; border-radius: 3px; border:1px solid midnightblue; width: 95%; height: 85px; margin: 5px; overflow: scroll" required></textarea>
-                    <input type="submit" name="add_post" value="POST" class="green_btn" style="float: right; margin-bottom:2px; margin-right:5px;">
+                    <textarea name="post_content" class="group_post_writer_textarea" placeholder="Post your content here ...." required></textarea>
+                    <div class="group_writer_bottom" align="right">
+                        <input type="submit" name="add_post" value="Post" class="msgbox_button group_writer_button" onclick='closemsgbox();window.alert(";)");'>
+                    </div>
                 </form>
             </div>
 
+            <!--Show notification here-->
+            <div id="group_post_content">
+                <!--Sample data-->
+                <div class="dbox group_dbox_post">
+                    <div class="group_post_head">
+                        <div class="group_post_user_image"></div>
+                        <div class="group_post_head_content">
+                            <div class="group_post_head_user_name">Group Admin</div>
+                            <div class="group_post_head_role">Admin</div>
+                            <div class="group_post_head_timestamp"></div>
+                        </div>
+                        <!--
+                        <div class="group_post_head_options">
+                            <div class="group_post_head_options_item">Delete Post</div>
+                            <div class="group_post_head_options_item">Pin Post</div>
+                            <div class="group_post_head_options_item">Ban Member</div>
+                        </div>
+                        -->
+                    </div>
+                    <div class="group_post_content">
+                        This is a sapmle data.. IF you see this, that means you unable to get data from database.Please check your connection of complains to remalsha@gmail.com.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="group_div_content_extra">
+            <?php /*
+            Add Member
+            Remove Member
+            Change Member Role
+
+            Add Role
+            Delete Role
+            Manage Role
+
+            Edit Group Name
+            Edit Group Image
+            Edit Description
+
+            */?>
+
+            <!--Extrat box for further dev-->
+            <div class="dbox group_div_content_extra">
+            </div>
+
+            <!--view group members area-->
+            <div class="dbox group_div_content_extra">
+                <div class="group_role_section">
+                    <div class="group_role_title">Members</div>
+                    <div class="group_member_facearea">
+                        <div class="group_member_face tooltip"><span class="tooltiptext">Sulochana Kodituwakku</span> </div>
+                        <!--<div class="group_member_face tooltip"><span class="tooltiptext">Sulochana Kodituwakku</span> </div>
+                        <div class="group_member_face tooltip"><span class="tooltiptext">Sulochana Kodituwakku</span> </div>-->
+                    </div>
+                    <br>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+
 
     <!--News feeds and notification area-->
-    <div class="dashboard_rightbox" style="width: 100%; margin-right: 20px;">
+    <!--<div class="dashboard_rightbox" style="width: 100%; margin-right: 20px;">
         <div class="dashboard_newsfeed dbox">
             <div class="dboxheader dbox_head_newsfeed">
                 <div class="dboxtitle">
@@ -138,7 +210,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
 </div>
 
@@ -150,9 +222,17 @@ include_once('../templates/_footer.php');
     $(document).ready(function () {
         $.ajax({
             type:"GET",
-            url:"getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>",
+            url:"getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
             success:function (response) {
-                $('.newsfeed_content').html(response);
+                $('#group_post_content').html(response);
+            }
+        });
+
+        $.ajax({
+            type:"GET",
+            url:"getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
+            success:function (response2) {
+                $('.group_member_facearea').html(response2);
             }
         });
     });
@@ -178,6 +258,66 @@ include_once('../templates/_footer.php');
 
     });
 
+    function activate_tab(x) {
+        var tab_notices = document.getElementById("tab_notices");
+        var tab_members = document.getElementById("tab_members");
+        var tab_administration = document.getElementById("tab_administration");
+        var tab_options = document.getElementById("tab_options");
+
+        var main_menu_notices = document.getElementById("main_menu_notices");
+        var main_menu_members = document.getElementById("main_menu_members");
+        var main_menu_administration = document.getElementById("main_menu_administration");
+        var main_menu_options = document.getElementById("main_menu_options");
+
+        switch (x){
+            case 1:
+                tab_notices.style.display = "block";
+                tab_members.style.display = "none";
+                tab_administration.style.display = "none";
+                tab_options.style.display = "none";
+
+                main_menu_notices.className = "group_main_menu_item group_main_menu_item_active";
+                main_menu_members.className = "group_main_menu_item";
+                main_menu_administration.className = "group_main_menu_item";
+                main_menu_options.className = "group_main_menu_item";
+                break;
+            case 2:
+                tab_notices.style.display = "none";
+                tab_members.style.display = "block";
+                tab_administration.style.display = "none";
+                tab_options.style.display = "none";
+
+                main_menu_notices.className = "group_main_menu_item ";
+                main_menu_members.className = "group_main_menu_item group_main_menu_item_active";
+                main_menu_administration.className = "group_main_menu_item";
+                main_menu_options.className = "group_main_menu_item";
+                break;
+            case 3:
+                tab_notices.style.display = "none";
+                tab_members.style.display = "none";
+                tab_administration.style.display = "block";
+                tab_options.style.display = "none";
+
+                main_menu_notices.className = "group_main_menu_item ";
+                main_menu_members.className = "group_main_menu_item";
+                main_menu_administration.className = "group_main_menu_item group_main_menu_item_active";
+                main_menu_options.className = "group_main_menu_item";
+                break;
+            case 4:
+                tab_notices.style.display = "none";
+                tab_members.style.display = "none";
+                tab_administration.style.display = "none";
+                tab_options.style.display = "block";
+
+                main_menu_notices.className = "group_main_menu_item ";
+                main_menu_members.className = "group_main_menu_item";
+                main_menu_administration.className = "group_main_menu_item";
+                main_menu_options.className = "group_main_menu_item group_main_menu_item_active";
+                break;
+        }
+    }
+
+    activate_tab(1);
 </script>
 
 </body>
