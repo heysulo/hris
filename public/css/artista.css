@@ -2678,7 +2678,6 @@ h3{
     padding: 0;
     overflow: hidden;
     padding-left: 20px;
-    width: 100%;
     height:70px;
 }
 
@@ -2795,6 +2794,8 @@ h3{
 }
 
 .group_administration_content_field_value{
+    margin-left: 200px;
+    padding-left: 20px;
 }
 .group_administration_content_field_value_sub{
     float: left;
@@ -2844,10 +2845,27 @@ h3{
 
 
 
+/*************SYSTEM ADMINISTRARION*************/
+.sys_admin_selected_profile_box{
+    float: left;
+    width: 400px;
+    height: 100px;
+    border: 1px solid #d0d1d5;
+    border-radius: 0px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 10px;
+    margin-left: 20px !important;
+    background-color: #e0eaf1;
 
+}
 
-
-
+.containerdivNewLine {
+    clear: both;
+    float: left;
+    display: block;
+    position: relative;
+}
 
 
 
@@ -3040,3 +3058,12 @@ li.active a, li.active a:hover {
     background-repeat: no-repeat;
     background-position: 125px 40px;
 }
+
+
+/***/
+.tg  {border-collapse:collapse;border-spacing:0;border:2px solid #3F4E5E;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{width:150px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+.disabled_cell{background-color: #3F4E5E}
+.numud{width:140px;text-align: center;border: none;}
