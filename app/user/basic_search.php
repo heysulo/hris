@@ -20,7 +20,7 @@
     $availability_text = $_SESSION['availability_text'];
 
     ?>
-    <title>HRIS | Dashboard</title>
+    <title>HRIS | Basic Search</title>
 </head>
 <body>
 <!--Top pane and Navigation pane added here-->
@@ -31,7 +31,9 @@
 
 <!--Other content goes here-->
 <div class="bottomPanel">
-
+    <div class="error_page_box">
+        <div class="error_page_text">The link you followed may be broken, or the page may have been removed.</div>
+    </div>
 
 </div>
 

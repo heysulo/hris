@@ -25,12 +25,19 @@
 
 
 	$view_id = $_GET["id"];
-
+	$row = null;
+	$vision_power = null;
 	$query = "SELECT * FROM member RIGHT JOIN system_role on member.system_role = system_role.system_role_id and member.member_id=$view_id";
 
 	$res = mysqli_query($conn,$query);
 	$row = mysqli_fetch_assoc($res);
-	$vision_power= $row['system_vision_power'] ;
+	if ($row['member_id']!=null){
+
+		$vision_power= $row['system_vision_power'] ;
+	}else{
+		$view_id = null;
+	}
+
 	?>
 	<title>
 		<?php
@@ -44,14 +51,16 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet">
 </head>
 <body>
+	<div>
+		<?php include_once('../templates/navigation_panel.php'); ?>
+		<?php include_once('../templates/top_pane.php'); ?>
+	</div>
 	<?php
+		if ($view_id!=null){
 
 	?>
 	<div class="clearfix">
-		<div>
-			<?php include_once('../templates/navigation_panel.php'); ?>
-			<?php include_once('../templates/top_pane.php'); ?>
-		</div>
+
 		<?php
 		$member_status_text = $row['availability_text'];
 		$member_at =  $row['availability_status'];
@@ -290,6 +299,11 @@
 		</div>
 
 	</div>
+	<?php }else{ ?>
+			<div class="error_page_box">
+				<div class="error_page_text">The link you followed may be broken, or the page may have been removed.</div>
+			</div>
+	<?php } ?>
 </body>
 </html>
 
