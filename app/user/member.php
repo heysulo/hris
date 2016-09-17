@@ -304,6 +304,10 @@
 				<div class="error_page_text">The link you followed may be broken, or the page may have been removed.</div>
 			</div>
 	<?php } ?>
+	<?php
+	include_once('../templates/_footer.php');
+	?>
 </body>
+
 </html>
 
