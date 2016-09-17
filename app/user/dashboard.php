@@ -37,7 +37,10 @@
                 <div class="txt_paneltitle">Dashboard</div>
             </div>
             <div style="float:right;width:auto;height:100%;">
-                <input type="text" name="search" placeholder="Search.." class="mainsearch">
+                <form action="basic_search.php" method="get">
+
+                    <input type="text" name="search" placeholder="Search.." class="mainsearch" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">
+                </form>
             </div>
         </div>
 

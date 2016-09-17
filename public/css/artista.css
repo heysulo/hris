@@ -2716,6 +2716,10 @@ h3{
     margin: 10px;
 }
 
+.search_member_box{
+    background-color: #fff !important;
+}
+
 .group_member_hd_propic{
     background-image: url("../img/oggi.png");
     background-size: cover;
@@ -2731,6 +2735,10 @@ h3{
     color:#4464a0;
     top: -90px;
     left: 110px;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width: 280px;
 }
 
 .group_member_hd_role{
@@ -2818,6 +2826,30 @@ h3{
 .group_administration_checkbox{
     cursor: pointer;
 }
+/****************BASIC SEARCH***********/
+
+.basic_search_result_box{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*------------------------------------ Alert css*/
@@ -2996,4 +3028,15 @@ li.active a, li.active a:hover {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+}
+
+.no_search_results_page_box{
+    width: 500px;
+    height: 400px;
+    position: relative;
+    left: calc(50% - 250px);
+    top: 50px;
+    background-image: url("../img/sad_face.png");
+    background-repeat: no-repeat;
+    background-position: 125px 40px;
 }
