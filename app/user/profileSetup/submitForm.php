@@ -1,6 +1,6 @@
 <?php
-
-if(isset($_POST['submit'])){
+session_start();
+if(isset($_POST['submit']) && isset($_SESSION['email'])){
     createUser();
 }else{
     header("location:index.php");
@@ -59,16 +59,12 @@ function createUser(){
 
     $gender = mysqli_real_escape_string($conn,$_POST['gender']);
 
-    /*$birthYear = mysqli_real_escape_string($conn,$_POST['birthDay_birth[year]']);
-    $birthMonth = mysqli_real_escape_string($conn,$_POST['birthDay_birth[month]']);
-    $birthDate = mysqli_real_escape_string($conn,$_POST['birthDay_birth[day]']);
-    $birthDay = $birthYear.'-'.$birthMonth.'-'.$birthDate;*/
-    $birthDay = mysqli_real_escape_string($conn,$_POST['birthDay_birthDay']);
+    $userbirthDay = mysqli_real_escape_string($conn,$_POST['user_birth_day']);
 
     $current_city = mysqli_real_escape_string($conn,$_POST['current_city']);
     $hometown = mysqli_real_escape_string($conn,$_POST['hometown']);
 
-    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,joined_date,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year',NOW(),'$gender','$userImg',1,'$birthDay','$current_city','$hometown')";
+    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,joined_date,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year',NOW(),'$gender','$userImg',1,'$userbirthDay','$current_city','$hometown')";
 
     //echo base64_encode('remalsha@gmail.com'); //cmVtYWxzaGFAZ21haWwuY29t
 
@@ -81,6 +77,8 @@ function createUser(){
     }else{
         //header("location:index.php");
         echo mysqli_error($conn);
+        echo $qry_to_insert;
+        echo $_POST['birthdate'];
     }
 
 

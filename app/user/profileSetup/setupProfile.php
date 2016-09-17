@@ -1,9 +1,16 @@
+<!DOCTYPE html>
 <html>
 <head>
+
+    <meta charset="utf-8">
+    <meta name="Description" content="The Human Resource Information System is a place where you can access the shared information of the academic staff and the students of the University of Colombo School of Computing.">
+    <meta name="Keywords" content="HRIS,UCSC,University Students Information,Skill Directory">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
     <title>USER </title>
 
     <?php
-    define(hris_access,true);
+    define("hris_access",true);
     require_once('../../templates/path.php');
     include('../../templates/_header.php');
     session_start();
@@ -167,7 +174,7 @@
 
 <script src="<?php echo $publicPath?>js/jquery-2.2.4.min.js"></script>
 <script src="<?php echo $publicPath?>js/jquery.validate.min.js"></script>
-<script src="<?php echo $publicPath?>js/jquery-birthday-picker.js"></script>
+<script src="<?php echo $publicPath?>js/bday-picker.js"></script>
 <script>
 
     $(document).ready(function () {
@@ -235,7 +242,7 @@
         });
 
         $('input#step3').click(function () {
-            if ($('#birthDate').val() == 0 || $('#birthMonth').val() == 0 || $('#birthYear').val() ==0){
+            if ($('.birthDate').val() == 0 || $('.birthMonth').val() == 0 || $('.birthYear').val() ==0){
                 $('#step3_alert').text("Please submit your date of birth.");
                 $('#step3_alert').css('display','block');
             }else{
@@ -255,6 +262,8 @@
                         $('body').scrollTop(0);
                         $('div#step4').addClass('welcome_step_active');
                         $('div#step3').removeClass('welcome_step_active');
+
+                        $('#user_birth_day').val($('#birthdate').val());
                     }
                 }
 
@@ -306,7 +315,7 @@
         };
 
         //Function for check birth day fields
-        $('#birthDay').birthdayPicker();
+        $('#birthDayFields').birthdaypicker();
 
     });
 

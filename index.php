@@ -8,7 +8,6 @@
     <meta charset="utf-8">
     <meta name="Description" content="The Human Resource Information System is a place where you can access the shared information of the academic staff and the students of the University of Colombo School of Computing.">
     <meta name="Keywords" content="HRIS,UCSC,University Students Information,Skill Directory">
-    <base href="http://localhost/hris/" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
     <title>HRIS UCSC</title>
