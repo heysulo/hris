@@ -967,12 +967,12 @@ h3{
     background-image: url("../img/defimg.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    /*box-shadow: 0px 0px 15px 5px #42b72a;*/
+    box-shadow: 0px 0px 15px 5px #42b72a;
     transition: all 0.2s linear;
 }
 
 .profile_profile_image:hover{
-    box-shadow: 0px 0px 15px 10px #42b72a;
+    box-shadow: 0px 0px 15px 10px;
 }
 
 .profile_name{
@@ -1092,6 +1092,12 @@ h3{
     left: 100px;
     top: -20px;
     padding: 4px;
+
+}
+
+.no_link_effects{
+    text-decoration: none !important;
+    color: inherit !important;
 }
 
 .botmarg{
@@ -1111,7 +1117,6 @@ h3{
     background-repeat: no-repeat;
     z-index: 999;
 }
-
 .society_item_club{
     position: relative;
     left: 5px;
@@ -1119,30 +1124,27 @@ h3{
 }
 
 .society_item_role{
-   padding: 5px;
+    position: relative;
+    left: 280px;
+    top: -20px;
 }
 
 .society_item{
     width: auto;
     cursor:pointer !important;
-    max-height: 40px;
+    max-height: 20px;
     background-image: url('../img/ico_verified.png');
     background-position: 470px 1px;
     background-repeat: no-repeat;
     overflow: hidden;
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
-    user-select: none;          /* Likely future */
     transition: all 0.2s linear;
 }
 
 .society_item:active{
     height: auto !important;
-    padding-top: 10px;
-    background-position: 470px 10px;
-    padding-bottom: 8px;
+    margin-top: 15px;
     max-height: 200px;
+    margin-bottom: 15px;
     background-color: #e9ebee;
     border: 1px solid #365899;
 }
@@ -1156,7 +1158,7 @@ h3{
 
 .profile_section_main_left{
     float: left;
-    width: 50%;
+    width: 600px;
 }
 
 .profile_section_main_right{
