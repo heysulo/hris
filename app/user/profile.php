@@ -283,6 +283,8 @@ include_once('../templates/_footer.php');
                     $('#about_me').html(about);
                 }
 
+                var emailAddr = info['email'];
+                
 
             }
         })
