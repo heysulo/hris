@@ -1158,7 +1158,7 @@ h3{
 
 .profile_section_main_left{
     float: left;
-    width: 600px;
+    width: 550px;
 }
 
 .profile_section_main_right{
@@ -2977,4 +2977,10 @@ li.active a, li.active a:hover {
     border:1px solid gray;
     border-radius: 3px;
     margin: 5px;
+}
+
+
+/*********************404 page**********/
+.error_page_box{
+
 }
