@@ -9,7 +9,7 @@ function msgbox(body,title,type,btn_default_txt,btn_optional_txt,def_function,op
     }
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("clearfix").innerHTML += this.responseText;
+            document.getElementById("msgbox_responder").innerHTML += this.responseText;
         }
     };
     xhttp.open("POST", "../templates/msgbox.php", true);
@@ -25,5 +25,5 @@ function msgbox(body,title,type,btn_default_txt,btn_optional_txt,def_function,op
 
 
 function closemsgbox () {
-    var element = document.getElementById("msgbox");element.outerHTML = "";delete element;
+    var element = document.getElementById("msgbox");element.outerHTML = "";
 }

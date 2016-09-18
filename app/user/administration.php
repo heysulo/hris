@@ -20,8 +20,8 @@
 	<title>HRIS | Administration</title>
 </head>
 <body>
-	<script>msgbox("You have access to admin panel. Use your powers with care","Admin Access",0)</script>
-	<div class="clearfix" id="clearfix">
+<script>msgbox("You have access to admin panel. Use your powers with care","Admin Access",0);</script>
+	<div class="clearfix">
 		<?php include_once('../templates/navigation_panel.php'); ?>
 		<?php include_once('../templates/top_pane.php'); ?>
 		<div class="bottomPanel">
