@@ -52,11 +52,17 @@
         $res = mysqli_query($conn,$post_query);
         if ($res){
             echo "<script>
-                    alert('Post add successfully.');
+                    //alert('Post add successfully.');
+                    setTimeout(function () { 
+                        swal(\"Success!\", \"New post added successfully.\", \"success\");
+                    }, 1000);
                   </script>";
         }else{
             echo "<script>
-                    alert('Sorry, Unable to add post.');
+                    setTimeout(function () { 
+                        swal(\"Error\", \"Unable to add post!\", \"error\");    
+                    }, 1000);
+                    //alert('Sorry, Unable to add post.');
                   </script>";
         }
 
@@ -170,7 +176,7 @@
 
             */?>
 
-            <!--Extrat box for further dev-->
+            <!--Extra box for further dev-->
             <div class="dbox group_div_content_extra">
             </div>
 
@@ -220,22 +226,59 @@ include_once('../templates/_footer.php');
 //Ajax method to get all post according to this group and show...
 <script>
     $(document).ready(function () {
-        $.ajax({
-            type:"GET",
-            url:"getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
-            success:function (response) {
-                $('#group_post_content').html(response);
-            }
-        });
+        //Update group post
+        updateGroupPost();
 
+        //Get group members
         $.ajax({
             type:"GET",
-            url:"getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
+            url:"getMethods/getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
             success:function (response2) {
                 $('.group_member_facearea').html(response2);
             }
         });
     });
+
+    function updateGroupPost(){
+        $.ajax({
+            type:"GET",
+            url:"getMethods/getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
+            success:function (response) {
+                $('#group_post_content').html(response);
+            }
+        });
+    }
+
+    function delete_post(post_id) {
+        console.log(post_id);
+        swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this post!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            },
+            function(){
+
+                $.ajax({
+                    type:"GET",
+                    url:"updateMethods/deleteGroupPost.php?group=<?php echo $group_id?>&p=<?php echo $userValid?>&i="+post_id,
+                    success:function (response) {
+                        if(response){
+                            swal("Deleted!", "Your post has been deleted.", "success");
+                            updateGroupPost();
+                        }else{
+                            swal("Error", "Unable to delete post!", "error");
+                        }
+                    }
+                });
+
+
+            });
+
+    }
 
 
     $('.newsfeed_content').on('click','.newsfeed_item_box',function () {

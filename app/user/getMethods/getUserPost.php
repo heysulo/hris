@@ -7,8 +7,8 @@
  */
 
 $conn = null;
-require_once("config.conf");
-require_once ("../database/database.php");
+require_once("../config.conf");
+require_once("../../database/database.php");
 
 if (isset($_GET['action'])){
     $user_id = $_GET['user_id'];

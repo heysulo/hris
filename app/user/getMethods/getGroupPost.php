@@ -7,12 +7,12 @@
  */
 
 $conn = null;
-require_once("config.conf");
-require_once ("../database/database.php");
+require_once("../config.conf");
+require_once("../../database/database.php");
 session_start();
 
 if (!isset($_SESSION['email']) and !isset($_GET['group'])){
-    header("location:groups.php");
+    header("location:../groups.php");
 }else{
     $gcolor = $_GET['c'];
     $gid = $_GET['group'];
@@ -30,6 +30,8 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
         $q = "SELECT first_name,last_name,profile_picture FROM member WHERE member_id='".$row['added_user_id']."'";
         $qres = mysqli_fetch_assoc(mysqli_query($conn,$q));
         $path_pro_pic = '../images/pro_pic/'.$qres['profile_picture'];
+        $post_id = $row['post_id'];
+
         //send html as respond to ajax request
 
         echo "<div class=\"dbox group_dbox_post\">
@@ -41,7 +43,7 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
                         <div class=\"group_post_head_timestamp\">".$row['added_time']."</div>
                     </div>
                     <div class=\"group_post_head_options\" style='$valid'>
-                        <div class=\"group_post_head_options_item\">Delete Post</div>
+                        <div class=\"group_post_head_options_item\" onclick='delete_post($post_id)'>Delete Post</div>
                         <div class=\"group_post_head_options_item\">Pin Post</div>
                         <div class=\"group_post_head_options_item\">Ban Member</div>
                     </div>

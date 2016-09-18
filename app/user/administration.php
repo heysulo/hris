@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<?php
@@ -427,4 +428,5 @@
 	include_once('../templates/_footer.php');
 	?>
 </body>
+
 </html>

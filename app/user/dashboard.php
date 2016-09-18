@@ -60,7 +60,7 @@
             //Update news feed area
             $.ajax({
                 type:"GET",
-                url:"getUserPost.php",
+                url:"getMethods/getUserPost.php",
                 data:{'action':'getPost',
                         'user_id':'<?php echo $user_id?>'},
                 success:function (response) {
@@ -71,7 +71,7 @@
             //Update availability status
             $.ajax({
                 type:"POST",
-                url:"getAvailabilityStatus.php",
+                url:"getMethods/getAvailabilityStatus.php",
                 data:{'check':'get'},
                 dataType:"json",
                 success:function (response) {
@@ -135,7 +135,7 @@
             //Update availability status
             $.ajax({
                 type:"POST",
-                url:"getAvailabilityStatus.php",
+                url:"getMethods/getAvailabilityStatus.php",
                 data:{'check':'set',
                         'msg':att_val},
                 dataType:"json",
@@ -154,7 +154,7 @@
                 //Update availability text
                 $.ajax({
                     type:"POST",
-                    url:"getAvailabilityStatus.php",
+                    url:"getMethods/getAvailabilityStatus.php",
                     data:{'check':'text_set',
                           'msg':text},
                     dataType:"json",
