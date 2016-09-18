@@ -29,9 +29,11 @@
         $memberDetails =mysqli_fetch_assoc(mysqli_query($conn, $Qry_to_getUserType));
 
         $userValid = 111;
+        $requestJoin = "display:none";
         if (!$memberDetails){
             $valid = "display:none;";
             $userValid = 000;
+            $requestJoin = "display:block";
         }
 
 
@@ -177,7 +179,12 @@
             */?>
 
             <!--Extra box for further dev-->
-            <div class="dbox group_div_content_extra">
+            <div class="dbox group_div_content_extra" style="<?php echo $requestJoin ?>">
+                <center>
+                    <p style="font-size: .8em">Join this group to see the discussion, post and comment.</p>
+                    <button class="msgbox_button group_writer_button" >Join Group</button>
+                </center>
+
             </div>
 
             <!--view group members area-->
@@ -239,6 +246,7 @@ include_once('../templates/_footer.php');
         });
     });
 
+    //Function to update group post
     function updateGroupPost(){
         $.ajax({
             type:"GET",
@@ -250,7 +258,7 @@ include_once('../templates/_footer.php');
     }
 
     function delete_post(post_id) {
-        console.log(post_id);
+
         swal({
                 title: "Are you sure?",
                 text: "You will not be able to recover this post!",
@@ -280,26 +288,6 @@ include_once('../templates/_footer.php');
 
     }
 
-
-    $('.newsfeed_content').on('click','.newsfeed_item_box',function () {
-        var state = $(this).data('state');
-
-        switch (state){
-            case 1 :
-            case undefined:
-                $(this).css("max-height","1000px");
-                $(this).css("height","100%");
-                $(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
-                $(this).data('state',2);
-                break;
-            case 2:
-                $(this).css("max-height","70px");
-                $(this).data('state',1);
-                $(this).children('.newsfeed_item_colorbar').css("background-color","#<?php echo $group_detail['group_color']?>");
-                break;
-        }
-
-    });
 
     function activate_tab(x) {
         var tab_notices = document.getElementById("tab_notices");
