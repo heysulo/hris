@@ -34,11 +34,11 @@
 		<?php
 			if($_REQUEST['btn_default_txt']=="undefined"){
 				?>
-				<button class="<?php echo $buttonclass;?>" onclick='closemsgbox();<?php if($_REQUEST['def_function']=="undefined"){echo "closemsgbox()";}else{echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'>Okay</button>
+				<button class="<?php echo $buttonclass;?>" onclick='closemsgbox();<?php if($_REQUEST['def_function']!="undefined"){ echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'>Okay</button>
 				<?php
 			}else{
 				?>
-				<button class="<?php echo $buttonclass;?>" onclick='closemsgbox();<?php if($_REQUEST['def_function']=="undefined"){echo "closemsgbox()";}else{echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'><?php echo $_REQUEST['btn_default_txt'] ?></button>
+				<button class="<?php echo $buttonclass;?>" onclick='closemsgbox();<?php if($_REQUEST['def_function']!="undefined"){echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'><?php echo $_REQUEST['btn_default_txt'] ?></button>
 				<?php
 			}
 		?>

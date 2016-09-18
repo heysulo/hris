@@ -24,6 +24,7 @@
 </head>
 <body>
     <!--Top pane and Navigation pane added here-->
+    
     <div>
         <?php include_once('../templates/navigation_panel.php'); ?>
         <?php include_once('../templates/top_pane.php'); ?>
