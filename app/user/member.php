@@ -19,8 +19,6 @@
 	$email = $_SESSION['email'];
 	$pro_pic = $_SESSION['pro_pic'];
 	$user_id = $_SESSION['user_id'];
-	$availability_status = $_SESSION['availability_status'];
-	$availability_text = $_SESSION['availability_text'];
 
 
 
@@ -86,11 +84,7 @@
 					}
 
 					?> </title>
-					<?php
-						if($row['email'] == $_SESSION['email']){
-							echo "<button onclick=\"location.href='../editProfile/index.php';\" class=\"edit_profile_button\">Edit Profile</button>";
-						}
-					?>
+
 
 					</div>
 				<div class="profile_online_status_box">
