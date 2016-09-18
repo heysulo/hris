@@ -226,7 +226,7 @@ include_once('../templates/_footer.php');
         //Update availability status
         $.ajax({
             type:"POST",
-            url:"getAvailabilityStatus.php",
+            url:"getMethods/getAvailabilityStatus.php",
             data:{'check':'get'},
             dataType:"json",
             success:function (response) {
@@ -248,7 +248,7 @@ include_once('../templates/_footer.php');
         //Update user information.
         $.ajax({
             type:"POST",
-            url:"getUserInfo.php",
+            url:"getMethods/getUserInfo.php",
             data:{'check':'get'},
             dataType:"json",
             success:function (info) {

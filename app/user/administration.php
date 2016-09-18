@@ -29,5 +29,12 @@
 <?php
 include_once('../templates/_footer.php');
 ?>
+
+<script>
+    $(document).ready(function () {
+        swal("Sorry!", "This area under development.");
+    });
+
+</script>
 </body>
 </html>

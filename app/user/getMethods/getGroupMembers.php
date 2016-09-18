@@ -7,12 +7,12 @@
  */
 
 $conn = null;
-require_once("config.conf");
-require_once ("../database/database.php");
+require_once("../config.conf");
+require_once("../../database/database.php");
 session_start();
 
 if (!isset($_SESSION['email']) and !isset($_GET['group'])){
-    header("location:groups.php");
+    header("location:../groups.php");
 }else{
 
     $gid = $_GET['group'];

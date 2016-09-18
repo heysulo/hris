@@ -7,13 +7,13 @@
  */
 
 $conn = null;
-require_once("config.conf");
-require_once ("../database/database.php");
+require_once("../config.conf");
+require_once("../../database/database.php");
 session_start();
 
 if(!isset($_SESSION['email']) && !isset($_POST['check'])) {
 
-    header('location:../index.php');
+    header('location:../../index.php');
 
 }else{
     $user_id = $_SESSION['user_id'];
