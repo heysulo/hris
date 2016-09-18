@@ -64,6 +64,7 @@
                 Groups
             </div>
         </li>
+        <?php if(isset($_SESSION['system_admin_panel_access']) && $_SESSION['system_admin_panel_access']){?>
         <li class="navbaritem <?php echo $administration;?>" id="admin">
             <div>
                 <img id="lp_administration" class="navbaritemimg" src="<?php echo $publicPath?>img/img_lp_administration.png">
@@ -72,6 +73,7 @@
                 Administration
             </div>
         </li>
+        <?php } ?>
         <li class="navbaritem <?php echo $advancedSearch;?>" id="advancedSearch">
             <div>
                 <img id="lp_advancedSearch" class="navbaritemimg" src="<?php echo $publicPath?>/img/img_lp_advancedsearch.png">

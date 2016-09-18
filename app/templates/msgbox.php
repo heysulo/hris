@@ -1,15 +1,18 @@
 <span id="msgbox">
 <?php 
 	$buttonclass = "msgbox_button msgbox_button_default";
+	$dimcolor = "000";
 	switch ($_REQUEST['type']){
 		case 1:
 			$buttonclass = "msgbox_button group_writer_button";
 			break;
 		case 2:
 			$buttonclass = "msgbox_button group_writer_button yellow_button";
+			$dimcolor="fcb42e";
 			break;
 		case 3:
 			$buttonclass = "msgbox_button group_writer_button red_button";
+			$dimcolor="ff0000";
 			break;
 		default:
 			$buttonclass = "msgbox_button msgbox_button_default";
@@ -31,11 +34,11 @@
 		<?php
 			if($_REQUEST['btn_default_txt']=="undefined"){
 				?>
-				<button class="msgbox_button msgbox_button_default" onclick='closemsgbox();<?php if($_REQUEST['def_function']=="undefined"){echo "closemsgbox()";}else{echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'>Okay</button>
+				<button class="<?php echo $buttonclass;?>" onclick='closemsgbox();<?php if($_REQUEST['def_function']=="undefined"){echo "closemsgbox()";}else{echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'>Okay</button>
 				<?php
 			}else{
 				?>
-				<button class="msgbox_button msgbox_button_default" onclick='closemsgbox();<?php if($_REQUEST['def_function']=="undefined"){echo "closemsgbox()";}else{echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'><?php echo $_REQUEST['btn_default_txt'] ?></button>
+				<button class="<?php echo $buttonclass;?>" onclick='closemsgbox();<?php if($_REQUEST['def_function']=="undefined"){echo "closemsgbox()";}else{echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'><?php echo $_REQUEST['btn_default_txt'] ?></button>
 				<?php
 			}
 		?>
@@ -56,7 +59,7 @@
 	
 </div>
 
-<div class="msgbox_dimmer">
+<div class="msgbox_dimmer" style='background-color:#<?php echo $dimcolor;?>'>
 
 </div>
 </span>

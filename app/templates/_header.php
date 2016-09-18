@@ -10,6 +10,7 @@ defined('hris_access') or die(header("location:../../error.php"));
 <meta name="author" content="team helix">
 
 
+<script src="<?php echo $publicPath?>js/msgbox_functions.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/artista.css">
 <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
 <!--<link href='https://fonts.googleapis.com/css?family=Catamaran:400,200' rel='stylesheet' type='text/css'>
