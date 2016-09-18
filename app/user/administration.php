@@ -288,7 +288,7 @@
 							<div class="group_administration_content_field_value">
 								<form>
 									<input type="text" class="group_administration_txtbox" placeholder="New Member's Email Address" id="new_member_email"><br>
-									<select id="conatct_info_opt" class="group_administration_dropdown">
+									<select id="new_member_role" class="group_administration_dropdown">
 										<?php
 										$my_role_power = $_SESSION['system_member_add_power'];
 										$query2 = "SELECT * FROM system_role WHERE system_member_add_power_needed <= $my_role_power";
@@ -304,7 +304,7 @@
 										?>
 									</select>
 
-									<button class="msgbox_button group_writer_button " onclick='closemsgbox();window.alert(";)");'>Send Invitation</button>
+									<button class="msgbox_button group_writer_button" type="button" onclick='checkinvite();'>Send Invitation</button>
 								</form>
 							</div>
 						</div>
@@ -427,6 +427,80 @@
 	<?php
 	include_once('../templates/_footer.php');
 	?>
+
+
+	<script>
+		function checkinvite() {
+			var email = document.getElementById("new_member_email").value;
+			if (validateEmail(email)==false){
+				msgbox("The email address you entered does not appears to valid. Please insert a valid email address inorder to continue","Invalid Email Address");
+				return;
+			}
+			var xhttp = new XMLHttpRequest();
+
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var res = this.responseText;
+					if (res=="01"){
+						msgbox("The email address you entered is already associated with an account inside the system","Email Address in Use",2);
+					}else if(res=="10") {
+						msgbox("An active invitation is already pending to the email address you provided", "Email Address already have an active invitation", 2);
+					}else if(res="00"){
+						var role_id = document.getElementById("new_member_role").value;
+						var xhr = new XMLHttpRequest();
+						xhr.onreadystatechange = function () {
+							if (xhr.readyState ==4 && xhr.status == 200){
+								switch (xhr.responseText){
+									case "success":
+										msgbox("An invitation has being successfully sent to " + email + " with instructions to join the system. Email delivery will take upto 20 minutes depending on the network","Invitation Sent",1);
+										document.getElementById("new_member_email").value = "";
+										break;
+									case "0x4":
+										msgbox("You don't have permission to perform this task. Either your permission has being revoked from the system or an act of intentional unauthorized access.","Permission Denied",3);
+										break;
+									case "0x3":
+										msgbox("The selected role somehow does not exist in the system. Try reloading the page and sending an invite again","Role Does Not Exist",3)
+										break;
+									case "0x1":
+										msgbox("The email address you entered is already associated with an account inside the system","Email Address in Use",2);
+										break;
+									case "0x2":
+										msgbox("An active invitation is already pending to the email address you provided", "Email Address already have an active invitation", 2);
+										break;
+									case "0x5":
+										msgbox("Unable to send an invitation to " + email + ". Please reload the page and try again in few minutes", "Invitation Not Sent",3);
+										break;
+									default:
+										msgbox("A serious error occured while the action was in process","Error Ocuured",3);
+										break;
+								}
+							}
+						};
+						xhr.open("POST", "./administration_events/invite_member.php", true);
+						xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+						xhr.send("email="+email+"&role="+role_id);
+					}else {
+						msgbox("A serious error occured while the action was in process","Error Ocuured",3);
+					}
+				}
+			};
+			xhttp.open("POST", "./administration_events/invitation_email_verification.php", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("email="+email);
+		}
+
+		function validateEmail(input) {
+			var atpos = input.indexOf("@");
+			var dotpos = input.lastIndexOf(".");
+			if (atpos>0 && dotpos> atpos+1 && dotpos < input.length) {
+
+				return true;
+			}else{
+				return false;
+			}
+
+		}
+	</script>
 </body>
 
 </html>

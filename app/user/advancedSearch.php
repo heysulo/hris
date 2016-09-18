@@ -27,7 +27,7 @@
     <title>HRIS | Groups</title>
 </head>
 <body>
-s
+
 <div class="clearfix">
     <?php include_once('../templates/navigation_panel.php'); ?>
     <?php include_once('../templates/top_pane.php'); ?>
