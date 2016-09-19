@@ -16,8 +16,6 @@
     $email = $_SESSION['email'];
     $pro_pic = $_SESSION['pro_pic'];
     $user_id = $_SESSION['user_id'];
-    $availability_status = $_SESSION['availability_status'];
-    $availability_text = $_SESSION['availability_text'];
 
     ?>
     <title>HRIS | Basic Search</title>
@@ -58,8 +56,10 @@
         require_once ("../database/database.php");
         if (isset($_GET["search"]) and $_GET["search"]!=""){
         $user_input = htmlspecialchars($_GET["search"]);
-        $contact_query = "SELECT * from member where lcase(concat(first_name,\" \",last_name))=lcase(\"$user_input\") or lcase(concat(first_name,\" \",middle_name,\" \",last_name))=lcase(\"$user_input\") or  lcase(concat(first_name,\" \",middle_name))=lcase(\"$user_input\") or  lcase(concat(middle_name,\" \",last_name))=lcase(\"$user_input\") or lcase(first_name)=lcase(\"$user_input\")  or lcase(middle_name)=lcase(\"$user_input\") or lcase(last_name)=lcase(\"$user_input\")";
-        $res_contact_query = mysqli_query($conn,$contact_query);
+            //sample_qry = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%';
+            //$contact_query = "SELECT * from member where lcase(concat(first_name,\" \",last_name))=lcase(\"$user_input\") or lcase(concat(first_name,\" \",middle_name,\" \",last_name))=lcase(\"$user_input\") or  lcase(concat(first_name,\" \",middle_name))=lcase(\"$user_input\") or  lcase(concat(middle_name,\" \",last_name))=lcase(\"$user_input\") or lcase(first_name)=lcase(\"$user_input\")  or lcase(middle_name)=lcase(\"$user_input\") or lcase(last_name)=lcase(\"$user_input\")";
+            $contact_query = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%'";
+            $res_contact_query = mysqli_query($conn,$contact_query);
         if (mysqli_num_rows($res_contact_query)){
             while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
                 ?>
@@ -84,8 +84,6 @@
 
     </div>
 </div>
-
-
 
 <?php
 include_once('../templates/_footer.php');
