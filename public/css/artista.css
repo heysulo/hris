@@ -186,6 +186,7 @@ h3{
     height: 35px;
     font-size: .9em;
     z-index: 4;
+    cursor: pointer;
     transition: all 0.2s;
 }
 

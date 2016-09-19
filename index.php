@@ -16,6 +16,7 @@
 
 </head>
 <body>
+    <script>msgbox("body","sdsds");</script>
     <div class="loginmaindiv">
         <div>
             <div class="introbox">
@@ -90,6 +91,7 @@
     </div>
 
     <div class="bg_blurredimg"></div>
+    
 
 </body>
 </html>

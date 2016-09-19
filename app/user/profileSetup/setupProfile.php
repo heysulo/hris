@@ -14,6 +14,9 @@
     require_once('../../templates/path.php');
     include('../../templates/_header.php');
     session_start();
+    $conn = null;
+    require_once("../config.conf");
+    require_once ("../../database/database.php");
     ?>
 
     <style>
@@ -29,6 +32,20 @@
 </head>
 
 <body class="welcome_body">
+<?php
+$token = 0;
+if (isset($_GET['token'])){
+    $token = $_GET['token'];
+}else{
+    $token = 0;
+}
+$query1 = "SELECT * FROM invitation WHERE token=\"".$token."\" ";
+$res1 = mysqli_query($conn,$query1);
+if (mysqli_num_rows($res1)){
+$row = mysqli_fetch_assoc($res1);
+$email = htmlspecialchars_decode($row['email']);
+$_SESSION['email'] = $email;
+?>
 
 <div class="welcome_top_gradient"></div>
 
@@ -39,14 +56,7 @@
     <form action="submitForm.php" name="welcomeForm" method="post" enctype="multipart/form-data">
 
         <!--Set email address to hiden element-->
-        <?php
-            $emailAdd = $_GET['em'];
-            $email = base64_decode($emailAdd);
-            $_SESSION['email'] = $email;
-
-            //string base64_encode ( string $data ) This how encoded email address.
-
-        ?>
+        
         <!--Step 1 . Get user password-->
         <div id="content_1">
 
@@ -171,7 +181,12 @@
         </div>
     </form>
 </div>
+<?php }else{?>
+    <div class="error_page_box">
+        <div class="error_page_text">The link you followed may be broken, or the page may have been removed.</div>
+    </div>
 
+<?php }?>
 <script src="<?php echo $publicPath?>js/jquery-2.2.4.min.js"></script>
 <script src="<?php echo $publicPath?>js/jquery.validate.min.js"></script>
 <script src="<?php echo $publicPath?>js/bday-picker.js"></script>
