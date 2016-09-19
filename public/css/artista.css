@@ -2716,8 +2716,10 @@ h3{
     margin: 10px;
 }
 
+
 .search_member_box{
     background-color: #fff !important;
+    cursor: pointer;
 }
 
 .group_member_hd_propic{

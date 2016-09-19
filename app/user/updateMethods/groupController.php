@@ -17,7 +17,15 @@ if(!isset($_SESSION['email'])){
 
         //Get user inputs
 
+        $createRole = $_POST['createRole'];
+
+        foreach ($createRole as $item) {
+
+        }
+
         $role_name = $_POST['role_name'];
+
+
         $allow_admin_panel_access = $_POST['allow_admin_panel_access'];
         $allow_adding_new_member = $_POST['allow_adding_new_member'];
         $allow_removing_member = $_POST['allow_removing_member'];

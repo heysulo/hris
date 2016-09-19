@@ -78,7 +78,6 @@ function createUser(){
         //header("location:index.php");
         echo mysqli_error($conn);
         echo $qry_to_insert;
-        echo $_POST['birthdate'];
     }
 
 
