@@ -20,12 +20,13 @@
 	<title>HRIS | Administration</title>
 </head>
 <body>
-<script>msgbox("You have access to admin panel. Use your powers with care","Admin Access",0);</script>
+
 	<div class="clearfix">
 		<?php include_once('../templates/navigation_panel.php'); ?>
 		<?php include_once('../templates/top_pane.php'); ?>
 		<div class="bottomPanel">
 			<?php if($_SESSION['system_admin_panel_access']){?>
+				<script>msgbox("You have access to admin panel. Use your powers with care","Admin Access",0);</script>
 			<div style="float:left;height:80px;width:100%;">
 				<div style="float:left;width:auto;height:100%;">
 					<div class="txt_paneltitle">System Administration</div>
