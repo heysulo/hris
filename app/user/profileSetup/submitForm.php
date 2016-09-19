@@ -64,11 +64,11 @@ function createUser(){
     $current_city = mysqli_real_escape_string($conn,$_POST['current_city']);
     $hometown = mysqli_real_escape_string($conn,$_POST['hometown']);
 
-    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,joined_date,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year',NOW(),'$gender','$userImg',1,'$userbirthDay','$current_city','$hometown')";
+    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,joined_date,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year',NOW(),'$gender','$userImg',1,'$userbirthDay','$current_city','$hometown');DELETE FROM invitation WHERE email=\"$email\";";
 
     //echo base64_encode('remalsha@gmail.com'); //cmVtYWxzaGFAZ21haWwuY29t
 
-    $response = mysqli_query($conn,$qry_to_insert);
+    $response = mysqli_multi_query($conn,$qry_to_insert);
 
     if ($response){
         if (session_destroy()){
