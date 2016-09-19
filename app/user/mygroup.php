@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head>
+<head xmlns="http://www.w3.org/1999/html">
     <?php
     define("hris_access",true);
     require_once('../templates/path.php');
@@ -257,64 +257,66 @@
                     <div class="group_administration_content_field_value">
                         <div class="group_administration_content_field_value_sub">
 
-                            <input type="text" name="role_name" class="group_administration_txtbox" placeholder="Enter Role Name">
+                            <input type="text" name="role_name" class="group_administration_txtbox" placeholder="Enter Role Name" required>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_admin_panel_access" class="ui group_administration_checkbox" >
-                                <label>Allow admin panel Access</label>
+
+                                <label><input type="checkbox" name="createRole[]" value="1" class="ui group_administration_checkbox" >
+                                Allow admin panel Access</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_member_add_power" class="ui group_administration_checkbox" >
-                                <label>Allow adding new members to the group</label>
+                                <label><input type="checkbox" name="createRole[]" value="2" class="ui group_administration_checkbox" >
+                                Allow adding new members to the group</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_member_remove_power" class="ui group_administration_checkbox" >
-                                <label>Allow removing members from the group</label>
+                                <label><input type="checkbox" name="createRole[]" value="3" class="ui group_administration_checkbox" >
+                                Allow removing members from the group</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_member_upgrade_power" class="ui group_administration_checkbox" >
-                                <label>Allow changing roles of members</label>
+                                <label><input type="checkbox" name="createRole[]" value="4" class="ui group_administration_checkbox" >
+                                Allow changing roles of members</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_modify_power" class="ui group_administration_checkbox" >
-                                <label>Allow group setting modifications</label>
+                                <label><input type="checkbox" name="createRole[]" value="5" class="ui group_administration_checkbox" >
+                                Allow group setting modifications</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_delete_power" class="ui group_administration_checkbox" >
-                                <label>Allow group deletion</label>
+                                <label><input type="checkbox" name="createRole[]" value="6" class="ui group_administration_checkbox" >
+                                Allow group deletion</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_notice_post_power" class="ui group_administration_checkbox" >
-                                <label>Allow user to post in the group</label>
+                                <label><input type="checkbox" name="createRole[]" value="7" class="ui group_administration_checkbox" >
+                                Allow user to post in the group</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_notice_delete_power" class="ui group_administration_checkbox" >
-                                <label>Allow user to delete posts in group</label>
+                                <label><input type="checkbox" name="createRole[]" value="8" class="ui group_administration_checkbox" >
+                                Allow user to delete posts in group</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_notice_pin_power" class="ui group_administration_checkbox" >
-                                <label>Allow user to pin/unpin posts</label>
+                                <label><input type="checkbox" name="createRole[]" value="9" class="ui group_administration_checkbox" >
+                                Allow user to pin/unpin posts</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_email_power" class="ui group_administration_checkbox" >
-                                <label>Allow user to send gorup messages via Email</label>
+                                <label><input type="checkbox" name="createRole[]" value="10" class="ui group_administration_checkbox" >
+                                Allow user to send gorup messages via Email</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <input type="checkbox" name="createRole[]" value="group_tweet_power" class="ui group_administration_checkbox" >
-                                <label>Allow user to Tweet</label>
+                                <label><input type="checkbox" name="createRole[]" value="11" class="ui group_administration_checkbox" >
+                                Allow user to Tweet</label>
                             </div>
                             <br>
 
+                            <input type="hidden" value="<?php echo $group_id ?>" name="group_id">
                             <input type="submit" class="msgbox_button group_writer_button" name="create_role" id="create_role" value="Create New Role">
                         </div>
                         <div style="clear: both"></div>
