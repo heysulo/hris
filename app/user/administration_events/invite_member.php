@@ -23,11 +23,11 @@ if (isset($_SESSION["system_admin_panel_access"])){
         if (mysqli_num_rows($res3) ==1){
             $row = mysqli_fetch_assoc($res3);
             if ($row['system_member_add_power_needed']<=$_SESSION['system_member_add_power']){
-
-                $query4 = "INSERT INTO invitation(email, system_role_id, token) VALUES (\"$email\",$role_id,\"".bin2hex(openssl_random_pseudo_bytes(32))."\")";
+                $tokenx = bin2hex(openssl_random_pseudo_bytes(32));
+                $query4 = "INSERT INTO invitation(email, system_role_id, token) VALUES (\"$email\",$role_id,\"".$tokenx."\")";
                 $res4 = mysqli_query($conn,$query4);
                 if ($res4){
-                    echo "success";
+                    echo "success_$tokenx";
                 }else{
                     echo "0x5";
                 }

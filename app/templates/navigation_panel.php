@@ -2,7 +2,12 @@
 
     defined('hris_access') or die(header("location:../../error.php"));
     $filename = basename($_SERVER['PHP_SELF'],'.php');
-
+$dashbord = null;
+$profile = null;
+$skill_directory= null;
+$groups= null;
+$administration= null;
+$advancedSearch= null;
     switch ($filename){
         case 'dashboard':
             $dashbord = "active";
