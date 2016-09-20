@@ -95,7 +95,8 @@
                     <!--Content info add from here-->
                     <div class="society_item">
                         <div class="society_item_club"><b>Society</b> : Gavel Club University of Colombo</div>
-                        <div class="society_item_role"><b>My Role</b> : Super Long President</div>
+                        <br>
+                        <!--<div class="society_item_role"><b>My Role</b> : Super Long President</div>-->
                         <br>
                         <div class="society_item_extra">
 
@@ -162,10 +163,10 @@
                         <div class="contact_info_item_field">Religion</div>
                         <div class="contact_info_item_value"></div>
                     </div>
-                    <div class="contact_info_item" id="">
+                    <!--<div class="contact_info_item" id="">
                         <div class="contact_info_item_field">School :</div>
                         <div class="contact_info_item_value">St. Aloysius' College, Galle</div>
-                    </div>
+                    </div>-->
 
                 </div>
 
