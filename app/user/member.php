@@ -60,10 +60,12 @@
 	<div class="clearfix">
 
 		<?php
+		$member_status_temp =explode("_",$row['availability_status']);
 		$member_status_text = $row['availability_text'];
-		$member_at =  $row['availability_status'];
-		$color = "#fff";
-		switch($member_at){
+		$member_at =  $member_status_temp[0];
+		$color = $member_status_temp[1];
+
+		/*switch($member_at){
 			case "Available":
 				$color = "#34a853";
 				break;
@@ -80,7 +82,7 @@
 				$color = "#707070";
 				break;
 
-		}
+		}*/
 		?>
 		<div class="bottomPanel">
 			<div class="profile_section_intro">
@@ -99,7 +101,7 @@
 				<div class="profile_online_status_box">
 
 					<div class="profile_availability_icon" style="background-color: <?php echo $color;?>"></div>
-					<div class="profile_availability_text"><?php echo $member_status_text;?></div>
+					<div class="profile_availability_text"><?php echo $member_at."  -  ".$member_status_text;?></div>
 				</div>
 				<div class="profile_last_seen_box">
 					<div class="profile_last_seen_text"><?php echo "NOT IMPLEMENTED YET";?></div>

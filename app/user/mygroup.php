@@ -91,7 +91,7 @@
 
             <div>
                 <?php echo $group_detail['category']; ?> Group<br>
-                12,232 Members<br>
+                <div id="num_member">1 Members</div><br>
             </div>
             <div class="group_short_description">
                 <?php echo $group_detail['description']; ?>
@@ -507,6 +507,8 @@ include_once('../templates/_footer.php');
             data:{'use':'sub'},
             success:function (response2) {
                 $('.group_member_facearea').html(response2);
+                var number_members = $('.group_member_facearea').size();
+                $('#num_member').html(number_members + " Members ");
             }
         });
 

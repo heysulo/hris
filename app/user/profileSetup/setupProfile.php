@@ -45,6 +45,7 @@ if (mysqli_num_rows($res1)){
 $row = mysqli_fetch_assoc($res1);
 $email = htmlspecialchars_decode($row['email']);
 $_SESSION['email'] = $email;
+
 ?>
 
 <div class="welcome_top_gradient"></div>
@@ -83,7 +84,7 @@ $_SESSION['email'] = $email;
             <div class="dbox welcome_section_maindbox">
                 <?php include("steps.php"); ?>
                 <div class="welcome_section_introtxt">
-                    Enter your name name here, so the members of the system can recognize you.
+                    Enter your name here, other members of the system can recognize you.
                     This name will be used everywhere inside the system including searches.
                 </div>
                 <center>
@@ -103,7 +104,7 @@ $_SESSION['email'] = $email;
                     <hr class="advancedsearch_hr">
                     <div class="welcome_section_introtxt">
                         Select your Role and Gender.
-                        Also include your academic year so the members can easily find you inside the Human Resource Information System.
+                        Also include your academic year, then members can easily find you inside the Human Resource Information System.
                     </div>
                     <div>
                         <select class="welcome_dropdown" name="category" id="role" required>

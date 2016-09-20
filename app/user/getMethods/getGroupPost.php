@@ -32,6 +32,10 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
         $path_pro_pic = '../images/pro_pic/'.$qres['profile_picture'];
         $post_id = $row['post_id'];
 
+        //Get group role
+        $sql = mysqli_fetch_assoc(mysqli_query($conn, "SELECT role FROM group_member WHERE member_id = '".$row['added_user_id']."' AND group_id= '$gid' "));
+        $role = $sql['role'];
+
         //send html as respond to ajax request
 
         echo "<div class=\"dbox group_dbox_post\">
@@ -39,7 +43,7 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
                     <div class=\"group_post_user_image\" style=\"background-image: url('$path_pro_pic')\"></div>
                     <div class=\"group_post_head_content\">
                         <div class=\"group_post_head_user_name\">".$qres['first_name']." ".$qres['last_name']."</div>
-                        <div class=\"group_post_head_role\">Vice Precident</div>
+                        <div class=\"group_post_head_role\">".$role."</div>
                         <div class=\"group_post_head_timestamp\">".$row['added_time']."</div>
                     </div>
                     <div class=\"group_post_head_options\" style='$valid'>
