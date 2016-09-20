@@ -4,6 +4,7 @@
     $mname = $_SESSION['mname'];
     $lname = $_SESSION['lname'];
     $email = $_SESSION['email'];
+    $img = $_SESSION['usr'];
 
     function getfullname(){
         global $fname,$lname;
@@ -12,12 +13,11 @@
     }
 
 ?>
-
 <div class="resetpassword_support_text">
     The following account matched with the email address you provided. Press continue to reset your password.
 </div>
 <div class="resetpassword_account_box">
-    <div class="resetpassword_account_propic"></div>
+    <img class="resetpassword_account_propic" src="../../images/pro_pic/<?php echo $img?>">
     <div>
         <span class="resetpassword_account_name"><?php echo getfullname();?></span>
         <br>

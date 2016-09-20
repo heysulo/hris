@@ -42,7 +42,7 @@
 
             <div class="profile_name">
                 <?php echo $fname." ".$lname?> <!--Print user name-->
-                <button onclick="location.href='../editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
+                <button onclick="location.href='./editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
             </div>
 
             <!--Availability status area-->
@@ -94,15 +94,12 @@
 
                     <!--Content info add from here-->
                     <div class="society_item">
-                        <div class="society_item_club"><b>Society</b> : Gavel Club University of Colombo</div>
-                        <br>
-                        <!--<div class="society_item_role"><b>My Role</b> : Super Long President</div>-->
-                        <br>
+                        <div class="society_item_club">Gavel Club University of Colombo</div><div class="society_item_role">Member</div>
                         <div class="society_item_extra">
+                            The University of Colombo Gavel Club is affiliated to Toastmasters International USA and was chartered in October 2014. The main objectives of the club are to develop communication, presentation and leadership skills among the undergraduates. Our educational meetings are held on Mondays from 4pm to 6pm at the NPLT (New Physics Lecture Theatre), Department of Physics, Faculty of Science University of Colombos
 
                         </div>
                     </div>
-                    <hr>
 
                 </div>
 

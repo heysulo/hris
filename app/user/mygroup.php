@@ -37,6 +37,7 @@
         }
 
 
+
     }
 
     $fname = $_SESSION['fname'];
@@ -72,6 +73,8 @@
 
     ?>
     <title>HRIS | Groups</title>
+
+
 </head>
 <body>
 <div style="padding: 0px;">
@@ -193,7 +196,6 @@
         <div class="dbox group_tab_members group_members_dbox">
             <div class="group_tab_members_role">Members</div>
             <div class="group_tab_members_view_area">
-
                 <div class="group_member_hd_box">
                     <div class="group_member_hd_propic"></div>
                     <div class="group_member_hd_name">Sulochana Kodituwakku</div>
@@ -494,7 +496,7 @@
 <?php
 include_once('../templates/_footer.php');
 ?>
-//Ajax method to get all post according to this group and show...
+<!--Ajax method to get all post according to this group and show...-->
 <script>
     $(document).ready(function () {
         //Update group post
@@ -524,13 +526,13 @@ include_once('../templates/_footer.php');
 
     //Function to update group post
     function updateGroupPost(){
-        $.ajax({
+        /*$.ajax({
             type:"GET",
             url:"getMethods/getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
             success:function (response) {
                 $('#group_post_content').html(response);
             }
-        });
+        });*/
     }
 
     //Delete group post function
@@ -578,6 +580,10 @@ include_once('../templates/_footer.php');
 
     });
 
+
+</script>
+
+<script>
 
     function activate_tab(x) {
         var tab_notices = document.getElementById("tab_notices");
