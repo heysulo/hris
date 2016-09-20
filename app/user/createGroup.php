@@ -73,7 +73,7 @@
                     $resp = mysqli_query($conn,"SELECT group_id FROM groups WHERE name='$g_name'");
                     $data = mysqli_fetch_assoc($resp);
                     $g_id = $data['group_id'];
-                    $qry_to_add_member = "INSERT INTO group_member VALUES ('$g_id','$user_id','Administrator',20,20,20,20,20,20,20,20,20,20,20,'Created this group in this system.',NOW())";
+                    $qry_to_add_member = "INSERT INTO group_member VALUES ('$g_id','$user_id','Administrator','Created this group in this system.',NOW())";
                     $respo = mysqli_query($conn,$qry_to_add_member);
                     /*$error = mysqli_error($conn);*/
                 }else{

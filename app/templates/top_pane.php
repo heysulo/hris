@@ -15,7 +15,7 @@
                         <a href="#">Account Settings</a>
                         <a href="logout.php">Logout</a>
                         <a href="#">Go Offline</a>
-                        <a href="#">What the Shit Biscuit?</a>
+
                 </div>
             </div>
 
