@@ -191,11 +191,15 @@
     <!--View current member-->
     <div class="group_div_content" id="tab_members">
         <div class="dbox group_tab_members group_members_dbox">
-            <div class="group_tab_members_role">President</div>
+            <div class="group_tab_members_role">Members</div>
             <div class="group_tab_members_view_area">
-                <?php
-                include ("member_hd.php");
-                ?>
+
+                <div class="group_member_hd_box">
+                    <div class="group_member_hd_propic"></div>
+                    <div class="group_member_hd_name">Sulochana Kodituwakku</div>
+                    <div class="group_member_hd_role">President</div>
+                    <div class="group_member_hd_role">Computer Science</div>
+                </div>
 
                 <div style="clear: both;"></div>
             </div>
@@ -210,7 +214,7 @@
             <div class="group_administration_content_field">
                 <div class="group_administration_content_field_name">Group Name</div>
                 <div class="group_administration_content_field_value">
-                    <input type="text" class="group_administration_txtbox">
+                    <input type="text" class="group_administration_txtbox" name="group_name" value="<?php echo $group_detail['name']?>">
                 </div>
             </div>
             <div class="group_administration_content_field">
@@ -244,7 +248,7 @@
             <div class="group_administration_content_field">
                 <div class="group_administration_content_field_name">Group Description</div>
                 <div class="group_administration_content_field_value">
-                    <textarea class="group_administration_textarea" placeholder="Describe this group"></textarea>
+                    <textarea class="group_administration_textarea" placeholder="Describe this group"><?php echo $group_detail['description']; ?></textarea>
                 </div>
             </div>
 
@@ -330,10 +334,13 @@
                 <div class="group_administration_content_field_name">Delete Group Role</div>
                 <div class="group_administration_content_field_value">
                     <select id="conatct_info_opt" class="group_administration_dropdown">
+                        <option value="">-- Select --</option>
                         <?php
-                        $dist = "President,Vice President,Secratory,Member";
-                        $ary = explode(',', $dist);
-                        foreach($ary as $dist){
+
+                        $res_name = mysqli_query($conn,"SELECT role_name FROM group_role WHERE group_id = '$group_id' ");
+
+                        while($row = mysqli_fetch_assoc($res_name)){
+                            $dist = $row['role_name'];
                             echo "<option value='$dist'>$dist</option>";
                         }
                         ?>
@@ -349,10 +356,13 @@
                 <div class="group_administration_content_field_value">
                     <div class="group_administration_content_field_value_sub">
                         <select id="conatct_info_opt" class="group_administration_dropdown">
+                            <option value="">-- Select --</option>
                             <?php
-                            $dist = "President,Vice President,Secratory,Member";
-                            $ary = explode(',', $dist);
-                            foreach($ary as $dist){
+
+                            $res_name = mysqli_query($conn,"SELECT role_name FROM group_role WHERE group_id = '$group_id' ");
+
+                            while($row = mysqli_fetch_assoc($res_name)){
+                                $dist = $row['role_name'];
                                 echo "<option value='$dist'>$dist</option>";
                             }
                             ?>
@@ -494,8 +504,18 @@ include_once('../templates/_footer.php');
         $.ajax({
             type:"GET",
             url:"getMethods/getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
+            data:{'use':'sub'},
             success:function (response2) {
                 $('.group_member_facearea').html(response2);
+            }
+        });
+
+        $.ajax({
+            type:"GET",
+            url:"getMethods/getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
+            data:{'use':'main'},
+            success:function (response3) {
+                $('.group_tab_members_view_area').html(response3);
             }
         });
     });
@@ -539,7 +559,7 @@ include_once('../templates/_footer.php');
             });
     }
 
-    //function to
+    //function to join group
     $('#joinGroup').click(function () {
 
         $.ajax({
