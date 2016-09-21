@@ -526,13 +526,13 @@ include_once('../templates/_footer.php');
 
     //Function to update group post
     function updateGroupPost(){
-        /*$.ajax({
+        $.ajax({
             type:"GET",
             url:"getMethods/getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
             success:function (response) {
                 $('#group_post_content').html(response);
             }
-        });*/
+        });
     }
 
     //Delete group post function
