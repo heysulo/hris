@@ -29,8 +29,12 @@ function createUser(){
         $targetDir = "../../images/pro_pic/";
         $uploadImgName = $_FILES['pro_pic_img']['name'];
         $uploadImgSize = $_FILES['pro_pic_img']['size'];
+
+        //Chnage uploaded file name
+        $un = mysqli_real_escape_string($conn,$_POST['firstName']);
+        $preFix = substr(strtolower($un),0,2);
         $imgExtention = strtolower(pathinfo($uploadImgName,PATHINFO_EXTENSION));
-        $userImg = rand(1000,1000000).".".$imgExtention;
+        $userImg = $preFix.rand(1000,1000000).".".$imgExtention;
         $targetFile = $targetDir.$userImg;
 
         if ($uploadImgSize<5000000 AND $uploadImgSize > 0){
