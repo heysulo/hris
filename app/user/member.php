@@ -46,7 +46,7 @@
 		}
 
 		?> </title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet">
+<!--    <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet">-->
 </head>
 <body>
 	<div>
@@ -85,6 +85,52 @@
 		}*/
 		?>
 		<div class="bottomPanel">
+			<div id="profile_section_intro" class="profile_section_intro_new" style="border-bottom: 25px solid <?php echo $color;?>;" onchange="resize_profile_intro();">
+				<?php
+				$display_name = "";
+				if ($row["middle_name"]!=""){
+					$display_name= $row['first_name'] . " " .$row['middle_name'] ." " . $row['last_name'] ;
+				}else{
+					$display_name = $row['first_name'] . " " . $row['last_name'] ;
+				}
+				?>
+
+				<img class="profile_profile_image_new" src="../images/pro_pic/<?php echo $row['profile_picture']?>">
+				<div id="profile_name" class="profile_name" ><?php
+
+					echo $display_name;
+
+					?>
+					<button class="msgbox_button group_writer_button" type="button" onclick="checkinvite();">Edit Profile</button>
+				</div>
+				<div class="profile_online_status_box">
+					<div class="profile_availability_icon" style="background-color: <?php echo $color;?>"></div>
+					<div class="profile_availability_text">
+						<?php echo $member_at;
+						if($member_status_text!=""){
+							echo "  -  ".$member_status_text;
+						}
+						?>
+					</div>
+				</div>
+				<div class="profile_last_seen_box">
+					<div class="profile_last_seen_text">Last seen : 15 minutes ago</div>
+				</div>
+				<div class="profile_basic_summery">
+					Role : <?php echo $row['category'];?><br>
+					Academic Year : <?php echo $row['academic_year'];?><br>
+					Gender : <?php echo $row['gender'];?><br>
+					Course : <?php echo "404"?><br>
+					Hometown : <?php echo $row['gender'];?><br>
+					Username : <?php echo $row['username'];?><br>
+				</div>
+				<div class="profile_gpa_value">
+					3.2
+				</div>
+				<div class="profile_txt_gpa">Current GPA</div>
+				<div class="profile_txt_gpa">Rank : #225</div>
+			</div>
+			<?php /*
 			<div class="profile_section_intro">
 				<img class="profile_profile_image" src="../images/pro_pic/<?php echo $row['profile_picture']?>" alt="" style="box-shadow: 0px 0px 15px 5px <?php echo $color;?>;">
 				<div class="profile_name"><?php
@@ -112,6 +158,7 @@
 					Gender : <?php echo $row['gender'];?><br>
 				</div>
 			</div>
+ 		    */?>
 
 			<div class="profile_section_main">
 				<div class="profile_section_main_left">
@@ -303,6 +350,41 @@
 	<?php
 	include_once('../templates/_footer.php');
 	?>
+
+	<script>
+		var uid = <?php echo $view_id?>;
+		function heartbeat() {
+			var ss = document.getElementById('profile_name');
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState ==4 && xhr.status == 200){
+					ss.innerHTML = xhr.responseText;
+				}
+			};
+			xhr.open("POST", "./profile_heartbeat.php", true);
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhr.send("id="+uid);
+		}
+		//var auto_refresh = setInterval(function() { heartbeat() }, 5000);
+		//count();
+	</script>
+
+	<script>
+		//ProfileSummerYAreaResizes
+		function resize_profile_intro() {
+			var elem_profile_name = document.getElementById("profile_name");
+			var elem_profile_intro = document.getElementById("profile_section_intro");
+			//alert(elem_profile_name.offsetHeight);
+			var xsheight = parseInt(elem_profile_name.offsetHeight) - 50;
+			//alert(xsheight);
+			if (xsheight > 0){
+				elem_profile_intro.style.height=parseInt(elem_profile_intro.style.height.substr(0,elem_profile_intro.style.height.lastIndexOf("p")))+xsheight ;
+			}
+			alert(elem_profile_name.getAttribute("width"));
+		}
+
+		resize_profile_intro();
+	</script>
 </body>
 
 </html>
