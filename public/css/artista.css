@@ -950,13 +950,62 @@ h3{
 /*-------------------------------*/
 /*-------------------------------*/
 
+.profile_section_intro_new{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: auto;
+    margin: 10px;
+    margin-right: 0px;
+    padding: 10px;
+    border-radius: 10px;
 
+    padding-bottom: 20px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 0;
+    border-radius: 0px;
+    width: 990px;
+    height: 200px;
+
+    border-bottom: 25px solid #42b72a;
+
+
+}
+
+.profile_profile_image_new{
+    width: 208px;
+    height: 208px;
+    background-image: url("../img/oggi.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+
+}
 
 .profile_section_intro{
     padding-top:25px;
     width: 50%;
     height: 170px;
 
+}
+
+.profile_gpa_value{
+    position: relative;
+    top : -360px;
+    left: 820px;
+    font-size: 96px;
+    color: #666;
+    max-width: 180px;
+}
+
+.profile_txt_gpa{
+    position: relative;
+    top : -360px;
+    left: 828px;
+    font-size: 16px;
+    text-transform: uppercase;
+    max-width: 180px;
+    color: #666;
 }
 
 .profile_profile_image{
@@ -981,8 +1030,9 @@ h3{
     font-weight: bold;
     font-size: 34px;
     position: relative;
-    left: 300px;
-    top: -140px;
+    left: 230px;
+    top: -200px;
+    max-width: 600px;
     transition: all 0.2s linear;
 }
 
@@ -991,25 +1041,25 @@ h3{
     width: 300px;
     height: 20px;
     position: relative;
-    left: 300px;
-    top:-140px;
+    left: 230px;
+    top:-190px;
 }
 
 .profile_availability_icon{
     margin: 2px;
     padding:3px;
-    height: 10px;
-    width: 12px;
-    /*border: 2px solid #3F4E5E;*/
-    /*background-color: #42b72a;*/
+    height: 7px;
+    width: 7px;
+    border: 2px solid #3F4E5E;
+    background-color: #42b72a;
     border-radius: 9px;
 
 }
 
 .profile_availability_text{
     font-size:18px;
-    margin-top: -19px;
-    margin-left: 25px;
+    margin-top: -22px;
+    margin-left: 30px;
     float: left;
 }
 
@@ -1025,8 +1075,8 @@ h3{
     width: 300px;
     height: 20px;
     position: relative;
-    left: 300px;
-    top:-140px;
+    left: 232px;
+    top:-185px;
 }
 
 .profile_last_seen_text{
@@ -1046,13 +1096,13 @@ h3{
 .profile_basic_summery{
     font-size:14px;
     position: relative;
-    left: 300px;
-    top: -132px
+    left: 235px;
+    top: -180px
 }
 
 .profile_section_main{
     padding-top : 20px !important;
-    height: calc(100% - 210px);
+    height: auto;
     width: 100%;
     clear: left;
 }
@@ -1653,6 +1703,7 @@ h3{
 
 
 
+
 .groups_content_area{
     height: auto !important;
 }
@@ -1662,14 +1713,14 @@ h3{
     text-align: center;
     float: left ;
     max-height: 230px;
-    max-width: 360px;
+    max-width: 300px;
     padding: 0px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    height: 260px;
+    height: 180px;
     box-sizing: border-box;
     border-top-color: #fff000;
-    border-top-width: 20px;
+    border-top-width: 10px;
     border-top-style: solid;
     cursor: pointer;
 
@@ -1680,8 +1731,8 @@ h3{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: -10px 0px;
-    width: 160px;
-    height: 209px;
+    width: 120px;
+    height: 169px;
     float: left;
     margin-bottom: 5px;
 
@@ -1731,11 +1782,10 @@ h3{
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow: hidden;
-    font-size: 12px;
+    font-size: 10px;
     padding: 0px 10px;
-    height: 150px;
+    height: 115px;
 }
-
 /***************************/
 /*********************************/
 /********MSGBOX**********/
