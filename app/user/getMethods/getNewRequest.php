@@ -39,8 +39,8 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
                         <div class=\"group_member_face tooltip\" style=\"background-image: url( " . $path_pro_pic . " ); \"><span class=\"tooltiptext\">".$qres['first_name']." ".$qres['last_name']."</span> </div>
                     </div>
                     <div style=\"float: left; margin: 10px\">
-                        <button class=\"msgbox_button group_writer_button acceptRequest\" id=\" ". $row['request_id'] . " \">Accept</button>
-                        <button class=\"msgbox_button group_writer_button red_button ignoreRequest  \" id=\" ". $row['request_id'] ." \">Ignore</button>
+                        <button class=\"msgbox_button group_writer_button acceptRequest\" id=\"". $row['request_id'] . "\">Accept</button>
+                        <button class=\"msgbox_button group_writer_button red_button ignoreRequest  \" id=\"". $row['request_id'] ."\">Ignore</button>
                     </div>
                 </div>";
         }

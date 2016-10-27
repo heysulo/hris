@@ -518,6 +518,25 @@ include_once('../templates/_footer.php');
         //Update group post
         updateGroupPost();
 
+        //updatea member request and member list
+        updateMemberRequest();
+
+
+    });
+
+    //Function to update group post
+    function updateGroupPost(){
+        $.ajax({
+            type:"GET",
+            url:"getMethods/getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
+            success:function (response) {
+                $('#group_post_content').html(response);
+            }
+        });
+    }
+
+    //Function to update group member and member requests list
+    function updateMemberRequest(){
         //Get group members
         $.ajax({
             type:"GET",
@@ -545,17 +564,6 @@ include_once('../templates/_footer.php');
             url:"getMethods/getNewRequest.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
             success:function (response4) {
                 $('#request').html(response4);
-            }
-        });
-    });
-
-    //Function to update group post
-    function updateGroupPost(){
-        $.ajax({
-            type:"GET",
-            url:"getMethods/getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
-            success:function (response) {
-                $('#group_post_content').html(response);
             }
         });
     }
@@ -611,25 +619,26 @@ include_once('../templates/_footer.php');
     });
 
     //Function to handle member request
-    $('.acceptRequest').click(function () {
+    $('#request').on('click','.acceptRequest',function () {
 
         $.ajax({
             type:'POST',
-            url:'updateMethods/joinGroup.php',
+            url:'updateMethods/groupController.php',
             data:{
-                'user': '<?php echo $user_id ?>',
+                'request':'accept',
+                'req_id': this.id,
                 'group':'<?php echo $group_id ?>'
             },
             dataType:'json',
             success:function (response) {
                 if (response){
-                    swal("Request send!", "Your request to join this group send.", "success");
+                    swal("Member Add!", "New member added to group.", "success");
+                    updateMemberRequest();
                 }else{
-                    swal("Error", "Sorry, Your request not send!", "error");
+                    swal("Error", "Sorry, member does not add!", "error");
                 }
             }
-        })
-
+        });
     });
 
 

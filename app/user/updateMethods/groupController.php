@@ -39,8 +39,51 @@ if(!isset($_SESSION['email'])){
         }
     }
 
+    function acceptMemberRequest($conn){
+        //Get user id and group id
+        $request_id = $_POST['req_id'];
+        $group_id = $_POST['group'];
+
+        //Get requester id
+        $sql_get_requester = "SELECT member_id FROM group_member_request WHERE group_id='$group_id' AND request_id ='$request_id'";
+        $res = mysqli_query($conn,$sql_get_requester);
+        if(mysqli_num_rows($res)){
+            $temp = mysqli_fetch_assoc($res);
+            $user_id = $temp['member_id'];
+            //Set auto commit false
+            mysqli_autocommit($conn,false);
+
+            try{
+                $group_member_add = "INSERT INTO group_member(group_id,member_id,role,description,join_date) VALUES ('$group_id','$user_id','Member','Member of group',NOW())";
+                $response = mysqli_query($conn,$group_member_add);
+                if($response){
+                    $qry_to_remove_requset = "DELETE FROM group_member_request WHERE request_id='$request_id'";
+                    $res = mysqli_query($conn,$qry_to_remove_requset);
+                    mysqli_commit($conn);
+                    mysqli_close($conn);
+                    if($res){
+                        echo json_encode(true);
+                    }else{
+                        echo json_encode(false);
+                    }
+                }else{
+                    echo json_encode(false);
+                }
+            }catch(Exception $exception){
+                mysqli_rollback($conn);
+            }
+        }else{
+            echo json_encode(false);;
+        }
+
+    }
+
     if (isset($_POST['create_role']) && isset($_POST['group_id'])) {
         createRole($conn);
+    }elseif (isset($_POST['request']) && isset($_POST['group']) && isset($_POST['req_id'])){
+        if($_POST['request'] == 'accept'){
+            acceptMemberRequest($conn);
+        }
     }
 
 }
