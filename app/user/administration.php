@@ -494,7 +494,6 @@
 			var atpos = input.indexOf("@");
 			var dotpos = input.lastIndexOf(".");
 			if (atpos>0 && dotpos> atpos+1 && dotpos < input.length) {
-
 				return true;
 			}else{
 				return false;
