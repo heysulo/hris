@@ -17,17 +17,13 @@ if (!isset($_SESSION['email']) and !isset($_POST['group']) and !isset($_POST['us
     $gid = $_POST['group'];
     $user_id = $_POST['user'];
 
-    $qry = "DELETE FROM group_post WHERE group_id = '$gid' AND post_id = '$postId'";
+    //Insert user data and group data into group member request table
+    $qry = "INSERT INTO group_member_request(group_id,member_id) VALUES ('$gid','$user_id')";
 
-
-    if($userValid == 000){
-        echo false;
+    $res = mysqli_query($conn,$qry);
+    if($res){
+        echo json_encode(true);
     }else{
-        $res = mysqli_query($conn,$qry);
-        if($res){
-            echo true;
-        }else{
-            echo false;
-        }
+        echo json_encode(false);
     }
 }

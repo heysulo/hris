@@ -176,6 +176,22 @@
 
             </div>
 
+            <div class="dbox group_div_content_extra" style="<?php echo $memberRequest ?>">
+
+                <div class="group_role_title">New Request</div>
+                <div id="request">
+                    <!--<div class="dbox" style="height: 45px; padding-top: 0px; ">
+                        <div class="group_member_facearea" style="margin: 5px">
+                            <div class="group_member_face tooltip"><span class="tooltiptext">--</span> </div>
+                        </div>
+                        <div style="float: left; margin: 10px">
+                            <button class="msgbox_button group_writer_button" id="acceptRequest">Accept</button>
+                            <button class="msgbox_button group_writer_button red_button" id="ignoreRequest">Ignore</button>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+
             <!--view group members area-->
             <div class="dbox group_div_content_extra">
                 <div class="group_role_section">
@@ -522,6 +538,15 @@ include_once('../templates/_footer.php');
                 $('.group_tab_members_view_area').html(response3);
             }
         });
+
+        //Get new request
+        $.ajax({
+            type:"GET",
+            url:"getMethods/getNewRequest.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
+            success:function (response4) {
+                $('#request').html(response4);
+            }
+        });
     });
 
     //Function to update group post
@@ -573,8 +598,35 @@ include_once('../templates/_footer.php');
                 'user': '<?php echo $user_id ?>',
                 'group':'<?php echo $group_id ?>'
             },
+            dataType:'json',
             success:function (response) {
+                if (response){
+                    swal("Request send!", "Your request to join this group send.", "success");
+                }else{
+                    swal("Error", "Sorry, Your request not send!", "error");
+                }
+            }
+        })
 
+    });
+
+    //Function to handle member request
+    $('.acceptRequest').click(function () {
+
+        $.ajax({
+            type:'POST',
+            url:'updateMethods/joinGroup.php',
+            data:{
+                'user': '<?php echo $user_id ?>',
+                'group':'<?php echo $group_id ?>'
+            },
+            dataType:'json',
+            success:function (response) {
+                if (response){
+                    swal("Request send!", "Your request to join this group send.", "success");
+                }else{
+                    swal("Error", "Sorry, Your request not send!", "error");
+                }
             }
         })
 

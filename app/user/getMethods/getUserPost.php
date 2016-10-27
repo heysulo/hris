@@ -12,9 +12,30 @@ require_once("../../database/database.php");
 
 if (isset($_GET['action'])){
     $user_id = $_GET['user_id'];
+
+    //New way to data get
+    $sql = "SELECT GP.post_id,G.color,G.name,M.first_name,M.last_name,GP.content,GP.added_time FROM groups G,member M,group_post GP,group_member GM WHERE GM.member_id='$user_id' AND M.member_id=GP.added_user_id AND G.group_id = GP.group_id GROUP BY GP.post_id ORDER BY GP.added_time DESC";
+    $res = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_assoc($res)){
+
+        $g_color = $row['color'];
+        $g_name = $row['name'];
+        $f_name = $row['first_name'];
+        $l_name = $row['last_name'];
+        $content = $row['content'];
+        $added_time = $row['added_time'];
+
+        //send html as respond to ajax request
+        echo "<div class=\"newsfeed_item_box\" style = \"border-color:$g_color\">";
+        echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:$g_color;border-radius: 2px\"></div>";
+        echo "<div class=\"newsfeed_item_content\"><b>".$g_name." (".$f_name." ".$l_name.")</b> </br> " .$content." </div>";
+        echo "<div class=\"newsfeed_item_timestamp\">".$added_time."</div>";
+        echo "</div>";
+    }
+
+    /*
     $qry_to_get_group_id = "SELECT group_id FROM group_member WHERE member_id = '$user_id'";
     $user_res = mysqli_query($conn,$qry_to_get_group_id);
-
 
     while($row1 = mysqli_fetch_assoc($user_res)){
         $qry_to_get_post = "SELECT * FROM group_post WHERE group_id = '".$row1['group_id']."' ORDER BY added_time DESC";
@@ -31,7 +52,7 @@ if (isset($_GET['action'])){
             $g_color = $g_response['color'];
             $g_name = $g_response['name'];
 
-
+            // SELECT GP.post_id,G.color,G.name,M.first_name,M.last_name,GP.content,GP.added_time FROM groups G,member M,group_post GP,group_member GM WHERE GM.member_id='15' AND M.member_id=GP.added_user_id AND G.group_id = GP.group_id GROUP BY GP.post_id ORDER BY GP.added_time DESC;
             //send html as respond to ajax request
             echo "<div class=\"newsfeed_item_box\" style = \"border-color:$g_color\">";
             echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:$g_color;border-radius: 2px\"></div>";
@@ -40,4 +61,6 @@ if (isset($_GET['action'])){
             echo "</div>";
         }
     }
+    */
+
 }

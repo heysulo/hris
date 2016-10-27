@@ -23,11 +23,16 @@
 
     if(isset($_POST["createGroup"])) {
 
+        //get group name and use it's first two letters to name logo
+        $gn = mysqli_real_escape_string($conn, $_POST['g_name']);
+        $imgname = substr(strtolower($gn),0,2).rand(100,1000);
+
         $target_dir = "../images/group/";
         $g_logo_name = basename($_FILES['g_logo']['name']);
         $tmp_logo = $_FILES['g_logo']['tmp_name'];
-
-        $target_file = $target_dir.$g_logo_name;
+        $imgExtention = strtolower(pathinfo($g_logo_name,PATHINFO_EXTENSION));
+        $newImgName = $imgname.".".$imgExtention;
+        $target_file = $target_dir.$newImgName;
         $uploadOk = 1;
 
         $check = getimagesize($tmp_logo);
@@ -64,7 +69,7 @@
             $g_color = mysqli_real_escape_string($conn, $_POST['g_color']);
             $g_privacy = mysqli_real_escape_string($conn, $_POST['privacy_status']);
 
-            $qry = "INSERT INTO groups(name,description,category,logo,created_date,creator,color,privacy) VALUES('$g_name','$g_description','$g_category','$g_logo_name',NOW(),'$user_id','$g_color','$g_privacy')";
+            $qry = "INSERT INTO groups(name,description,category,logo,created_date,creator,color,privacy) VALUES('$g_name','$g_description','$g_category','$newImgName',NOW(),'$user_id','$g_color','$g_privacy')";
             $moving = move_uploaded_file($tmp_logo,$target_file);
             if ($moving) {
                 $res = mysqli_query($conn,$qry);
