@@ -62,10 +62,10 @@
 		<?php
 		$member_status_temp =explode("_",$row['availability_status']);
 		$member_status_text = $row['availability_text'];
-		$member_at =  $member_status_temp[0];
-		$color = $member_status_temp[1];
+		$member_at =  $row['availability_status'];
+		//$color = $member_status_temp[1];
 
-		/*switch($member_at){
+		switch($member_at){
 			case "Available":
 				$color = "#34a853";
 				break;
@@ -82,7 +82,7 @@
 				$color = "#707070";
 				break;
 
-		}*/
+		}
 		?>
 		<div class="bottomPanel">
 			<div id="profile_section_intro" class="profile_section_intro_new" style="border-bottom: 25px solid <?php echo $color;?>;" onchange="resize_profile_intro();">
@@ -104,8 +104,8 @@
 					<button class="msgbox_button group_writer_button" type="button" onclick="checkinvite();">Edit Profile</button>
 				</div>
 				<div class="profile_online_status_box">
-					<div class="profile_availability_icon" style="background-color: <?php echo $color;?>"></div>
-					<div class="profile_availability_text">
+					<div id="availability_icon" class="profile_availability_icon" style="background-color: <?php echo $color;?>"></div>
+					<div class="profile_availability_text" id="availability_text">
 						<?php echo $member_at;
 						if($member_status_text!=""){
 							echo "  -  ".$member_status_text;
@@ -354,19 +354,49 @@
 	<script>
 		var uid = <?php echo $view_id?>;
 		function heartbeat() {
-			var ss = document.getElementById('profile_name');
+			var json;
+			var ss = document.getElementById('availability_text');
+			var profile_section_intro = document.getElementById('profile_section_intro');
+			var availability_icon = document.getElementById('availability_icon');
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState ==4 && xhr.status == 200){
-					ss.innerHTML = xhr.responseText;
+					json= JSON.parse(xhr.responseText);
+					if (json.text==""){
+
+						ss.innerHTML = json.status;// + json.text;
+					}else{
+						ss.innerHTML = json.status + " - " + json.text;
+
+					}
+					$color = "#323232"
+					switch (json.status){
+						case "Available":
+							$color = "#34a853";
+							break;
+						case "Away":
+							$color = "#fbbc05";
+							break;
+						case "Busy":
+							$color = "#ea4335";
+							break;
+						case "Lecture":
+							$color = "#4285f4";
+							break;
+						default:
+							$color = "#707070";
+							break;
+					}
+					profile_section_intro.style.borderBottomColor = $color;
+					availability_icon.style.backgroundColor = $color;
 				}
 			};
 			xhr.open("POST", "./profile_heartbeat.php", true);
 			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhr.send("id="+uid);
 		}
-		//var auto_refresh = setInterval(function() { heartbeat() }, 5000);
-		//count();
+		var auto_refresh = setInterval(function() { heartbeat() }, 5000);
+		count();
 	</script>
 
 	<script>
@@ -380,7 +410,7 @@
 			if (xsheight > 0){
 				elem_profile_intro.style.height=parseInt(elem_profile_intro.style.height.substr(0,elem_profile_intro.style.height.lastIndexOf("p")))+xsheight ;
 			}
-			alert(elem_profile_name.getAttribute("width"));
+			//alert(elem_profile_name.getAttribute("width"));
 		}
 
 		resize_profile_intro();
