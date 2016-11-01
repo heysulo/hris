@@ -25,3 +25,36 @@ $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";*/
 $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
 $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
 $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
+$realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/ping.php";
+
+?>
+
+<script>
+    var uid = <?php
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (isset($_SESSION['email'])){
+            echo "\"".$_SESSION['email']."\"";
+        }else{
+            echo "-1";
+        }
+
+        ?>;
+    function realtime_ping() {
+        if (uid != -1){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState ==4 && xhr.status == 200){
+                    alert(xhr.responseText);
+                }
+            };
+            xhr.open("POST", <? echo "\"".$realtime_ping_path."\"" ?>, true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("id="+uid);
+        }
+
+    }
+    var auto_refresh = setInterval(function() { realtime_ping() }, 5000);
+
+</script>

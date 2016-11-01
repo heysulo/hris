@@ -7,7 +7,9 @@
 	$conn = null;
 	require_once("../user/config.conf");
 	require_once ("../database/database.php");
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	if (!isset($_SESSION['email'])){
 		header("location:../../index.php");
@@ -206,6 +208,7 @@
 						</div>
 						<?php
 						$contact_query = "select x.role_name,groups.name,groups.description from (select group_role.role_name,group_member.group_id from group_member JOIN group_role on group_member.role_id = group_role.role_id and member_id=$view_id) as x join groups on groups.group_id = x.group_id";
+						//echo $contact_query;
 						$res_contact_query = mysqli_query($conn,$contact_query);
 						if (mysqli_num_rows($res_contact_query)){
 							while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
@@ -396,7 +399,7 @@
 			xhr.send("id="+uid);
 		}
 		var auto_refresh = setInterval(function() { heartbeat() }, 5000);
-		count();
+		//count();
 	</script>
 
 	<script>
