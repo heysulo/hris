@@ -38,11 +38,11 @@ $realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/ping.
                 //alert(xhr.responseText);
             }
         };
-        xhr.open("POST", <? echo "\"".$realtime_ping_path."\"" ?>, true);
+        xhr.open("POST", <?php echo "\"".$realtime_ping_path."\"" ?>, true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send();
 
     }
-    var auto_refresh = setInterval(function() { realtime_ping() }, 10000);
+    var auto_refresh = setInterval(function() { realtime_ping() }, 5000);
 
 </script>
