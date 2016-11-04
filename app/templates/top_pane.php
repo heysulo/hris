@@ -20,6 +20,13 @@
             </div>
 
             <!--User detail showing bar-->
+            <div class="topsearchbar">
+                <form action="basic_search.php" method="get">
+
+                    <input type="text" name="search" placeholder="Search.." class="topheadersearch" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">
+                </form>
+            </div>
+
             <div class="topprofilecontent">
                 <div class=""><img class="topprofilepicture" src=" <?php echo "$imagePath/pro_pic/$pro_pic"; ?> " alt=""></div>
                 <div class="topbox_profile_name"> <?php echo "$fname $lname"?></div>
