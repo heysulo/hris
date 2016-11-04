@@ -4,7 +4,9 @@
         define('hris_access',true);
         require_once('../templates/path.php');
         include('../templates/_header.php');
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
         if (!isset($_SESSION['email'])){
             header("location:../../index.php");
@@ -78,14 +80,32 @@
                 success:function (response) {
                     //availability status updates...
                     var res = response['availability_status'];
-                    var val = res.split('_');
-                    var value = val[0];
-                    var col = val[1];
-                    $('#status_text').val(value);
-                    $('.customstatus').css('border-left','4px solid '+col);
-                    $('.customstatus').css('color',col);
-                    $('.cur_availability_icon').css('background-color',col);
-                    $('.cur_availability_icon').css('border','1px solid '+col);
+                    //var val = res.split('_');
+                    //var value = val[0];
+                    var color = "#ffffff";
+                    switch(res){
+                        case "Available":
+                            color = "#34a853";
+                            break;
+                        case "Away":
+                            color = "#fbbc05";
+                            break;
+                        case "Busy":
+                            color = "#ea4335";
+                            break;
+                        case "Lecture":
+                            color = "#4285f4";
+                            break;
+                        default:
+                            color = "#707070";
+                            break;
+
+                    }
+                    $('#status_text').val(res);
+                    $('.customstatus').css('border-left','4px solid '+color);
+                    $('.customstatus').css('color',color);
+                    $('.cur_availability_icon').css('background-color',color);
+                    $('.cur_availability_icon').css('border','1px solid '+color);
 
                     //availability text update...
                     var text_res = response['availability_text'];
@@ -127,6 +147,7 @@
             var val = att_val.split('_');
             var value = val[0];
             var col = val[1];
+            var previuos_value = $('#status_text').val();
             $('#status_text').val(value);
             $('.customstatus').css('border-left','4px solid '+col);
             $('.customstatus').css('color',col);
@@ -141,8 +162,11 @@
                         'msg':att_val},
                 dataType:"json",
                 success:function (res) {
+                    var custom_status;
                     if(!res){
                         alert('Sorry, Unable to set availability status.');
+                    }else{
+                        msgbox("Your availability status has being changed from <b>" + previuos_value + "</b> to <b>"+value+"</b>","Availability Status",0);
                     }
                 }
             })
@@ -162,6 +186,8 @@
                     success:function (res) {
                         if(!res){
                             alert('Sorry, Unable to set availability status.');
+                        }else{
+                            msgbox("Your availability status text has being changed to <b>"+text+"</b>","Availability Status",0);
                         }
                     }
                 })

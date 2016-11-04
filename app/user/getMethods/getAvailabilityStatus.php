@@ -9,7 +9,9 @@
 $conn = null;
 require_once("../config.conf");
 require_once("../../database/database.php");
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if(!isset($_SESSION['email']) && !isset($_POST['check'])) {
 
@@ -29,8 +31,10 @@ if(!isset($_SESSION['email']) && !isset($_POST['check'])) {
 
         case 'set':
             $msg = mysqli_real_escape_string($conn,$_POST['msg']);
+            $msg = explode("_",$msg);
+            
             //query to submit availability status
-            $qry = "UPDATE member SET availability_status='$msg' WHERE member_id='$user_id'";
+            $qry = "UPDATE member SET availability_status='$msg[0]' WHERE member_id='$user_id'";
             if (mysqli_query($conn,$qry)){
                 echo 1;
             }else{

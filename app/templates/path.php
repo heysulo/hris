@@ -25,3 +25,24 @@ $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";*/
 $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
 $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
 $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
+$realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/ping.php";
+
+?>
+
+<script>
+
+    function realtime_ping() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState ==4 && xhr.status == 200){
+                //alert(xhr.responseText);
+            }
+        };
+        xhr.open("POST", <? echo "\"".$realtime_ping_path."\"" ?>, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send();
+
+    }
+    var auto_refresh = setInterval(function() { realtime_ping() }, 10000);
+
+</script>

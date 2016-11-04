@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if(isset($_POST['submit']) && isset($_SESSION['email'])){
     createUser();
 }else{
@@ -11,7 +13,9 @@ function createUser(){
     $conn = null;
     require_once("../config.conf");
     require_once ("../../database/database.php");
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     // Get password and hash it.
     $pword = mysqli_real_escape_string($conn,$_POST['password']);

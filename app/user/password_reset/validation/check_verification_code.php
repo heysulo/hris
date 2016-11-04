@@ -1,5 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
+}
     //echo date("Ymd");
     //echo(mt_rand(10000000,99999999));
 

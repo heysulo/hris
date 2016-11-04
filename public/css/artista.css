@@ -334,9 +334,12 @@ h3{
     transition:all ease 0.2s;
 }
 
-.topprofilecontent:hover{
-    width:320px;
-    background-color: #eee;
+.topsearchbar{
+    float:right;
+    height:100%;
+    width:auto;
+    background-color:#fff;
+    transition:all ease 0.2s;
 }
 
 .topprofilepicture{
@@ -635,6 +638,27 @@ h3{
     /*    background-color: aqua;*/
 }
 
+.topheadersearch{
+    cursor: pointer;
+    float: right;
+    width: 1px;
+    height: 38px;
+    background-image: url('../img/img_toppanel_search.png');
+    font-size: 12px;
+    background-position: 8px 9px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    padding:  0px 0px 0px 35px;
+    border: 0px;
+    outline: none;
+    transition: all 0.4s ease-in-out;
+
+}
+
+.topheadersearch:focus{
+    width: 250px;
+    background-color: #ffd700;
+}
 
 .mainsearch{
     float: right;
@@ -1038,7 +1062,7 @@ h3{
 
 
 .profile_online_status_box{
-    width: 300px;
+    width: 600px;
     height: 20px;
     position: relative;
     left: 230px;
@@ -1072,7 +1096,7 @@ h3{
 }
 
 .profile_last_seen_box{
-    width: 300px;
+    width: 600px;
     height: 20px;
     position: relative;
     left: 232px;
@@ -1097,6 +1121,7 @@ h3{
     font-size:14px;
     position: relative;
     left: 235px;
+    width: 600px;
     top: -180px
 }
 
@@ -1853,7 +1878,7 @@ h3{
 }
 
 .msgbox_section_content{
-    padding: 10px;
+    padding: 20px;
     color: #333;
     font-size: 14px;
     line-height: 18px;

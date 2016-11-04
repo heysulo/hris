@@ -1,13 +1,51 @@
 <html>
 <head>
 	<?php
+
+	function smartdate($timestamp) {
+		$diff =  $timestamp;
+
+		if ($diff <= 0) {
+			return 'Now';
+		}
+		else if ($diff < 60) {
+			return grammar_date(floor($diff), ' second(s) ago');
+		}
+		else if ($diff < 60*60) {
+			return grammar_date(floor($diff/60), ' minute(s) ago');
+		}
+		else if ($diff < 60*60*24) {
+			return grammar_date(floor($diff/(60*60)), ' hour(s) ago');
+		}
+		else if ($diff < 60*60*24*30) {
+			return grammar_date(floor($diff/(60*60*24)), ' day(s) ago');
+		}
+		else if ($diff < 60*60*24*30*12) {
+			return grammar_date(floor($diff/(60*60*24*30)), ' month(s) ago');
+		}
+		else {
+			return grammar_date(floor($diff/(60*60*24*30*12)), ' year(s) ago');
+		}
+	}
+
+
+	function grammar_date($val, $sentence) {
+		if ($val > 1) {
+			return $val.str_replace('(s)', 's', $sentence);
+		} else {
+			return $val.str_replace('(s)', '', $sentence);
+		}
+	}
+
 	define('hris_access',true);
 	require_once('../templates/path.php');
 	include('../templates/_header.php');
 	$conn = null;
 	require_once("../user/config.conf");
 	require_once ("../database/database.php");
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	if (!isset($_SESSION['email'])){
 		header("location:../../index.php");
@@ -25,7 +63,7 @@
 	$view_id = $_GET["id"];
 	$row = null;
 	$vision_power = null;
-	$query = "SELECT * FROM member RIGHT JOIN system_role on member.system_role = system_role.system_role_id and member.member_id=$view_id";
+	$query = "SELECT * FROM member JOIN system_role on member.system_role = system_role.system_role_id and member_id=$view_id";
 
 	$res = mysqli_query($conn,$query);
 	$row = mysqli_fetch_assoc($res);
@@ -60,10 +98,10 @@
 		<?php
 		$member_status_temp =explode("_",$row['availability_status']);
 		$member_status_text = $row['availability_text'];
-		$member_at =  $member_status_temp[0];
-		$color = $member_status_temp[1];
+		$member_at =  $row['availability_status'];
+		//$color = $member_status_temp[1];
 
-		/*switch($member_at){
+		switch($member_at){
 			case "Available":
 				$color = "#34a853";
 				break;
@@ -80,7 +118,7 @@
 				$color = "#707070";
 				break;
 
-		}*/
+		}
 		?>
 		<div class="bottomPanel">
 			<div id="profile_section_intro" class="profile_section_intro_new" style="border-bottom: 25px solid <?php echo $color;?>;" onchange="resize_profile_intro();">
@@ -94,12 +132,20 @@
 				?>
 
 				<img class="profile_profile_image_new" src="../images/pro_pic/<?php echo $row['profile_picture']?>">
-				<div id="profile_name" class="profile_name" >
-					<?php echo $display_name;?>
+				<div id="profile_name" class="profile_name" ><?php
+
+					echo $display_name;
+
+					?>
+					<?php
+					if ($row['email'] == $_SESSION['email']){
+					?>
+					<button class="msgbox_button group_writer_button" type="button" onclick="checkinvite();">Edit Profile</button>
+					<?php }?>
 				</div>
 				<div class="profile_online_status_box">
-					<div class="profile_availability_icon" style="background-color: <?php echo $color;?>"></div>
-					<div class="profile_availability_text">
+					<div id="availability_icon" class="profile_availability_icon" style="background-color: <?php echo $color;?>"></div>
+					<div class="profile_availability_text" id="availability_text">
 						<?php echo $member_at;
 						if($member_status_text!=""){
 							echo "  -  ".$member_status_text;
@@ -108,7 +154,13 @@
 					</div>
 				</div>
 				<div class="profile_last_seen_box">
-					<div class="profile_last_seen_text">Last seen : 15 minutes ago</div>
+					<div id="last_seen" class="profile_last_seen_text">Last seen : <?php
+						$timeSecond  = strtotime(date("Y-m-d H:i:s"));
+						$timeFirst= strtotime($row['last_login']);
+						$differenceInSeconds = $timeSecond - $timeFirst;
+						//echo $differenceInSeconds;/'/
+						echo smartdate($differenceInSeconds);
+						?></div>
 				</div>
 				<div class="profile_basic_summery">
 					Role : <?php echo $row['category'];?><br>
@@ -200,6 +252,7 @@
 						</div>
 						<?php
 						$contact_query = "select x.role_name,groups.name,groups.description from (select group_role.role_name,group_member.group_id from group_member JOIN group_role on group_member.role_id = group_role.role_id and member_id=$view_id) as x join groups on groups.group_id = x.group_id";
+						//echo $contact_query;
 						$res_contact_query = mysqli_query($conn,$contact_query);
 						if (mysqli_num_rows($res_contact_query)){
 							while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
@@ -337,18 +390,50 @@
 	<script>
 		var uid = <?php echo $view_id?>;
 		function heartbeat() {
-			var ss = document.getElementById('profile_name');
+			var json;
+			var ss = document.getElementById('availability_text');
+			var profile_section_intro = document.getElementById('profile_section_intro');
+			var last_seen = document.getElementById('last_seen');
+			var availability_icon = document.getElementById('availability_icon');
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState ==4 && xhr.status == 200){
-					ss.innerHTML = xhr.responseText;
+					json= JSON.parse(xhr.responseText);
+					if (json.text==""){
+
+						ss.innerHTML = json.status;// + json.text;
+					}else{
+						ss.innerHTML = json.status + " - " + json.text;
+
+					}
+					last_seen.innerHTML = json.lastseen;
+					$color = "#323232"
+					switch (json.status){
+						case "Available":
+							$color = "#34a853";
+							break;
+						case "Away":
+							$color = "#fbbc05";
+							break;
+						case "Busy":
+							$color = "#ea4335";
+							break;
+						case "Lecture":
+							$color = "#4285f4";
+							break;
+						default:
+							$color = "#707070";
+							break;
+					}
+					profile_section_intro.style.borderBottomColor = $color;
+					availability_icon.style.backgroundColor = $color;
 				}
 			};
 			xhr.open("POST", "./profile_heartbeat.php", true);
 			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhr.send("id="+uid);
 		}
-		//var auto_refresh = setInterval(function() { heartbeat() }, 5000);
+		var auto_refresh = setInterval(function() { heartbeat() }, 5000);
 		//count();
 	</script>
 
@@ -363,7 +448,7 @@
 			if (xsheight > 0){
 				elem_profile_intro.style.height=parseInt(elem_profile_intro.style.height.substr(0,elem_profile_intro.style.height.lastIndexOf("p")))+xsheight ;
 			}
-			alert(elem_profile_name.getAttribute("width"));
+			//alert(elem_profile_name.getAttribute("width"));
 		}
 
 		resize_profile_intro();
