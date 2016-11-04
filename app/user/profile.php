@@ -36,34 +36,53 @@
     <!--Content goes here...-->
     <div class="bottomPanel">
         <!--Content on top area-->
-        <div class="profile_section_intro">
+        <div id="profile_section_intro" class="profile_section_intro_new" style="border-bottom: 25px solid;" onchange="resize_profile_intro();">
+            <?php
+            $display_name = "";
+            if ($row["middle_name"]!=""){
+                $display_name= $fname. " " .$row['middle_name'] ." " . $lname ;
+            }else{
+                $display_name = $fname. " " . $lname ;
+            }
+            ?>
 
-            <img class="profile_profile_image" src="<?php echo "$imagePath/pro_pic/$pro_picture"; ?>" alt="">
-
-            <div class="profile_name">
-                <?php echo $fname." ".$lname?> <!--Print user name-->
+            <img class="profile_profile_image_new" src="<?php echo "$imagePath/pro_pic/$pro_picture"; ?>" alt="Profile Picture">
+            <div id="profile_name" class="profile_name" >
+                <?php echo $display_name;?>
                 <button onclick="location.href='./editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
             </div>
-
             <!--Availability status area-->
             <div class="profile_online_status_box">
                 <div class="profile_availability_icon"></div>
                 <div class="profile_availability_text"></div>
                 <div class="profile_availability_text_2"></div>
             </div>
-
             <!--last seen data area-->
             <div class="profile_last_seen_box">
                 <div class="profile_last_seen_text">Last seen : <?php echo $lastLoginData[0]." at ".$lastLoginData[1]; ?> <!--15 minutes ago--></div>
             </div>
+            <div class="profile_basic_summery">
+                Role : <?php echo $row['category'];?><br>
+                Academic Year : <?php echo $row['academic_year'];?><br>
+                Gender : <?php echo $row['gender'];?><br>
+                <!--Course : <?php /*echo "404"*/?><br>-->
+                Hometown : <div id="ht"></div><?php //echo $row['gender'];?>
+                Username : <?php echo $row['username'];?><br>
+            </div>
+            <div class="profile_gpa_value">
+                <a href="http://localhost:3000/search?index=14020017" target="_blank" style="text-decoration: none;color: #666666">3.2</a>
+            </div>
+            <div class="profile_txt_gpa">Current GPA</div>
+            <div class="profile_txt_gpa">Rank : #225</div>
+        </div>
 
             <!--Profile basic data area-->
-            <div class="profile_basic_summery">
-                Role : <?php echo $category?><br>
-                <?php if($aca_year != 0000){ echo "Academic Year : $aca_year"; } ?><br>
-                Gender : <?php echo $gender ?><br>
-            </div>
-        </div>
+<!--            <div class="profile_basic_summery">-->
+<!--                Role : --><?php //echo $category?><!--<br>-->
+<!--                --><?php //if($aca_year != 0000){ echo "Academic Year : $aca_year"; } ?><!--<br>-->
+<!--                Gender : --><?php //echo $gender ?><!--<br>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="profile_section_main">
             <!--Left side-->
@@ -211,7 +230,7 @@
 
         </div>
     </div>
-
+    </div>
 
 </div>
 
@@ -236,6 +255,7 @@ include_once('../templates/_footer.php');
                 $('.profile_availability_text').html(value);
                 $('.profile_availability_icon').css('background-color',col);
                 $('.profile_profile_image').css('box-shadow','0px 0px 8px 2px'+col);
+                $('.profile_section_intro_new').css('border-color',col);
 
                 //availability text update...
                 var text_res = response['availability_text'];
@@ -265,6 +285,7 @@ include_once('../templates/_footer.php');
                     $('#home_town').css('display','none');
                 }else{
                     $('#home_town > .contact_info_item_value').html(' : '+home_town);
+                    $('#ht').html(home_town);
                 }
 
                 var religion = info['religion'];
