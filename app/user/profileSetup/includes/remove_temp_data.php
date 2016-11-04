@@ -5,7 +5,9 @@
  * Date: 9/19/16
  * Time: 8:59 AM
  */
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $conn = null;
 require_once("../../config.conf");
 require_once ("../../../database/database.php");

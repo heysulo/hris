@@ -22,7 +22,9 @@
     <?php include ("./template/steps.php"); ?>
     <?php
 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
         if (isset($_SESSION["pass"])){
             if ($_SESSION["pass"]==0){
                 include ("./template/noaccountfound.php");

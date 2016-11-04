@@ -7,7 +7,9 @@
     $conn = null;
     require_once("config.conf");
     require_once ("../database/database.php");
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     $user_id = $_SESSION['user_id'];
 

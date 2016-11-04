@@ -46,7 +46,7 @@ $realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/ping.
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 if (xhr.readyState ==4 && xhr.status == 200){
-                    alert(xhr.responseText);
+                    //alert(xhr.responseText);
                 }
             };
             xhr.open("POST", <? echo "\"".$realtime_ping_path."\"" ?>, true);
@@ -55,6 +55,6 @@ $realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/ping.
         }
 
     }
-    var auto_refresh = setInterval(function() { realtime_ping() }, 5000);
+    var auto_refresh = setInterval(function() { realtime_ping() }, 10000);
 
 </script>

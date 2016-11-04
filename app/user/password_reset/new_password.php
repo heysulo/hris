@@ -5,7 +5,9 @@
 
     require_once('../../templates/path.php');
     include('../../templates/_header.php');
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     if ((!isset($_SESSION["email"])) || !isset($_SESSION["validation_success"]) || ($_SESSION["validation_success"])==0 || !isset($_SESSION["badtry"]) || $_SESSION["badtry"]==1 ){
         header('Location: '."./password_reset.php");
     }

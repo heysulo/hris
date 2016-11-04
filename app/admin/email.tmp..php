@@ -4,7 +4,9 @@
     define('hris_access',true);
     require_once('../templates/path.php');
     include('../templates/_header.php');
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     $email = $_GET['li'];
 

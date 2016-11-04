@@ -6,7 +6,9 @@
     include('../../templates/_header.php');
     ?>
     <?php
+    if (session_status() == PHP_SESSION_NONE) {
         session_start();
+    }
         $conn = null;
         require_once("../config.conf");
         require_once ("../../database/database.php");
