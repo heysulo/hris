@@ -156,13 +156,17 @@
 					</div>
 				</div>
 				<div class="profile_last_seen_box">
-					<div id="last_seen" class="profile_last_seen_text">Last seen : <?php
+					<div id="last_seen" class="profile_last_seen_text">Last seen :
+						<?php
+
+						date_default_timezone_set('Asia/Colombo');
 						$timeSecond  = strtotime(date("Y-m-d H:i:s"));
 						$timeFirst= strtotime($row['last_login']);
 						$differenceInSeconds = $timeSecond - $timeFirst;
 						//echo $differenceInSeconds;/'/
 						echo smartdate($differenceInSeconds);
 						?></div>
+						
 				</div>
 				<div class="profile_basic_summery">
 					Role : <?php echo $row['category'];?><br>
@@ -446,7 +450,7 @@
 			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhr.send("id="+uid);
 		}
-		var auto_refresh = setInterval(function() { heartbeat() }, 5000);
+		var auto_refresh = setInterval(function() { heartbeat() }, 15000);
 		//count();
 	</script>
 

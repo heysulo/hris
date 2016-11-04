@@ -12,6 +12,15 @@
 
     <title>HRIS UCSC</title>
     <link rel="stylesheet" type="text/css" href="public/css/artista.css">
+    <?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['email'])){
+        header("Location: "."./app/user/dashboard.php");
+        die();
+    }
+    ?>
 
 
 </head>
