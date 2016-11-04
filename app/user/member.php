@@ -36,7 +36,7 @@
 			return $val.str_replace('(s)', '', $sentence);
 		}
 	}
-	
+
 	define('hris_access',true);
 	require_once('../templates/path.php');
 	include('../templates/_header.php');
@@ -63,7 +63,7 @@
 	$view_id = $_GET["id"];
 	$row = null;
 	$vision_power = null;
-	$query = "SELECT * FROM member RIGHT JOIN system_role on member.system_role = system_role.system_role_id and member.member_id=$view_id";
+	$query = "SELECT * FROM member JOIN system_role on member.system_role = system_role.system_role_id and member_id=$view_id";
 
 	$res = mysqli_query($conn,$query);
 	$row = mysqli_fetch_assoc($res);

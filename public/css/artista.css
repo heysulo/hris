@@ -1038,7 +1038,7 @@ h3{
 
 
 .profile_online_status_box{
-    width: 300px;
+    width: 600px;
     height: 20px;
     position: relative;
     left: 230px;
@@ -1072,7 +1072,7 @@ h3{
 }
 
 .profile_last_seen_box{
-    width: 300px;
+    width: 600px;
     height: 20px;
     position: relative;
     left: 232px;
@@ -1097,6 +1097,7 @@ h3{
     font-size:14px;
     position: relative;
     left: 235px;
+    width: 600px;
     top: -180px
 }
 
