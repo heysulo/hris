@@ -147,6 +147,7 @@
             var val = att_val.split('_');
             var value = val[0];
             var col = val[1];
+            var previuos_value = $('#status_text').val();
             $('#status_text').val(value);
             $('.customstatus').css('border-left','4px solid '+col);
             $('.customstatus').css('color',col);
@@ -161,8 +162,11 @@
                         'msg':att_val},
                 dataType:"json",
                 success:function (res) {
+                    var custom_status;
                     if(!res){
                         alert('Sorry, Unable to set availability status.');
+                    }else{
+                        msgbox("Your availability status has being changed from <b>" + previuos_value + "</b> to <b>"+value+"</b>","Availability Status",0);
                     }
                 }
             })
@@ -182,6 +186,8 @@
                     success:function (res) {
                         if(!res){
                             alert('Sorry, Unable to set availability status.');
+                        }else{
+                            msgbox("Your availability status text has being changed to <b>"+text+"</b>","Availability Status",0);
                         }
                     }
                 })

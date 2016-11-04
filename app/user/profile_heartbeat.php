@@ -9,6 +9,8 @@ require_once ("../database/database.php");
 //$json_obj = json_decode($inc,true);
 //print_r($json_obj);
 //echo "<br/>".$json_obj["age"];
+
+date_default_timezone_set('Asia/Colombo');
 if (!isset($_SESSION['email']) or !isset($_REQUEST['id'])){
     die();
 }

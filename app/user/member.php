@@ -139,7 +139,11 @@
 					echo $display_name;
 
 					?>
+					<?php
+					if ($row['email'] == $_SESSION['email']){
+					?>
 					<button class="msgbox_button group_writer_button" type="button" onclick="checkinvite();">Edit Profile</button>
+					<?php }?>
 				</div>
 				<div class="profile_online_status_box">
 					<div id="availability_icon" class="profile_availability_icon" style="background-color: <?php echo $color;?>"></div>
@@ -152,7 +156,13 @@
 					</div>
 				</div>
 				<div class="profile_last_seen_box">
-					<div id="last_seen" class="profile_last_seen_text">Last seen : 15 minutes ago</div>
+					<div id="last_seen" class="profile_last_seen_text">Last seen : <?php
+						$timeSecond  = strtotime(date("Y-m-d H:i:s"));
+						$timeFirst= strtotime($row['last_login']);
+						$differenceInSeconds = $timeSecond - $timeFirst;
+						//echo $differenceInSeconds;/'/
+						echo smartdate($differenceInSeconds);
+						?></div>
 				</div>
 				<div class="profile_basic_summery">
 					Role : <?php echo $row['category'];?><br>
