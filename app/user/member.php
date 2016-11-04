@@ -1,6 +1,42 @@
 <html>
 <head>
 	<?php
+
+	function smartdate($timestamp) {
+		$diff =  $timestamp;
+
+		if ($diff <= 0) {
+			return 'Now';
+		}
+		else if ($diff < 60) {
+			return grammar_date(floor($diff), ' second(s) ago');
+		}
+		else if ($diff < 60*60) {
+			return grammar_date(floor($diff/60), ' minute(s) ago');
+		}
+		else if ($diff < 60*60*24) {
+			return grammar_date(floor($diff/(60*60)), ' hour(s) ago');
+		}
+		else if ($diff < 60*60*24*30) {
+			return grammar_date(floor($diff/(60*60*24)), ' day(s) ago');
+		}
+		else if ($diff < 60*60*24*30*12) {
+			return grammar_date(floor($diff/(60*60*24*30)), ' month(s) ago');
+		}
+		else {
+			return grammar_date(floor($diff/(60*60*24*30*12)), ' year(s) ago');
+		}
+	}
+
+
+	function grammar_date($val, $sentence) {
+		if ($val > 1) {
+			return $val.str_replace('(s)', 's', $sentence);
+		} else {
+			return $val.str_replace('(s)', '', $sentence);
+		}
+	}
+	
 	define('hris_access',true);
 	require_once('../templates/path.php');
 	include('../templates/_header.php');
@@ -116,7 +152,7 @@
 					</div>
 				</div>
 				<div class="profile_last_seen_box">
-					<div class="profile_last_seen_text">Last seen : 15 minutes ago</div>
+					<div id="last_seen" class="profile_last_seen_text">Last seen : 15 minutes ago</div>
 				</div>
 				<div class="profile_basic_summery">
 					Role : <?php echo $row['category'];?><br>
@@ -360,6 +396,7 @@
 			var json;
 			var ss = document.getElementById('availability_text');
 			var profile_section_intro = document.getElementById('profile_section_intro');
+			var last_seen = document.getElementById('last_seen');
 			var availability_icon = document.getElementById('availability_icon');
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
@@ -372,6 +409,7 @@
 						ss.innerHTML = json.status + " - " + json.text;
 
 					}
+					last_seen.innerHTML = json.lastseen;
 					$color = "#323232"
 					switch (json.status){
 						case "Available":
