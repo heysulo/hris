@@ -32,7 +32,7 @@ if (mysqli_num_rows($res1)){
 function smartdate($timestamp) {
     $diff =  $timestamp;
 
-    if ($diff <= 0) {
+    if ($diff <= 15) {
         return 'Now';
     }
     else if ($diff < 60) {

@@ -328,7 +328,7 @@
 					<div class="group_administration_content_field">
 						<div class="group_administration_content_field_name">Manage Member</div>
 						<div class="group_administration_content_field_value">
-							<input id="member_manage_email_search" type="text" class="group_administration_txtbox" placeholder="Member's Email Address">
+							<input id="member_manage_email_search" type="email" class="group_administration_txtbox" value="remalsha@gmail.com" placeholder="Member's Email Address">
 							<button class="msgbox_button group_writer_button " onclick='searchandretrivemembers();'>Search Member by Email</button>
 							<br>
 
@@ -336,8 +336,8 @@
 								function searchandretrivemembers() {
 									var xhr = new XMLHttpRequest();
 									var search_inp = document.getElementById("member_manage_email_search");
-									var section_member_manage = document.getElementById("section_member_manage");
-									section_member_manage.style.display="none";
+									var popupscreen = document.getElementById("popupscreen");
+									popupscreen.style.display="none";
 									xhr.onreadystatechange = function () {
 										if (xhr.readyState ==4 && xhr.status == 200){
 											if (xhr.responseText=="error"){
@@ -346,31 +346,9 @@
 												msgbox("The email address you entered does not belong to any accounts in the system. Please check the email and try again.","No Results",2);
 
 											}else{
-												var resp = JSON.parse(xhr.responseText);
-												section_member_manage.style.display="block";
-												var smm_name = document.getElementById("smm_name");
-												smm_name.innerHTML = resp['first_name'] + " " + resp["last_name"];
-												var smm_role = document.getElementById("smm_role");
-												smm_role.innerHTML = resp['category'];
-												var smm_name = document.getElementById("smm_course");
-												var smm_img = document.getElementById("smm_img");
-												smm_img.src="../images/pro_pic/"+resp['profile_picture'];
-
-
-
-												var chk_fpr = document.getElementById("chk_force_password_reset");
-												var chk_sa = document.getElementById("chk_suspend_account");
-												var chk_prb = document.getElementById("chk_password_reset_block");
-
-												if (resp['force_password_reset']=="1"){
-													chk_fpr.checked = true;
-												}else{
-													chk_fpr.checked = false;
-												}
-
-
-
-
+												var popupcontentarea = document.getElementById("popup_content_area");
+												popupcontentarea.innerHTML = xhr.responseText;
+												popupscreen.style.display="block";
 											}
 										}
 									};
@@ -385,42 +363,7 @@
 							<br class="containerdivNewLine">
 							<br>
 							<span id="section_member_manage" style="display: none">
-							<div class="sys_admin_selected_profile_box" >
-								<img id="smm_img" class="group_member_hd_propic">
-								<div id="smm_name" class="group_member_hd_name">Sulochana Kodituwakku</div>
-								<div id="smm_role" class="group_member_hd_role">President</div>
-								<div id="smm_course" class="group_member_hd_role">Computer Science</div>
-							</div>
-							<div style="clear: both;"></div>
-
-							<br>
-							<div class="ui group_administration_checkbox">
-								<label>Role inside system : </label>
-								<select id="conatct_info_opt" class="group_administration_dropdown">
-									<?php
-									$dist = "Student,Lecturer,Instructor";
-									$ary = explode(',', $dist);
-									foreach($ary as $dist){
-										echo "<option value='$dist'>$dist</option>";
-									}
-									?>
-								</select>
-							</div>
-							<br><br>
-							<div class="ui group_administration_checkbox">
-								<input id="chk_force_password_reset" type="checkbox" class="ui group_administration_checkbox" >
-								<label>Force Password Reset</label>
-							</div>
-							<div class="ui group_administration_checkbox">
-								<input id="chk_suspend_account" type="checkbox" class="ui group_administration_checkbox" >
-								<label>Suspend Account</label>
-							</div>
-							<div class="ui group_administration_checkbox">
-								<input id="chk_password_reset_block" type="checkbox" class="ui group_administration_checkbox" >
-								<label>Password reset block</label>
-							</div>
-							<br>
-							<button class="msgbox_button group_writer_button yellow_button" onclick='closemsgbox();window.alert(";)");'>Confirm Changes</button>
+							
 							</span>
 							<div style="clear: both;"></div>
 
@@ -448,6 +391,17 @@
 
 		</div>
 
+		<span id="popupscreen" style="display: none">
+			<div class="popup_background">
+				<span id="popup_content_area">
+
+				</span>
+			
+			</div>
+			
+			
+			<div class="popup_dimmer"></div>
+		</span>
 
 		<script>
 			function activate_tab(x) {
@@ -553,6 +507,7 @@
 
 		}
 	</script>
+
 </body>
 
 </html>

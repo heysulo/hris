@@ -18,6 +18,7 @@ if (session_status() == PHP_SESSION_NONE) {
     $query = "SELECT * FROM member WHERE email='$email'";
     $res = mysqli_query($conn,$query);
     $row = mysqli_fetch_assoc($res);
+    
     $password_reset_code = $row['password_reset_code'];
     $password_reset_block = $row['password_reset_block']; //k
     $password_reset_attempts = $row['password_reset_attempts']; //k
