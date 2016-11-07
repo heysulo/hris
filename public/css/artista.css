@@ -1819,7 +1819,7 @@ h3{
 /*********************************/
 
 .msgbox_background{
-    position: fixed;
+    position: absolute;
     height: auto;
     width: 500px;
     left: calc(50% - 250px);
@@ -1828,18 +1828,18 @@ h3{
     box-shadow: 0px 0px 10px 2px rgba(84,81,87,0.6);
     border: 2px solid #555356;
     border-radius: 2px;
-    z-index: 999999;
+    z-index: 1002;
 }
 
 .popup_background{
-    position: fixed;
+    position: absolute;
     height: auto;
     width: auto;
     background-color: white;
     box-shadow: 0px 0px 10px 2px rgba(84,81,87,0.6);
     border: 2px solid #555356;
     border-radius: 2px;
-    z-index: 999999;
+    z-index: 1000;
 
     position: fixed;
     top: 50%;
@@ -1862,7 +1862,7 @@ h3{
     width: 100%;
     position: fixed;
     background-color: black;
-    z-index: 999;
+    z-index: 1001;
     opacity: 0.4;
 }
 

@@ -6,6 +6,7 @@ $conn = null;
 require_once("../config.conf");
 require_once ("../../database/database.php");
 $email = htmlspecialchars($_REQUEST['email']);
+$_SESSION['selected_member_email'] = $email;
 if (isset($_SESSION["system_admin_panel_access"])){
     $query1 = "SELECT email, first_name, middle_name, last_name, category, course, profile_picture, force_password_reset, password_reset_block, reset_code_enabled, system_role,system_admin_panel_access,system_member_suspend_power, system_member_suspend_power_needed, system_member_delete_power_needed, system_member_change_power_needed,name,system_member_change_power,system_member_add_power FROM member JOIN system_role on member.system_role = system_role.system_role_id and email=\"$email\"";
     $res1 = mysqli_query($conn,$query1);
@@ -17,6 +18,7 @@ if (isset($_SESSION["system_admin_panel_access"])){
         $his = mysqli_fetch_assoc($res1);
         ?>
 <!--        HTML CONTENT-->
+        <form id="changememberform" method="post" action="administration_events/changemember.php">
         <div class="msgbox_section_title">
             <div class="msgbox_title">Member Management / <?php echo $his['email']; ?></div>
             <div class="popup_close_button" onclick='document.getElementById("popupscreen").style.display = "none"'></div>
@@ -34,7 +36,7 @@ if (isset($_SESSION["system_admin_panel_access"])){
             <?php if($my['system_member_change_power'] >= $his['system_member_change_power_needed']){ ?>
             <div class="ui group_administration_checkbox">
                 <label>Role inside system : </label>
-                <select id="conatct_info_opt" class="group_administration_dropdown">
+                <select name="conatct_info_opt" class="group_administration_dropdown">
                     <?php
                     $my_role_power = $my['system_member_add_power'];
                     $query32 = "SELECT * FROM system_role WHERE system_member_add_power_needed <= $my_role_power";
@@ -61,9 +63,9 @@ if (isset($_SESSION["system_admin_panel_access"])){
 
             <div class="ui group_administration_checkbox">
                 <?php if($his['force_password_reset'] == "1"){?>
-                <input id="chk_force_password_reset" type="checkbox" class="ui group_administration_checkbox" checked="true">
+                <input name="chk_force_password_reset" type="checkbox" class="ui group_administration_checkbox" checked="true">
                 <?php }else{ ?>
-                    <input id="chk_force_password_reset" type="checkbox" class="ui group_administration_checkbox" >
+                    <input name="chk_force_password_reset" type="checkbox" class="ui group_administration_checkbox" >
                 <?php }?>
                 <label>Force Password Reset</label>
             </div>
@@ -71,7 +73,7 @@ if (isset($_SESSION["system_admin_panel_access"])){
             <?php if($my['system_member_suspend_power'] >= $his['system_member_suspend_power_needed']){ ?>
 
             <div class="ui group_administration_checkbox">
-                <input id="chk_suspend_account" type="checkbox" class="ui group_administration_checkbox" >
+                <input name="chk_suspend_account" type="checkbox" class="ui group_administration_checkbox" >
                 <label>Suspend Account</label>
             </div>
             <?php }?>
@@ -80,20 +82,51 @@ if (isset($_SESSION["system_admin_panel_access"])){
             <div class="ui group_administration_checkbox">
 
                 <?php if ((strtotime(date('Y-m-d H:i:s'))-strtotime($his['password_reset_block']))/3600 > 24){ ?>
-                    <input id="chk_password_reset_block" type="checkbox" class="ui group_administration_checkbox" >
+                    <input name="chk_password_reset_block" type="checkbox" class="ui group_administration_checkbox" >
                 <?php }else{ ?>
-                    <input id="chk_password_reset_block" type="checkbox" class="ui group_administration_checkbox" checked="true">
+                    <input name="chk_password_reset_block" type="checkbox" class="ui group_administration_checkbox" checked="true">
                 <?php } ?>
                 <label>Password reset block</label>
             </div>
             <br>
 
-
+        </form>
         </div>
         <div class="msgbbox_section_bottom" align="right">
-            <button class="msgbox_button group_writer_button yellow_button" style="color: #000" >Confirm Changes</button>
-            <button class="msgbox_button msgbox_button_default" onclick='closemsgbox()'>Close</button>
+            <button id="confirm_btn" class="msgbox_button group_writer_button yellow_button" type="button">Confirm Changes</button>
+            <button class="msgbox_button msgbox_button_default" onclick='document.getElementById("popupscreen").style.display = "none"'>Close</button>
+            <script id="ajaxedjs">
+                $("#confirm_btn").click(function(e) {
+
+                    var url = "administration_events/changemember.php"; // the script where you handle the form input.
+
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: $("#changememberform").serialize(), // serializes the form's elements.
+                        success: function(data)
+                        {
+                            document.getElementById("popupscreen").style.display = "none";
+                            if (data=="success"){
+                                msgbox("New settings for the profile <?php echo $email;?> has being applied and will be taken into effect immediately","Settings Saved",1);
+                            }else if(data=="0x01"){
+                                msgbox("Something went wrong. It appears to be that you don't have access to the administration panel","Permission Denied",3);
+
+                            }else{
+                                msgbox("Something went wrong and we are working on a solution for this error.","Unknown Error",3);
+
+                            }
+                        }
+                    });
+
+                    //e.preventDefault(); // avoid to execute the actual submit of the form.
+                });
+            </script>
         </div>
+
+
+        
+
 
 
         <?php

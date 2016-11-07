@@ -349,6 +349,7 @@
 												var popupcontentarea = document.getElementById("popup_content_area");
 												popupcontentarea.innerHTML = xhr.responseText;
 												popupscreen.style.display="block";
+												eval(document.getElementById("ajaxedjs").innerHTML)
 											}
 										}
 									};
