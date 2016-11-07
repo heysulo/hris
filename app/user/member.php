@@ -68,7 +68,6 @@
 	$res = mysqli_query($conn,$query);
 	$row = mysqli_fetch_assoc($res);
 	if ($row['member_id']!=null){
-
 		$vision_power= $row['system_vision_power'] ;
 	}else{
 		$view_id = null;
@@ -84,7 +83,7 @@
 		}
 
 		?> </title>
-<!--    <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet">-->
+
 </head>
 <body>
 	<div>
@@ -93,7 +92,6 @@
 	</div>
 	<?php
 		if ($view_id!=null){
-
 	?>
 	<div class="clearfix">
 
@@ -267,13 +265,8 @@
 									<div class="society_item_club"><?php echo $row_qt['name'] ;?></div><div class="society_item_role"><?php echo $row_qt['role_name'] ;?></div>
 									<div class="society_item_extra">
 										<?php echo $row_qt['description'];?>
-
-
 									</div>
 								</div>
-
-
-
 								<?php
 							}
 						}else{
@@ -297,9 +290,6 @@
 									<div class="skill_item language_item">
 										<?= $row_qt['language'];?>
 									</div>
-
-
-
 									<?php
 								}
 							}else{
@@ -337,7 +327,6 @@
 								<div class="contact_info_item">
 									<div class="contact_info_item_field"><?php echo $row_qt['field'];?> :</div><div class="contact_info_item_value"><?php echo $value;?> </div>
 								</div>
-
 								<?php
 							}
 						}else{
@@ -378,8 +367,6 @@
 									<div class="skill_item language_item">
 										<?= $row_qt['skill'];?>
 									</div>
-
-
 
 									<?php
 								}

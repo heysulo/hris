@@ -1091,8 +1091,8 @@ h3{
 .profile_availability_text_2{
     font-size:12px;
     margin-top: -19px;
-    padding: 3px;
-    margin-left: 5px;
+    /*padding: 3px;*/
+    margin-left: 100px;
     float: left;
 }
 
