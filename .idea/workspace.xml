@@ -6,6 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61e1cd92-7b56-47ec-ae8c-3f1bb269a8df" name="Default" comment="">
+<<<<<<< HEAD
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
 <<<<<<< Updated upstream
 <<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
@@ -21,6 +25,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/createUser.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
 >>>>>>> Stashed changes
+>>>>>>> master
     </list>
     <ignored path="hris.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,10 +38,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
 <<<<<<< HEAD
+  <component name="ChangesViewManager" flattened_view="false" />
+=======
+<<<<<<< HEAD
   <component name="ChangesViewManager" flattened_view="false" show_ignored="false" />
 =======
   <component name="ChangesViewManager" flattened_view="false" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -53,6 +62,25 @@
     <favorites_list name="hris" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="newpassword.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profileSetup/newpassword.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="21" column="129" selection-start-line="21" selection-start-column="129" selection-end-line="22" selection-end-column="101" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profiledetails.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/profileSetup/profiledetails.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" column="101" selection-start-line="30" selection-start-column="101" selection-end-line="30" selection-end-column="101" />
+              <folding />
+=======
 <<<<<<< HEAD
     <splitter split-orientation="horizontal" split-proportion="0.33395872">
       <split-first>
@@ -210,20 +238,37 @@
                 <marker date="1473140663112" expanded="true" signature="7058:7075" ph="..." />
                 <marker date="1473140663112" expanded="true" signature="7214:7231" ph="..." />
               </folding>
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="languages.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profileSetup/template/languages.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+=======
       <file leaf-file-name="artista.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/artista.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
               <caret line="900" column="30" selection-start-line="897" selection-start-column="4" selection-end-line="900" selection-end-column="30" />
+>>>>>>> master
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="interetst.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profileSetup/template/interetst.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+              <folding />
+=======
       <file leaf-file-name="createUser.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/admin/createUser.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -237,10 +282,19 @@
                 <element signature="n#style#0;n#select#0;n#td#0;n#tr#1;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#td#1;n#tr#2;n#table#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="contact_info.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profileSetup/template/contact_info.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+              <folding />
+=======
       <file leaf-file-name="addUser.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/admin/addUser.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -249,10 +303,19 @@
               <folding>
                 <marker date="1473140841403" expanded="true" signature="476:560" ph="INSERT INTO user... " />
               </folding>
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="personal_info.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profileSetup/template/personal_info.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+              <folding />
+=======
       <file leaf-file-name="mygroup.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/user/mygroup.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -267,12 +330,16 @@
                 <marker date="1472987311659" expanded="true" signature="2624:2637" ph="..." />
                 <marker date="1472987311659" expanded="true" signature="2724:2754" ph="..." />
               </folding>
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+<<<<<<< HEAD
+=======
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -337,8 +404,11 @@
         <option value="$PROJECT_DIR$/app/user/advancedSearch.php" />
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
         <option value="$PROJECT_DIR$/.gitignore" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
         <option value="$PROJECT_DIR$/firstRun/welcome.php" />
         <option value="$PROJECT_DIR$/firstrunNewPassword/template/steps.php" />
         <option value="$PROJECT_DIR$/firstrunNewPassword/newpassword.php" />
@@ -347,6 +417,9 @@
         <option value="$PROJECT_DIR$/profileSetup/template/interetst.php" />
         <option value="$PROJECT_DIR$/profileSetup/template/languages.php" />
         <option value="$PROJECT_DIR$/profileSetup/profiledetails.php" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/.gitignore" />
+=======
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/user/sampleTemplate.php" />
 =======
@@ -397,6 +470,7 @@
 =======
         <option value="$PROJECT_DIR$/app/admin/createUser.php" />
 >>>>>>> Stashed changes
+>>>>>>> master
       </list>
     </option>
   </component>
@@ -412,6 +486,11 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7" />
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+    <option name="x" value="-2" />
+    <option name="width" value="1370" />
+    <option name="height" value="751" />
+=======
+<<<<<<< HEAD
     <option name="y" value="-1" />
     <option name="width" value="1920" />
     <option name="height" value="1061" />
@@ -420,6 +499,7 @@
     <option name="width" value="1366" />
     <option name="height" value="715" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -469,6 +549,8 @@
     </navigator>
     <panes>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
       <pane id="Scope" />
 =======
       <pane id="Scratches" />
@@ -477,6 +559,7 @@
 =======
       <pane id="Scope" />
 >>>>>>> Stashed changes
+>>>>>>> master
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -506,10 +589,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< HEAD
+              <option name="myItemId" value="app" />
+=======
+<<<<<<< HEAD
               <option name="myItemId" value="public" />
 =======
               <option name="myItemId" value="app" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -524,7 +611,11 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< HEAD
+              <option name="myItemId" value="app" />
+=======
+<<<<<<< HEAD
               <option name="myItemId" value="profileSetup" />
+>>>>>>> master
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -588,6 +679,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+=======
               <option name="myItemId" value="admin_panel" />
 =======
               <option name="myItemId" value="app" />
@@ -603,6 +699,7 @@
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+>>>>>>> master
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -615,25 +712,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
               <option name="myItemId" value="admin_panel" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
 =======
+>>>>>>> master
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="admin" />
+=======
 =======
 >>>>>>> Stashed changes
               <option name="myItemId" value="admin" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+      <pane id="Scratches" />
+      <pane id="Scope" />
+=======
 <<<<<<< Updated upstream
 <<<<<<< HEAD
       <pane id="Scratches" />
@@ -642,6 +750,7 @@
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
 =======
 >>>>>>> Stashed changes
+>>>>>>> master
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -781,6 +890,9 @@
       <workItem from="1472574788664" duration="12570000" />
       <workItem from="1472664186816" duration="27000" />
       <workItem from="1472664221420" duration="9183000" />
+<<<<<<< HEAD
+      <workItem from="1478605179460" duration="142000" />
+=======
       <workItem from="1472720611296" duration="4653000" />
       <workItem from="1472810714679" duration="18986000" />
 <<<<<<< HEAD
@@ -804,6 +916,7 @@
       <workItem from="1473151345433" duration="624000" />
       <workItem from="1473155260429" duration="3462000" />
 >>>>>>> Stashed changes
+>>>>>>> master
     </task>
     <task id="LOCAL-00001" summary="add loading gif to pages">
       <created>1465084583700</created>
@@ -1019,6 +1132,9 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="181701000" />
+=======
 <<<<<<< Updated upstream
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="248114000" />
@@ -1028,6 +1144,7 @@
 =======
     <option name="totallyTimeSpent" value="256333000" />
 >>>>>>> Stashed changes
+>>>>>>> master
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1039,6 +1156,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="-2" y="0" width="1370" height="751" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2205438" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
 <<<<<<< HEAD
     <frame x="0" y="-1" width="1920" height="1061" extended-state="0" />
     <editor active="true" />
@@ -1052,6 +1176,7 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13250366" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21083455" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1071,7 +1196,11 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5877617" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
 <<<<<<< HEAD
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+<<<<<<< HEAD
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32955715" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> master
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1664,6 +1793,9 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/user/advancedSearch.php">
+=======
     <entry file="file://$PROJECT_DIR$/dashboard/templates/bottom_panel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1719,6 +1851,7 @@
     </entry>
 <<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/admin/approveCreateGroup.php">
+>>>>>>> master
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1727,6 +1860,21 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/firstRun/welcome.php" />
+    <entry file="file://$PROJECT_DIR$/firstrunNewPassword/welcome.php" />
+    <entry file="file://$PROJECT_DIR$/firstrunNewPassword/template/steps.php" />
+    <entry file="file://$PROJECT_DIR$/firstrunNewPassword/newpassword.php" />
+    <entry file="file://$PROJECT_DIR$/profileSetup/template/personal_info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profileSetup/template/contact_info.php">
+=======
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/admin_panel/templates/member_management.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1768,30 +1916,59 @@
 >>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/app/admin/index.php">
 >>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/profileSetup/template/interetst.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+=======
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/profileSetup/yourname.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/profileSetup/template/languages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+=======
     <entry file="file://$PROJECT_DIR$/profileSetup/profiledetails.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/profileSetup/newpassword.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="21" column="129" selection-start-line="21" selection-start-column="129" selection-end-line="22" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/artista.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="1767" column="0" selection-start-line="1767" selection-start-column="0" selection-end-line="1767" selection-end-column="0" />
+=======
     <entry file="file://$PROJECT_DIR$/profileSetup/finalize.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1820,28 +1997,49 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="827">
           <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/artista.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="900" column="30" selection-start-line="897" selection-start-column="4" selection-end-line="900" selection-end-column="30" />
->>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/editProfile/index.php">
+    <entry file="file://$PROJECT_DIR$/interm.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/public/css/artista.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="900" column="30" selection-start-line="897" selection-start-column="4" selection-end-line="900" selection-end-column="30" />
+>>>>>>> 1262e296406b5d960080b6a54af8afe3e42d4974
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/editProfile/templates/profile_content_top.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="115" selection-start-line="3" selection-start-column="8" selection-end-line="4" selection-end-column="115" />
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/editProfile/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> master
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/dashboard/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="7" />
+=======
 <<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/admin_panel/templates/member_add.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1855,10 +2053,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
           <caret line="26" column="57" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="7" />
+>>>>>>> master
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+=======
     <entry file="file://$PROJECT_DIR$/app/user/createGroup.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-316">
@@ -1870,6 +2076,7 @@
             <marker date="1473140663112" expanded="true" signature="7058:7075" ph="..." />
             <marker date="1473140663112" expanded="true" signature="7214:7231" ph="..." />
           </folding>
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -1890,6 +2097,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/app/admin/addUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1638">
@@ -1934,6 +2143,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> master
   </component>
   <component name="webServersAuthStorage">
     <data>AAAAsO3qxSXGutgCul7YMukNLAx4n7JCpO6NOtHkh53/uTjEczVep4WXAprUQn2VmsT+iuN9LGXUl5zC9R9XnviUXbkcXWCDDSFGSjdwAhDpPeRrGzIAjgef1xj0rTlyzgKZaVrJhgEvi7QvZb4NdoGKvAL/NUm3tGC1CvJPvBHNteUhlmarcRWCq3s1wpbX6Mt7XS3k/XuMgQQ+bqKzFGUXb9Y+xMhlD5RNdJ/89wo0IfDDtJlzArBGVWdTCWb7JDGAbw==</data>

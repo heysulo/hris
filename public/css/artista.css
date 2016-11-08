@@ -3193,7 +3193,7 @@ li.active a, li.active a:hover {
 
 /***/
 .tg  {border-collapse:collapse;border-spacing:0;border:2px solid #3F4E5E;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg th{width:150px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg .tg-yw4l{vertical-align:top}
 .disabled_cell{background-color: #3F4E5E}

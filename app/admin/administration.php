@@ -31,357 +31,319 @@
 
 				$ref = $_SERVER['HTTP_REFERER'] ;
 				$r_ref = explode('/',$ref);
-				if ($r_ref[5] != "admin"){ ?>
+			if ($r_ref[5] != "admin"){ ?>
 
 				<script>msgbox("You have access to admin panel. Use your powers with care","Admin Access",0);</script>
 			<?php
-				$active = 1;
-				}else{
-				$active = 3;
+			$active = 1;
+			}else{
+			$active = 3;
 			}
-				?>
+			?>
 
-				<div style="float:left;height:80px;width:100%;">
-					<div style="float:left;width:auto;height:100%;">
-						<div class="txt_paneltitle">System Administration</div>
+			<div style="float:left;height:80px;width:100%;">
+				<div style="float:left;width:auto;height:100%;">
+					<div class="txt_paneltitle">System Administration</div>
 
+				</div>
+
+			</div>
+			<div class="group_main_menu">
+				<ul>
+					<li class="group_main_menu_item group_main_menu_item_active" id="main_menu_members" onclick="activate_tab(1);">Member Management</li>
+					<li class="group_main_menu_item" id="main_menu_roles" onclick="activate_tab(2);">Role Management</li>
+					<li class="group_main_menu_item" id="main_menu_batch" onclick="activate_tab(3);">Batch Management</li>
+				</ul>
+			</div>
+
+			<div class="group_div_content" id="tab_roles">
+				<div class="dbox group_tab_members group_members_dbox">
+
+
+					<!-------------------------------ADD NEW ROLES--------------------------->
+					<div class="group_administration_content_field">
+						<div class="group_administration_content_field_name">Add New System Role</div>
+						<div class="group_administration_content_field_value">
+							<span style="font-size: 12px">Create a new system role with different permissions and permission levels which allows the system members use only the allowed funtionalities by the system administrator<br></span>
+							<br>
+							<button class="msgbox_button group_writer_button " onclick='addnewsystemrole();'>Create New Role</button>
+							<script>
+								function addnewsystemrole() {
+									var xhr = new XMLHttpRequest();
+									var search_inp = document.getElementById("member_manage_email_search");
+									var popupscreen = document.getElementById("popupscreen");
+									popupscreen.style.display="none";
+									xhr.onreadystatechange = function () {
+										if (xhr.readyState ==4 && xhr.status == 200){
+											var popupcontentarea = document.getElementById("popup_content_area");
+											popupcontentarea.innerHTML = xhr.responseText;
+											popupscreen.style.display="block";
+											eval(document.getElementById("ajaxedjsx").innerHTML);
+										}
+									};
+									xhr.open("POST", "./administration_events/newsystemrole.php", true);
+									xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+									xhr.send("email="+search_inp.value);
+								}
+							</script>
+						</div>
+					</div>
+
+					<!-------------------------------UPDATE ROLES--------------------------->
+					<div class="group_administration_content_field">
+						<div class="group_administration_content_field_name">Update System Role</div>
+						<div class="group_administration_content_field_value">
+							<select id="conatct_info_opt" class="group_administration_dropdown">
+								<?php
+								$dist = "Public,Closed,Secret";
+								$ary = explode(',', $dist);
+								foreach($ary as $dist){
+									echo "<option value='$dist'>$dist</option>";
+								}
+								?>
+							</select><br><br>
+							<table class="tg">
+								<tr>
+									<th class="tg-yw4l"></th>
+									<th class="tg-yw4l">Permission</th>
+									<th class="tg-yw4l">Power</th>
+									<th class="tg-yw4l">Power Needed</th>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Admin Panel Access</td>
+									<td class="tg-yw4l">
+										<div class="ui group_administration_checkbox">
+											<input type="checkbox" class="ui group_administration_checkbox" >
+											<label>Allow</label>
+										</div>
+									</td>
+									<td class="tg-yw4l disabled_cell" colspan="2"></td>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Add Members</td>
+									<td class="tg-yw4l disabled_cell" rowspan="3"></td>
+									<td class="tg-yw4l">
+
+										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
+									</td>
+									<td class="tg-yw4l">
+										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
+									</td>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Suspend Members</td>
+									<td class="tg-yw4l">
+										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
+									</td>
+									<td class="tg-yw4l">
+										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
+									</td>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Meeting Request</td>
+									<td class="tg-yw4l">
+										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
+									</td>
+									<td class="tg-yw4l">
+										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
+									</td>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Create Group</td>
+									<td class="tg-yw4l">
+										<div class="ui group_administration_checkbox">
+											<input type="checkbox" class="ui group_administration_checkbox" >
+											<label>Allow</label>
+										</div>
+									</td>
+									<td class="tg-yw4l disabled_cell" colspan="2" rowspan="5"></td>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Vision Power</td>
+									<td class="tg-yw4l">
+										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
+									</td>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Create Roles</td>
+									<td class="tg-yw4l">
+										<div class="ui group_administration_checkbox">
+											<input type="checkbox" class="ui group_administration_checkbox" >
+											<label>Allow</label>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Change Roles</td>
+									<td class="tg-yw4l">
+										<div class="ui group_administration_checkbox">
+											<input type="checkbox" class="ui group_administration_checkbox" >
+											<label>Allow</label>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="tg-yw4l">Delete Roles</td>
+									<td class="tg-yw4l">
+										<div class="ui group_administration_checkbox">
+											<input type="checkbox" class="ui group_administration_checkbox" >
+											<label>Allow</label>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<br>
+							<button class="msgbox_button group_writer_button yellow_button" onclick='closemsgbox();window.alert(";)");'>Update System Role</button>
+						</div>
+					</div>
+
+
+					<!-------------------------------DELETE ROLES--------------------------->
+					<div class="group_administration_content_field">
+						<div class="group_administration_content_field_name">Delete System Role</div>
+						<div class="group_administration_content_field_value">
+							<select id="conatct_info_opt" class="group_administration_dropdown">
+								<?php
+								$dist = "Public,Closed,Secret";
+								$ary = explode(',', $dist);
+								foreach($ary as $dist){
+									echo "<option value='$dist'>$dist</option>";
+								}
+								?>
+							</select>
+							<button class="msgbox_button group_writer_button red_button" onclick='closemsgbox();window.alert(";)");'>Delete System Role</button>
+						</div>
 					</div>
 
 				</div>
-				<div class="group_main_menu">
-					<ul>
-						<li class="group_main_menu_item" id="main_menu_members" onclick="activate_tab(1);">Member Management</li>
-						<li class="group_main_menu_item" id="main_menu_roles" onclick="activate_tab(2);">Role Management</li>
-						<li class="group_main_menu_item" id="main_menu_batch" onclick="activate_tab(3);">Batch Management</li>
-					</ul>
-				</div>
-
-				<div class="group_div_content" id="tab_roles">
-					<div class="dbox group_tab_members group_members_dbox">
 
 
-						<!-------------------------------ADD NEW ROLES--------------------------->
+
+
+			</div>
+
+
+			<div class="group_div_content" id="tab_members">
+				<div class="dbox group_tab_members group_members_dbox">
+
+					<?php if($_SESSION['system_member_add_power']){?>
+					<!-------------------------------ADD NEW MEMBERS--------------------------->
 						<div class="group_administration_content_field">
-							<div class="group_administration_content_field_name">Add New System Role</div>
+							<div class="group_administration_content_field_name">Add New Member</div>
 							<div class="group_administration_content_field_value">
-								<input type="text" class="group_administration_txtbox" placeholder="Enter Role Name"><br><br>
-								<table class="tg">
-									<tr>
-										<th class="tg-yw4l"></th>
-										<th class="tg-yw4l">Permission</th>
-										<th class="tg-yw4l">Power</th>
-										<th class="tg-yw4l">Power Needed</th>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Admin Panel Access</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-										<td class="tg-yw4l disabled_cell" colspan="2"></td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Add Members</td>
-										<td class="tg-yw4l disabled_cell" rowspan="3"></td>
-										<td class="tg-yw4l">
+								<form>
+									<input type="text" class="group_administration_txtbox" placeholder="New Member's Email Address" id="new_member_email"><br>
+									<select id="new_member_role" class="group_administration_dropdown">
+										<?php
+										$my_role_power = $_SESSION['system_member_add_power'];
+										$query2 = "SELECT * FROM system_role WHERE system_member_add_power_needed <= $my_role_power";
+										$result = mysqli_query($conn,$query2);
 
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Suspend Members</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Meeting Request</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Create Group</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-										<td class="tg-yw4l disabled_cell" colspan="2" rowspan="5"></td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Vision Power</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Create Roles</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Change Roles</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Delete Roles</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-									</tr>
-								</table>
-								<br>
-								<button class="msgbox_button group_writer_button " onclick='closemsgbox();window.alert(";)");'>Create New Role</button>
+
+										if (mysqli_num_rows($result)){
+											while ($row_qt =  mysqli_fetch_assoc($result)){
+												echo "<option value='".$row_qt['system_role_id']."'>".$row_qt['name']."</option>";
+											}
+										}
+
+										?>
+									</select>
+
+									<button class="msgbox_button group_writer_button" type="button" onclick='checkinvite();'>Send Invitation</button>
+								</form>
 							</div>
 						</div>
 
-						<!-------------------------------UPDATE ROLES--------------------------->
+						<!-------------------------------BULK ADD NEW MEMBERS--------------------------->
 						<div class="group_administration_content_field">
-							<div class="group_administration_content_field_name">Update System Role</div>
+							<div class="group_administration_content_field_name">Bulk Invitation</div>
 							<div class="group_administration_content_field_value">
-								<select id="conatct_info_opt" class="group_administration_dropdown">
-									<?php
-									$dist = "Public,Closed,Secret";
-									$ary = explode(',', $dist);
-									foreach($ary as $dist){
-										echo "<option value='$dist'>$dist</option>";
-									}
-									?>
-								</select><br><br>
-								<table class="tg">
-									<tr>
-										<th class="tg-yw4l"></th>
-										<th class="tg-yw4l">Permission</th>
-										<th class="tg-yw4l">Power</th>
-										<th class="tg-yw4l">Power Needed</th>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Admin Panel Access</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-										<td class="tg-yw4l disabled_cell" colspan="2"></td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Add Members</td>
-										<td class="tg-yw4l disabled_cell" rowspan="3"></td>
-										<td class="tg-yw4l">
-
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Suspend Members</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Meeting Request</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Create Group</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-										<td class="tg-yw4l disabled_cell" colspan="2" rowspan="5"></td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Vision Power</td>
-										<td class="tg-yw4l">
-											<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Create Roles</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Change Roles</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tg-yw4l">Delete Roles</td>
-										<td class="tg-yw4l">
-											<div class="ui group_administration_checkbox">
-												<input type="checkbox" class="ui group_administration_checkbox" >
-												<label>Allow</label>
-											</div>
-										</td>
-									</tr>
-								</table>
-								<br>
-								<button class="msgbox_button group_writer_button yellow_button" onclick='closemsgbox();window.alert(";)");'>Update System Role</button>
+								<span style="font-size: 12px">Invite more than one member at a time by uploading a XLS file containing <br> member's email address</span><br>
+								<button class="msgbox_button group_writer_button " onclick='closemsgbox();window.alert(";)");'>Bulk Invitation</button>
 							</div>
 						</div>
+					<?php }?>
+
+					<!-------------------------------MEMBER MANAGEMENT--------------------------->
+					<?php if($_SESSION['system_member_change_power']){?>
+
+					<div class="group_administration_content_field">
+						<div class="group_administration_content_field_name">Manage Member</div>
+						<div class="group_administration_content_field_value">
+							<input id="member_manage_email_search" type="email" class="group_administration_txtbox" value="remalsha@gmail.com" placeholder="Member's Email Address">
+							<button class="msgbox_button group_writer_button " onclick='searchandretrivemembers();'>Search Member by Email</button>
+							<br>
+
+							<script>
+								function searchandretrivemembers() {
+									var xhr = new XMLHttpRequest();
+									var search_inp = document.getElementById("member_manage_email_search");
+									var popupscreen = document.getElementById("popupscreen");
+									popupscreen.style.display="none";
+									xhr.onreadystatechange = function () {
+										if (xhr.readyState ==4 && xhr.status == 200){
+											if (xhr.responseText=="error"){
+												//err
+											}else if (xhr.responseText == "0"){
+												msgbox("The email address you entered does not belong to any accounts in the system. Please check the email and try again.","No Results",2);
+
+											}else{
+												var popupcontentarea = document.getElementById("popup_content_area");
+												popupcontentarea.innerHTML = xhr.responseText;
+												popupscreen.style.display="block";
+												eval(document.getElementById("ajaxedjs").innerHTML)
+											}
+										}
+									};
+									xhr.open("POST", "./administration_events/searchmember.php", true);
+									xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+									xhr.send("email="+search_inp.value);
+
+								}
+							</script>
+
+							<div style="float:left;font-size: 12px">Search the member by the email address and make changes to the profile</div>
+							<br class="containerdivNewLine">
+							<br>
+							<span id="section_member_manage" style="display: none">
+							
+							</span>
+							<div style="clear: both;"></div>
 
 
-						<!-------------------------------DELETE ROLES--------------------------->
-						<div class="group_administration_content_field">
-							<div class="group_administration_content_field_name">Delete System Role</div>
-							<div class="group_administration_content_field_value">
-								<select id="conatct_info_opt" class="group_administration_dropdown">
-									<?php
-									$dist = "Public,Closed,Secret";
-									$ary = explode(',', $dist);
-									foreach($ary as $dist){
-										echo "<option value='$dist'>$dist</option>";
-									}
-									?>
-								</select>
-								<button class="msgbox_button group_writer_button red_button" onclick='closemsgbox();window.alert(";)");'>Delete System Role</button>
-							</div>
 						</div>
-
 					</div>
+					<?php }?>
+					<?php
+						if(!($_SESSION['system_member_change_power'] || $_SESSION['system_member_add_power'])){
+							echo "You dont have any member management permissions";
+						}
+					?>
+				</div>
+			</div>
 
-				</div> <!-- ------------------ End of user roles management ------------------------>
+				<!--				---------------------------------------- Batch details adding ---------------------------------->
 
-
-				<div class="group_div_content" id="tab_members">
+				<div class="group_div_content" id="tab_batch">
 					<div class="dbox group_tab_members group_members_dbox">
 
 						<?php if($_SESSION['system_member_add_power']){?>
-							<!-------------------------------ADD NEW MEMBERS--------------------------->
+							<!-------------------------------ADD NEW Batch--------------------------->
 							<div class="group_administration_content_field">
-								<div class="group_administration_content_field_name">Add New Member</div>
+								<div class="group_administration_content_field_name">Add New Batch</div>
 								<div class="group_administration_content_field_value">
-									<form>
-										<input type="text" class="group_administration_txtbox" placeholder="New Member's Email Address" id="new_member_email"><br>
-										<select id="new_member_role" class="group_administration_dropdown">
-											<?php
-											$my_role_power = $_SESSION['system_member_add_power'];
-											$query2 = "SELECT * FROM system_role WHERE system_member_add_power_needed <= $my_role_power";
-											$result = mysqli_query($conn,$query2);
-
-
-											if (mysqli_num_rows($result)){
-												while ($row_qt =  mysqli_fetch_assoc($result)){
-													echo "<option value='".$row_qt['system_role_id']."'>".$row_qt['name']."</option>";
-												}
-											}
-
-											?>
-										</select>
-
-										<button class="msgbox_button group_writer_button" type="button" onclick='checkinvite();'>Send Invitation</button>
+									<form method="post" enctype="multipart/form-data" action="adminFunction.php" onsubmit="return validateBatchName()">
+										<input type="text" class="group_administration_txtbox" name="batch" placeholder="Ex : B2014" id="new_batch_name" required><br><br>
+										<span style="font-size: 12px">Please confirm uploaded data arranged correct format.<br> Json data should format to { 'index_number':14020646,'registration_number':2014/IS/99 } </span><br><br>
+										<input type="file" name="readFile" accept="application/json" required>
+										<button class="msgbox_button group_writer_button" name="upload_batch_json" type="submit" > Upload </button>
 									</form>
 								</div>
 							</div>
 
-							<!-------------------------------BULK ADD NEW MEMBERS--------------------------->
-							<div class="group_administration_content_field">
-								<div class="group_administration_content_field_name">Bulk Invitation</div>
-								<div class="group_administration_content_field_value">
-									<span style="font-size: 12px">Invite more than one member at a time by uploading a XLS file containing <br> member's email address</span><br>
-									<button class="msgbox_button group_writer_button " onclick='closemsgbox();window.alert(";)");'>Bulk Invitation</button>
-								</div>
-							</div>
 						<?php }?>
 
-						<!-------------------------------MEMBER MANAGEMENT--------------------------->
-						<?php if($_SESSION['system_member_change_power']){?>
 
-							<div class="group_administration_content_field">
-								<div class="group_administration_content_field_name">Manage Member</div>
-								<div class="group_administration_content_field_value">
-									<input id="member_manage_email_search" type="email" class="group_administration_txtbox" value="remalsha@gmail.com" placeholder="Member's Email Address">
-									<button class="msgbox_button group_writer_button " onclick='searchandretrivemembers();'>Search Member by Email</button>
-									<br>
-
-									<script>
-										function searchandretrivemembers() {
-											var xhr = new XMLHttpRequest();
-											var search_inp = document.getElementById("member_manage_email_search");
-											var popupscreen = document.getElementById("popupscreen");
-											popupscreen.style.display="none";
-											xhr.onreadystatechange = function () {
-												if (xhr.readyState ==4 && xhr.status == 200){
-													if (xhr.responseText=="error"){
-														//err
-													}else if (xhr.responseText == "0"){
-														msgbox("The email address you entered does not belong to any accounts in the system. Please check the email and try again.","No Results",2);
-
-													}else{
-														var popupcontentarea = document.getElementById("popup_content_area");
-														popupcontentarea.innerHTML = xhr.responseText;
-														popupscreen.style.display="block";
-														eval(document.getElementById("ajaxedjs").innerHTML)
-													}
-												}
-											};
-											xhr.open("POST", "./administration_events/searchmember.php", true);
-											xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-											xhr.send("email="+search_inp.value);
-
-										}
-									</script>
-
-									<div style="float:left;font-size: 12px">Search the member by the email address and make changes to the profile</div>
-									<br class="containerdivNewLine">
-									<br>
-									<span id="section_member_manage" style="display: none">
-
-							</span>
-									<div style="clear: both;"></div>
-
-
-								</div>
-							</div>
-						<?php }?>
 						<?php
 						if(!($_SESSION['system_member_change_power'] || $_SESSION['system_member_add_power'])){
 							echo "You dont have any member management permissions";
@@ -391,43 +353,16 @@
 				</div>
 
 
-			<!--				---------------------------------------- Batch details adding ---------------------------------->
-
-			<div class="group_div_content" id="tab_batch">
-				<div class="dbox group_tab_members group_members_dbox">
-
-					<?php if($_SESSION['system_member_add_power']){?>
-						<!-------------------------------ADD NEW Batch--------------------------->
-						<div class="group_administration_content_field">
-							<div class="group_administration_content_field_name">Add New Batch</div>
-							<div class="group_administration_content_field_value">
-								<form method="post" enctype="multipart/form-data" action="adminFunction.php" onsubmit="return validateBatchName()">
-									<input type="text" class="group_administration_txtbox" name="batch" placeholder="Ex : B2014" id="new_batch_name" required><br><br>
-									<span style="font-size: 12px">Please confirm uploaded data arranged correct format.<br> Json data should format to { 'index_number':14020646,'registration_number':2014/IS/99 } </span><br><br>
-									<input type="file" name="readFile" accept="application/json" required>
-									<button class="msgbox_button group_writer_button" name="upload_batch_json" type="submit" > Upload </button>
-								</form>
-							</div>
-						</div>
-
-					<?php }?>
-
-
-					<?php
-					if(!($_SESSION['system_member_change_power'] || $_SESSION['system_member_add_power'])){
-						echo "You dont have any member management permissions";
-					}
-					?>
-				</div>
-			</div>
-
 			<?php }else{?>
-
 				<div class="error_page_box">
 					<div class="error_page_text">The link you followed may be broken, or the page may have been removed.</div>
 				</div>
 
+
 			<?php }?>
+
+
+
 
 		</div>
 
@@ -436,10 +371,10 @@
 				<span id="popup_content_area">
 
 				</span>
-
+			
 			</div>
-
-
+			
+			
 			<div class="popup_dimmer"></div>
 		</span>
 
@@ -558,6 +493,7 @@
 			}else{
 				return false;
 			}
+
 		}
 
 		function validateBatchName() {
@@ -570,6 +506,7 @@
 				return false;
 			}
 		}
+
 	</script>
 
 </body>

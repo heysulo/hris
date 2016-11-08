@@ -11,7 +11,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $conn = null;
 require_once("../config.conf");
-require_once ("../../database/database.php");
+require_once("../../database/database.php");
 $email = $_SESSION['selected_member_email'];
 $query1 = "SELECT email, first_name, middle_name, last_name, category, course, profile_picture, force_password_reset, password_reset_block, reset_code_enabled, system_role,system_admin_panel_access,system_member_suspend_power, system_member_suspend_power_needed, system_member_delete_power_needed, system_member_change_power_needed,name,system_member_change_power,system_member_add_power,system_role_id FROM member JOIN system_role on member.system_role = system_role.system_role_id and email=\"$email\"";
 $res1 = mysqli_query($conn,$query1);
