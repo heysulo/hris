@@ -10,8 +10,8 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $conn = null;
 require_once("../config.conf");
-require_once ("../../database/database.php");
-require_once ("../../templates/refresher.php");
+require_once("../../database/database.php");
+require_once("../../templates/refresher.php");
 $email = htmlspecialchars($_REQUEST['email']);
 $role_id = htmlspecialchars($_REQUEST['role']);
 if (isset($_SESSION["system_admin_panel_access"])){

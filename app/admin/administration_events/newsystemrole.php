@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $conn = null;
 require_once("../config.conf");
-require_once ("../../database/database.php");
+require_once("../../database/database.php");
 ?>
 <form name="new_system_role_table" method="post" action="administration_events/newsystemroleajax.php" style="margin-bottom: 0px">
 <div class="msgbox_section_title">

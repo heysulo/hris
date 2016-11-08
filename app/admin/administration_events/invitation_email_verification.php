@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $conn = null;
 require_once("../config.conf");
-require_once ("../../database/database.php");
+require_once("../../database/database.php");
 $email = htmlspecialchars($_REQUEST['email']);
 if (isset($_SESSION["system_admin_panel_access"])){
     $query1 = "SELECT * FROM invitation WHERE email=\"".$email."\" ";
