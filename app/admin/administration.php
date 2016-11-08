@@ -27,8 +27,20 @@
 		<?php include_once('../templates/navigation_panel.php'); ?>
 		<?php include_once('../templates/top_pane.php'); ?>
 		<div class="bottomPanel">
-			<?php if($_SESSION['system_admin_panel_access']){?>
+			<?php if($_SESSION['system_admin_panel_access']){
+
+				$ref = $_SERVER['HTTP_REFERER'] ;
+				$r_ref = explode('/',$ref);
+			if ($r_ref[5] != "admin"){ ?>
+
 				<script>msgbox("You have access to admin panel. Use your powers with care","Admin Access",0);</script>
+			<?php
+			$active = 1;
+			}else{
+			$active = 3;
+			}
+			?>
+
 			<div style="float:left;height:80px;width:100%;">
 				<div style="float:left;width:auto;height:100%;">
 					<div class="txt_paneltitle">System Administration</div>
@@ -40,6 +52,7 @@
 				<ul>
 					<li class="group_main_menu_item group_main_menu_item_active" id="main_menu_members" onclick="activate_tab(1);">Member Management</li>
 					<li class="group_main_menu_item" id="main_menu_roles" onclick="activate_tab(2);">Role Management</li>
+					<li class="group_main_menu_item" id="main_menu_batch" onclick="activate_tab(3);">Batch Management</li>
 				</ul>
 			</div>
 
@@ -308,6 +321,38 @@
 					?>
 				</div>
 			</div>
+
+				<!--				---------------------------------------- Batch details adding ---------------------------------->
+
+				<div class="group_div_content" id="tab_batch">
+					<div class="dbox group_tab_members group_members_dbox">
+
+						<?php if($_SESSION['system_member_add_power']){?>
+							<!-------------------------------ADD NEW Batch--------------------------->
+							<div class="group_administration_content_field">
+								<div class="group_administration_content_field_name">Add New Batch</div>
+								<div class="group_administration_content_field_value">
+									<form method="post" enctype="multipart/form-data" action="adminFunction.php" onsubmit="return validateBatchName()">
+										<input type="text" class="group_administration_txtbox" name="batch" placeholder="Ex : B2014" id="new_batch_name" required><br><br>
+										<span style="font-size: 12px">Please confirm uploaded data arranged correct format.<br> Json data should format to { 'index_number':14020646,'registration_number':2014/IS/99 } </span><br><br>
+										<input type="file" name="readFile" accept="application/json" required>
+										<button class="msgbox_button group_writer_button" name="upload_batch_json" type="submit" > Upload </button>
+									</form>
+								</div>
+							</div>
+
+						<?php }?>
+
+
+						<?php
+						if(!($_SESSION['system_member_change_power'] || $_SESSION['system_member_add_power'])){
+							echo "You dont have any member management permissions";
+						}
+						?>
+					</div>
+				</div>
+
+
 			<?php }else{?>
 				<div class="error_page_box">
 					<div class="error_page_text">The link you followed may be broken, or the page may have been removed.</div>
@@ -337,28 +382,42 @@
 			function activate_tab(x) {
 				var tab_roles = document.getElementById("tab_roles");
 				var tab_members = document.getElementById("tab_members");
+				var tab_batch = document.getElementById("tab_batch");
 
 				var main_menu_members = document.getElementById("main_menu_members");
 				var main_menu_roles = document.getElementById("main_menu_roles");
+				var main_menu_batch = document.getElementById("main_menu_batch");
 
 				switch (x){
 					case 2:
 						tab_roles.style.display = "block";
 						tab_members.style.display = "none";
+						tab_batch.style.display = "none";
 						main_menu_members.className = "group_main_menu_item";
 						main_menu_roles.className = "group_main_menu_item group_main_menu_item_active";
+						main_menu_batch.className = "group_main_menu_item";
 						break;
 					case 1:
 						tab_roles.style.display = "none";
 						tab_members.style.display = "block";
+						tab_batch.style.display = "none";
 						main_menu_members.className = "group_main_menu_item group_main_menu_item_active";
+						main_menu_roles.className = "group_main_menu_item";
+						main_menu_batch.className = "group_main_menu_item";
+						break;
+					case 3:
+						tab_roles.style.display = "none";
+						tab_members.style.display = "none";
+						tab_batch.style.display = "block";
+						main_menu_batch.className = "group_main_menu_item group_main_menu_item_active";
+						main_menu_members.className = "group_main_menu_item";
 						main_menu_roles.className = "group_main_menu_item";
 						break;
 
 				}
 			}
 
-			activate_tab(1);
+			activate_tab( <?php echo $active?>);
 		</script>
 	</div>
 	<?php
@@ -436,6 +495,18 @@
 			}
 
 		}
+
+		function validateBatchName() {
+			var ss = $('#new_batch_name').val();
+			var aa = ss.slice(0,1);
+			if(aa == 'B'){
+				return true;
+			}else{
+				swal('Error','Batch name not acceptable. Please use given format. Ex : B2014 ( First letter should be "B" and then batch year.)','error');
+				return false;
+			}
+		}
+
 	</script>
 
 </body>
