@@ -51,99 +51,28 @@
 					<div class="group_administration_content_field">
 						<div class="group_administration_content_field_name">Add New System Role</div>
 						<div class="group_administration_content_field_value">
-							<input type="text" class="group_administration_txtbox" placeholder="Enter Role Name"><br><br>
-							<table class="tg">
-								<tr>
-									<th class="tg-yw4l"></th>
-									<th class="tg-yw4l">Permission</th>
-									<th class="tg-yw4l">Power</th>
-									<th class="tg-yw4l">Power Needed</th>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Admin Panel Access</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-									<td class="tg-yw4l disabled_cell" colspan="2"></td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Add Members</td>
-									<td class="tg-yw4l disabled_cell" rowspan="3"></td>
-									<td class="tg-yw4l">
-
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Suspend Members</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Meeting Request</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Create Group</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-									<td class="tg-yw4l disabled_cell" colspan="2" rowspan="5"></td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Vision Power</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Create Roles</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Change Roles</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Delete Roles</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-								</tr>
-							</table>
+							<span style="font-size: 12px">Create a new system role with different permissions and permission levels which allows the system members use only the allowed funtionalities by the system administrator<br></span>
 							<br>
-							<button class="msgbox_button group_writer_button " onclick='closemsgbox();window.alert(";)");'>Create New Role</button>
+							<button class="msgbox_button group_writer_button " onclick='addnewsystemrole();'>Create New Role</button>
+							<script>
+								function addnewsystemrole() {
+									var xhr = new XMLHttpRequest();
+									var search_inp = document.getElementById("member_manage_email_search");
+									var popupscreen = document.getElementById("popupscreen");
+									popupscreen.style.display="none";
+									xhr.onreadystatechange = function () {
+										if (xhr.readyState ==4 && xhr.status == 200){
+											var popupcontentarea = document.getElementById("popup_content_area");
+											popupcontentarea.innerHTML = xhr.responseText;
+											popupscreen.style.display="block";
+											eval(document.getElementById("ajaxedjsx").innerHTML);
+										}
+									};
+									xhr.open("POST", "./administration_events/newsystemrole.php", true);
+									xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+									xhr.send("email="+search_inp.value);
+								}
+							</script>
 						</div>
 					</div>
 
