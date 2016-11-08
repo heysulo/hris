@@ -10,7 +10,7 @@
 
         <!--Notification area-->
         <div class="dbox notification_box">
-            <div class="dboxheader">
+            <div class="dboxheader dbox_head_request">
                 <div class="dboxtitle">
                     Requests
                 </div>
@@ -25,7 +25,7 @@
                         <div class="tab-content">
                             <div id="all_request" class="tab active">
                                 <p>All Requests listed in here.</p>
-                                <p>Fusce accumsan in est non sodales. Donec faucibus urna sed ex pulvinar, sed vulputate odio porttitor. Ut accumsan eu nunc in aliquet. Quisque at nisi et mauris pharetra rhoncus sit amet vitae leo. Nulla nec bibendum turpis, in mollis felis.</p>
+                                <p></p>
                             </div>
                             <!----------------------------------->
                             <div id="meeting" class="tab">
@@ -53,32 +53,14 @@
                 News Feed / Activity Feed
             </div>
             <div class="newsfeed_content">
-                <?php
-
-                /*Function to generate random colors*/
-                function random_color_part() {
-                    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
-                }
-                function random_color() {
-                    return random_color_part() . random_color_part() . random_color_part();
-                }
-
-                /*few material colors*/
-                $colorHex = array('1abc9c','2ecc71','3498db','9b59b6','34495e','16a085','27ae60','2980b9','8e44ad','2c3e50','f1c40f','e67e22','e74c3c','f39c12','d35400','c0392b');
-
-                for ($x = 0; $x <= 40; $x++) {
-                    //$color = random_color();
-                    //$color = $colorHex[array_rand($colorHex)];
-
-                    if ($x % 2 == 1){
-                        $color = "2ecc71";
-                    }else{
-                        $color = "34495e";
-                    }
-                    include('../templates/news_feed_items.php');
-                }
-
-                ?>
+                <!--implementaions -->
+                <div class="newsfeed_item_box" style = "border-color:orangered;">
+                    <div class="newsfeed_item_colorbar" style="background-color:orangered; border-radius: 2px"></div>
+                    <div class="newsfeed_item_content">
+                        This is a sapmle data.. IF you see this, that means you unable to get data from database.Please check your connection or complains to remalsha@gmail.com.
+                    </div>
+                    <div class="newsfeed_item_timestamp">Friday, September 2, 2016 at 9:32pm</div>
+                </div>
 
             </div>
         </div>

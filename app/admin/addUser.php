@@ -8,7 +8,9 @@
 
 require_once("config.conf");
 require_once ("../database/database.php");
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_POST['addUser'])){
 
@@ -94,7 +96,7 @@ if (isset($_POST['addUser'])){
 <body>
 
 <div class="clearfix">
-    <?php include_once('../templates/navigation_panel.php'); ?>
+    <?php //include_once('../templates/navigation_panel.php'); ?>
     <?php include_once('../templates/top_pane.php'); ?>
     <?php //include_once('../templates/bottom_panel.php'); ?>
 

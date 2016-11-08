@@ -27,8 +27,18 @@
 			   echo "<option value='$dist'>$dist</option>";
 			}
 		?>
-	</select><br>	
-	<input id="input_shared_info" name="firstname" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text"><br><br>
+	</select>
+	<input id="input_shared_info" name="firstname" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text">
+	<p>This information will be visible to people of this level and above</p>
+	<select id="shared_info_opt" class="edit_profile_contactinfo_item_fields">
+		<?php
+		$dist = "Everyone,Students,Instructors,Lecturers";
+		$ary = explode(',', $dist);
+		foreach($ary as $dist){
+			echo "<option value='$dist'>$dist</option>";
+		}
+		?>
+	</select><br><br>
 	<center><button onclick="insertsharedInfo()" class="default_button edit_profile_contactinfo_add_button">Add to Profile</button></center>
 </div>
 

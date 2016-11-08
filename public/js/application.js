@@ -20,3 +20,29 @@ $(document).ready(function(){
         e.preventDefault();
     })
 });
+
+document.getElementById('setting').addEventListener("click",function () {
+    document.getElementById('dropdown').classList.toggle("show");
+});
+
+window.onclick = function (event) {
+    if (!event.target.matches('.topbox_account_settings')){
+        var dropdowns = document.getElementsByClassName("top_dropdown_content_click");
+        var i;
+        for (i = 0;i < dropdowns.length; i++){
+            var openDropDown = dropdowns[i];
+            if (openDropDown.classList.contains('show')){
+                openDropDown.classList.remove('show');
+            }
+        }
+    }
+
+    if (!event.target.matches('.availability_button')){
+
+        if ($('.availability_dropdown_content').css('display') == 'block'){
+            $('.availability_dropdown_content').toggle(".availability_dropdown_show");
+        }
+    }
+
+
+};

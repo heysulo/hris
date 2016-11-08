@@ -5,19 +5,22 @@
         <div class="dboxtitle">
             Availability Status
         </div>
-        <div style="width:100%;height:50px;">
-            <div class="availability_dropdown">
-                <button class="availability_button">
+
+        <!--/Availability drop down implementation-->
+        <div style="width:100%;height:50px;" id="availability_dropdown">
+            <div class="availability_dropdown" >
+                <button class="availability_button" id="setAvailability">
                     <div class="cur_availability_icon" ></div>
                 </button>
                 <div>
-                    <input class="customstatus">
-                    <button class="default_button availability_status_button">Set</button>
-                    <!-- <button class="default_button availability_status_button">Save</button> -->
+                    <input class="customstatus" id="status_text" placeholder="Select" disabled>
+                    <input class="customstatus_text" id="status_text_2" placeholder="Set Message">
+                    <button class="default_button availability_status_button" id="set_btn">Set</button>
                 </div>
 
+                <!--Default availability values..-->
                 <div class="availability_dropdown_content">
-                    <div class="availability_dropdown_item" >
+                    <div class="availability_dropdown_item" id="Available_#34a853">
                         <div style="width:20%;float:left;height:auto;">
                             <div class="saved_availability_icon" style="background-color:#34a853;"></div>
                         </div>
@@ -26,7 +29,7 @@
                         </div>
                     </div>
 
-                    <div class="availability_dropdown_item" >
+                    <div class="availability_dropdown_item" id="Away_#fbbc05">
                         <div style="width:20%;float:left;height:auto;">
                             <div class="saved_availability_icon" style="background-color:#fbbc05;"></div>
                         </div>
@@ -35,7 +38,7 @@
                         </div>
                     </div>
 
-                    <div class="availability_dropdown_item" >
+                    <div class="availability_dropdown_item" id="Busy_#ea4335">
                         <div style="width:20%;float:left;height:auto;">
                             <div class="saved_availability_icon" style="background-color:#ea4335;"></div>
                         </div>
@@ -44,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="availability_dropdown_item" >
+                    <div class="availability_dropdown_item" id="Lecture_#4285f4">
                         <div style="width:20%;float:left;height:auto;">
                             <div class="saved_availability_icon" style="background-color:#4285f4;"></div>
                         </div>
@@ -53,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="availability_dropdown_item" >
+                    <div class="availability_dropdown_item" id="Unavailable_#707070">
                         <div style="width:20%;float:left;height:auto;">
                             <div class="saved_availability_icon" style="background-color:#707070;"></div>
                         </div>
@@ -68,15 +71,5 @@
                     Set your availability status so the others who visit your profile can get to know about your availability inside the university.
                 </p>
             </center>
-            <!-- <div >
-                <select name="cars"  size="5" class="saved_status_messages">
-                      <option style="color:#34a853;" value="volvo">Available till 2.00 PM</option>
-                      <option style="color:#ea4335;" value="saab">Exam Duty</option>
-                      <option style="color:#ea4335;" value="opel">Board Meeting</option>
-                      <option style="color:#fbbc05;" value="volvo">Out for Lunch</option>
-                      <option style="color:#4285f4;" value="saab">Lecture at W002</option>
-                  <option value="audi">Audi</option>
-                </select>
-            </div> -->
         </div>
     </div>

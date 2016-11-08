@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - hris_db@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="hris_db">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="e_quiz_db"/>
+    <schema id="3" name="information_schema"/>
+    <schema id="4" name="mysql"/>
+    <schema id="5" name="performance_schema"/>
+    <schema id="6" name="photogallery"/>
+    <schema id="7" name="phpmyadmin"/>
+    <schema id="8" name="sys"/>
+    <schema id="9" name="wordpress"/>
+    <schema id="10" name="wp"/>
+    <table id="11" parent="1" name="district"/>
+    <table id="12" parent="1" name="fields"/>
+    <table id="13" parent="1" name="group_member"/>
+    <table id="14" parent="1" name="group_role"/>
+    <table id="15" parent="1" name="groups"/>
+    <table id="16" parent="1" name="language"/>
+    <table id="17" parent="1" name="member"/>
+    <table id="18" parent="1" name="member_info"/>
+    <table id="19" parent="1" name="skill"/>
+    <table id="20" parent="1" name="system_role"/>
+    <table id="21" parent="1" name="user"/>
+    <column id="22" parent="11" name="district_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="23" parent="11" name="name">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="24" parent="12" name="field_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="25" parent="12" name="name">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="26" parent="12" name="category">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="27" parent="12" name="PRIMARY">
+      <columns>field_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="28" parent="13" name="group_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="29" parent="13" name="member_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="30" parent="13" name="role_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="31" parent="13" name="group_admin_panel_access">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="32" parent="13" name="group_member_add_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="33" parent="13" name="group_member_remove_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="34" parent="13" name="group_member_upgrade_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="35" parent="13" name="group_modify_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="36" parent="13" name="group_delete_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="37" parent="13" name="group_notice_post_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="38" parent="13" name="group_notice_delete_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="39" parent="13" name="group_notice_pin_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="40" parent="13" name="group_email_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="41" parent="13" name="group_tweet_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="42" parent="13" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="43" parent="13" name="join_date">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="44" parent="13" name="added_user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="45" parent="14" name="role_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="46" parent="14" name="name">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="47" parent="15" name="group_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="48" parent="15" name="name">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="49" parent="15" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="50" parent="15" name="category">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="51" parent="15" name="logo">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="52" parent="15" name="color">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="53" parent="15" name="privacy">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="54" parent="15" name="creator">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="55" parent="15" name="twitter_id">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="56" parent="15" name="twitter_access_token">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="57" parent="15" name="twitter_access_token_secret">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="58" parent="15" name="PRIMARY">
+      <columns>group_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="59" parent="16" name="language_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="60" parent="16" name="language">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <key id="61" parent="16" name="PRIMARY">
+      <columns>language_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="62" parent="17" name="member_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="63" parent="17" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="64" parent="17" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(254)|0</data-type>
+    </column>
+    <column id="65" parent="17" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="66" parent="17" name="first_name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="67" parent="17" name="middle_name">
+      <data-type>varchar(64)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="68" parent="17" name="last_name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+      <default-expression>&apos;&apos;</default-expression>
+    </column>
+    <column id="69" parent="17" name="category">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="70" parent="17" name="academic_year">
+      <data-type>year(4)|0</data-type>
+    </column>
+    <column id="71" parent="17" name="date_of_birth">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="72" parent="17" name="course">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="73" parent="17" name="joined_date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="74" parent="17" name="gender">
+      <data-type>varchar(8)|0</data-type>
+    </column>
+    <column id="75" parent="17" name="handler">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="76" parent="17" name="availability_status">
+      <mandatory>1</mandatory>
+      <data-type>varchar(300)|0</data-type>
+      <default-expression>&apos;Not set&apos;</default-expression>
+    </column>
+    <column id="77" parent="17" name="availability_text">
+      <mandatory>1</mandatory>
+      <data-type>varchar(300)|0</data-type>
+      <default-expression>&apos;Not set&apos;</default-expression>
+    </column>
+    <column id="78" parent="17" name="last_seen">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="79" parent="17" name="current_city">
+      <data-type>varchar(32)|0</data-type>
+    </column>
+    <column id="80" parent="17" name="home_town">
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="81" parent="17" name="religion">
+      <data-type>varchar(32)|0</data-type>
+    </column>
+    <column id="82" parent="17" name="about">
+      <data-type>text|0</data-type>
+    </column>
+    <column id="83" parent="17" name="profile_picture">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="84" parent="17" name="last_login">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="85" parent="17" name="force_password_reset">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="86" parent="17" name="password_reset_code">
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="87" parent="17" name="password_reset_block">
+      <data-type>varchar(32)|0</data-type>
+      <default-expression>&apos;1900-01-01 00:00:00&apos;</default-expression>
+    </column>
+    <column id="88" parent="17" name="password_reset_attempts">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="89" parent="17" name="reset_code_enabled">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="90" parent="17" name="code_gen_date">
+      <mandatory>1</mandatory>
+      <data-type>varchar(32)|0</data-type>
+      <default-expression>&apos;2001-03-10 17:16:18&apos;</default-expression>
+    </column>
+    <column id="91" parent="17" name="profile_completed">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="92" parent="17" name="username">
+      <columns>username</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="93" parent="17" name="PRIMARY">
+      <columns>member_id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="94" parent="17" name="username">
+      <columns>username</columns>
+      <underlying-index>username</underlying-index>
+    </key>
+    <column id="95" parent="18" name="member_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="96" parent="18" name="category">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="97" parent="18" name="field">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="98" parent="18" name="value">
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="99" parent="18" name="system_vision_power_needed">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="100" parent="19" name="skill_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="101" parent="19" name="skill">
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <key id="102" parent="19" name="PRIMARY">
+      <columns>skill_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="103" parent="20" name="system_role_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="104" parent="20" name="system_admin_panel_access">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="105" parent="20" name="system_member_add_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="106" parent="20" name="system_member_suspend_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="107" parent="20" name="system_member_suspend_power_needed">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="108" parent="20" name="system_member_delete_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="109" parent="20" name="system_member_delete_power_needed">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="110" parent="20" name="system_meeting_request_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="111" parent="20" name="system_meeting_request_power_needed">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="112" parent="20" name="system_group_create_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="113" parent="20" name="system_vision_power">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="114" parent="20" name="PRIMARY">
+      <columns>system_role_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="115" parent="21" name="userid">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="116" parent="21" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="117" parent="21" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="118" parent="21" name="username">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="119" parent="21" name="firstname">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="120" parent="21" name="lastname">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="121" parent="21" name="pro_pic">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="122" parent="21" name="type">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <key id="123" parent="21" name="PRIMARY">
+      <columns>userid</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

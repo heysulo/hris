@@ -5,8 +5,10 @@
     <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
 </head>
 <body class="welcome_body">
+
+<div class="welcome_top_gradient"></div>
     <script>
-        var step = 2;
+        var step = 3;
     </script>
     <div class="welcome_section_banner">
         Welcome to HRIS UCSC !
@@ -15,17 +17,19 @@
         <?php include ("./template/steps.php"); ?>
         <div class="welcome_section_introtxt">
 
-            Welcome to Human Resource Information System of University of Colombo School of Computing. Please create a password for your account in order to continue.
+            Enter your contact details here so others can contact you when needed. These information are only available for the members of the Human Resource Information System.
         </div>
         <?php
+        include("./template/important_info.php");
+        echo "<hr class=\"welcome_profile_setup_hr\">";
         include("./template/contact_info.php");
         echo "<hr class=\"welcome_profile_setup_hr\">";
         include("./template/personal_info.php");
         echo "<hr class=\"welcome_profile_setup_hr\">";
-        include ("./template/interetst.php");
-        echo "<hr class=\"welcome_profile_setup_hr\">";
-        include ("./template/languages.php");
-        echo "<hr class=\"welcome_profile_setup_hr\">";
+//        include ("./includes/interetst.php");
+//        echo "<hr class=\"welcome_profile_setup_hr\">";
+//        include ("./includes/languages.php");
+//        echo "<hr class=\"welcome_profile_setup_hr\">";
         ?>
         <center>
             <input class="user_choose_button welcome_continue_button" value="Continue" type="button">

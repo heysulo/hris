@@ -15,16 +15,24 @@
                         <a href="#">Account Settings</a>
                         <a href="logout.php">Logout</a>
                         <a href="#">Go Offline</a>
-                        <a href="#">What the Shit Biscuit?</a>
+
                 </div>
             </div>
 
             <!--User detail showing bar-->
+            <div class="topsearchbar">
+                <form action="basic_search.php" method="get">
+
+                    <input type="text" name="search" placeholder="Search.." class="topheadersearch" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">
+                </form>
+            </div>
+
             <div class="topprofilecontent">
-                <div class=""><img class="topprofilepicture" src=" <?php echo "$imagePath/$pro_pic"; ?> " alt=""></div>
+                <div class=""><img class="topprofilepicture" src=" <?php echo "$imagePath/pro_pic/$pro_pic"; ?> " alt=""></div>
                 <div class="topbox_profile_name"> <?php echo "$fname $lname"?></div>
                 <div class="topbox_profile_role"><?php echo "$type"?></div>
             </div>
 
         </div>
 </div>
+<div id="msgbox_responder"></div>

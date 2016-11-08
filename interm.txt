@@ -21,10 +21,10 @@
 		my profile -k
 		edit profile -k
 		advanced search - k
+		first access page - k
+		password reset - k
 		group ---
-		password reset ---
 		other's profile ----
-		first access page---
 		groups page---
 		
 		search results ---

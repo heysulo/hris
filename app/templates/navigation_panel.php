@@ -2,7 +2,12 @@
 
     defined('hris_access') or die(header("location:../../error.php"));
     $filename = basename($_SERVER['PHP_SELF'],'.php');
-
+$dashbord = null;
+$profile = null;
+$skill_directory= null;
+$groups= null;
+$administration= null;
+$advancedSearch= null;
     switch ($filename){
         case 'dashboard':
             $dashbord = "active";
@@ -64,6 +69,7 @@
                 Groups
             </div>
         </li>
+        <?php if(isset($_SESSION['system_admin_panel_access']) && $_SESSION['system_admin_panel_access']){?>
         <li class="navbaritem <?php echo $administration;?>" id="admin">
             <div>
                 <img id="lp_administration" class="navbaritemimg" src="<?php echo $publicPath?>img/img_lp_administration.png">
@@ -72,6 +78,7 @@
                 Administration
             </div>
         </li>
+        <?php } ?>
         <li class="navbaritem <?php echo $advancedSearch;?>" id="advancedSearch">
             <div>
                 <img id="lp_advancedSearch" class="navbaritemimg" src="<?php echo $publicPath?>/img/img_lp_advancedsearch.png">
