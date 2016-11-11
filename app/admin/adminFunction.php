@@ -142,6 +142,101 @@ if (!isset($_SESSION['email'])){
 
 // TODO
 //    generate gpz unction
+    if(isset($_POST['generate_gpa'])){
+        $course_batch = mysqli_escape_string($conn,$_POST['course_batch']);
+
+        $subjects = $_POST['subjects'];
+        foreach ($subjects as $subject) {
+
+            $sql_to_alter_gpa_table = "ALTER TABLE $course_batch ADD $subject FLOAT(10)";
+            $qu = mysqli_query($conn,$sql_to_alter_gpa_table);
+            if($qu){
+                echo "New column added ";
+
+                $sql_to_insert_gpv_val =  "	UPDATE $course_batch
+						    INNER join
+					         $subject
+					         on $course_batch.index_num = $subject.index_num
+						    set $subject = $subject.gpv
+						         ";
+
+                $res = mysqli_query($conn,$sql_to_insert_gpv_val);
+                if($res){
+                    echo "data passed";
+                    $cr = mysqli_fetch_assoc(mysqli_query($conn,"SELECT credit FROM subject WHERE subject_code = '$subject'"));
+                    $final_q = mysqli_query($conn,"UPDATE tablelist SET sum_of_credit = sum_of_credit +".$cr['credit']." WHERE tablename = '$course_batch'");
+                    if ($final_q) {
+                        echo " tablelist updated";
+                    }else{
+                        echo mysqli_error($conn);
+                    }
+                }else{
+                    echo mysqli_error($conn);
+                }
+
+            }elseif(mysqli_errno($conn) == 1060){
+                echo "Subject $subject is already added to GPA calculation.";
+            }else{
+                echo mysqli_errno($conn);
+            }
+
+
+        }
+
+
+
+
+    }
+
+    if(isset($_POST['update_gpa'])){
+        $course_batch = mysqli_escape_string($conn,$_POST['course_batch']);
+
+        //SQL to get subjects
+        $qry = mysqli_query($conn,"SELECT * FROM $course_batch LIMIT 2");
+        if($qry){
+            $list = arraY();
+            while($col_name = mysqli_fetch_field($qry)){
+                $name = $col_name->name;
+                if($name != 'reg_num' AND $name != 'index_num' AND $name != 'GPA' AND $name != 'rank'){
+                    $list[] = $name;
+                }
+            }
+
+            //Get total credits
+            $sql_to_get_total = "SELECT sum_of_credit FROM tablelist WHERE tablename = '$course_batch'";
+            $q = mysqli_query($conn,$sql_to_get_total);
+            $res = mysqli_fetch_assoc($q);
+
+            $sql_to_update = "UPDATE $course_batch SET GPA = ROUND((";
+            $sql_to_update .= implode("+", $list);
+            $sql_to_update .= ")/".$res['sum_of_credit'].",4)";
+
+            if(mysqli_query($conn, $sql_to_update)){
+                echo "GPA Calculated";
+
+                $sql_to_ranking = "UPDATE $course_batch JOIN 
+								  (SELECT index_num, GPA, 
+								 	(SELECT COUNT(*)+1 FROM $course_batch WHERE GPA>x.GPA) AS rank_upper 
+							 	   FROM $course_batch x) a 
+							 	   ON (a.index_num = $course_batch.index_num) 
+							 	   SET $course_batch.rank = a.rank_upper";
+
+                $res_rank = mysqli_query($conn,$sql_to_ranking);
+                if($res_rank){
+                    echo " Ranking done";
+                }else{
+                    echo mysqli_error($conn);
+                }
+
+            }else{
+                echo mysqli_error($conn);
+            }
+
+        }
+
+
+    }
+
 
 
 }

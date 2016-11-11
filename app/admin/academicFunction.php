@@ -176,7 +176,7 @@
                             </form>
                         </div>
                     </div>
-
+                    <br>
 
                     <!-- ----------------------------- Generate GPA ------------------------- -->
                     <div class="group_administration_content_field">
@@ -212,6 +212,43 @@
                                 </div>
 
                                 <input type="submit" name="generate_gpa" value=" Generate " class="msgbox_button group_writer_button">
+
+
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- ----------------------------- Update GPA ------------------------- -->
+                    <div class="group_administration_content_field">
+                        <div class="group_administration_content_field_name">Update GPA </div>
+                        <div class="group_administration_content_field_value">
+
+                            <form action="adminFunction.php" method="post">
+
+                                <label>
+                                    SELECT Course and batch :
+                                </label>
+                                <select name="course_batch" id='course_batch'>
+                                    <option>-- SELECT --</option>
+                                    <?php
+                                    $r = mysqli_query($conn,"SELECT tablename FROM tablelist");
+
+                                    while ($row = mysqli_fetch_assoc($r)) {
+                                        $val = $row['tablename'];
+                                        $val_a = explode("_", $val);
+                                        $year = $val_a[0];
+                                        $co = $val_a[1];
+                                        ?>
+
+                                        <option value=<?php echo $val?> > <?php echo $year." - ".$co ?> </option>
+
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <br>
+                                <input type="submit" name="update_gpa" value=" Update " class="msgbox_button group_writer_button">
 
 
                             </form>
