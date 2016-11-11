@@ -17,6 +17,7 @@ if (!isset($_SESSION['email'])){
     header("location:../groups.php");
 }else {
 
+//    --------------------------------------- Add Batch ------------------------------------------
 
     if (isset($_POST['upload_batch_json'])) {
 
@@ -31,48 +32,211 @@ if (!isset($_SESSION['email'])){
 
             $tableName = mysqli_escape_string($conn, $_POST['batch']);
 
-            $sql_to_table = "CREATE TABLE IF NOT EXISTS $tableName (
-				    reg_num VARCHAR(10) NOT NULL,
-				    index_num VARCHAR(10) NOT NULL,
-				    account VARCHAR(5) NOT NULL DEFAULT 0,
-				    PRIMARY KEY (reg_num,index_num)
-				)";
+            $qry_to_up_list = "CREATE TABLE IF NOT EXISTS batchList(
+				    batch VARCHAR(10) NOT NULL PRIMARY KEY)
+				    ";
 
-            $response = mysqli_query($conn, $sql_to_table);
+            $q =  mysqli_query($conn,$qry_to_up_list);
+            if($q){
+                $sql_to_insert = "INSERT INTO batchList(batch) VALUES ('$tableName')";
+                $qq = mysqli_query($conn,$sql_to_insert);
 
-            if ($response) {
+                if($qq) {
 
-                // Input results to database
-                $sql_pre = "INSERT INTO $tableName(reg_num,index_num) VALUES";
-                $stringlist = array();
-                foreach ($jsondata as $row) {
-                    # code...
-                    $individual_reg = $row['registration_number'];
-                    $individual_index = $row['index_number'];
-                    $stringlist[] = "('$individual_reg','$individual_index')";
 
-                }
+                    $sql_to_table = "CREATE TABLE IF NOT EXISTS $tableName (
+                        reg_num VARCHAR(10) NOT NULL,
+                        index_num VARCHAR(10) NOT NULL,
+                        account VARCHAR(5) NOT NULL DEFAULT 0,
+                        PRIMARY KEY (reg_num,index_num)
+                    )";
 
-                $sql_pre .= implode(",", $stringlist);
+                    $response = mysqli_query($conn, $sql_to_table);
 
-                $final_res = mysqli_query($conn, $sql_pre);
+                    if ($response) {
 
-                if ($final_res) {
+                        // Input results to database
+                        $sql_pre = "INSERT INTO $tableName(reg_num,index_num) VALUES";
+                        $stringlist = array();
+                        foreach ($jsondata as $row) {
+                            # code...
+                            $individual_reg = $row['registration_number'];
+                            $individual_index = $row['index_number'];
+                            $stringlist[] = "('$individual_reg','$individual_index')";
 
-                    header("location:".$_SERVER['HTTP_REFERER']);
+                        }
 
-                } else {
-                    if (mysqli_errno($conn) == 1062) {
-                        echo "You already have entered these data or uploaded file not match required format.";
-                    } elseif (mysqli_errno($conn) == 1064) {
-                        echo "Batch name should not be number";
-                    } else {
-                        echo "Error! , Contact administration";
+                        $sql_pre .= implode(",", $stringlist);
+
+                        $final_res = mysqli_query($conn, $sql_pre);
+
+                        if ($final_res) {
+
+                            //echo "swal('Success','You have successfully entered new batch details.','success')";
+                            header("location:" . $_SERVER['HTTP_REFERER']);
+
+                        } else {
+                            if (mysqli_errno($conn) == 1062) {
+                                echo "You already have entered these data or uploaded file not match required format.";
+                            } elseif (mysqli_errno($conn) == 1064) {
+                                echo "Batch name should not be number";
+                            } else {
+                                echo "Error! , Contact administration";
+                            }
+                        }
                     }
+                }else{
+                    echo "You already have entered these data or uploaded file not match required format.";
                 }
             }
 
         }
 
     }
+
+//    ---------------------------------------------- Add subject ------------------------------------
+
+    if (isset($_POST['add_subject'])) {
+        # code...
+        $title = mysqli_escape_string($conn,$_POST['title']);
+        $course = mysqli_escape_string($conn,$_POST['course']);
+        $code = mysqli_escape_string($conn,$_POST['code']);
+        $credit = mysqli_escape_string($conn,$_POST['credit']);
+
+        $ccode = $course.$code;
+
+        mysqli_query($conn,"CREATE TABLE IF NOT EXISTS subject(
+									subject_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+									title VARCHAR(250) NOT NULL ,
+									subject_code VARCHAR(10) NOT NULL,
+									course VARCHAR(10) NOT NULL,
+									credit INT(11) NOT NULL
+									)");
+
+        $sql = "INSERT INTO subject(title,subject_code,course,credit) VALUES ('$title','$ccode','$course','$credit')";
+
+        $res = mysqli_query($conn ,$sql);
+        if ($res) {
+            echo 'wade goda';
+        }else{
+            echo 'monwada bn me..';
+            echo mysqli_error($conn);
+        }
+    }
+
+//     -------------------------------------------- ajax request -------------------------------------
+    if(isset($_POST['sub'])){
+        $get = mysqli_escape_string($conn,$_POST['sub']);
+        $mod = explode("_", $get);
+        $course = $mod[1];
+        $batch = $mod[0];
+        $sql = "SELECT subject_code,title FROM subject WHERE course='$course'";
+        $query = mysqli_query($conn,$sql);
+
+        while ($row = mysqli_fetch_assoc($query)) {
+
+            echo "<input type='checkbox' name='subjects[]' value=".$row['subject_code'].">".$row['subject_code']." - ".$row['title']."<br>";
+
+        }
+    }
+
+// TODO
+//    generate gpz unction
+    if(isset($_POST['generate_gpa'])){
+        $course_batch = mysqli_escape_string($conn,$_POST['course_batch']);
+
+        $subjects = $_POST['subjects'];
+        foreach ($subjects as $subject) {
+
+            $sql_to_alter_gpa_table = "ALTER TABLE $course_batch ADD $subject FLOAT(10)";
+            $qu = mysqli_query($conn,$sql_to_alter_gpa_table);
+            if($qu){
+                echo "New column added ";
+
+                $sql_to_insert_gpv_val =  "	UPDATE $course_batch
+						    INNER join
+					         $subject
+					         on $course_batch.index_num = $subject.index_num
+						    set $subject = $subject.gpv
+						         ";
+
+                $res = mysqli_query($conn,$sql_to_insert_gpv_val);
+                if($res){
+                    echo "data passed";
+                    $cr = mysqli_fetch_assoc(mysqli_query($conn,"SELECT credit FROM subject WHERE subject_code = '$subject'"));
+                    $final_q = mysqli_query($conn,"UPDATE tablelist SET sum_of_credit = sum_of_credit +".$cr['credit']." WHERE tablename = '$course_batch'");
+                    if ($final_q) {
+                        echo " tablelist updated";
+                    }else{
+                        echo mysqli_error($conn);
+                    }
+                }else{
+                    echo mysqli_error($conn);
+                }
+
+            }elseif(mysqli_errno($conn) == 1060){
+                echo "Subject $subject is already added to GPA calculation.";
+            }else{
+                echo mysqli_errno($conn);
+            }
+
+
+        }
+
+
+
+
+    }
+
+    if(isset($_POST['update_gpa'])){
+        $course_batch = mysqli_escape_string($conn,$_POST['course_batch']);
+
+        //SQL to get subjects
+        $qry = mysqli_query($conn,"SELECT * FROM $course_batch LIMIT 2");
+        if($qry){
+            $list = arraY();
+            while($col_name = mysqli_fetch_field($qry)){
+                $name = $col_name->name;
+                if($name != 'reg_num' AND $name != 'index_num' AND $name != 'GPA' AND $name != 'rank'){
+                    $list[] = $name;
+                }
+            }
+
+            //Get total credits
+            $sql_to_get_total = "SELECT sum_of_credit FROM tablelist WHERE tablename = '$course_batch'";
+            $q = mysqli_query($conn,$sql_to_get_total);
+            $res = mysqli_fetch_assoc($q);
+
+            $sql_to_update = "UPDATE $course_batch SET GPA = ROUND((";
+            $sql_to_update .= implode("+", $list);
+            $sql_to_update .= ")/".$res['sum_of_credit'].",4)";
+
+            if(mysqli_query($conn, $sql_to_update)){
+                echo "GPA Calculated";
+
+                $sql_to_ranking = "UPDATE $course_batch JOIN 
+								  (SELECT index_num, GPA, 
+								 	(SELECT COUNT(*)+1 FROM $course_batch WHERE GPA>x.GPA) AS rank_upper 
+							 	   FROM $course_batch x) a 
+							 	   ON (a.index_num = $course_batch.index_num) 
+							 	   SET $course_batch.rank = a.rank_upper";
+
+                $res_rank = mysqli_query($conn,$sql_to_ranking);
+                if($res_rank){
+                    echo " Ranking done";
+                }else{
+                    echo mysqli_error($conn);
+                }
+
+            }else{
+                echo mysqli_error($conn);
+            }
+
+        }
+
+
+    }
+
+
+
 }

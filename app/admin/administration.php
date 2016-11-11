@@ -301,7 +301,7 @@
 				</div>
 			</div>
 
-				<!--				---------------------------------------- Batch details adding ---------------------------------->
+				<!-- ---------------------------------------- Batch details adding ---------------------------------->
 
 				<div class="group_div_content" id="tab_batch">
 					<div class="dbox group_tab_members group_members_dbox">
@@ -317,9 +317,17 @@
 										<input type="file" name="readFile" accept="application/json" required>
 										<button class="msgbox_button group_writer_button" name="upload_batch_json" type="submit" > Upload </button>
 									</form>
-								</div>
-							</div>
 
+								</div>
+
+							</div>
+							<div class="group_administration_content_field">
+								<div class="group_administration_content_field_name">Academic Area</div>
+								<dvi class="group_administration_content_field_value">
+
+									<button class="msgbox_button group_writer_button" name="academicFunction" onclick="window.location.replace('/hris/app/admin/academicFunction.php')">Academic Functions</button>
+								</dvi>
+							</div>
 						<?php }?>
 
 
