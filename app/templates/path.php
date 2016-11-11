@@ -36,6 +36,7 @@ $realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/ping.
         xhr.onreadystatechange = function () {
             if (xhr.readyState ==4 && xhr.status == 200){
                 //alert(xhr.responseText);
+                document.getElementById('top_profile_content_bar').style.borderBottom = "3px solid " + xhr.responseText;
             }
         };
         xhr.open("POST", <?php echo "\"".$realtime_ping_path."\"" ?>, true);

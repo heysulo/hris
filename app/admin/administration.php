@@ -16,11 +16,7 @@
 	if (!isset($_SESSION['email'])){
 		header("location:../../index.php");
 	}
-
-	$conn = null;
-	require_once("config.conf");
-	require_once("../database/database.php");
-	require_once("../templates/refresher.php");
+	
 
 	?>
 	<title>HRIS | Administration</title>
@@ -76,13 +72,17 @@
 								function addnewsystemrole() {
 									var xhr = new XMLHttpRequest();
 									var search_inp = document.getElementById("member_manage_email_search");
+									var dimmer = document.getElementById("popup_dimmer");
 									var popupscreen = document.getElementById("popupscreen");
+
 									popupscreen.style.display="none";
 									xhr.onreadystatechange = function () {
 										if (xhr.readyState ==4 && xhr.status == 200){
 											var popupcontentarea = document.getElementById("popup_content_area");
 											popupcontentarea.innerHTML = xhr.responseText;
 											popupscreen.style.display="block";
+
+											dimmer.style.backgroundColor="#000000";
 											eval(document.getElementById("ajaxedjsx").innerHTML);
 										}
 									};
@@ -96,130 +96,101 @@
 					<?php } ?>
 
 					<!-------------------------------UPDATE ROLES--------------------------->
+					<?php if($_SESSION['system_change_system_role'] == 1){?>
 					<div class="group_administration_content_field">
 						<div class="group_administration_content_field_name">Update System Role</div>
 						<div class="group_administration_content_field_value">
-							<select id="conatct_info_opt" class="group_administration_dropdown">
+							<select id="opt_selected_system_update_role" name="opt_box" class="group_administration_dropdown">
 								<?php
-								$dist = "Public,Closed,Secret";
-								$ary = explode(',', $dist);
-								foreach($ary as $dist){
-									echo "<option value='$dist'>$dist</option>";
-								}
-								?>
-							</select><br><br>
-							<table class="tg">
-								<tr>
-									<th class="tg-yw4l"></th>
-									<th class="tg-yw4l">Permission</th>
-									<th class="tg-yw4l">Power</th>
-									<th class="tg-yw4l">Power Needed</th>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Admin Panel Access</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-									<td class="tg-yw4l disabled_cell" colspan="2"></td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Add Members</td>
-									<td class="tg-yw4l disabled_cell" rowspan="3"></td>
-									<td class="tg-yw4l">
+								$query32 = "SELECT * FROM system_role WHERE system_member_change_power_needed <= ".$_SESSION['system_member_change_power'];
+								$result = mysqli_query($conn,$query32);
 
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Suspend Members</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Meeting Request</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Create Group</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-									<td class="tg-yw4l disabled_cell" colspan="2" rowspan="5"></td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Vision Power</td>
-									<td class="tg-yw4l">
-										<input class="numud" type="number" name="quantity" min="0" max="100" step="5" value="10">
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Create Roles</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Change Roles</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="tg-yw4l">Delete Roles</td>
-									<td class="tg-yw4l">
-										<div class="ui group_administration_checkbox">
-											<input type="checkbox" class="ui group_administration_checkbox" >
-											<label>Allow</label>
-										</div>
-									</td>
-								</tr>
-							</table>
-							<br>
-							<button class="msgbox_button group_writer_button yellow_button" onclick='closemsgbox();window.alert(";)");'>Update System Role</button>
+
+								if (mysqli_num_rows($result)){
+									while ($row_qt =  mysqli_fetch_assoc($result)){
+										echo "<option value='".$row_qt['system_role_id']."'>".$row_qt['name']."</option>";
+									}
+								}
+
+								?>
+							</select>
+							<button class="msgbox_button group_writer_button yellow_button" onclick='updatesystemrole();'>Update System Role</button><br><br>
+							<span style="font-size: 12px">Make changes to the system roles that you created. Grand some new privilidges and revoke the privildges that you no longer wish to grant. Changing a system role will apply to all the memeber who are part of the relavant system role inside the system. <br></span>
+							<script>
+								function updatesystemrole() {
+									var xhr = new XMLHttpRequest();
+									var opt_box = document.getElementById("opt_selected_system_update_role");
+									var dimmer = document.getElementById("popup_dimmer");
+									var popupscreen = document.getElementById("popupscreen");
+									popupscreen.style.display="none";
+									xhr.onreadystatechange = function () {
+										if (xhr.readyState ==4 && xhr.status == 200){
+											var popupcontentarea = document.getElementById("popup_content_area");
+											popupcontentarea.innerHTML = xhr.responseText;
+											popupscreen.style.display="block";
+
+											dimmer.style.backgroundColor="#ffd700";
+											eval(document.getElementById("ajaxedjs2").innerHTML);
+										}
+									};
+									xhr.open("POST", "./administration_events/updatesystemrole.php", true);
+									xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+									xhr.send("opt_box="+opt_box.value);
+								}
+
+							</script>
 						</div>
 					</div>
+					<?php } ?>
 
 
 					<!-------------------------------DELETE ROLES--------------------------->
-					<div class="group_administration_content_field">
-						<div class="group_administration_content_field_name">Delete System Role</div>
-						<div class="group_administration_content_field_value">
-							<select id="conatct_info_opt" class="group_administration_dropdown">
-								<?php
-								$dist = "Public,Closed,Secret";
-								$ary = explode(',', $dist);
-								foreach($ary as $dist){
-									echo "<option value='$dist'>$dist</option>";
-								}
-								?>
+					<?php if($_SESSION['system_delete_system_role'] == 1){?>
+						<div class="group_administration_content_field">
+							<div class="group_administration_content_field_name">Delete System Role</div>
+							<div class="group_administration_content_field_value">
+								<select id="opt_delete_selected_role" class="group_administration_dropdown">
+									<?php
+									$query32 = "SELECT * FROM system_role WHERE system_member_delete_power_needed <= ".$_SESSION['system_member_delete_power']." and system_member_change_power_needed <= ".$_SESSION['system_member_change_power'];
+									$result = mysqli_query($conn,$query32);
+
+
+									if (mysqli_num_rows($result)){
+										while ($row_qt =  mysqli_fetch_assoc($result)){
+											echo "<option value='".$row_qt['system_role_id']."'>".$row_qt['name']."</option>";
+										}
+									}
+
+									?>
 							</select>
-							<button class="msgbox_button group_writer_button red_button" onclick='closemsgbox();window.alert(";)");'>Delete System Role</button>
+								<button class="msgbox_button group_writer_button red_button" onclick='deletesystemrole();'>Delete System Role</button><br><br>
+								<span style="font-size: 12px">Securely delete a system role from the system and relocate the members of the deleting system role into another existing system role which may have different permission settings<br></span>
+								<script>
+									function deletesystemrole() {
+										var xhr = new XMLHttpRequest();
+										var opt_box = document.getElementById("opt_delete_selected_role");
+										var dimmer = document.getElementById("popup_dimmer");
+										var popupscreen = document.getElementById("popupscreen");
+										popupscreen.style.display="none";
+										xhr.onreadystatechange = function () {
+											if (xhr.readyState ==4 && xhr.status == 200){
+
+												var popupcontentarea = document.getElementById("popup_content_area");
+												popupcontentarea.innerHTML = xhr.responseText;
+												dimmer.style.backgroundColor = "#ff0000";
+												popupscreen.style.display="block";
+												eval(document.getElementById("ajaxedjs2").innerHTML);
+											}
+										};
+										xhr.open("POST", "./administration_events/deletesystemrole.php", true);
+										xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+										xhr.send("opt_box="+opt_box.value);
+									}
+
+								</script>
+							</div>
 						</div>
-					</div>
+					<?php } ?>
 
 				</div>
 
@@ -285,6 +256,7 @@
 									var xhr = new XMLHttpRequest();
 									var search_inp = document.getElementById("member_manage_email_search");
 									var popupscreen = document.getElementById("popupscreen");
+									var dimmer = document.getElementById("popup_dimmer");
 									popupscreen.style.display="none";
 									xhr.onreadystatechange = function () {
 										if (xhr.readyState ==4 && xhr.status == 200){
@@ -297,6 +269,7 @@
 												var popupcontentarea = document.getElementById("popup_content_area");
 												popupcontentarea.innerHTML = xhr.responseText;
 												popupscreen.style.display="block";
+												dimmer.style.backgroundColor="#000000";
 												eval(document.getElementById("ajaxedjs").innerHTML)
 											}
 										}
@@ -381,7 +354,7 @@
 			</div>
 			
 			
-			<div class="popup_dimmer"></div>
+			<div class="popup_dimmer" id="popup_dimmer"></div>
 		</span>
 
 		<script>
