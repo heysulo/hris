@@ -3,8 +3,12 @@
 <head>
 	<?php
 	define('hris_access',true);
+	$conn = null;
+	require_once("./config.conf");
+	require_once("../database/database.php");
 	require_once('../templates/path.php');
 	include('../templates/_header.php');
+	include('../templates/refresher.php');
 	if (session_status() == PHP_SESSION_NONE) {
 		session_start();
 	}
@@ -61,6 +65,7 @@
 
 
 					<!-------------------------------ADD NEW ROLES--------------------------->
+					<?php if($_SESSION['system_add_system_role'] == 1){?>
 					<div class="group_administration_content_field">
 						<div class="group_administration_content_field_name">Add New System Role</div>
 						<div class="group_administration_content_field_value">
@@ -88,6 +93,7 @@
 							</script>
 						</div>
 					</div>
+					<?php } ?>
 
 					<!-------------------------------UPDATE ROLES--------------------------->
 					<div class="group_administration_content_field">

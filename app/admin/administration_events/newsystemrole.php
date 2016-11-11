@@ -6,7 +6,7 @@ $conn = null;
 require_once("../config.conf");
 require_once("../../database/database.php");
 ?>
-<form name="new_system_role_table" method="post" action="administration_events/newsystemroleajax.php" style="margin-bottom: 0px">
+<form id="new_system_role_table" method="post" action="administration_events/newsystemroleajax.php" style="margin-bottom: 0px">
 <div class="msgbox_section_title">
     <div class="msgbox_title">Add New System Role</div>
     <div class="popup_close_button" onclick='document.getElementById("popupscreen").style.display = "none"'></div>
@@ -129,7 +129,7 @@ require_once("../../database/database.php");
 
     <button class="msgbox_button group_writer_button " id="btn_add_new_role" type="submit">Create New Role</button>
     <script id="ajaxedjsx">
-        alert("SSS");
+        //alert("SSS");
         $("#btn_add_new_role").click(function(e) {
 
             var url = "administration_events/newsystemroleajax.php"; // the script where you handle the form input.
@@ -141,9 +141,10 @@ require_once("../../database/database.php");
                 success: function(data)
                 {
                     document.getElementById("popupscreen").style.display = "none";
+                    //alert(data);
                     if (data=="success"){
-                        msgbox("New settings for the profile has being applied and will be taken into effect immediately","Settings Saved",1);
-                    }else if(data=="0x01"){
+                        msgbox("The new system role has being created and available for use.","System Role Created",1);
+                    }else if(data=="0x1"){
                         msgbox("Something went wrong. It appears to be that you don't have access to the administration panel","Permission Denied",3);
 
                     }else{

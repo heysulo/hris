@@ -1,4 +1,7 @@
 <?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $email = $_SESSION['email'] ;
     $query2 = "SELECT * FROM member join system_role on member.system_role = system_role.system_role_id and member.email='$email' ";
 

@@ -79,6 +79,7 @@ if ($my['system_add_system_role'] == 1){
     if ($custom_result){
         echo "success";
     }else{
+        //echo mysqli_error($conn);
         echo "0x2";
     }
     //echo mysqli_escape_string($conn,$name);
