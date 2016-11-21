@@ -33,7 +33,12 @@
 				$r_ref = explode('/',$ref);
 			if ($r_ref[5] != "admin"){ ?>
 
-				<script>msgbox("You have access to admin panel. Use your powers with care","Admin Access",0);</script>
+				<script>msgbox("We trust you have received the usual lecture from the local System\
+					Administrator. It usually boils down to these three things:<br>\
+<br>\
+					#1) Respect the privacy of others.<br>\
+					#2) Think before you type.<br>\
+					#3) With great power comes great responsibility.","Adminstrative Access",3);</script>
 			<?php
 			$active = 1;
 			}else{

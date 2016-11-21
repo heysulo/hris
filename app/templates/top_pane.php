@@ -28,10 +28,14 @@
                 </form>
             </div>
 
-            <div class="topprofilecontent" id="top_profile_content_bar">
-                <div class=""><img class="topprofilepicture" src=" <?php echo "$imagePath/pro_pic/$pro_pic"; ?> " alt=""></div>
-                <div class="topbox_profile_name"> <?php echo "$fname $lname"?></div>
-                <div class="topbox_profile_role"><?php echo "$type"?></div>
+            <div class="topprofilecontent" id="top_profile_content_bar" >
+                <div>
+
+                    <div class=""><img class="topprofilepicture" src=" <?php echo "$imagePath/pro_pic/$pro_pic"; ?> " alt=""></div>
+                    <div class="topbox_profile_name"> <?php echo "$fname $lname"?></div>
+                    <div class="topbox_profile_role"><?php echo "$type"?></div>
+                </div>
+                
             </div>
 
         </div>
