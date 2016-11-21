@@ -41,3 +41,75 @@
         </div>
 </div>
 <div id="msgbox_responder"></div>
+
+<div id="dummynf" style="display: none">
+    <li class="notification_item" id="nid_%nid%" >
+        <div class="notification_bg">
+            <div class="notify_icon <--icon-->"></div>
+            <div class="notify_close_button" onclick='clearnotification("nid_%nid%")'></div>
+            <div class="notify_content">
+                %content%
+            </div>
+        </div>
+    </li>
+</div>
+
+<ul class="notification_area" id="notification_list">
+    <li class="notification_item">
+        <div class="notification_bg">
+            <div class="notify_icon notify_icon_date"></div>
+            <div class="notify_close_button"></div>
+            <div class="notify_content">
+                <b>Sulochana Kodituwakku</b> requested a meeting with you on this friday.
+            </div>
+        </div>
+    </li>
+
+</ul>
+
+<script>
+    function notificationpoll() {
+        var nfc = document.getElementById("notification_list");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var resp = JSON.parse(this.responseText);
+                var tmp = document.getElementById("dummynf").innerHTML;
+                tmp = tmp.replace("%content%",resp.msg);
+                tmp = tmp.replace("<--icon-->",resp.icon);
+                tmp = tmp.replace("%nid%",resp.nid);
+                tmp = tmp.replace("%nid%",resp.nid);
+                nfc.innerHTML+= tmp;
+
+
+            }
+            if (this.readyState == 4){
+                notificationpoll();
+            }
+        };
+        xhttp.open("GET", "<?php echo $server_folder?>notificationpoll.php", true);
+        xhttp.send();
+    }
+    notificationpoll(); //init call
+</script>
+
+<script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function clearnotification(nid){
+        var seld = document.getElementById(nid);
+        var op = 1.0;
+        var fade = setInterval(function(){
+            seld.style.opacity = op;
+            op-=0.05;
+            if (op <= 0){
+                clearInterval(fade);
+                seld.outerHTML="";
+            }
+        }, 10);
+
+    }
+
+</script>

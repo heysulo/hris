@@ -336,6 +336,7 @@ h3{
 
 .topprofilecontent:hover{
     height:200px;
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.1);
 }
 
 .topsearchbar{
@@ -1912,6 +1913,7 @@ h3{
     filter: grayscale(0%);
 }
 
+
 .popup_close_button{
     position: relative;
     width: 18px;
@@ -3194,7 +3196,80 @@ li.active a, li.active a:hover {
     background-position: 125px 40px;
 }
 
+.notification_bg{
+    margin: 5px 20px 5px 5px;
+    border-radius: 5px;
+    padding: 12px 12px 12px 5px;
+    border: 1px solid #4683F5;
+    z-index: 9999;
+    height: auto;
+    width: 250px;
+    background-color: #fff;
+    min-height: 30px;
+    overflow: hidden;
+    transition: all 0.2s linear;
+}
 
+.notification_bg:hover{
+    border-color: #f1c40f;
+    background-color: #f3f3f3;
+}
+
+.notify_icon{
+    width: 15%;
+    height: 30px;
+    float: left;
+}
+
+.notify_content{
+    font-size: 12px;
+    width: 75%;
+    min-height: 30px;
+    height: auto;
+    float: right;
+}
+
+
+.notification_area{
+    padding: 0;
+    position: fixed;
+    top: 30px;
+    right: 0;
+    height: 100%;
+    width: 300px;
+    z-index: 100;
+}
+
+.notification_item{
+    display: block;
+    width: auto;
+    zoom: 1;
+}
+
+.notify_close_button{
+    float: right;
+    width: 12px;
+    filter: grayscale(100%);
+    height: 12px;
+    cursor: pointer;
+    background-image: url('../img/1472404941_cross.png');
+    background-position: 0px -1px;
+    background-size: 12px 12px;
+    opacity: 0.4;
+    background-repeat: no-repeat;
+    transition: all 0.2s linear;
+}
+
+.notify_close_button:hover{
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.notify_icon_date{
+    background: url("../img/notify_icon_date.png");
+    background-repeat: no-repeat;
+    background-position:center center;
+}
 /***/
 .tg  {border-collapse:collapse;border-spacing:0;border:2px solid #3F4E5E;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}

@@ -1,28 +1,34 @@
 <!DOCTYPE html>
-<html>
-<head ng-bind="name"></head>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
-<style type="text/css">
-.sample-show-hide {
-  padding:10px;
-  border:1px solid black;
-  background:white;
-}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="public/css/artista.css">
+</head>
+<body>
+<ul>
+    <div class="notification_bg">
+        <div class="notify_icon notify_icon_date"></div>
+        <div class="notify_content">
+            <b>Sulochana Kodituwakku</b> requested a meeting with you on this friday.
+        </div>
+    </div>
 
-.sample-show-hide {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
-}
+    <div class="notification_bg">
+        <div class="notify_icon notify_icon_date"></div>
+        <div class="notify_content">
+            <b>Sulochana Kodituwakku</b> requested a meeting with you on this friday.
+        </div>
+    </div>
 
-.sample-show-hide.ng-hide {
-  opacity:0;
-}</style>
-<body ng-app="ngAnimate">
-  <div ng-init="checked=true">
-  <div class="check-element sample-show-hide" ng-show="checked" style="clear:both;">
-    Visible...
-  </div>
-</div>
+    <div class="notification_bg">
+        <div class="notify_icon notify_icon_date"></div>
+        <div class="notify_content">
+            <b>Sulochana Kodituwakku</b> requested a meeting with you on this friday.
+        </div>
+    </div>
+
+
+</ul>
 </body>
 </html>
