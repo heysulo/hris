@@ -28,6 +28,9 @@
                 </form>
             </div>
 
+
+            <div class="top_notification_icon"><div class="top_notification_icon_inner">23</div></div>
+
             <div class="topprofilecontent" id="top_profile_content_bar" >
                 <div>
 
@@ -37,6 +40,7 @@
                 </div>
                 
             </div>
+
 
         </div>
 </div>
@@ -54,20 +58,38 @@
     </li>
 </div>
 
-<ul class="notification_area" id="notification_list">
-    <li class="notification_item">
-        <div class="notification_bg">
-            <div class="notify_icon notify_icon_date"></div>
-            <div class="notify_close_button"></div>
-            <div class="notify_content">
-                <b>Sulochana Kodituwakku</b> requested a meeting with you on this friday.
-            </div>
-        </div>
-    </li>
+<ul class="notification_area" id="notification_list" onchange="document.title = document.getElementById('notification_list').children.tags('li').length">
+<!--    <li class="notification_item">-->
+<!--        <div class="notification_bg">-->
+<!--            <div class="notify_icon notify_icon_default"></div>-->
+<!--            <div class="notify_close_button"></div>-->
+<!--            <div class="notify_content">-->
+<!--                <b>Sulochana Kodituwakku</b> requested a meeting with you on this friday.-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </li>-->
 
 </ul>
 
 <script>
+    function notify(conetent,xicon,link) {
+        if (xicon==undefined){
+            xicon = "notify_icon_default";
+        }
+        var nid = "CNID"+Math.floor((Math.random() * 9000) + 1000);
+        var nfc = document.getElementById("notification_list");
+        var tmp = document.getElementById("dummynf").innerHTML;
+        tmp = tmp.replace("%content%",conetent);
+        tmp = tmp.replace("<--icon-->",xicon);
+        tmp = tmp.replace("%nid%",nid);
+        tmp = tmp.replace("%nid%",nid);
+        nfc.innerHTML+= tmp;
+        document.getElementById("audio_notify").play();
+
+
+
+    }
+
     function notificationpoll() {
         var nfc = document.getElementById("notification_list");
         var xhttp = new XMLHttpRequest();
