@@ -1027,6 +1027,43 @@ h3{
 
 }
 
+
+.input_title{
+    width: auto;
+    font-size: 13px;
+    color: #666;
+    text-align: right;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.profile_special_button_area{
+    width: auto;
+    height: 30px;
+    position: relative;
+    top:-350px;
+    left: 830px;
+}
+
+.profile_special_button{
+    bottom: 0px;
+    color: #ffffff;
+    cursor: pointer;
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    border: 1px solid #4285F4;
+    border-radius: 3px;
+    font: normal normal bold normal 12px / 22px helvetica, arial, sans-serif;
+    padding: 0px 10px;
+    align: center;
+    background-color: #4285F4;
+}
+
 .profile_profile_image_new{
     width: 208px;
     height: 208px;
@@ -2932,7 +2969,7 @@ h3{
 }
 
 .group_administration_content_field_name{
-    width: 200px;
+    width: 100px;
     font-size: 12px;
     color: #666;
     text-align: right;
@@ -2956,7 +2993,7 @@ h3{
 }
 
 .group_administration_content_field_value{
-    margin-left: 200px;
+    margin-left: 100px;
     padding-left: 20px;
 }
 .group_administration_content_field_value_sub{

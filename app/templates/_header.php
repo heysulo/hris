@@ -10,6 +10,7 @@ defined('hris_access') or die( header("location:../../error.php"));
 <meta name="author" content="team helix">
 
 <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/sweetalert.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/artista.css">
 
 <audio id="audio_notify" type="audio/ogg" src="<?php echo $publicPath?>audio/notify.ogg" preload="auto" autobuffer></audio>

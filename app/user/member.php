@@ -86,6 +86,17 @@
 
 </head>
 <body>
+	<span id="popupscreen" style="display: none">
+			<div class="popup_background">
+				<span id="popup_content_area">
+
+				</span>
+
+			</div>
+
+
+			<div class="popup_dimmer" id="popup_dimmer"></div>
+	</span>
 	<div>
 		<?php include_once('../templates/navigation_panel.php'); ?>
 		<?php include_once('../templates/top_pane.php'); ?>
@@ -179,6 +190,36 @@
 				</div>
 				<div class="profile_txt_gpa">Current GPA</div>
 				<div class="profile_txt_gpa">Rank : #225</div>
+				<?php
+				if ($row['email'] != $_SESSION['email']){
+				?>
+				<div class="profile_special_button_area">
+					<input type="button" class="profile_special_button" onclick="requestmeeting();" value="Request Meeting">
+				</div>
+				<?php } ?>
+				<script>
+					$( function() {
+						$( "#datepicker" ).datepicker();
+					} );
+
+					function requestmeeting() {
+						var xhr = new XMLHttpRequest();
+						var dimmer = document.getElementById("popup_dimmer");
+						var popupscreen = document.getElementById("popupscreen");
+						popupscreen.style.display="none";
+						xhr.onreadystatechange = function () {
+							if (xhr.readyState ==4 && xhr.status == 200){
+								var popupcontentarea = document.getElementById("popup_content_area");
+								popupcontentarea.innerHTML = xhr.responseText;
+								popupscreen.style.display="block";
+								dimmer.style.backgroundColor="#000000";
+							}
+						};
+						xhr.open("POST", "meeting_request.php", true);
+						xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+						xhr.send();
+					}
+				</script>
 			</div>
 			<?php /*
 			<div class="profile_section_intro">
@@ -391,6 +432,8 @@
 	include_once('../templates/_footer.php');
 	?>
 
+
+
 	<script>
 		var uid = <?php echo $view_id?>;
 		function heartbeat() {
@@ -457,6 +500,7 @@
 
 		resize_profile_intro();
 	</script>
+
 </body>
 
 </html>
