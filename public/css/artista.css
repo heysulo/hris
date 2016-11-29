@@ -330,6 +330,7 @@ h3{
 }
 
 .top_notification_icon_inner{
+    display: none;
     position: relative;
     top: 8px;
     left: 25px;
@@ -3259,7 +3260,7 @@ li.active a, li.active a:hover {
     position: fixed;
     top: 30px;
     right: 0;
-    height: 100%;
+    height: auto;
     width: 300px;
     z-index: 100;
 }
@@ -3299,6 +3300,51 @@ li.active a, li.active a:hover {
     background: url("../img/ico_notify_announce.png");
     background-repeat: no-repeat;
     background-position:center center;
+}
+
+.dialog_notification_background{
+    max-width: 180px;
+}
+
+.dialog_notification_content{
+
+}
+
+.dialog_notification_button_area{
+    margin-top: 10px;
+}
+
+
+.dialog_notification_button{
+    border: 1px solid #4285F4;
+    border-top: none;
+    color: #626262;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    transition: all 0.1s linear;
+}
+
+.dialog_notification_button:hover{
+    background-color:  #4285F4;
+    color: #ffffff;
+}
+
+.dialog_notification_button:last-child{
+    border-bottom: 1px solid #4285F4;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+.dialog_notification_button:first-child{
+    border-top: 1px solid #4285F4;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 

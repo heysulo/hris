@@ -29,7 +29,38 @@
             </div>
 
 
-            <div class="top_notification_icon"><div class="top_notification_icon_inner">23</div></div>
+            <div class="top_notification_icon"><div id="notification_count" class="top_notification_icon_inner">0</div></div>
+            <script>
+                var blinker_active = false;
+                function setncount(count) {
+                    var nd = document.getElementById("notification_count");
+                    console.log(count);
+                    if (count<=0){
+                        nd.innerHTML = "0";
+                        nd.style.display = "none";
+                        blinker_active = false;
+                        clearInterval(title_blinker);
+                        document.title = original_title;
+                    }else{
+                        if(blinker_active == false){
+                            blinktitle();
+                            blinker_active = true;
+                        }
+                        nd.innerHTML = count;
+                        nd.style.display = "block";
+                    }
+
+                }
+
+
+                function inc_nc() {
+                    setncount(parseInt(document.getElementById("notification_count").innerHTML)+1);
+                }
+
+                function dec_nc() {
+                    setncount(parseInt(document.getElementById("notification_count").innerHTML)-1);
+                }
+            </script>
 
             <div class="topprofilecontent" id="top_profile_content_bar" >
                 <div>
@@ -72,6 +103,22 @@
 </ul>
 
 <script>
+    var title_flag = true;
+    var title_blinker = 0;
+    var original_title = "HRIS";
+    function blinktitle() {
+        original_title = document.title;
+        title_blinker = setInterval(function(){
+            if (title_flag){
+                document.title = parseInt(document.getElementById("notification_count").innerHTML) + " New Notifications.";
+                title_flag = !title_flag;
+            }else{
+                document.title = original_title;
+                title_flag = !title_flag;
+            }
+        }, 1000);
+    }
+
     function notify(conetent,xicon,link) {
         if (xicon==undefined){
             xicon = "notify_icon_default";
@@ -85,6 +132,7 @@
         tmp = tmp.replace("%nid%",nid);
         nfc.innerHTML+= tmp;
         document.getElementById("audio_notify").play();
+        inc_nc();
 
 
 
@@ -102,6 +150,8 @@
                 tmp = tmp.replace("%nid%",resp.nid);
                 tmp = tmp.replace("%nid%",resp.nid);
                 nfc.innerHTML+= tmp;
+                document.getElementById("audio_notify").play();
+                inc_nc();
 
 
             }
@@ -123,6 +173,7 @@
     function clearnotification(nid){
         var seld = document.getElementById(nid);
         var op = 1.0;
+        dec_nc();
         var fade = setInterval(function(){
             seld.style.opacity = op;
             op-=0.05;
