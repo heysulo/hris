@@ -143,26 +143,45 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var resp = JSON.parse(this.responseText);
-                var tmp = document.getElementById("dummynf").innerHTML;
-                tmp = tmp.replace("%content%",resp.msg);
-                tmp = tmp.replace("<--icon-->",resp.icon);
-                tmp = tmp.replace("%nid%",resp.nid);
-                tmp = tmp.replace("%nid%",resp.nid);
-                nfc.innerHTML+= tmp;
-                document.getElementById("audio_notify").play();
-                inc_nc();
-
-
+                if (this.responseText != "timeout"){
+                    nfc.innerHTML+= this.responseText;
+                    document.getElementById("audio_notify").play();
+                    inc_nc();
+                }
             }
-            if (this.readyState == 4){
+            if (this.readyState ==4){
                 notificationpoll();
             }
         };
         xhttp.open("GET", "<?php echo $server_folder?>notificationpoll.php", true);
         xhttp.send();
     }
-    notificationpoll(); //init call
+    window.onload = function () { notificationpoll(); }
+    //notificationpoll(); //init call
+
+
+
+    function acceptmeeting(nid,or_nid) {
+        clearnotification(or_nid);
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState ==4 && xhr.status == 200){
+                switch(this.responseText){
+                    case "success":
+                        msgbox("Meeting request accepted.","Request Accepted",1);
+                        break;
+
+                    default:
+                        msgbox("Error occured while attempting to accept the meeting request. Please try again shortly","Error Occured",3);
+                        break;
+                }
+            }
+        };
+        xhr.open("POST", "<?php echo $server_folder?>acceptmeeting.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("nid="+nid);
+    }
+
 </script>
 
 <script>

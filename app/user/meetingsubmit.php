@@ -61,10 +61,12 @@ if(passedevent($date." ".$time)){
 
 $summary = mysqli_real_escape_string($conn,$_POST['subject']);
 $description = mysqli_real_escape_string($conn,$_POST['description']);
-
 $updatequery = "INSERT INTO meeting(source_id, target_id, subject, description, date, time, status) VALUES (".$_SESSION['user_id'].",".$row['member_id'].",\"$summary\",\"$description\",\"$date\",\"$time\",0)";
 $res = mysqli_query($conn,$updatequery);
 if ($res){
+    $content = "<b>".$_SESSION['fname']." ".$_SESSION['lname']."</b> requested a meeting with you on $date at $time. This is regarding $summary.";
+    $updatequery = "INSERT INTO notification(member_id, message, unshown, seen, action) VALUES ($target, \"$content\",1,0,\"mr_".$conn->insert_id."\")";
+    $res = mysqli_query($conn,$updatequery);
     echo "success";
 }else{
     echo "0x06"; //sqlerror

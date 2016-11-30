@@ -8,4 +8,5 @@
 <script src="<?php echo $publicPath?>js/side_panel.js"></script>
 <script src="<?php echo $publicPath?>js/top_pane.js"></script>
 <script src="<?php echo $publicPath?>js/application.js"></script>
+<script src="<?php echo $publicPath?>js/notifyfunctions.js"></script>
 
