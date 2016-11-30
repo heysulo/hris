@@ -13,6 +13,7 @@ defined('hris_access') or die( header("location:../../error.php"));
 <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/artista.css">
 
+
 <audio id="audio_notify" type="audio/ogg" src="<?php echo $publicPath?>audio/notify.ogg" preload="auto" autobuffer></audio>
 <!--<link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">-->
 <script src="<?php echo $publicPath?>js/msgbox_functions.js"></script>
