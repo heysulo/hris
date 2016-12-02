@@ -48,6 +48,7 @@ if (!isset($_SESSION['email'])){
                         reg_num VARCHAR(10) NOT NULL,
                         index_num VARCHAR(10) NOT NULL,
                         account VARCHAR(5) NOT NULL DEFAULT 0,
+                        degree VARCHAR (5) NOT NULL,
                         PRIMARY KEY (reg_num,index_num)
                     )";
 
@@ -56,13 +57,15 @@ if (!isset($_SESSION['email'])){
                     if ($response) {
 
                         // Input results to database
-                        $sql_pre = "INSERT INTO $tableName(reg_num,index_num) VALUES";
+                        $sql_pre = "INSERT INTO $tableName(reg_num,index_num,degree) VALUES";
                         $stringlist = array();
                         foreach ($jsondata as $row) {
                             # code...
                             $individual_reg = $row['registration_number'];
                             $individual_index = $row['index_number'];
-                            $stringlist[] = "('$individual_reg','$individual_index')";
+                            $deg = explode('/',$individual_reg)[1];
+
+                            $stringlist[] = "('$individual_reg','$individual_index','$deg')";
 
                         }
 
@@ -94,33 +97,59 @@ if (!isset($_SESSION['email'])){
 
     }
 
+//    ----------------------------------------------- Remove Batch ------------------------------------
+
+    if(isset($_POST['remove_batch'])){
+        $batch = mysqli_escape_string($conn,$_POST['batch']);
+
+        $sql_to_remove_from_batchList = "DELETE FROM batchList WHERE batch = '$batch'";
+        $res = mysqli_query($conn,$sql_to_remove_from_batchList);
+        if($res){
+            $sql_to_drop_table = "DROP TABLE $batch";
+            $resp = mysqli_query($conn,$sql_to_drop_table);
+            if ($resp){
+                echo "swal('Success','Batch details deleted.','success')";
+                header("location:" . $_SERVER['HTTP_REFERER']);
+            }else{
+                echo mysqli_error($conn);
+            }
+        }else{
+            echo mysqli_error($conn);
+        }
+
+    }
+
 //    ---------------------------------------------- Add subject ------------------------------------
 
-    if (isset($_POST['add_subject'])) {
+    if (isset($_POST['add_course'])) {
         # code...
         $title = mysqli_escape_string($conn,$_POST['title']);
-        $course = mysqli_escape_string($conn,$_POST['course']);
+        $degree = mysqli_escape_string($conn,$_POST['degree']);
         $code = mysqli_escape_string($conn,$_POST['code']);
         $credit = mysqli_escape_string($conn,$_POST['credit']);
 
-        $ccode = $course.$code;
+        $ccode = $degree.$code;
 
-        mysqli_query($conn,"CREATE TABLE IF NOT EXISTS subject(
-									subject_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        mysqli_query($conn,"CREATE TABLE IF NOT EXISTS course(
+									course_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 									title VARCHAR(250) NOT NULL ,
-									subject_code VARCHAR(10) NOT NULL,
-									course VARCHAR(10) NOT NULL,
-									credit INT(11) NOT NULL
+									course_code VARCHAR(10) NOT NULL,
+									degree VARCHAR(10) NOT NULL,
+									credit INT(11) NOT NULL,
+									UNIQUE (course_code)
 									)");
 
-        $sql = "INSERT INTO subject(title,subject_code,course,credit) VALUES ('$title','$ccode','$course','$credit')";
+        $sql = "INSERT INTO course(title,course_code,degree,credit) VALUES ('$title','$ccode','$degree','$credit')";
 
         $res = mysqli_query($conn ,$sql);
         if ($res) {
-            echo 'wade goda';
+            echo 'Done';
         }else{
-            echo 'monwada bn me..';
-            echo mysqli_error($conn);
+            if(mysqli_errno($conn) == 1062){
+                echo "You already have entered these Course";
+            }else{
+                echo mysqli_error($conn);
+            }
         }
     }
 
@@ -130,12 +159,12 @@ if (!isset($_SESSION['email'])){
         $mod = explode("_", $get);
         $course = $mod[1];
         $batch = $mod[0];
-        $sql = "SELECT subject_code,title FROM subject WHERE course='$course'";
+        $sql = "SELECT course_code,title FROM course WHERE degree='$degree'";
         $query = mysqli_query($conn,$sql);
 
         while ($row = mysqli_fetch_assoc($query)) {
 
-            echo "<input type='checkbox' name='subjects[]' value=".$row['subject_code'].">".$row['subject_code']." - ".$row['title']."<br>";
+            echo "<input type='checkbox' name='subjects[]' value=".$row['course_code'].">".$row['course_code']." - ".$row['title']."<br>";
 
         }
     }

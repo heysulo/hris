@@ -36,18 +36,18 @@
             <div class="dbox group_tab_members group_members_dbox">
 
                 <?php if($_SESSION['system_admin_panel_access']){?>
-                    <!-------------------------------ADD Subject Details--------------------------->
+                    <!-------------------------------ADD Course Details--------------------------->
                     <div class="group_administration_content_field">
-                        <div class="group_administration_content_field_name">Add Subject Details</div>
+                        <div class="group_administration_content_field_name">Add Course Details</div>
                         <div class="group_administration_content_field_value">
 
                             <form action="adminFunction.php" method="POST">
-                                <label>Subject :
+                                <label>Course :
                                     <input type="text" class="group_administration_txtbox" name="title" placeholder="ex : Information System" required>
                                 </label><br>
 
-                                <label> Select course :</label>
-                                <select name="course" class="group_administration_txtbox" required>
+                                <label> Select Degree Program :</label>
+                                <select name="degree" class="group_administration_txtbox" required>
                                     <option value=""> -- Select -- </option>
                                     <option value="IS">Information System</option>
                                     <option value="CS">Computer Science</option>
@@ -65,7 +65,7 @@
                                 </label>
 
                                 <br><br>
-                                <input type="submit" name="add_subject" class="msgbox_button group_writer_button" value="Add Subject">
+                                <input type="submit" name="add_course" class="msgbox_button group_writer_button" value="Add Course">
                             </form>
 
 
@@ -81,17 +81,17 @@
                             <form action="addResult.php" method="post" enctype="multipart/form-data">
 
                                 <?php
-                                    $q = mysqli_query($conn,"SELECT * FROM subject");
+                                    $q = mysqli_query($conn,"SELECT * FROM course");
                                     if ($q){?>
-                                <label for="subject_id"> Subject :
-                                        <select name="subject"  id="subject_id" required>
+                                <label for="course_id"> Course :
+                                        <select name="course"  id="course_id" required>
                                             <option value="">-- Select --</option>
                                     <?php
                                         while($row = mysqli_fetch_assoc($q)){
                                             $course_title = $row['title'];
-                                            $subject_code = $row['subject_code'];
+                                            $course_code = $row['course_code'];
 
-                                           echo "<option value='$subject_code'> $course_title </option>";
+                                           echo "<option value='$course_code'> $course_code - $course_title </option>";
 
                                         }?>
                                         </select>
@@ -100,6 +100,7 @@
                                     }
                                 ?>
 
+                                <br>
 
                                 <?php
                                 $q2 = mysqli_query($conn,"SELECT * FROM batchList");
@@ -156,8 +157,8 @@
                                 }
                                 ?>
                                 <br><br>
-                                    <label> Cource :
-                                        <select name="course" class="group_administration_txtbox" required>
+                                    <label> Degree Program :
+                                        <select name="degree" class="group_administration_txtbox" required>
                                             <option value=""> -- Select -- </option>
                                             <option value="IS">Information System</option>
                                             <option value="CS">Computer Science</option>
@@ -196,7 +197,8 @@
                                     while ($row = mysqli_fetch_assoc($r)) {
                                         $val = $row['tablename'];
                                         $val_a = explode("_", $val);
-                                        $year = $val_a[0];
+                                        $yearb = $val_a[0];
+                                        $year = ltrim($yearb,"B");
                                         $co = $val_a[1];
                                         ?>
 
@@ -237,7 +239,8 @@
                                     while ($row = mysqli_fetch_assoc($r)) {
                                         $val = $row['tablename'];
                                         $val_a = explode("_", $val);
-                                        $year = $val_a[0];
+                                        $yearb = $val_a[0];
+                                        $year = ltrim($yearb,"B");
                                         $co = $val_a[1];
                                         ?>
 
