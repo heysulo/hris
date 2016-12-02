@@ -1,21 +1,10 @@
-<html>
-<head>
 <?php
 
-
-?>
-</head>
-<body>
-<?php
-$host = '192.168.8.100';
-$username = 'root';
-$password = 'mysqler';
-$database = 'hris_db';
-$conn = mysqli_connect($host,$username,$password,$database);
-echo $conn;
-echo $_SERVER['HTTP_HOST'];
-?>
-</body>
-
-
-</html>
+function validateTime($date, $format = 'g:i A')
+{
+    $d = DateTime::createFromFormat($format, $date);
+    return ($d && $d->format($format) == $date);
+}
+date_default_timezone_set('Asia/Colombo');
+var_dump(validateTime('5:00 AM')); # false
+echo time() - strtotime("2016-11-30 5:00 AM");

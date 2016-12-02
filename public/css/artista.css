@@ -316,6 +316,35 @@ h3{
 }
 
 /*~~~~TOPPANE~~~~~~*/
+
+.top_notification_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    background-image: url("../img/ico_bell.png");
+    background-position: 10px 6px;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+}
+
+.top_notification_icon_inner{
+    display: none;
+    position: relative;
+    top: 8px;
+    left: 25px;
+    background-color: red;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0px 0px 0px 0px;
+    color: #ffffff;
+    width: 20px;
+    height: 15px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
 .panelTop{
     float: right;
     margin: 0;
@@ -328,11 +357,12 @@ h3{
 
 .topprofilecontent{
     float:right;
-    height:100%;
+    height:40px;
     width:280px;
     background-color:#fff;
-    transition:all ease 0.2s;
+    transition:all ease-in-out 0.8s;
 }
+
 
 .topsearchbar{
     float:right;
@@ -995,6 +1025,43 @@ h3{
     border-bottom: 25px solid #42b72a;
 
 
+}
+
+
+.input_title{
+    width: auto;
+    font-size: 13px;
+    color: #666;
+    text-align: right;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.profile_special_button_area{
+    width: auto;
+    height: 30px;
+    position: relative;
+    top:-350px;
+    left: 830px;
+}
+
+.profile_special_button{
+    bottom: 0px;
+    color: #ffffff;
+    cursor: pointer;
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    border: 1px solid #4285F4;
+    border-radius: 3px;
+    font: normal normal bold normal 12px / 22px helvetica, arial, sans-serif;
+    padding: 0px 10px;
+    align: center;
+    background-color: #4285F4;
 }
 
 .profile_profile_image_new{
@@ -1907,6 +1974,7 @@ h3{
 .msgbox_close_button:hover{
     filter: grayscale(0%);
 }
+
 
 .popup_close_button{
     position: relative;
@@ -2901,7 +2969,7 @@ h3{
 }
 
 .group_administration_content_field_name{
-    width: 200px;
+    width: 100px;
     font-size: 12px;
     color: #666;
     text-align: right;
@@ -2925,7 +2993,7 @@ h3{
 }
 
 .group_administration_content_field_value{
-    margin-left: 200px;
+    margin-left: 100px;
     padding-left: 20px;
 }
 .group_administration_content_field_value_sub{
@@ -3188,6 +3256,132 @@ li.active a, li.active a:hover {
     background-image: url("../img/sad_face.png");
     background-repeat: no-repeat;
     background-position: 125px 40px;
+}
+
+.notification_bg{
+    margin: 5px 20px 5px 5px;
+    border-radius: 5px;
+    padding: 12px 12px 12px 5px;
+    border: 1px solid #4683F5;
+    z-index: 9999;
+    height: auto;
+    width: 250px;
+    background-color: #fff;
+    min-height: 30px;
+    overflow: hidden;
+    transition: all 0.2s linear;
+}
+
+.notification_bg:hover{
+    border-color: #f1c40f;
+    background-color: #f3f3f3;
+}
+
+.notify_icon{
+    width: 15%;
+    height: 30px;
+    float: left;
+}
+
+.notify_content{
+    font-size: 12px;
+    width: 75%;
+    min-height: 30px;
+    height: auto;
+    float: right;
+}
+
+
+.notification_area{
+    padding: 0;
+    position: fixed;
+    top: 30px;
+    right: 0;
+    height: auto;
+    width: 300px;
+    z-index: 100;
+}
+
+.notification_item{
+    display: block;
+    width: auto;
+    zoom: 1;
+}
+
+.notify_close_button{
+    float: right;
+    width: 12px;
+    filter: grayscale(100%);
+    height: 12px;
+    cursor: pointer;
+    background-image: url('../img/1472404941_cross.png');
+    background-position: 0px -1px;
+    background-size: 12px 12px;
+    opacity: 0.4;
+    background-repeat: no-repeat;
+    transition: all 0.2s linear;
+}
+
+.notify_close_button:hover{
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.notify_icon_date{
+    background: url("../img/notify_icon_date.png");
+    background-repeat: no-repeat;
+    background-position:center center;
+}
+
+.notify_icon_default{
+    background: url("../img/ico_notify_announce.png");
+    background-repeat: no-repeat;
+    background-position:center center;
+}
+
+.dialog_notification_background{
+    max-width: 180px;
+}
+
+.dialog_notification_content{
+
+}
+
+.dialog_notification_button_area{
+    margin-top: 10px;
+}
+
+
+.dialog_notification_button{
+    border: 1px solid #4285F4;
+    border-top: none;
+    color: #626262;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    transition: all 0.1s linear;
+}
+
+.dialog_notification_button:hover{
+    background-color:  #4285F4;
+    color: #ffffff;
+}
+
+.dialog_notification_button:last-child{
+    border-bottom: 1px solid #4285F4;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+.dialog_notification_button:first-child{
+    border-top: 1px solid #4285F4;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 

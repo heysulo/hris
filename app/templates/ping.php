@@ -26,9 +26,31 @@
 
         $qry = "UPDATE member SET last_login='$timeanddate' WHERE email='$email'";
             if (mysqli_query($conn,$qry)){
-                echo 1;
+                $query2 = "SELECT availability_status FROM member WHERE email='$email' ";
+                $result = mysqli_query($conn,$query2);
+                $row = mysqli_fetch_assoc($result);
+                $color = null;
+                switch($row['availability_status']){
+                    case "Available":
+                        $color = "#34a853";
+                        break;
+                    case "Away":
+                        $color = "#fbbc05";
+                        break;
+                    case "Busy":
+                        $color = "#ea4335";
+                        break;
+                    case "Lecture":
+                        $color = "#4285f4";
+                        break;
+                    default:
+                        $color = "#707070";
+                        $color;
+
+                }
+                echo $color;
             }else{
-                echo 0;
+                echo "#ffffff";
             }
 
 

@@ -14,6 +14,10 @@
 			$buttonclass = "msgbox_button group_writer_button red_button";
 			$dimcolor="ff0000";
 			break;
+		case 4:
+			$buttonclass = "msgbox_button group_writer_button red_button";
+			$dimcolor="72ff00";
+			break;
 		default:
 			$buttonclass = "msgbox_button msgbox_button_default";
 			break;

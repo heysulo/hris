@@ -1,28 +1,60 @@
 <!DOCTYPE html>
-<html>
-<head ng-bind="name"></head>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
-<style type="text/css">
-.sample-show-hide {
-  padding:10px;
-  border:1px solid black;
-  background:white;
-}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="public/css/artista.css">
+</head>
+<body>
+<ul class="notification_area" id="notification_list" onchange="document.title = document.getElementById('notification_list').children.tags('li').length">
+        <li class="notification_item">
+            <div class="notification_bg">
+                <div class="notify_icon notify_icon_date"></div>
+                <div class="notify_close_button"></div>
+                <div class="notify_content">
+                    <div class="dialog_notification_background">
+                        <div class="dialog_notification_content">
+                            <b>Sulochana Kodituwakku</b> requested a meeting with you tomorrow at 12.00 PM to discuss about the group project biweekly report
+                        </div>
+                        <div class="dialog_notification_button_area">
+                            <input type="button" class="dialog_notification_button" value="Accept">
+                            <input type="button" class="dialog_notification_button" value="Reshedule">
+                            <input type="button" class="dialog_notification_button" value="Reject">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
 
-.sample-show-hide {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
-}
+        <li class="notification_item">
+                <div class="notification_bg">
+                    <div class="notify_icon notify_icon_date"></div>
+                    <div class="notify_close_button"></div>
+                    <div class="notify_content">
+                        <div class="dialog_notification_background">
+                            <div class="dialog_notification_content">
+                                <b>Sulochana Kodituwakku</b> requested your phone number
+                            </div>
+                            <div class="dialog_notification_button_area">
+                                <input type="button" class="dialog_notification_button" value="Accept">
+                                <input type="button" class="dialog_notification_button" value="Reject">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
 
-.sample-show-hide.ng-hide {
-  opacity:0;
-}</style>
-<body ng-app="ngAnimate">
-  <div ng-init="checked=true">
-  <div class="check-element sample-show-hide" ng-show="checked" style="clear:both;">
-    Visible...
-  </div>
-</div>
+
+        <li class="notification_item">
+            <div class="notification_bg">
+                <div class="notify_icon notify_icon_default"></div>
+                <div class="notify_close_button"></div>
+                <div class="notify_content">
+                    <b>Sulochana Kodituwakku</b> requested a meeting with you on this friday.
+                </div>
+            </div>
+        </li>
+
+</ul>
 </body>
 </html>
