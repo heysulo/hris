@@ -1,6 +1,6 @@
 <?php
 $conn = null;
-require_once("config.conf");
+require_once("../user/config.conf");
 require_once("../database/database.php");
 $count = 0;
 $msg = null;
