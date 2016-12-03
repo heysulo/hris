@@ -51,7 +51,7 @@
             <img class="profile_profile_image_new" src="<?php echo "$imagePath/pro_pic/$pro_picture"; ?>" alt="Profile Picture">
             <div id="profile_name" class="profile_name" >
                 <?php echo $display_name;?>
-                <button onclick="location.href='./editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
+                <button onclick="location.href='../../dev/editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
             </div>
             <!--Availability status area-->
             <div class="profile_online_status_box">
