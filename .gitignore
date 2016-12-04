@@ -9,7 +9,5 @@
 *.conf
 out
 gen
-=======
-.xml
-.conf
+*.xml
 >>>>>>> master
