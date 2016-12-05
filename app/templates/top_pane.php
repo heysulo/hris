@@ -8,6 +8,24 @@
     $pro_pic = $_SESSION['pro_pic'];
     
 ?>
+<span id="ajaxloadinganimation" style="display: none;">
+    <div class="msgbox_section_title">
+        <div class="msgbox_title">Loading Content</div>
+    </div>
+    <div >
+        <img src="<?php echo $publicPath?>img/loading.gif">
+    </div>
+
+</span>
+<span id="popupscreen" style="display: block">
+	<div class="popup_background">
+		<span id="popup_content_area">
+            <?php include ("../services/reshedulemeeting.php");?>
+
+		</span>
+	</div>
+	<div class="popup_dimmer" id="popup_dimmer"></div>
+</span>
 <div class="panelTop">
         <div class="divadjustment">
             <div class="top_dropdown_click">
@@ -180,6 +198,64 @@
         xhr.open("POST", "<?php echo $server_folder?>acceptmeeting.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send("nid="+nid);
+    }
+
+    function rejectmeeting(nid,or_nid) {
+        clearnotification(or_nid);
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState ==4 && xhr.status == 200){
+                switch(this.responseText){
+                    case "success":
+                        msgbox("Meeting request rejected.","Request rejected",1);
+                        break;
+
+                    default:
+                        msgbox("Error occured while attempting to reject the meeting request. Please try again shortly","Error Occured",3);
+                        break;
+                }
+            }
+        };
+        xhr.open("POST", "<?php echo $server_folder?>rejectmeeting.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("nid="+nid);
+    }
+
+    function reshedulemeeting(nid,or_nid) {
+        //clearnotification(or_nid);
+        var xhr = new XMLHttpRequest();
+        var popupscreen = document.getElementById("popupscreen");
+        var dimmer = document.getElementById("popup_dimmer");
+        var popupcontentareax = document.getElementById("popup_content_area");
+        var animation = document.getElementById("ajaxloadinganimation");
+        popupcontentareax.innerHTML = animation.innerHTML;
+        popupscreen.style.display="block";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState ==4 && xhr.status == 200){
+                var popupcontentarea = document.getElementById("popup_content_area");
+                popupcontentarea.innerHTML = xhr.responseText;
+                popupscreen.style.display="block";
+                dimmer.style.backgroundColor="#000000";
+                eval(document.getElementById("ajaxedjs").innerHTML)
+            }
+        };
+        xhr.open("POST", "<?php echo $server_folder?>reshedulemeeting.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send();
+    }
+
+    function submitreshedule() {
+        $.ajax({
+            type: "POST",
+            url: "<?php echo $server_folder?>reshedulesubmit.php",
+            data: $("#frmreshedule").serialize(), // serializes the form's elements.
+            success: function(data)
+            {
+                alert(data);
+            }
+        });
+
+
     }
 
 </script>

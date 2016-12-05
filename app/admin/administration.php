@@ -80,7 +80,10 @@
 									var dimmer = document.getElementById("popup_dimmer");
 									var popupscreen = document.getElementById("popupscreen");
 
-									popupscreen.style.display="none";
+									var popupcontentareax = document.getElementById("popup_content_area");
+									var animation = document.getElementById("ajaxloadinganimation");
+									popupcontentareax.innerHTML = animation.innerHTML;
+									popupscreen.style.display="block";
 									xhr.onreadystatechange = function () {
 										if (xhr.readyState ==4 && xhr.status == 200){
 											var popupcontentarea = document.getElementById("popup_content_area");
@@ -127,7 +130,11 @@
 									var opt_box = document.getElementById("opt_selected_system_update_role");
 									var dimmer = document.getElementById("popup_dimmer");
 									var popupscreen = document.getElementById("popupscreen");
-									popupscreen.style.display="none";
+
+									var popupcontentareax = document.getElementById("popup_content_area");
+									var animation = document.getElementById("ajaxloadinganimation");
+									popupcontentareax.innerHTML = animation.innerHTML;
+									popupscreen.style.display="block";
 									xhr.onreadystatechange = function () {
 										if (xhr.readyState ==4 && xhr.status == 200){
 											var popupcontentarea = document.getElementById("popup_content_area");
@@ -176,7 +183,11 @@
 										var opt_box = document.getElementById("opt_delete_selected_role");
 										var dimmer = document.getElementById("popup_dimmer");
 										var popupscreen = document.getElementById("popupscreen");
-										popupscreen.style.display="none";
+
+										var popupcontentareax = document.getElementById("popup_content_area");
+										var animation = document.getElementById("ajaxloadinganimation");
+										popupcontentareax.innerHTML = animation.innerHTML;
+										popupscreen.style.display="block";
 										xhr.onreadystatechange = function () {
 											if (xhr.readyState ==4 && xhr.status == 200){
 
@@ -262,7 +273,10 @@
 									var search_inp = document.getElementById("member_manage_email_search");
 									var popupscreen = document.getElementById("popupscreen");
 									var dimmer = document.getElementById("popup_dimmer");
-									popupscreen.style.display="none";
+									var popupcontentareax = document.getElementById("popup_content_area");
+									var animation = document.getElementById("ajaxloadinganimation");
+									popupcontentareax.innerHTML = animation.innerHTML;
+									popupscreen.style.display="block";
 									xhr.onreadystatechange = function () {
 										if (xhr.readyState ==4 && xhr.status == 200){
 											if (xhr.responseText=="error"){
@@ -358,17 +372,7 @@
 
 		</div>
 
-		<span id="popupscreen" style="display: none">
-			<div class="popup_background">
-				<span id="popup_content_area">
-
-				</span>
-			
-			</div>
-			
-			
-			<div class="popup_dimmer" id="popup_dimmer"></div>
-		</span>
+		
 
 		<script>
 			function activate_tab(x) {

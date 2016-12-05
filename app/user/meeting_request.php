@@ -13,7 +13,7 @@ require_once("../database/database.php");
     </div>
     <div style="margin: 20px;max-height: 450px;overflow: auto;">
         <div class="input_title">Subject</div><br>
-        <input class="group_administration_txtbox" required placeholder="Subject for the Request" name="subject" type="text"><br><br>
+        <input class="group_administration_txtbox" required placeholder="Subject for the Request" name="subject" type="text" ><br><br>
         <div>
             <div style="width: 50%;height: 60px;float: left;">
                 <div class="input_title">Date</div><br>

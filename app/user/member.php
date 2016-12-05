@@ -209,7 +209,11 @@
 						var xhr = new XMLHttpRequest();
 						var dimmer = document.getElementById("popup_dimmer");
 						var popupscreen = document.getElementById("popupscreen");
-						popupscreen.style.display="none";
+
+						var popupcontentareax = document.getElementById("popup_content_area");
+						var animation = document.getElementById("ajaxloadinganimation");
+						popupcontentareax.innerHTML = animation.innerHTML;
+						popupscreen.style.display="block";
 						xhr.onreadystatechange = function () {
 							if (xhr.readyState ==4 && xhr.status == 200){
 								var popupcontentarea = document.getElementById("popup_content_area");

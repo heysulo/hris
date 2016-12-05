@@ -37,11 +37,11 @@ if (mysqli_num_rows($result)==1){
         $row = mysqli_fetch_assoc($result);
         $target = $row['source_id'];
         if (mysqli_num_rows($result)==1){
-            $updatequery = "UPDATE meeting SET status=1 WHERE meeting_id=$mr_id;";
+            $updatequery = "UPDATE meeting SET status=2 WHERE meeting_id=$mr_id;";
             $result = mysqli_query($conn,$updatequery);
             if ($result){
-                $content = "<b>".$_SESSION['fname']." ".$_SESSION['lname']."</b> accepted your meeting request.";
-                $updatequery = "INSERT INTO notification(member_id, message, unshown, seen, action) VALUES ($target, \"$content\",1,0,\"ma_".$mr_id."\")";
+                $content = "<b>".$_SESSION['fname']." ".$_SESSION['lname']."</b> rejected your meeting request.";
+                $updatequery = "INSERT INTO notification(member_id, message, unshown, seen, action) VALUES ($target, \"$content\",1,0,\"md_".$mr_id."\")";
                 $res = mysqli_query($conn,$updatequery);
                 echo "success";
             }else{

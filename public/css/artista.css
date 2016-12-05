@@ -3384,6 +3384,11 @@ li.active a, li.active a:hover {
     border-top-right-radius: 5px;
 }
 
+.daialog_reshedule_bg{
+    width: 400px;
+    height: 500px;
+    padding:20px;
+}
 
 /***/
 .tg  {border-collapse:collapse;border-spacing:0;border:2px solid #3F4E5E;}

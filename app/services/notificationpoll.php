@@ -47,10 +47,10 @@ if (startsWith($action,"mr_")) { //meeting request
                         <?php echo $msg; ?>
                     </div>
                     <div class="dialog_notification_button_area">
-                        <input type="button" class="dialog_notification_button" value="Accept"
-                               onclick='acceptmeeting("<?php echo $or_nid; ?>","<?php echo $nid; ?>")'>
-                        <input type="button" class="dialog_notification_button" value="Reshedule">
-                        <input type="button" class="dialog_notification_button" value="Reject">
+                        <input type="button" class="dialog_notification_button" value="Accept" onclick='acceptmeeting("<?php echo $or_nid; ?>","<?php echo $nid; ?>")'>
+                        <input type="button" class="dialog_notification_button" value="Reshedule" onclick='reshedulemeeting("<?php echo $or_nid; ?>","<?php echo $nid; ?>")' >
+                        <input type="button" class="dialog_notification_button" value="Reject" onclick='rejectmeeting("<?php echo $or_nid; ?>","<?php echo $nid; ?>")'>
+
                     </div>
                 </div>
             </div>
@@ -72,6 +72,20 @@ if (startsWith($action,"mr_")) { //meeting request
     
     <?php
     
+}elseif (startsWith($action,"md_")){
+    ?>
+    <li class="notification_item" id="<?php echo $nid; ?>">
+        <div class="notification_bg">
+            <div class="notify_icon notify_icon_default"></div>
+            <div class="notify_close_button" onclick='clearnotification("<?php echo $nid; ?>")'></div>
+            <div class="notify_content">
+                <?php echo $msg; ?>
+            </div>
+        </div>
+    </li>
+
+    <?php
+
 }else{
     echo "GG";
 }
