@@ -5,7 +5,7 @@ function startsWith($haystack, $needle) {
 }
 
 $conn = null;
-require_once("config.conf");
+require_once("../user/config.conf");
 require_once("../database/database.php");
 if (!isset($_SESSION['user_id'])){
     require_once ("../templates/refresher.php");

@@ -326,20 +326,14 @@
 					<div class="dbox group_tab_members group_members_dbox">
 
 						<?php if($_SESSION['system_member_add_power']){?>
-							<!-------------------------------ADD NEW Batch--------------------------->
-							<div class="group_administration_content_field">
-								<div class="group_administration_content_field_name">Add New Batch</div>
-								<div class="group_administration_content_field_value">
-									<form method="post" enctype="multipart/form-data" action="adminFunction.php" onsubmit="return validateBatchName()">
-										<input type="text" class="group_administration_txtbox" name="batch" placeholder="Ex : B2014" id="new_batch_name" required><br><br>
-										<span style="font-size: 12px">Please confirm uploaded data arranged correct format.<br> Json data should format to { 'index_number':14020646,'registration_number':2014/IS/99 } </span><br><br>
-										<input type="file" name="readFile" accept="application/json" required>
-										<button class="msgbox_button group_writer_button" name="upload_batch_json" type="submit" > Upload </button>
-									</form>
 
-								</div>
+                            <div class="group_administration_content_field">
+                                <div class="group_administration_content_field_name">Batch Detail Area</div>
+                                <dvi class="group_administration_content_field_value">
 
-							</div>
+                                    <button class="msgbox_button group_writer_button" name="batchFunction" onclick="window.location.replace('/hris/app/admin/batchFunction.php')">Batch Functions</button>
+                                </dvi>
+                            </div>
 							<div class="group_administration_content_field">
 								<div class="group_administration_content_field_name">Academic Area</div>
 								<dvi class="group_administration_content_field_value">
@@ -490,17 +484,6 @@
 				return false;
 			}
 
-		}
-
-		function validateBatchName() {
-			var ss = $('#new_batch_name').val();
-			var aa = ss.slice(0,1);
-			if(aa == 'B'){
-				return true;
-			}else{
-				swal('Error','Batch name not acceptable. Please use given format. Ex : B2014 ( First letter should be "B" and then batch year.)','error');
-				return false;
-			}
 		}
 
 	</script>
