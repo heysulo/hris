@@ -24,6 +24,29 @@
 
     ?>
     <title>HRIS | Administration</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: auto;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: solid 3px white;
+            text-align: center;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+
 </head>
 <body>
 <div style="padding: 0px;">
@@ -31,6 +54,13 @@
     <?php include_once('../templates/top_pane.php'); ?>
     <div class="bottomPanel" style="height: 100%;">
 
+        <div class="group_main_menu">
+            <ul>
+                <li class="group_main_menu_item group_main_menu_item_active" id="main_menu_course" onclick="activate_tab(1);">Course</li>
+                <li class="group_main_menu_item" id="main_menu_result" onclick="activate_tab(2);">Result</li>
+                <li class="group_main_menu_item" id="main_menu_analysis" onclick="activate_tab(3);">Analytics</li>
+            </ul>
+        </div>
 
         <div class="group_div_content" id="tab_batch">
             <div class="dbox group_tab_members group_members_dbox">
@@ -38,7 +68,7 @@
                 <?php if($_SESSION['system_admin_panel_access']){?>
                     <!-------------------------------ADD Course Details--------------------------->
                     <div class="group_administration_content_field">
-                        <div class="group_administration_content_field_name">Add Course Details</div>
+                        <div class="group_administration_content_field_name">Add Course</div>
                         <div class="group_administration_content_field_value">
 
                             <form action="adminFunction.php" method="POST">
@@ -73,39 +103,100 @@
                     </div>
 
                     <br>
-                    <!-------------------------------ADD Results--------------------------->
                     <div class="group_administration_content_field">
-                        <div class="group_administration_content_field_name">Add Results</div>
-                        <div class="group_administration_content_field_value">
 
-                            <form action="addResult.php" method="post" enctype="multipart/form-data">
+                        <h4>Course Details</h4>
 
-                                <?php
-                                    $q = mysqli_query($conn,"SELECT * FROM course");
-                                    if ($q){?>
+                        <table>
+                            <tr>
+                                <th> Course Code </th>
+                                <th> Description </th>
+                                <th> Degree Program </th>
+                                <th> Credits </th>
+                            </tr>
+
+                            <?php
+
+                            $res = mysqli_query($conn,"SELECT * FROM course ORDER BY course_code ASC ");
+                            while($data = mysqli_fetch_assoc($res)){
+
+                                $code= $data['course_code'];
+                                $desc = $data['title'];
+                                $degree = $data['degree'];
+                                $credit = $data['credit'];
+
+                                echo "  <tr>
+                                            <td> $code</td>
+                                            <td> $desc </td>
+                                            <td> $degree</td>
+                                            <td> $credit </td>
+                                        </tr>";
+                            }
+
+                            ?>
+
+<!--                            <tr>-->
+<!--                                <td> 1001 </td>-->
+<!--                                <td> Information System</td>-->
+<!--                                <td> IS </td>-->
+<!--                                <td> 3 </td>-->
+<!--                            </tr>-->
+
+                        </table>
+                    </div>
+
+
+
+                <?php }?>
+
+
+
+                <?php
+                if(!($_SESSION['system_admin_panel_access'])){
+                    echo "You dont have any permissions.";
+                }
+                ?>
+            </div>
+        </div>
+
+<!--        Result and GPA functionalities shows here-->
+        <div class="group_div_content" id="tab_result">
+            <div class="dbox group_tab_members group_members_dbox">
+
+                <?php if($_SESSION['system_admin_panel_access']){?>
+                <!-------------------------------ADD Results--------------------------->
+                <div class="group_administration_content_field">
+                    <div class="group_administration_content_field_name">Add Results</div>
+                    <div class="group_administration_content_field_value">
+
+                        <form action="addResult.php" method="post" enctype="multipart/form-data">
+
+                            <?php
+                            $q = mysqli_query($conn,"SELECT * FROM course");
+                            if ($q){?>
                                 <label for="course_id"> Course :
-                                        <select name="course"  id="course_id" required>
-                                            <option value="">-- Select --</option>
-                                    <?php
+                                    <select name="course"  id="course_id" required>
+                                        <option value="">-- Select --</option>
+                                        <?php
                                         while($row = mysqli_fetch_assoc($q)){
                                             $course_title = $row['title'];
                                             $course_code = $row['course_code'];
 
-                                           echo "<option value='$course_code'> $course_code - $course_title </option>";
+                                            echo "<option value='$course_code'> $course_code - $course_title </option>";
 
                                         }?>
-                                        </select>
-                                    </label>
+                                    </select>
+                                </label>
                                 <?php
-                                    }
-                                ?>
+                            }
+                            ?>
 
-                                <br>
+                            <br>
 
-                                <?php
-                                $q2 = mysqli_query($conn,"SELECT * FROM batchList");
-                                if ($q2){?>
-                                    <label for="batch_id"> Batch :
+                            <?php
+                            $q2 = mysqli_query($conn,"SELECT * FROM batchList");
+                            if ($q2){?>
+                                <label for="batch_id"> Batch :
                                     <select name="batch"  id="batch_id" required>
                                         <option value="">-- Select --</option>
                                         <?php
@@ -116,21 +207,22 @@
 
                                         }?>
                                     </select>
-                                    </label>
-                                    <?php
-                                }
-                                ?>
+                                </label>
+                                <?php
+                            }
+                            ?>
 
 
-                                <br>
-                                <span style="font-size: 12px">Please confirm uploading data arranged correct format.<br> Json data should format to { 'index_number':14020646,'IS1001':'B+' } </span><br><br>
-                                <input type="file" name="readFile" accept="application/json"><br><br>
-                                <input type="submit" name="add_result" value="Upload" class="msgbox_button group_writer_button">
+                            <br>
+                            <span style="font-size: 12px">Please confirm uploading data arranged correct format.<br> Json data should format to { 'index_number':14020646,'IS1001':'B+' } </span><br><br>
+                            <input type="file" name="readFile" accept="application/json"><br><br>
+                            <input type="submit" name="add_result" value="Upload" class="msgbox_button group_writer_button">
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
-                    <br>
+                </div>
+
+
                     <!-- ----------------------------- Add GPA table ------------------------- -->
                     <div class="group_administration_content_field">
                         <div class="group_administration_content_field_name">Add GPA List </div>
@@ -157,18 +249,18 @@
                                 }
                                 ?>
                                 <br><br>
-                                    <label> Degree Program :
-                                        <select name="degree" class="group_administration_txtbox" required>
-                                            <option value=""> -- Select -- </option>
-                                            <option value="IS">Information System</option>
-                                            <option value="CS">Computer Science</option>
-                                            <option value="SE">Software Engineering</option>
-                                        </select>
-                                    </label><br>
+                                <label> Degree Program :
+                                    <select name="degree" class="group_administration_txtbox" required>
+                                        <option value=""> -- Select -- </option>
+                                        <option value="IS">Information System</option>
+                                        <option value="CS">Computer Science</option>
+                                        <option value="SE">Software Engineering</option>
+                                    </select>
+                                </label><br>
 
                                 <span style="font-size: 12px">Please confirm uploading data arranged correct format.<br> Json data should format to { 'index_number':14020646,'registration_number':'2014IS099' } </span><br><br>
 
-                                    <input type="file" name="readFile" accept="application/json">
+                                <input type="file" name="readFile" accept="application/json">
 
                                 <br><br>
                                 <input type="submit" name="add_gpa_list" value=" Upload " class="msgbox_button group_writer_button">
@@ -258,15 +350,8 @@
                         </div>
                     </div>
 
-
                 <?php }?>
 
-
-                <?php
-                if(!($_SESSION['system_admin_panel_access'])){
-                    echo "You dont have any permissions.";
-                }
-                ?>
             </div>
         </div>
     </div>
