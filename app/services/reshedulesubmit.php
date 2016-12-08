@@ -2,8 +2,64 @@
 /**
  * Created by PhpStorm.
  * User: sulochana
- * Date: 12/3/16
- * Time: 3:22 PM
+ * Date: 11/29/16
+ * Time: 5:57 PM
  */
-print_r($_REQUEST);
-echo $_REQUEST['date'];
+function validateDate($datex, $format = 'Y-m-d')
+{
+    $d = DateTime::createFromFormat($format, $datex);
+    return ($d && $d->format($format) == $datex);
+}
+
+function validateTime($datex, $format = 'g:i A')
+{
+    $d = DateTime::createFromFormat($format, $datex);
+    return ($d && $d->format($format) == $datex);
+}
+
+function passedevent($datex){
+    return (time() - strtotime($datex))>0;
+}
+
+$conn = null;
+require_once("./config.conf");
+require_once("../database/database.php");
+require_once("../templates/refresher.php");
+$mid = $_POST['mid'];
+$query2 = "SELECT * FROM meeting where meeting_id=$mid";
+$result = mysqli_query($conn,$query2);
+$row = mysqli_fetch_assoc($result);
+
+$date = mysqli_real_escape_string($conn,$_POST['date']);
+$time = strtoupper(mysqli_real_escape_string($conn,$_POST['time']));
+
+
+if(!validateDate($date, 'Y-m-d')){
+    echo "0x03"; //invalid date
+    die();
+}
+
+if(!validateTime($time)){
+    echo "0x04"; //invalid time
+    die();
+}
+
+if(passedevent($date." ".$time)){
+    echo "0x05"; //not in the future
+    die();
+}
+
+
+$summary = mysqli_real_escape_string($conn,$_POST['subject']);
+$description = mysqli_real_escape_string($conn,$_POST['description']);
+$updatequery = "INSERT INTO meeting(source_id, target_id, subject, description, date, time, status) VALUES (".$_SESSION['user_id'].",".$row['member_id'].",\"$summary\",\"$description\",\"$date\",\"$time\",0)";
+$res = mysqli_query($conn,$updatequery);
+if ($res){
+    $content = "<b>".$_SESSION['fname']." ".$_SESSION['lname']."</b> requested a meeting with you on $date at $time. This is regarding $summary.";
+    $updatequery = "INSERT INTO notification(member_id, message, unshown, seen, action) VALUES ($target, \"$content\",1,0,\"mr_".$conn->insert_id."\")";
+    $res = mysqli_query($conn,$updatequery);
+    echo "success";
+}else{
+    echo "0x06"; //sqlerror
+}
+

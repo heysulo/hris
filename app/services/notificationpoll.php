@@ -17,7 +17,7 @@ $nid = "";
 $or_nid = "";
 $action = 0;
 $flag = 0;
-while ($count == 0 && $flag < 20){
+while ($count == 0 && $flag < 20000){
     $qry = "SELECT * FROM notification WHERE unshown = 1 and member_id=".$_SESSION['user_id'];
     $res = mysqli_query($conn, $qry);
     $row = mysqli_fetch_assoc($res);
@@ -29,7 +29,7 @@ while ($count == 0 && $flag < 20){
     $flag = $flag +1;
     //sleep(1);
 }
-if ($flag>= 20){
+if ($flag>= 20000){
     echo "timeout";
     die();
 }

@@ -1,4 +1,4 @@
-<?php sleep(3);?>
+
 <!--        HTML CONTENT-->
 <form id="frmreshedule" method="post">
 <div class="msgbox_section_title">
@@ -24,7 +24,7 @@
 
       </div>
 <div class="msgbbox_section_bottom" align="right">
-    <button id="confirm_btn" class="msgbox_button msgbox_button_default" type="button" onclick="submitreshedule();">Confirm Changes</button>
+    <button id="confirm_btn" class="msgbox_button msgbox_button_default" type="button" onclick="submitreshedule(<?php echo $_REQUEST['nid']?>);">Confirm Changes</button>
     <button class="msgbox_button " onclick='document.getElementById("popupscreen").style.display = "none"'>Close</button>
 </div>
 </form>

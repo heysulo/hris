@@ -241,14 +241,16 @@
         };
         xhr.open("POST", "<?php echo $server_folder?>reshedulemeeting.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send();
+        xhr.send("nid="+nid);
     }
 
-    function submitreshedule() {
+    function submitreshedule(nid) {
+        var sdata = $("#frmreshedule").serializeArray();
+        sdata.push({name: "nid", value: nid});
         $.ajax({
             type: "POST",
             url: "<?php echo $server_folder?>reshedulesubmit.php",
-            data: $("#frmreshedule").serialize(), // serializes the form's elements.
+            data: sdata, // serializes the form's elements.
             success: function(data)
             {
                 alert(data);
