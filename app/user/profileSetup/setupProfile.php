@@ -110,15 +110,42 @@ $_SESSION['email'] = $email;
                     </div>
                     <div>
                         <select class="welcome_dropdown" name="category" id="role" required>
-                            <option value="">-- select --</option>
+                            <option value="">-- Select your role --</option>
                             <option value="Student">Student</option>
                             <option value="Instructor">Instructor</option>
                             <option value="Lecturer">Lecturer</option>
                             <option value="Academic Staff">Academic Staff</option>
-                        </select><br>
-                        <input type="text" id="aca_year" name="academic_year" class="welcome_inputbox" placeholder="Academic Year"><br>
+                        </select><br> <br>
+
+                        <?php
+                        $q2 = mysqli_query($conn,"SELECT * FROM batchList");
+                        if ($q2){?>
+                            <select style="display: none" name="batch" class="welcome_dropdown"  id="batch_id" required>
+                                <option value="">-- Select your year --</option>
+                                <?php
+                                while($row = mysqli_fetch_assoc($q2)){
+                                    $batch= $row['batch'];
+                                    $bb = ltrim($batch,'B');
+                                    echo "<option value='$batch'> $bb </option>";
+
+                                }?>
+                            </select>
+                            <?php
+                        }
+                        ?>
+
+                        <div>
+                        <input type="text" style="display: none" id="reg_number" name="registration_number" class="welcome_inputbox" placeholder="Registration Number">
+                        <input style="display: none" type="text" id="index_number" name="index_number" class="welcome_inputbox" placeholder="Index Number">
+
+                            <div class="alert" id="index_validate_alert" style="display: none"></div>
+
+                        </div>
+                        <br>
+
+
                         <select class="welcome_dropdown" name="gender" id="gender" required>
-                            <option value="">-- select --</option>
+                            <option value="">-- Gender --</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select><br>
@@ -335,6 +362,48 @@ $_SESSION['email'] = $email;
         //Function for check birth day fields
         $('#birthDayFields').birthdaypicker();
 
+    });
+
+//    Academic year enable validation
+
+    $('#role').change(function(){
+        if ($('#role').val() == "Student"){
+            $('#batch_id').css('display','block');
+            $('#batch_id').prop('selectedIndex',0);
+        }else{
+            $('#batch_id').css('display','none');
+            $('#reg_number').css('display','none');
+            $('#index_number').css('display','none');
+            $('#index_validate_alert').css('display','none');
+            $('#index_number').val("");
+        }
+    });
+
+    $('#batch_id').change(function(){
+        if($(this).val() != ""){
+            $('#reg_number').css('display','block');
+            $('#index_number').css('display','block');
+        }else{
+            $('#reg_number').css('display','none');
+            $('#index_number').css('display','none');
+            $('#index_validate_alert').css('display','none');
+            $('#index_number').val("");
+        }
+
+    });
+
+    $('#index_number').keyup(function(){
+        if($(this).val().length == 8){
+
+            $.ajax({
+                url:
+            });
+
+            $('#index_validate_alert').css('display','block');
+            $('#index_validate_alert').text('Index number / Registration Number not valid. Please check again.');
+        }else{
+            $('#index_validate_alert').css('display','none');
+        }
     });
 
 

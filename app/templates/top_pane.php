@@ -174,7 +174,7 @@
         xhttp.open("GET", "<?php echo $server_folder?>notificationpoll.php", true);
         xhttp.send();
     }
-    window.onload = function () { notificationpoll(); }
+    //window.onload = function () { notificationpoll(); }
     //notificationpoll(); //init call
 
 

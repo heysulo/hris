@@ -145,6 +145,40 @@
                         </table>
                     </div>
 
+                    <br>
+                    <!-------------------------------Remove Course Details--------------------------->
+                    <div class="group_administration_content_field">
+                        <div class="group_administration_content_field_name">Remove Course</div>
+                        <div class="group_administration_content_field_value">
+                            <form method="post"  action="adminFunction.php">
+                                <span style="font-size: 12px;color: indianred">This action may cause to lose all data about course.<br> Please check again before proceed.</span><br>
+                                <br>
+                                <?php
+                                $q2 = mysqli_query($conn,"SELECT * FROM course ORDER BY course_code ASC");
+                                if ($q2){?>
+                                    <label for="course_code"> Batch :
+                                        <select name="course"  id="course_code" required>
+                                            <option value="">-- Select --</option>
+                                            <?php
+                                            while($row = mysqli_fetch_assoc($q2)){
+                                                $code= $row['course_code'];
+                                                $title = $row['title'];
+                                                echo "<option value='$code'> $code - $title </option>";
+
+                                            }?>
+                                        </select>
+                                    </label>
+                                    <?php
+                                }
+                                ?>
+
+                                <br><br>
+                                <button class="msgbox_button group_writer_button red_button" name="remove_course" type="submit" > Remove </button>
+                            </form>
+
+                        </div>
+
+                    </div>
 
 
                 <?php }?>
