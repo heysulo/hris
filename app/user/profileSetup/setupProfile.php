@@ -6,13 +6,17 @@
     <meta name="Description" content="The Human Resource Information System is a place where you can access the shared information of the academic staff and the students of the University of Colombo School of Computing.">
     <meta name="Keywords" content="HRIS,UCSC,University Students Information,Skill Directory">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <meta name="author" content="team helix">
 
-    <title>USER </title>
+    <title>HRIS - Profile Setup</title>
 
     <?php
     define("hris_access",true);
-    require_once('../../templates/path.php');
-    include('../../templates/_header.php');
+
+    $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
+    $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
+    $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
+
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -20,6 +24,10 @@
     require_once("../config.conf");
     require_once ("../../database/database.php");
     ?>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/artista.css">
 
     <style>
         input{
@@ -224,6 +232,8 @@ $_SESSION['email'] = $email;
 
     $(document).ready(function () {
 
+        var validate = false;
+
         $('div#step1').addClass('welcome_step_active');
 
         /*Forward button*/
@@ -267,6 +277,19 @@ $_SESSION['email'] = $email;
                 if($('#role').val() == ""){
                     $('#step2_alert_2').text("Please select your roll.");
                     $('#step2_alert_2').css('display','block');
+                }else if($('#role').val() == "Student"){
+                    $('#step2_alert_2').css('display','none');
+                    if(validate){
+                        $('#step2_alert_2').css('display','none');
+                        $('#content_2').fadeOut();
+                        $('#content_3').fadeIn();
+                        $('body').scrollTop(0);
+                        $('div#step3').addClass('welcome_step_active');
+                        $('div#step2').removeClass('welcome_step_active');
+                    }else{
+                        $('#step2_alert_2').text("Please insert Register Number and Index Number correctly.");
+                        $('#step2_alert_2').css('display','block');
+                    }
                 }else{
                     $('#step2_alert_2').css('display','none');
                     if($('#gender').val() ==""){
@@ -395,14 +418,36 @@ $_SESSION['email'] = $email;
     $('#index_number').keyup(function(){
         if($(this).val().length == 8){
 
+            var index = $(this).val();
+            var reg = $('#reg_number').val();
+
             $.ajax({
-                url:
+                url:'validateIndex.php',
+                data:{'index':index,'reg':reg},
+                method:'POST',
+                success:function(resp){
+                    $('#step2_alert_2').css('display','none');
+                    if(resp[0] == 1){
+                        console.log("1");
+                        $('#step2_alert_2').css('display','block');
+                        $('#step2_alert_2').text('Already system has a account using this Index Number and Registration Number. Please try again.');
+                    }else if (resp[0] == 0) {
+                        console.log("0");
+                        validate = true;
+                    } else if (resp == null){
+                        console.log("null");
+                        $('#step2_alert_2').css('display', 'block');
+                        $('#step2_alert_2').text('Index number / Registration Number not valid. .Please check again.');
+                    }
+                }
             });
 
-            $('#index_validate_alert').css('display','block');
-            $('#index_validate_alert').text('Index number / Registration Number not valid. Please check again.');
+
+        }else if($(this).val().length >8){
+            $(this).val($(this).val().substr(0,8));
         }else{
             $('#index_validate_alert').css('display','none');
+
         }
     });
 
