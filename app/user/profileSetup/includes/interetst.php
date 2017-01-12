@@ -12,8 +12,8 @@
 			
 	</div>
 
-	<input id="new_skill_input" name="firstname" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text"><br><br>
-	<center><input type="button" onclick="insertSkill();" class="default_button edit_profile_contactinfo_add_button" value="Add to Profile"></center>
+	<input id="new_skill_input" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text"><br><br>
+	<center><input type="button" onclick="insertSkill();" class="default_button edit_profile_contactinfo_add_button" value="Add Skill"></center>
 	<br><br>
 	<div id="skill_item_container">
 		<!--<div class="skill_item">
