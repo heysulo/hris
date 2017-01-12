@@ -73,10 +73,10 @@ switch ($row['status']){
 
     </div>
     <div class="msgbbox_section_bottom" align="right">
-        <?php if($row['status'] ==0){?><input type="button" value="Accept" class="msgbox_button group_writer_button"><?php }?>
-        <?php if($row['status'] ==0 or $row['status'] ==1 or $row['status'] ==3){?><input type="button" value="Reject" class="msgbox_button red_button"><?php }?>
+        <?php if($row['status'] ==0 and $row['target_id']==$my_id){?><input type="button" value="Accept" class="msgbox_button group_writer_button" onclick="mt_mgr_accept(<?=$row['meeting_id']?>);"><?php }?>
+        <?php if(($row['status'] ==0 or $row['status'] ==1 or $row['status'] ==3) and $row['target_id']==$my_id){?><input type="button" value="Reject" class="msgbox_button red_button" onclick="mt_mgr_reject(<?=$row['meeting_id']?>);"><?php }?>
         <?php if($row['status'] !=2 and $row['status'] !=4  ){?><input type="button" value="Reshedule" class="msgbox_button blue_button"><?php }?>
-        <?php if($row['status'] !=0 ){?><input type="button" value="Completed" class="msgbox_button yellow_button"><?php }?>
+        <?php if($row['status'] !=0 ){?><input type="button" value="Delete" class="msgbox_button yellow_button" onclick="mt_mgr_delete(<?=$row['meeting_id']?>);"><?php }?>
 
     </div>
 </form>

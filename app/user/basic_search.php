@@ -53,6 +53,7 @@
 
     <div class="dashboard_bottom">
         <?php
+        $flag =0;
         $conn = null;
         require_once("../user/config.conf");
         require_once ("../database/database.php");
