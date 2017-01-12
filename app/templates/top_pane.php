@@ -17,10 +17,9 @@
     </div>
 
 </span>
-<span id="popupscreen" style="display: block">
+<span id="popupscreen" style="display: none">
 	<div class="popup_background">
 		<span id="popup_content_area">
-            <?php include ("../services/reshedulemeeting.php");?>
 
 		</span>
 	</div>
@@ -174,8 +173,8 @@
         xhttp.open("GET", "<?php echo $server_folder?>notificationpoll.php", true);
         xhttp.send();
     }
-    window.onload = function () { notificationpoll(); }
-    //notificationpoll(); //init call
+    //window.onload = function () { notificationpoll(); }
+    notificationpoll(); //init call
 
 
 
@@ -246,6 +245,7 @@
 
     function submitreshedule(nid) {
         var sdata = $("#frmreshedule").serializeArray();
+        var popupscreen = document.getElementById("popupscreen");
         sdata.push({name: "nid", value: nid});
         $.ajax({
             type: "POST",
@@ -253,11 +253,44 @@
             data: sdata, // serializes the form's elements.
             success: function(data)
             {
-                alert(data);
+                switch (data){
+                    case "success":
+                        popupscreen.style.display="none";
+                        popupcontentarea.innerHTML = "";
+                        msgbox("The meeting request has being rescheduled.","Meeting rescheduled",1);
+                        break;
+
+                    case "0x03":
+                        popupscreen.style.display="none";
+                        msgbox("The date seems to be in an invalid format. Please make sure that the date is in the format <b>YYYY-MM-DD</b> and make the request.","Invalid date",2,"Okay","unhidepopup");
+                        break;
+
+                    case "0x04":
+                        popupscreen.style.display="none";
+                        msgbox("The time seems to be in an invalid format. Please make sure that the time is in the format <b>HH:MM AM/PM</b> and make the request. For an example <b>12:34 PM</b> is in the correct format.","Invalid time",2,"Okay","unhidepopup");
+                        break;
+
+                    case "0x05":
+                        popupscreen.style.display="none";
+                        msgbox("The date and time you selected should be in the future. Please select a date and a time from the future.","Invalid Date and Time",2,"Okay","unhidepopup");
+                        break;
+
+                    default:
+                        popupscreen.style.display="none";
+                        msgbox("Something went wrong and your meeting request was <b>not</b> sent. Please try again later","Something went wrong",3,"Okay","unhidepopup");
+                        break;
+
+
+                }
             }
         });
 
 
+    }
+
+    function unhidepopup() {
+        var popupscreen = document.getElementById("popupscreen");
+        popupscreen.style.display="block";
     }
 
 </script>

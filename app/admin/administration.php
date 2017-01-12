@@ -22,10 +22,10 @@
 	<title>HRIS | Administration</title>
 </head>
 <body>
-
+<?php include_once('../templates/navigation_panel.php'); ?>
+<?php include_once('../templates/top_pane.php'); ?>
 	<div class="clearfix">
-		<?php include_once('../templates/navigation_panel.php'); ?>
-		<?php include_once('../templates/top_pane.php'); ?>
+
 		<div class="bottomPanel">
 			<?php if($_SESSION['system_admin_panel_access']){
 

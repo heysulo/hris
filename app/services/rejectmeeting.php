@@ -52,6 +52,44 @@ if (mysqli_num_rows($result)==1){
             echo "0x02";
         }
 
+    }elseif($result && startsWith($mr_id,"mc_")){
+        $mr_id = substr($mr_id, 3);
+        $updatequery = "SELECT * FROM meeting WHERE meeting_id=".$mr_id;
+        $result = mysqli_query($conn,$updatequery);
+        $row = mysqli_fetch_assoc($result);
+        $bounce = false;
+        if($row['source_id']==$_SESSION['user_id']){
+            $bounce = true;
+            $target = $row['target_id'];
+        }else{
+            $bounce = false;
+            $target = $row['source_id'];
+        }
+        if (mysqli_num_rows($result)==1){
+            $updatequery = "UPDATE meeting SET status=2 WHERE meeting_id=$mr_id;";
+            $result = mysqli_query($conn,$updatequery);
+            if ($result){
+                if($bounce){
+                    $content = "<b>".$_SESSION['fname']." ".$_SESSION['lname']."</b> canceled the meeting with you.";
+                    $updatequery = "INSERT INTO notification(member_id, message, unshown, seen, action) VALUES ($target, \"$content\",1,0,\"ma_".$mr_id."\")";
+                    $res = mysqli_query($conn,$updatequery);
+                }else{
+                    $updatequery = "SELECT member.* FROM member join meeting on member_id=source_id and meeting_id=$mr_id";
+                    $result = mysqli_query($conn,$updatequery);
+                    $row = mysqli_fetch_assoc($result);
+                    $content = "<b>".$row['first_name']." ".$row['last_name']."</b> canceled the meeting with you.";
+                    $updatequery = "INSERT INTO notification(member_id, message, unshown, seen, action) VALUES ($target, \"$content\",1,0,\"ma_".$mr_id."\")";
+                    $res = mysqli_query($conn,$updatequery);
+                }
+                echo "success";
+            }else{
+                echo "0x01";
+            }
+
+        }else{
+            echo "0x02";
+        }
+
     }else{
         echo "0x03";
     }
