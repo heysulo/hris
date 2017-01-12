@@ -484,14 +484,18 @@ h3{
     background-color: #EFF3F4;
 }
 
+body {
+    background-color: #eff3f4;
+}
+
 /*~~~~BOTPANE~~~~~~*/
 .bottomPanel{
     float: right;
-    margin-top: 40px;
+    padding-top: 60px;
     width: 100%;
     background-color: #eff3f4;
     width: calc(100% - 220px);
-    height: calc(100vh - 40px);
+    height: calc(100vh - 60px);
     overflow: auto;
     z-index: 3;
 }
@@ -503,6 +507,8 @@ h3{
 .clearfix {
     margin: 0;
     height: 100%;
+    padding-left: calc((100% - 1250px)/2);
+    background-color: #eff3f4;
 }
 
 .ucsclogo{
@@ -2697,6 +2703,13 @@ h3{
     color: black !important;
 }
 
+.blue_button{
+    background-color: #365899 !important;
+    border-color: #365899 !important;
+
+    color: white !important;
+}
+
 .group_writer_bottom{
     width: auto;
     height: auto;
@@ -2969,7 +2982,7 @@ h3{
 }
 
 .group_administration_content_field_name{
-    width: 100px;
+    width: 150px;
     font-size: 12px;
     color: #666;
     text-align: right;
@@ -2993,8 +3006,7 @@ h3{
 }
 
 .group_administration_content_field_value{
-    margin-left: 100px;
-    padding-left: 20px;
+    margin-left: 170px;
 }
 .group_administration_content_field_value_sub{
     float: left;
@@ -3228,6 +3240,86 @@ li.active a, li.active a:hover {
     margin: 5px;
 }
 
+
+/**************notification dasjbaord***********/
+.meeting_request_element{
+    width: calc(100% - 10px);
+    min-height: 80px;
+    border: 1px #e7e7e7 solid;
+    border-radius: 2px;
+    margin: 2px 0 2px 0;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+
+.meeting_request_element:hover{
+    background-color: #f6f7f9;
+    border: 1px #ffd700 solid;
+
+}
+
+.met_req_name{
+    min-height: 15px;
+    padding: 5px;
+    color: #323232;
+    font-weight: bold;
+}
+
+.met_req_field{
+    min-height: 15px;
+    padding: 5px;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    color: #3c3c3c;
+}
+
+.req_status_txt_pending{
+    color: #2db0eb;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.req_status_txt_active{
+    color: green;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.req_status_txt_resheduled{
+    color: #ff3399;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.req_status_txt_canceled{
+    color: red;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.notification_elem_box{
+
+    margin: 2px 0 2px 0;
+    overflow: auto;
+    max-height: 250px;
+}
+
+
+/***************meeting_mgr***************/
+.mt_mgr_tag{
+    border: 1px #ffd700 solid;
+    background-color: #ffe700;
+}
+
+.mt_mgr_btn_set{
+    background-color: #E1ECF4;
+    padding: 5px;
+    margin: 0;
+    display:inline-block;
+    border: 1px #c3c3c3 solid;
+}
 
 /*********************404 page**********/
 .error_page_box{

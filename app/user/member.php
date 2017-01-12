@@ -58,9 +58,10 @@
 	$pro_pic = $_SESSION['pro_pic'];
 	$user_id = $_SESSION['user_id'];
 
-
-
-	$view_id = $_GET["id"];
+	$view_id = $user_id;
+	if(isset($_GET["id"])){
+		$view_id = $_GET["id"];
+	}
 	$row = null;
 	$vision_power = null;
 	$query = "SELECT * FROM member JOIN system_role on member.system_role = system_role.system_role_id and member_id=$view_id";
@@ -199,10 +200,7 @@
 				</div>
 				<?php } ?>
 				<script>
-					function unhidepopup() {
-						var popupscreen = document.getElementById("popupscreen");
-						popupscreen.style.display="block";
-					}
+
 
 
 					function requestmeeting() {

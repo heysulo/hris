@@ -29,7 +29,7 @@
 <div style="padding: 0px;">
     <?php include_once('../templates/navigation_panel.php'); ?>
     <?php include_once('../templates/top_pane.php'); ?>
-
+    
     <div class="bottomPanel">
 
         <div style="float:left;width:auto;">

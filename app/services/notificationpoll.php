@@ -17,7 +17,7 @@ $nid = "";
 $or_nid = "";
 $action = 0;
 $flag = 0;
-while ($count == 0 && $flag < 20){
+while ($count == 0 && $flag < 2000){
     $qry = "SELECT * FROM notification WHERE unshown = 1 and member_id=".$_SESSION['user_id'];
     $res = mysqli_query($conn, $qry);
     $row = mysqli_fetch_assoc($res);
@@ -29,7 +29,7 @@ while ($count == 0 && $flag < 20){
     $flag = $flag +1;
     //sleep(1);
 }
-if ($flag>= 20){
+if ($flag>= 2000){
     echo "timeout";
     die();
 }
@@ -80,6 +80,30 @@ if (startsWith($action,"mr_")) { //meeting request
             <div class="notify_close_button" onclick='clearnotification("<?php echo $nid; ?>")'></div>
             <div class="notify_content">
                 <?php echo $msg; ?>
+            </div>
+        </div>
+    </li>
+
+    <?php
+
+}elseif (startsWith($action,"mc_")){
+    ?>
+    <li class="notification_item" id="<?php echo $nid; ?>">
+        <div class="notification_bg">
+            <div class="notify_icon notify_icon_date"></div>
+            <div class="notify_close_button" onclick='clearnotification("<?php echo $nid; ?>")'></div>
+            <div class="notify_content">
+                <div class="dialog_notification_background">
+                    <div class="dialog_notification_content">
+                        <?php echo $msg; ?>
+                    </div>
+                    <div class="dialog_notification_button_area">
+                        <input type="button" class="dialog_notification_button" value="Accept" onclick='acceptmeeting("<?php echo $or_nid; ?>","<?php echo $nid; ?>")'>
+                        <input type="button" class="dialog_notification_button" value="Reshedule" onclick='reshedulemeeting("<?php echo $or_nid; ?>","<?php echo $nid; ?>")' >
+                        <input type="button" class="dialog_notification_button" value="Reject" onclick='rejectmeeting("<?php echo $or_nid; ?>","<?php echo $nid; ?>")'>
+
+                    </div>
+                </div>
             </div>
         </div>
     </li>

@@ -6,7 +6,7 @@ document.getElementById('dashboard').addEventListener("click",function () {
 });
 
 document.getElementById('profile').addEventListener("click",function () {
-    location.href=path+"user/profile.php";
+    location.href=path+"user/member.php";
 });
 
 document.getElementById('skill_directory').addEventListener("click",function () {

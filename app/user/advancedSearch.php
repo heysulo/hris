@@ -30,9 +30,9 @@
 </head>
 <body>
 
+<?php include_once('../templates/navigation_panel.php'); ?>
+<?php include_once('../templates/top_pane.php'); ?>
 <div class="clearfix">
-    <?php include_once('../templates/navigation_panel.php'); ?>
-    <?php include_once('../templates/top_pane.php'); ?>
 
     <!--Content goes here-->
     <div class="bottomPanel">
