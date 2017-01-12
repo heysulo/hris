@@ -1,7 +1,7 @@
 <div>
 	<div class="dboxheader dbox_head_profile_languages">
 		<div class="dboxtitle botmarg">
-			Compatible Languages
+			Languages
 		</div>
 	</div>
 	<hr class="advancedsearch_hr">

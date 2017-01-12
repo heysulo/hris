@@ -5,14 +5,18 @@
     <meta charset="utf-8">
     <meta name="Description" content="The Human Resource Information System is a place where you can access the shared information of the academic staff and the students of the University of Colombo School of Computing.">
     <meta name="Keywords" content="HRIS,UCSC,University Students Information,Skill Directory">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel='shortcut icon' href='/hris/favicon.ico' type='image/x-icon'/ >
+    <meta name="author" content="team helix">
 
-    <title>USER </title>
+    <title>HRIS - Profile Setup</title>
 
     <?php
     define("hris_access",true);
-    require_once('../../templates/path.php');
-    include('../../templates/_header.php');
+
+    $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
+    $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
+    $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
+
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -20,6 +24,10 @@
     require_once("../config.conf");
     require_once ("../../database/database.php");
     ?>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $publicPath?>css/artista.css">
 
     <style>
         input{
@@ -138,8 +146,6 @@ $_SESSION['email'] = $email;
                         <input type="text" style="display: none" id="reg_number" name="registration_number" class="welcome_inputbox" placeholder="Registration Number">
                         <input style="display: none" type="text" id="index_number" name="index_number" class="welcome_inputbox" placeholder="Index Number">
 
-                            <div class="alert" id="index_validate_alert" style="display: none"></div>
-
                         </div>
                         <br>
 
@@ -197,12 +203,12 @@ $_SESSION['email'] = $email;
                 <?php
                     include("./includes/interetst.php");
                     echo "<hr class=\"welcome_profile_setup_hr\">";
-                    include("./includes/languages.php");
+                    //include("./includes/languages.php");
                 ?>
                 <br>
                 <div style="text-align: center; margin-top: auto">
 
-                    <input class="user_choose_button welcome_continue_button" value="Go to Dashboard" type="submit" id="step4" name="submit">
+                    <input class="user_choose_button welcome_continue_button" value="Complete Profile Setup" type="submit" id="step4" name="submit">
                     <input class="user_choose_button welcome_back_button" value="Back" type="button" id="back3">
 
                 </div>
@@ -221,6 +227,9 @@ $_SESSION['email'] = $email;
 <script src="<?php echo $publicPath?>js/jquery.validate.min.js"></script>
 <script src="<?php echo $publicPath?>js/bday-picker.js"></script>
 <script>
+
+
+    var validate = false;
 
     $(document).ready(function () {
 
@@ -267,6 +276,20 @@ $_SESSION['email'] = $email;
                 if($('#role').val() == ""){
                     $('#step2_alert_2').text("Please select your roll.");
                     $('#step2_alert_2').css('display','block');
+                }else if($('#role').val() == "Student"){
+                    $('#step2_alert_2').css('display','none');
+                    indexValidityCheck();
+                    if( validate ){
+                        $('#step2_alert_2').css('display','none');
+                        $('#content_2').fadeOut();
+                        $('#content_3').fadeIn();
+                        $('body').scrollTop(0);
+                        $('div#step3').addClass('welcome_step_active');
+                        $('div#step2').removeClass('welcome_step_active');
+                    }else{
+                        $('#step2_alert_2').text("Please check Register Number and Index Number.");
+                        $('#step2_alert_2').css('display','block');
+                    }
                 }else{
                     $('#step2_alert_2').css('display','none');
                     if($('#gender').val() ==""){
@@ -357,12 +380,11 @@ $_SESSION['email'] = $email;
         });
         function imageIsLoaded(e) {
             $('#pro_pic').css('background-image', 'url('+e.target.result+')');
-        };
-
+        }
         //Function for check birth day fields
         $('#birthDayFields').birthdaypicker();
 
-    });
+    });;
 
 //    Academic year enable validation
 
@@ -392,17 +414,39 @@ $_SESSION['email'] = $email;
 
     });
 
+//    Function to check validity of index number and register number
+    function indexValidityCheck(){
+        var index = $('#index_number').val();
+        var reg = $('#reg_number').val();
+        var batch = $('#batch_id').val();
+
+        $.ajax({
+            url:'validateIndex.php',
+            data:{'index':index,'reg':reg,'batch':batch},
+            method:'POST',
+            success:function(resp){
+                $('#step2_alert_2').css('display','none');
+                if(resp == 1){
+                    $('#step2_alert_2').css('display','block');
+                    $('#step2_alert_2').text('Already system has a account using this Index Number and Registration Number. Please try again.');
+                }else if (resp == 0) {
+                    validate = true;
+                } else {
+                    $('#step2_alert_2').css('display', 'block');
+                    $('#step2_alert_2').text('Index number / Registration Number not valid. .Please check again.');
+                }
+            }
+        });
+    }
+
     $('#index_number').keyup(function(){
         if($(this).val().length == 8){
-
-            $.ajax({
-                url:
-            });
-
-            $('#index_validate_alert').css('display','block');
-            $('#index_validate_alert').text('Index number / Registration Number not valid. Please check again.');
+            indexValidityCheck();
+        }else if($(this).val().length >8){
+            $(this).val($(this).val().substr(0,8));
         }else{
             $('#index_validate_alert').css('display','none');
+
         }
     });
 
@@ -415,18 +459,21 @@ $_SESSION['email'] = $email;
         var code = "<div class=\"contact_info_item edit_profile_contactinfo_item\">" +
             "<div class=\"edit_profile_contactinfo_item_field\">"+opt+"</div>" +
             "<div class=\"edit_profile_contactinfo_item_remove\" onclick=\'this.parentElement.outerHTML=\"\";\'>" +
-            "</div><div class=\"edit_profile_contactinfo_item_value\">"+val+"</div>" +
-            "</div>";
+            "</div><div class=\"edit_profile_contactinfo_item_value\">"+val+"</div>" + "<input type='hidden' name='contactInfo["+opt+"]' value='"+val+"'>"+ "</div>";
         par.innerHTML += code;
     }
 
+    // <input type="hidden" name="contactInfo['']" value="">
 
     /*Skills data insert function*/
     function insertSkill() {
         var par = document.getElementById("skill_item_container");
         var val = document.getElementById("new_skill_input").value;
-        var code = "<div class=\"skill_item\"><div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
+        var code =  "<div class=\"skill_item\">" +
+                    "<div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\">" +
+                    "</div>"+val+"<input type='hidden' name='interestSkillItem["+'skill'+"]' value='"+val+"'></div>";
         par.innerHTML += code;
+        //
     }
 
     /*Shared info adding function*/
@@ -438,7 +485,7 @@ $_SESSION['email'] = $email;
             "<div class=\"edit_profile_contactinfo_item_field\">"+opt+"</div>" +
             "<div class=\"edit_profile_contactinfo_item_remove\" onclick=\'this.parentElement.outerHTML=\"\";\'></div>" +
             "<div class=\"edit_profile_contactinfo_item_value\">"+val+"</div>" +
-            "</div>"
+            "</div>";
         par.innerHTML += code;
     }
 

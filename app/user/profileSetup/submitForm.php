@@ -72,16 +72,40 @@ function createUser(){
     $current_city = mysqli_real_escape_string($conn,$_POST['current_city']);
     $hometown = mysqli_real_escape_string($conn,$_POST['hometown']);
 
-    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,joined_date,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year',NOW(),'$gender','$userImg',1,'$userbirthDay','$current_city','$hometown');DELETE FROM invitation WHERE email=\"$email\";";
+    $contactInfo = mysqli_escape_string($conn,$_POST['contactInfo']);
+
+    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,joined_date,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year',NOW(),'$gender','$userImg',1,'$userbirthDay','$current_city','$hometown')";
+
+
 
     //echo base64_encode('remalsha@gmail.com'); //cmVtYWxzaGFAZ21haWwuY29t
 
-    $response = mysqli_multi_query($conn,$qry_to_insert);
+    $response = mysqli_query($conn,$qry_to_insert);
+
 
     if ($response){
-        if (session_destroy()){
-            header("location:../../index.php");
+
+        $mem_id = mysqli_insert_id($conn);
+        $qry_to_insert_info = "INSERT INTO member_info(member_id,field,f_val) VALUES ";
+        $arr[] = array();
+        foreach ($contactInfo as $title => $des){
+            $arr[] = "('$mem_id','$title','$des')";
         }
+        $qry_to_insert_info .= implode(',',$arr);
+        $respose_from_info = mysqli_query($conn,$qry_to_insert_info);
+        if ($respose_from_info){
+
+            $qry_to_remove_request = "DELETE FROM invitation WHERE email='$email'";
+
+            if (session_destroy()){
+                header("location:../../index.php");
+            }
+
+        }else{
+            echo mysqli_error($conn);
+            echo $qry_to_insert;
+        }
+
     }else{
         //header("location:index.php");
         echo mysqli_error($conn);
