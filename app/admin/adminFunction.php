@@ -119,7 +119,7 @@ if (!isset($_SESSION['email'])){
 
     }
 
-//    ---------------------------------------------- Add subject ------------------------------------
+//    ---------------------------------------------- Add course ------------------------------------
 
     if (isset($_POST['add_course'])) {
         # code...
@@ -143,7 +143,8 @@ if (!isset($_SESSION['email'])){
 
         $res = mysqli_query($conn ,$sql);
         if ($res) {
-            echo 'Done';
+            echo "swal('Success','New course added.','success')";
+            header("location:" . $_SERVER['HTTP_REFERER']);
         }else{
             if(mysqli_errno($conn) == 1062){
                 echo "You already have entered these Course";
@@ -152,6 +153,30 @@ if (!isset($_SESSION['email'])){
             }
         }
     }
+
+
+//    ----------------------------------------------- Remove course ------------------------------------
+
+    if(isset($_POST['remove_course'])){
+        $code = mysqli_escape_string($conn,$_POST['course']);
+
+        $sql_to_remove_from_course = "DELETE FROM course WHERE course_code = '$code'";
+        $res = mysqli_query($conn,$sql_to_remove_from_course);
+        if($res){
+            $sql_to_drop_table = "DROP TABLE $code";
+            $resp = mysqli_query($conn,$sql_to_drop_table);
+            if ($resp){
+                echo "swal('Success','Course details deleted.','success')";
+                header("location:" . $_SERVER['HTTP_REFERER']);
+            }else{
+                echo mysqli_error($conn);
+            }
+        }else{
+            echo mysqli_error($conn);
+        }
+
+    }
+
 
 //     -------------------------------------------- ajax request -------------------------------------
     if(isset($_POST['sub'])){
@@ -209,11 +234,7 @@ if (!isset($_SESSION['email'])){
                 echo mysqli_errno($conn);
             }
 
-
         }
-
-
-
 
     }
 

@@ -174,7 +174,9 @@
         xhttp.send();
     }
     //window.onload = function () { notificationpoll(); }
+
     notificationpoll(); //init call
+
 
 
 

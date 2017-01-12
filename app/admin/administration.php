@@ -328,14 +328,14 @@
 						<?php if($_SESSION['system_member_add_power']){?>
 
                             <div class="group_administration_content_field">
-                                <div class="group_administration_content_field_name">Batch Detail Area</div>
+                                <div class="group_administration_content_field_name">Batch Detail </div>
                                 <dvi class="group_administration_content_field_value">
 
                                     <button class="msgbox_button group_writer_button" name="batchFunction" onclick="window.location.replace('/hris/app/admin/batchFunction.php')">Batch Functions</button>
                                 </dvi>
                             </div>
 							<div class="group_administration_content_field">
-								<div class="group_administration_content_field_name">Academic Area</div>
+								<div class="group_administration_content_field_name">Academic Detail</div>
 								<dvi class="group_administration_content_field_value">
 
 									<button class="msgbox_button group_writer_button" name="academicFunction" onclick="window.location.replace('/hris/app/admin/academicFunction.php')">Academic Functions</button>
