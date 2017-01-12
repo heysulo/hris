@@ -14,7 +14,7 @@
                 <div class="dboxtitle">
                     Meeting Requests
                 </div>
-                <div class="notification_elem_box">
+                <div id="mt_elem_box" class="notification_elem_box">
                     <?php
                     $conn = null;
                     require_once("../user/config.conf");
@@ -86,93 +86,110 @@
                         ?><div class="met_req_name" style="text-align: center;margin: 5px;">No Meetings Scheduled</div><?php
                     }?>
 
-                    <script>
-                        function meeting_indepth(mid) {
-                            //alert(mid);
-                            var xhr = new XMLHttpRequest();
-                            var popupscreen = document.getElementById("popupscreen");
-                            var dimmer = document.getElementById("popup_dimmer");
-                            var popupcontentareax = document.getElementById("popup_content_area");
-                            var animation = document.getElementById("ajaxloadinganimation");
-                            popupcontentareax.innerHTML = animation.innerHTML;
-                            popupscreen.style.display="block";
-                            xhr.onreadystatechange = function () {
-                                if (xhr.readyState ==4 && xhr.status == 200){
-                                    var popupcontentarea = document.getElementById("popup_content_area");
-                                    popupcontentarea.innerHTML = xhr.responseText;
-                                    popupscreen.style.display="block";
-                                    dimmer.style.backgroundColor="#000000";
-                                    eval(document.getElementById("ajaxedjs").innerHTML)
-                                }
-                            };
-                            xhr.open("POST", "<?php echo $server_folder?>meeting_mgr.php", true);
-                            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                            xhr.send("mid="+mid);
-                        }
-
-                        function mt_mgr_accept(mid) {
-                            var xhr = new XMLHttpRequest();
-                            xhr.onreadystatechange = function () {
-                                if (xhr.readyState ==4 && xhr.status == 200){
-                                    switch(this.responseText){
-                                        case "success":
-                                            msgbox("Meeting request accepted.","Request Accepted",1);
-                                            break;
-                                        default:
-                                            msgbox("Error occured while attempting to accept the meeting request. Please try again shortly","Error Occured",3);
-                                            break;
-                                    }
-                                    meeting_indepth(mid);
-                                }
-                            };
-                            xhr.open("POST", "<?php echo $server_folder?>mt_mgr_accept.php", true);
-                            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                            xhr.send("mid="+mid);
-                        }
-
-                        function mt_mgr_reject(mid) {
-                            var xhr = new XMLHttpRequest();
-                            xhr.onreadystatechange = function () {
-                                if (xhr.readyState ==4 && xhr.status == 200){
-                                    switch(this.responseText){
-                                        case "success":
-                                            msgbox("Meeting request rejected.","Request Rejected",1);
-                                            break;
-                                        default:
-                                            msgbox("Error occured while attempting to reject the meeting request. Please try again shortly","Error Occured",3);
-                                            break;
-                                    }
-                                    meeting_indepth(mid);
-                                }
-                            };
-                            xhr.open("POST", "<?php echo $server_folder?>mt_mgr_reject.php", true);
-                            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                            xhr.send("mid="+mid);
-                        }
-
-                        function mt_mgr_delete(mid) {
-                            var xhr = new XMLHttpRequest();
-                            var popupscreen = document.getElementById("popupscreen");
-                            xhr.onreadystatechange = function () {
-                                if (xhr.readyState ==4 && xhr.status == 200){
-                                    switch(this.responseText){
-                                        case "success":
-                                            msgbox("Meeting request deleted.","Request Deleted",1);
-                                            break;
-                                        default:
-                                            msgbox("Error occured while attempting to delete the meeting request. Please try again shortly","Error Occured",3);
-                                            break;
-                                    }
-                                    popupscreen.style.display="none";
-                                }
-                            };
-                            xhr.open("POST", "<?php echo $server_folder?>mt_mgr_delete.php", true);
-                            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                            xhr.send("mid="+mid);
-                        }
-                    </script>
 
                 </div>
+                <script>
+                    function meeting_indepth(mid) {
+                        //alert(mid);
+                        var xhr = new XMLHttpRequest();
+                        var popupscreen = document.getElementById("popupscreen");
+                        var dimmer = document.getElementById("popup_dimmer");
+                        var popupcontentareax = document.getElementById("popup_content_area");
+                        var animation = document.getElementById("ajaxloadinganimation");
+                        popupcontentareax.innerHTML = animation.innerHTML;
+                        popupscreen.style.display="block";
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState ==4 && xhr.status == 200){
+                                var popupcontentarea = document.getElementById("popup_content_area");
+                                popupcontentarea.innerHTML = xhr.responseText;
+                                popupscreen.style.display="block";
+                                dimmer.style.backgroundColor="#000000";
+                            }
+                        };
+                        xhr.open("POST", "<?php echo $server_folder?>meeting_mgr.php", true);
+                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr.send("mid="+mid);
+                    }
+
+                    function update_mt_elem_box() {
+                        //alert(mid);
+                        var xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState ==4 && xhr.status == 200){
+                                var mt_mgr = document.getElementById("mt_elem_box");
+                                mt_mgr.innerHTML = this.responseText;
+
+                            }
+                        };
+                        xhr.open("POST", "update_mt_mgr.php", true);
+                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr.send();
+                    }
+
+                    function mt_mgr_accept(mid) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState ==4 && xhr.status == 200){
+                                switch(this.responseText){
+                                    case "success":
+                                        msgbox("Meeting request accepted.","Request Accepted",1);
+                                        break;
+                                    default:
+                                        msgbox("Error occured while attempting to accept the meeting request. Please try again shortly","Error Occured",3);
+                                        break;
+                                }
+                                meeting_indepth(mid);
+                                update_mt_elem_box();
+                            }
+                        };
+                        xhr.open("POST", "<?php echo $server_folder?>mt_mgr_accept.php", true);
+                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr.send("mid="+mid);
+                    }
+
+                    function mt_mgr_reject(mid) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState ==4 && xhr.status == 200){
+                                switch(this.responseText){
+                                    case "success":
+                                        msgbox("Meeting request rejected.","Request Rejected",1);
+                                        break;
+                                    default:
+                                        msgbox("Error occured while attempting to reject the meeting request. Please try again shortly","Error Occured",3);
+                                        break;
+                                }
+                                meeting_indepth(mid);
+                                update_mt_elem_box();
+                            }
+                        };
+                        xhr.open("POST", "<?php echo $server_folder?>mt_mgr_reject.php", true);
+                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr.send("mid="+mid);
+                    }
+
+                    function mt_mgr_delete(mid) {
+                        var xhr = new XMLHttpRequest();
+                        var popupscreen = document.getElementById("popupscreen");
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState ==4 && xhr.status == 200){
+                                switch(this.responseText){
+                                    case "success":
+                                        msgbox("Meeting request deleted.","Request Deleted",1);
+                                        break;
+                                    default:
+                                        msgbox("Error occured while attempting to delete the meeting request. Please try again shortly","Error Occured",3);
+                                        break;
+                                }
+                                popupscreen.style.display="none";
+                                update_mt_elem_box();
+                            }
+                        };
+                        xhr.open("POST", "<?php echo $server_folder?>mt_mgr_delete.php", true);
+                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr.send("mid="+mid);
+                    }
+                </script>
             </div>
         </div>
 
