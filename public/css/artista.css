@@ -494,7 +494,7 @@ body {
     padding-top: 60px;
     width: 100%;
     background-color: #eff3f4;
-    width: calc(100% - 220px);
+    width: calc(100% - 200px);
     height: calc(100vh - 60px);
     overflow: auto;
     z-index: 3;
