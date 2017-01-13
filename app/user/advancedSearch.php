@@ -32,153 +32,208 @@
 
 <?php include_once('../templates/navigation_panel.php'); ?>
 <?php include_once('../templates/top_pane.php'); ?>
-<div class="clearfix">
+<div class="bottomPanel">
+    <form>
+    <div style="width:auto;">
+        <div class="txt_paneltitle">Advanced Search</div>
+    </div>
+    <div class="adv_search_mainbox">
+        <div style="width: 50%;height: 40px;float: left;background-color: transparent">
 
-    <!--Content goes here-->
-    <div class="bottomPanel">
+            <div class="dbox">
+                <div class="adv_search_subtitle">Name</div>
+                <input type="text" id="pw" name="password" class="adv_search_txtbox" placeholder="First Name" pattern="[A-Za-z]" style="width: 92%;">
+                <input type="text" id="pw" name="password" class="adv_search_txtbox" placeholder="Middle Name" pattern="[A-Za-z]" style="width: 92%;">
+                <input type="text" id="pw" name="password" class="adv_search_txtbox" placeholder="Last Name" pattern="[A-Za-z]" style="width: 92%;">
+            </div>
 
-        <div style="float:left;width:auto;">
-            <div class="txt_paneltitle">Advanced Search</div>
+            <div class="dbox">
+                <div class="adv_search_subtitle">Birthday</div>
+                <input type="text" id="pw" name="password" class="adv_search_txtbox" placeholder="Year" pattern="[1|2]{1}[0-9]{1}[0-9]{1}[0-9]{1}" style="width: 25%;">
+                <input type="text" id="pw" name="password" class="adv_search_txtbox" placeholder="Month" pattern="[1-12]" style="width: 25%;">
+                <input type="text" id="pw" name="password" class="adv_search_txtbox" placeholder="Day" pattern="[1-31]" style="width: 25%;">
+                </span>
+                <div class="adv_search_subtitle">Gender</div>
+                <input type="radio" name="gender" value="male" checked> Male
+                <input type="radio" name="gender" value="female"> Female
+                <input type="radio" name="gender" value="any"> Ignore Gender
+                <span>
+
+            </div>
+
+            <div class="dbox" style="background-color: #fff; overflow:hidden; ">
+                <div style="width: 50%;float: left;">
+                    <div class="adv_search_subtitle">Hometown</div>
+                    <select class="adv_search_dropdown">
+                        <option value="Unset" selected>Unset</option>
+                        <option value="Jaffna">Jaffna</option>
+                        <option value="Kilinochchi">Kilinochchi</option>
+                        <option value="Mannar">Mannar</option>
+                        <option value="Mullaitivu">Mullaitivu</option>
+                        <option value="Vavuniya">Vavuniya</option>
+                        <option value="Puttalam">Puttalam</option>
+                        <option value="Kurunegala">Kurunegala</option>
+                        <option value="Gampaha">Gampaha</option>
+                        <option value="Colombo">Colombo</option>
+                        <option value="Kalutara">Kalutara</option>
+                        <option value="Anuradhapura">Anuradhapura</option>
+                        <option value="Polonnaruwa">Polonnaruwa</option>
+                        <option value="Matale">Matale</option>
+                        <option value="Kandy">Kandy</option>
+                        <option value="Nuwara Eliya">Nuwara Eliya</option>
+                        <option value="Kegalle">Kegalle</option>
+                        <option value="Ratnapura">Ratnapura</option>
+                        <option value="Trincomalee">Trincomalee</option>
+                        <option value="Batticaloa">Batticaloa</option>
+                        <option value="Ampara">Ampara</option>
+                        <option value="Badulla">Badulla</option>
+                        <option value="Monaragala">Monaragala</option>
+                        <option value="Hambantota">Hambantota</option>
+                        <option value="Matara">Matara</option>
+                        <option value="Galle">Galle</option>
+                    </select>
+                </div>
+                <div style="width: 50%;float: left">
+                    <div class="adv_search_subtitle">Current City</div>
+                    <select class="adv_search_dropdown">
+                        <option value="Unset" selected>Unset</option>
+                        <option value="Jaffna">Jaffna</option>
+                        <option value="Kilinochchi">Kilinochchi</option>
+                        <option value="Mannar">Mannar</option>
+                        <option value="Mullaitivu">Mullaitivu</option>
+                        <option value="Vavuniya">Vavuniya</option>
+                        <option value="Puttalam">Puttalam</option>
+                        <option value="Kurunegala">Kurunegala</option>
+                        <option value="Gampaha">Gampaha</option>
+                        <option value="Colombo">Colombo</option>
+                        <option value="Kalutara">Kalutara</option>
+                        <option value="Anuradhapura">Anuradhapura</option>
+                        <option value="Polonnaruwa">Polonnaruwa</option>
+                        <option value="Matale">Matale</option>
+                        <option value="Kandy">Kandy</option>
+                        <option value="Nuwara Eliya">Nuwara Eliya</option>
+                        <option value="Kegalle">Kegalle</option>
+                        <option value="Ratnapura">Ratnapura</option>
+                        <option value="Trincomalee">Trincomalee</option>
+                        <option value="Batticaloa">Batticaloa</option>
+                        <option value="Ampara">Ampara</option>
+                        <option value="Badulla">Badulla</option>
+                        <option value="Monaragala">Monaragala</option>
+                        <option value="Hambantota">Hambantota</option>
+                        <option value="Matara">Matara</option>
+                        <option value="Galle">Galle</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="dbox">
+                <div class="adv_search_subtitle">Skills and Interests</div>
+                <div id="skill_item_container">
+                    <!--<div class="skill_item">
+                        <!--<div class="edit_profile_contactinfo_item_remove_skill" onclick='this.parentElement.outerHTML=""'></div>-->
+                    <!--// item added here...
+                </div>-->
+                </div>
+
+                <input id="new_skill_input" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text">
+                <input type="button" onclick="insertSkill();" class="add_new_item_btn" value="Add Skill">
+                <div style="clear: both;"></div>
+            </div>
+            <input type="submit" class="adv_srch_float_btn" value="Advanced Search`">
+            <div style="clear: both;"></div>
         </div>
-        <div class="profile_section_main">
 
-            <!--Basic details search options.-->
-            <div class="dbox advacnedsearch_section_basic">
-                <div class="dboxheader dbox_head_advancedsearch_basic">
-                    <div class="dboxtitle botmarg">
-                        Search People
-                    </div>
-                    <form>
-                        <div class="clearfloat">
-                            <input type="checkbox">First name: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
-                        </div>
-                        <div class="clearfloat">
-                            <input type="checkbox">Last name: <input class="advancedsearch_textbox floatright" type="text" name="lname"><br>
 
-                        </div>
-                        <hr class="advancedsearch_hr">
-                        <input type="checkbox">Birthday :
-                        <select>
-                            <?php
-                            for($i = 1900; $i < 2016; ++$i) {
-                                echo "<option value='$i'>$i</option>";
-                            }
-                            ?>
-                        </select>
-                        <select>
-                            <?php
-                            for($i = 1; $i < 13; ++$i) {
-                                echo "<option value='$i'>$i</option>";
-                            }
-                            ?>
-                        </select><br>
-                        <input type="checkbox">Gender : <input type="radio" name="gender" value="male" checked> Male
-                        <input type="radio" name="gender" value="female"> Female<br>
-                        <hr class="advancedsearch_hr">
-                        <input type="checkbox">From : &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                        <select>
-                            <?php
-                            $dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
-                            $ary = explode(',', $dist);
-                            foreach($ary as $dist){
-                                echo "<option value='$dist'>$dist</option>";
-                            }
-                            ?>
-                        </select><br>
-                        <input type="checkbox">Lives in :&nbsp;&nbsp;
-                        <select>
-                            <?php
-                            $dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
-                            $ary = explode(',', $dist);
-                            foreach($ary as $dist){
-                                echo "<option value='$dist'>$dist</option>";
-                            }
-                            ?>
-                        </select><br>
-                        <hr class="advancedsearch_hr">
-                        <div class="clearfloat">
-                            <input type="checkbox">Skills/Interests: <br>
-                            <div class="advancedsearch_interestpick_area">
-                            </div>
-                        </div>
-                        <hr class="advancedsearch_hr">
-                        <div class="clearfloat">
-                            <input type="checkbox">Clubs and Societies: <br>
-                            <div class="advancedsearch_interestpick_area">
-                            </div>
-                        </div>
-                        <hr class="advancedsearch_hr">
-                        <div class="clearfloat">
-                            <input type="checkbox">Languages: <br>
-                            <div class="advancedsearch_interestpick_area">
-                            </div>
-                        </div>
-                        <hr class="advancedsearch_hr">
-
-                        <div class="clearfloat">
-                            <input type="checkbox">Filter: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
-                        </div>
-                        <br>
-
-                        <button class="default_button availability_status_button_2">Search</button>
-                    </form>
-                </div>
+        <div style="width: 50%;height: 40px;float: left;background-color: transparent">
+            <div class="dbox">
+                <div class="adv_search_subtitle">Clubs & Organization Engagements</div>
+                <div class="adv_search_subtitle_2">Club/Society Name :</div>
+                <select class="adv_search_dropdown" style="width: 100%;">
+                    <option value="Unset" selected>Unset</option>
+                    <option value="Jaffna">Jaffna</option>
+                    <option value="Kilinochchi">Kilinochchi</option>
+                    <option value="Mannar">Mannar</option>
+                    <option value="Mullaitivu">Mullaitivu</option>
+                    <option value="Vavuniya">Vavuniya</option>
+                    <option value="Puttalam">Puttalam</option>
+                    <option value="Kurunegala">Kurunegala</option>
+                    <option value="Gampaha">Gampaha</option>
+                    <option value="Colombo">Colombo</option>
+                    <option value="Kalutara">Kalutara</option>
+                    <option value="Anuradhapura">Anuradhapura</option>
+                    <option value="Polonnaruwa">Polonnaruwa</option>
+                    <option value="Matale">Matale</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="Nuwara Eliya">Nuwara Eliya</option>
+                    <option value="Kegalle">Kegalle</option>
+                    <option value="Ratnapura">Ratnapura</option>
+                    <option value="Trincomalee">Trincomalee</option>
+                    <option value="Batticaloa">Batticaloa</option>
+                    <option value="Ampara">Ampara</option>
+                    <option value="Badulla">Badulla</option>
+                    <option value="Monaragala">Monaragala</option>
+                    <option value="Hambantota">Hambantota</option>
+                    <option value="Matara">Matara</option>
+                    <option value="Galle">Galle</option>
+                </select>
+                <br>
+                <br>
+                <div class="adv_search_subtitle_2">Role :</div>
+                <select class="adv_search_dropdown" style="width: 100%;">
+                    <option value="Unset" selected>Unset</option>
+                    <option value="Jaffna">Jaffna</option>
+                    <option value="Kilinochchi">Kilinochchi</option>
+                    <option value="Mannar">Mannar</option>
+                    <option value="Mullaitivu">Mullaitivu</option>
+                    <option value="Vavuniya">Vavuniya</option>
+                    <option value="Puttalam">Puttalam</option>
+                    <option value="Kurunegala">Kurunegala</option>
+                    <option value="Gampaha">Gampaha</option>
+                    <option value="Colombo">Colombo</option>
+                    <option value="Kalutara">Kalutara</option>
+                    <option value="Anuradhapura">Anuradhapura</option>
+                    <option value="Polonnaruwa">Polonnaruwa</option>
+                    <option value="Matale">Matale</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="Nuwara Eliya">Nuwara Eliya</option>
+                    <option value="Kegalle">Kegalle</option>
+                    <option value="Ratnapura">Ratnapura</option>
+                    <option value="Trincomalee">Trincomalee</option>
+                    <option value="Batticaloa">Batticaloa</option>
+                    <option value="Ampara">Ampara</option>
+                    <option value="Badulla">Badulla</option>
+                    <option value="Monaragala">Monaragala</option>
+                    <option value="Hambantota">Hambantota</option>
+                    <option value="Matara">Matara</option>
+                    <option value="Galle">Galle</option>
+                </select>
             </div>
 
-            <!--Groups details search here-->
-            <div class="dbox advacnedsearch_section_basic">
-                <div class="dboxheader dbox_head_advancedsearch_basic">
-                    <div class="dboxtitle botmarg">
-                        Search Groups and Societies
-                    </div>
-                    <input class="group_searchbar" type="text" name="fname">
-                    <br>
-                    <br>
-                    <button class="default_button availability_status_button_2">Search</button>
-                </div>
-            </div>
-
-
-            <!--Group representative details search in here-->
-            <div class="dbox advacnedsearch_section_basic">
-                <div class="dboxheader dbox_head_advancedsearch_basic">
-                    <div class="dboxtitle botmarg">
-                        Search Society Representatives
-                    </div>
-                    Society :&nbsp;&nbsp;
-                    <select class="advancedsearch_socity_representive_dropdown">
-                        <?php
-                        $dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
-                        $ary = explode(',', $dist);
-                        foreach($ary as $dist){
-                            echo "<option value='$dist'>$dist</option>";
-                        }
-                        ?>
-                    </select><br>
-
-                    <hr class="advancedsearch_hr">
-                    Role :&nbsp;&nbsp;
-                    <select class="advancedsearch_socity_representive_dropdown">
-                        <?php
-                        $dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
-                        $ary = explode(',', $dist);
-                        foreach($ary as $dist){
-                            echo "<option value='$dist'>$dist</option>";
-                        }
-                        ?>
-                    </select><br>
-                    <br>
-                    <button class="default_button availability_status_button_2">Search</button>
-                </div>
-            </div>
-
+            <input type="button" value="Add More Engagements" class="adv_srch_addmore_btn">
         </div>
+        <div style="clear: both;;background-color: transparent"></div>
     </div>
 
+    </form>
 </div>
 
 <?php
 include_once('../templates/_footer.php');
 ?>
+
+<script>
+    function insertSkill() {
+        var par = document.getElementById("skill_item_container");
+        var val = document.getElementById("new_skill_input").value;
+        if (val !="") {
+            var code = "<div class=\"skill_item\">" +
+                "<div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\">" +
+                "</div>" + val + "<input type='hidden' name='interestSkillItem[" + 'skill' + "]' value='" + val + "'></div>";
+            par.innerHTML += code;
+            document.getElementById("new_skill_input").value = "";
+        }
+        //
+    }
+</script>
 </body>
 </html>

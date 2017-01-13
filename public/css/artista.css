@@ -3306,7 +3306,83 @@ li.active a, li.active a:hover {
     max-height: 250px;
 }
 
+/************Advanced Search*************/
+.adv_search_mainbox{
+    width: 1150px;
+    margin-left: 35px;
+}
 
+.adv_search_txtbox{
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    transition: all 0.5s linear;
+}
+
+.adv_search_subtitle{
+    margin-left: 5px;
+    font-size: 16px;
+    padding: 5px 0 5px 0;
+    font-weight: bold;
+}
+
+.adv_search_dropdown{
+    width: 200px;
+    font-size: 16px;
+    height: 45px;
+}
+
+.adv_search_subtitle_2{
+    margin-left: 5px;
+    font-size: 14px;
+    color: #6c6c6c;
+    padding: 5px 0 5px 0;
+    font-weight: bold;
+}
+
+.adv_srch_addmore_btn{
+    padding: 10px;
+    float: right;
+    background-color: #42b72a;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px #42b72a solid;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add_new_item_btn{
+    float: right;
+    padding: 8px;
+    border: 0px #fff solid;
+    background-color: #4267b2;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-right: 2px;
+}
+
+.adv_srch_float_btn{
+    margin-top: 20px;
+    margin-left: 12px;
+    padding: 12px;
+    border: 0px #000000 solid;
+    border-radius: 4px;
+    background-color: #4080ff;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+
+}
 /***************meeting_mgr***************/
 .mt_mgr_tag{
     border: 1px #ffd700 solid;

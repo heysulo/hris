@@ -35,7 +35,7 @@
         <div style="float:left;width:auto;height:100%;">
             <div class="txt_paneltitle"><?php
                 if(isset($_GET["search"]) and $_GET["search"]!=""){
-                    echo "BASIC PEOPLE SEARCH FOR \"".htmlspecialchars($_GET["search"])."\"";
+                    echo "BASIC SEARCH FOR \"".htmlspecialchars($_GET["search"])."\"";
                 }else{
                     echo "basic people search";
                 }
@@ -53,35 +53,69 @@
 
     <div class="dashboard_bottom">
         <?php
+        $flag =0;
         $conn = null;
         require_once("../user/config.conf");
         require_once ("../database/database.php");
         if (isset($_GET["search"]) and $_GET["search"]!=""){
-        $user_input = htmlspecialchars($_GET["search"]);
+            $user_input = htmlspecialchars($_GET["search"]);
+                //sample_qry = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%';
+                //$contact_query = "SELECT * from member where lcase(concat(first_name,\" \",last_name))=lcase(\"$user_input\") or lcase(concat(first_name,\" \",middle_name,\" \",last_name))=lcase(\"$user_input\") or  lcase(concat(first_name,\" \",middle_name))=lcase(\"$user_input\") or  lcase(concat(middle_name,\" \",last_name))=lcase(\"$user_input\") or lcase(first_name)=lcase(\"$user_input\")  or lcase(middle_name)=lcase(\"$user_input\") or lcase(last_name)=lcase(\"$user_input\")";
+                $contact_query = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%'";
+                $res_contact_query = mysqli_query($conn,$contact_query);
+            if (mysqli_num_rows($res_contact_query)){
+                while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
+                    ?>
+                    <div class="group_member_hd_box search_member_box" onclick="viewProfile(<?php echo $row_qt["member_id"] ?>)">
+                        <img class="group_member_hd_propic" src="../images/pro_pic/<?php echo $row_qt['profile_picture']?>">
+                        <div class="group_member_hd_name"><a class="no_link_effects" href="member.php?id=<?php echo $row_qt["member_id"]?>"><?php echo $row_qt["first_name"]." ".$row_qt["middle_name"]." ".$row_qt["last_name"];?></a></div>
+                        <div class="group_member_hd_role"><?php echo $row_qt["category"] ?></div>
+                        <div class="group_member_hd_role"><?php echo $row_qt["gender"] ?></div>
+                    </div>
+
+                    <?php
+                }
+            }else{
+                $flag = 1;
+            }
+
+            $user_input = htmlspecialchars($_GET["search"]);
             //sample_qry = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%';
             //$contact_query = "SELECT * from member where lcase(concat(first_name,\" \",last_name))=lcase(\"$user_input\") or lcase(concat(first_name,\" \",middle_name,\" \",last_name))=lcase(\"$user_input\") or  lcase(concat(first_name,\" \",middle_name))=lcase(\"$user_input\") or  lcase(concat(middle_name,\" \",last_name))=lcase(\"$user_input\") or lcase(first_name)=lcase(\"$user_input\")  or lcase(middle_name)=lcase(\"$user_input\") or lcase(last_name)=lcase(\"$user_input\")";
-            $contact_query = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%'";
+            $contact_query = "SELECT * FROM groups WHERE name LIKE '$user_input%'";
             $res_contact_query = mysqli_query($conn,$contact_query);
-        if (mysqli_num_rows($res_contact_query)){
-            while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
-                ?>
-                <div class="group_member_hd_box search_member_box" onclick="viewProfile(<?php echo $row_qt["member_id"] ?>)">
-                    <img class="group_member_hd_propic" src="../images/pro_pic/<?php echo $row_qt['profile_picture']?>">
-                    <div class="group_member_hd_name"><a class="no_link_effects" href="member.php?id=<?php echo $row_qt["member_id"]?>"><?php echo $row_qt["first_name"]." ".$row_qt["middle_name"]." ".$row_qt["last_name"];?></a></div>
-                    <div class="group_member_hd_role"><?php echo $row_qt["category"] ?></div>
-                    <div class="group_member_hd_role"><?php echo $row_qt["gender"] ?></div>
-                </div>
+            if (mysqli_num_rows($res_contact_query)){
+                while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
+                    ?>
+                    <div class="group_member_hd_box search_member_box" onclick="">
+                        <img class="group_member_hd_propic" src="../images/group/<?php echo $row_qt['logo']?>">
+                        <div class="group_member_hd_name"><a class="no_link_effects" href="mygroup.php?group=<?php echo $row_qt["group_id"]?>"><?php echo $row_qt['name']?></a></div>
+                        <div class="group_member_hd_role"><?php echo $row_qt["category"] ?></div>
+                        <div class="group_member_hd_role">Group</div>
+                    </div>
 
-                <?php
+                    <?php
+                }
+            }else{
+                if ($flag == 1) {
+                    ?>
+                    <div class="no_search_results_page_box">
+                        <div class="error_page_text">We couldnt find anything
+                            for <?php echo htmlspecialchars($_GET["search"]) ?></div>
+                    </div>
+                    <?php
+                }
             }
-        }else{
-            ?>
-            <div class="no_search_results_page_box">
-                <div class="error_page_text">We couldnt find anything for <?php echo htmlspecialchars($_GET["search"]) ?></div>
-            </div>
-            <?php
         }
-        }?>
+
+
+
+
+
+
+
+
+        ?>
 
 
     </div>
