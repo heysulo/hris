@@ -58,7 +58,7 @@ function createUser(){
 
     $lname = mysqli_real_escape_string($conn,$_POST['lastname']);
 
-    $username = strtolower($fname).rand(10,100000);
+    $username = strtolower($fname).rand(10,1000000);
 
     $category = mysqli_real_escape_string($conn,$_POST['category']);
 
@@ -72,44 +72,73 @@ function createUser(){
     $current_city = mysqli_real_escape_string($conn,$_POST['current_city']);
     $hometown = mysqli_real_escape_string($conn,$_POST['hometown']);
 
-    $contactInfo = mysqli_escape_string($conn,$_POST['contactInfo']);
+    $contactInfo = $_POST['contactInfo'];
 
-    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,joined_date,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year',NOW(),'$gender','$userImg',1,'$userbirthDay','$current_city','$hometown')";
+    $about_me = mysqli_escape_string($conn,$_POST['about_me']);
 
+    $interestSkills = $_POST['interestSkillItem'];
+
+    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town,about,joined_date) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year','$gender','$userImg',1,'$userbirthDay','$current_city','$hometown','$about_me',NOW())";
 
 
     //echo base64_encode('remalsha@gmail.com'); //cmVtYWxzaGFAZ21haWwuY29t
 
+    // Add basic member details
     $response = mysqli_query($conn,$qry_to_insert);
-
 
     if ($response){
 
+        //Add memeber information
         $mem_id = mysqli_insert_id($conn);
         $qry_to_insert_info = "INSERT INTO member_info(member_id,field,f_val) VALUES ";
-        $arr[] = array();
+        $arr = [];
         foreach ($contactInfo as $title => $des){
             $arr[] = "('$mem_id','$title','$des')";
         }
         $qry_to_insert_info .= implode(',',$arr);
-        $respose_from_info = mysqli_query($conn,$qry_to_insert_info);
-        if ($respose_from_info){
+        $response_from_info = mysqli_query($conn,$qry_to_insert_info);
 
-            $qry_to_remove_request = "DELETE FROM invitation WHERE email='$email'";
+        //Add member interest and skills
+        if ($response_from_info){
 
-            if (session_destroy()){
-                header("location:../../index.php");
+            $qry_to_insert_skill = "INSERT INTO skill_interest(member_id,skill) VALUES ";
+            $arr2 = [];
+            foreach ($interestSkills as $key => $data){
+                $arr2[] = "('$mem_id','$data')";
+            }
+            $qry_to_insert_skill .= implode(',',$arr2);
+            $response_from_skill = mysqli_query($conn,$qry_to_insert_skill);
+
+            //Remove request details from server.
+            if($response_from_skill){
+                $qry_to_remove_request = "DELETE FROM invitation WHERE email='$email'";
+
+                $response_from_remove =  mysqli_query($conn,$qry_to_remove_request);
+
+                if ($response_from_remove){
+
+                    if (session_destroy()){
+                        header("location:../../index.php");
+                    }
+
+                }else{
+                    echo mysqli_error($conn);
+                }
+
+            }else{
+                echo mysqli_error($conn);
+//                echo $qry_to_insert_skill;
             }
 
         }else{
             echo mysqli_error($conn);
-            echo $qry_to_insert;
+//            echo $qry_to_insert_info;
         }
 
     }else{
-        //header("location:index.php");
+        header("location:index.php");
         echo mysqli_error($conn);
-        echo $qry_to_insert;
+//        echo $qry_to_insert;
     }
 
 

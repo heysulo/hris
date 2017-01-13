@@ -5,7 +5,7 @@
 		</div>
 		<div style="text-align: center;">
 			<div id="birthDayFields"></div> <!--Jquery birth day picker plugin use -->
-			<input type="hidden" id="user_birth_day" name="user_birth_day" required>
+			<input type="hidden" id="user_birth_day" name="user_birth_day" required />
 
 		</div>
 		<div class="dboxtitle botmarg">
