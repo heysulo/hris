@@ -1,5 +1,9 @@
-
 var path = "/hris/app/";
+if (window.location.host == "localhost"){
+    path = "/hris/app/";
+}else{
+    path = "/app/";
+}
 
 document.getElementById('dashboard').addEventListener("click",function () {
     location.href=path+"user/dashboard.php";
