@@ -30,7 +30,7 @@
 //		?>
 <!--	</select><br>	-->
 <!--	<input id="input_shared_info" name="firstname" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text"><br><br>-->
-    <textarea id="input_shared_info" name="about_me" class="edit_profile_contactinfo_item_value_field" placeholder="Enter description about you." form="welcomeForm" rows="5" cols="50"></textarea><br><br>
+    <textarea name="about_me" class="edit_profile_contactinfo_item_value_field" placeholder="Enter description about you." rows="5" cols="50"></textarea><br><br>
 <!--    <center>-->
 <!--		<input type="button" onclick="insertsharedInfo()" class="default_button edit_profile_contactinfo_add_button" value="Add to Profile">-->
 <!--	</center>-->

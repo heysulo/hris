@@ -64,7 +64,7 @@ $_SESSION['email'] = $email;
     Welcome to HRIS UCSC !
 </div>
 <div>
-    <form action="submitForm.php" name="welcomeForm" method="post" enctype="multipart/form-data">
+    <form action="submitForm.php" name="welcomeForm" id="form" method="post" enctype="multipart/form-data">
 
         <!--Set email address to hiden element-->
         
@@ -128,7 +128,7 @@ $_SESSION['email'] = $email;
                         <?php
                         $q2 = mysqli_query($conn,"SELECT * FROM batchList");
                         if ($q2){?>
-                            <select style="display: none" name="batch" class="welcome_dropdown"  id="batch_id" required>
+                            <select style="display: none" name="batch" class="welcome_dropdown"  id="batch_id">
                                 <option value="">-- Select your year --</option>
                                 <?php
                                 while($row = mysqli_fetch_assoc($q2)){
@@ -381,10 +381,11 @@ $_SESSION['email'] = $email;
         function imageIsLoaded(e) {
             $('#pro_pic').css('background-image', 'url('+e.target.result+')');
         }
+
         //Function for check birth day fields
         $('#birthDayFields').birthdaypicker();
 
-    });;
+    });
 
 //    Academic year enable validation
 
@@ -392,6 +393,7 @@ $_SESSION['email'] = $email;
         if ($('#role').val() == "Student"){
             $('#batch_id').css('display','block');
             $('#batch_id').prop('selectedIndex',0);
+            $('#batch_id').prop('required',true);
         }else{
             $('#batch_id').css('display','none');
             $('#reg_number').css('display','none');
@@ -445,8 +447,7 @@ $_SESSION['email'] = $email;
         }else if($(this).val().length >8){
             $(this).val($(this).val().substr(0,8));
         }else{
-            $('#index_validate_alert').css('display','none');
-
+            //$('#index_validate_alert').css('display','none');
         }
     });
 
@@ -459,11 +460,17 @@ $_SESSION['email'] = $email;
         var code = "<div class=\"contact_info_item edit_profile_contactinfo_item\">" +
             "<div class=\"edit_profile_contactinfo_item_field\">"+opt+"</div>" +
             "<div class=\"edit_profile_contactinfo_item_remove\" onclick=\'this.parentElement.outerHTML=\"\";\'>" +
-            "</div><div class=\"edit_profile_contactinfo_item_value\">"+val+"</div>" + "<input type='hidden' name='contactInfo["+opt+"]' value='"+val+"'>"+ "</div>";
+            "</div><div class=\"edit_profile_contactinfo_item_value\">"+val+"</div></div>";
         par.innerHTML += code;
-    }
+        $("<input type='hidden' value='"+val+"' />")
+            .attr("id", val)
+            .attr("name", "contactInfo["+opt+"]")
+            .appendTo("#form");
+        //+ "<input type='hidden' name='contactInfo["+opt+"]' value='"+val+"'>"
 
-    // <input type="hidden" name="contactInfo['']" value="">
+        $("#new_contact_input").val("");
+
+    }
 
     /*Skills data insert function*/
     function insertSkill() {
@@ -471,9 +478,15 @@ $_SESSION['email'] = $email;
         var val = document.getElementById("new_skill_input").value;
         var code =  "<div class=\"skill_item\">" +
                     "<div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\">" +
-                    "</div>"+val+"<input type='hidden' name='interestSkillItem["+'skill'+"]' value='"+val+"'></div>";
+                    "</div>"+val+"</div>";
         par.innerHTML += code;
-        //
+        $("<input type='hidden' value='"+val+"' />")
+            .attr("id", val)
+            .attr("name", "interestSkillItem[]")
+            .appendTo("#form");
+//        $('#form').appendChild("<input type='hidden' name='interestSkillItem[]' value='"+val+"' />");
+
+        $("#new_skill_input").val("");
     }
 
     /*Shared info adding function*/
