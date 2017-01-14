@@ -38,20 +38,46 @@
 
         ?>
         <div class="profile_section_intro edit_profile_intro_section">
-            <div class="profile_profile_image edit_profile_profile_image"><div class="new_propic">Upload Image</div></div>
+            <div class="profile_profile_image edit_profile_profile_image" id="pro_pic_cover" style="background-image: url('../images/pro_pic/<?php echo $row['profile_picture']?>')">
+                <div class="new_propic" id="pro_pic" onclick="document.getElementById('pro_pic_img').click();">Upload Image
+                    <input type="file" style="display: none" accept="image/*" name="pro_pic_img" id="pro_pic_img" >
+<!--                    <input type="button" value="Browse" style="font-size: .7em;margin: auto" onclick="document.getElementById('pro_pic_img').click();">-->
+                </div>
+            </div>
             <div class="profile_name edit_profile_profile_name">
                 <input type="text" id="fname" name="fname" class="edit_profile_name_textbox" placeholder="First Name" value="<?=$row_qt['first_name']?>">
                 <input type="text" id="fname" name="mname" class="edit_profile_name_textbox" placeholder="Middle Name" value="<?=$row_qt['middle_name']?>">
                 <input type="text" id="fname" name="lname" class="edit_profile_name_textbox" placeholder="Last Name" value="<?=$row_qt['last_name']?>">
             </div>
+            <?php
+
+                switch ($row_qt['category']){
+                    case "Student":
+                        $stu = "selected";
+                        break;
+                    case "Instructor":
+                        $ins = 'selected';
+                        break;
+                    case "Lecture":
+                        $lec = 'selected';
+                        break;
+                    case "Academic Staff":
+                        $aca = 'selected';
+                        break;
+                }
+            ?>
+
+
             <div class="profile_basic_summery edit_profile_profile_basic_summery">
-                <select>
-                    <option value="volvo">Student</option>
-                    <option value="saab">Instructor</option>
-                    <option value="opel">Lecturer</option>
-                    <option value="audi">Academic Staff</option>
+                <select required>
+                    <option value="Student" <?php echo $stu;?>>Student</option>
+                    <option value="Instructor" <?php echo $ins;?>>Instructor</option>
+                    <option value="Lecturer" <?php echo $lec;?>>Lecturer</option>
+                    <option value="Academic Staff" <?php echo $aca;?>>Academic Staff</option>
                 </select><br>
-                <input type="text" id="fname" name="firstname" class="edit_profile_name_textbox edit_profile_academic_year" placeholder="Academic Year"><br>
+
+<!--                <input type="text" id="fname" name="firstname" class="edit_profile_name_textbox edit_profile_academic_year" placeholder="Academic Year"><br>-->
+
                 <select>
                     <option value="Male" <?php if($row_qt['gender']=="Male"){echo "selected";}?>>Male</option>
                     <option value="Female" <?php if($row_qt['gender']=="Female"){echo "selected";}?>>Female</option>
@@ -71,7 +97,7 @@
                     </div>
                     <div id="contact_info_item_container">
                         <?php
-                            $contact_query = "SELECT field,value FROM member_info WHERE category=1 and member_id=$view_id";
+                            $contact_query = "SELECT field,f_val FROM member_info WHERE category=1 and member_id=$view_id";
                             $res_contact_query = mysqli_query($conn,$contact_query);
                             if (mysqli_num_rows($res_contact_query)){
                                 while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
@@ -277,5 +303,28 @@
 <?php
 include_once('../templates/_footer.php');
 ?>
+
+<script>
+
+    $(document).ready(function(){
+
+
+        // Function for Preview profile Image.
+        $(function() {
+            $("#pro_pic_img").change(function() {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+        function imageIsLoaded(e) {
+            $('#pro_pic_cover').css('background-image', 'url('+e.target.result+')');
+        }
+    });
+
+
+</script>
 </body>
 </html>

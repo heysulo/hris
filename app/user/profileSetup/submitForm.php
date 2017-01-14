@@ -86,8 +86,8 @@ function createUser(){
 
     $category = mysqli_real_escape_string($conn,$_POST['category']);
 
-    $aca_year_temp = mysqli_real_escape_string($conn,$_POST['academic_year']);
-    $aca_year = $aca_year_temp != "" ? $aca_year_temp : 0000;
+    $aca_year = mysqli_real_escape_string($conn,$_POST['academic_year']);
+    //$aca_year = $aca_year_temp != "" ? $aca_year_temp : 0000;
 
     $gender = mysqli_real_escape_string($conn,$_POST['gender']);
 
