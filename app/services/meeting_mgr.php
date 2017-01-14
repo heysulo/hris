@@ -40,9 +40,7 @@ switch ($row['status']){
         $span_class = "req_status_txt_canceled";
         $span_txt = "Undefiened";
         break;
-
-
-}
+    }
 ?>
 <form id="frmMeetingRequest" method="post" action="meetingsubmit.php" style="margin: 0;min-width: 500px;">
     <div class="msgbox_section_title">
