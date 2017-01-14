@@ -44,7 +44,7 @@
     ?>
 
     <div class="resetpassword_errorbox_accountnotfound">
-        <p>The following account has being locked by the system due some security issues. You may retry resetting the password after sometime.</p>
+        <p>The following account has being locked by the system due some security issues. You may retry resetting the password after sometime or contact an administrator via admin@ucsc.cmb.ac.lk email address.</p>
     </div>
     <br>
     <div class="resetpassword_account_box">
