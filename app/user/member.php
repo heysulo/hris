@@ -411,12 +411,12 @@
 
 						</div>
 						<?php
-						$contact_query = "SELECT field,value FROM member_info WHERE category=3 and member_id=$view_id and system_vision_power_needed<=$vision_power";
+						$contact_query = "SELECT field,f_val FROM member_info WHERE member_id=$view_id and system_vision_power_needed<=$vision_power";
 						$res_contact_query = mysqli_query($conn,$contact_query);
 						if (mysqli_num_rows($res_contact_query)){
 							while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
-								$value =  $row_qt['value'];;
-								$readvalue = $row_qt['value'];
+								$value =  $row_qt['f_val'];;
+								$readvalue = $row_qt['f_val'];
 								switch($row_qt['field']){
 									case "Email":
 										$value="<a class=\"no_link_effects\" href=\"mailto:$readvalue\" target=\"_blank\">$readvalue</a>";

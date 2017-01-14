@@ -38,15 +38,31 @@ function createUser(){
         $un = mysqli_real_escape_string($conn,$_POST['firstName']);
         $preFix = substr(strtolower($un),0,2);
         $imgExtention = strtolower(pathinfo($uploadImgName,PATHINFO_EXTENSION));
-        $userImg = $preFix.rand(1000,1000000).".".$imgExtention;
-        $targetFile = $targetDir.$userImg;
+        if($imgExtention == 'jpg' || $imgExtention == 'JPG' || $imgExtention == 'png' || $imgExtention == 'jpeg' || $imgExtention == 'JPEG'){
 
-        if ($uploadImgSize<5000000 AND $uploadImgSize > 0){
-            if(!move_uploaded_file($_FILES['pro_pic_img']['tmp_name'],$targetFile)){
-                echo " not moved";
+            $userImg = $preFix.rand(1000,1000000).".".$imgExtention;
+            $targetFile = $targetDir.$userImg;
+
+            if ($uploadImgSize<5000000 AND $uploadImgSize > 0){
+                if(!move_uploaded_file($_FILES['pro_pic_img']['tmp_name'],$targetFile)){
+                    echo "Image not moved. ";
+                    $userImg = "default.jpg";
+                }
+            }else{
+                echo "Not valid image.";
+                $userImg = "default.jpg";
             }
+
+        }else{
+            echo "Not valid image type.";
+            $userImg = "default.jpg";
         }
+    }else{
+        $userImg = "default.jpg";
     }
+
+
+
 
     $email = $_SESSION['email'];
 
@@ -90,10 +106,10 @@ function createUser(){
 
         //Add memeber information
         $mem_id = mysqli_insert_id($conn);
-        $qry_to_insert_info = "INSERT INTO member_info(member_id,field,f_val) VALUES ";
+        $qry_to_insert_info = "INSERT INTO member_info(member_id,category,field,f_val) VALUES ";
         $arr = [];
         foreach ($contactInfo as $title => $des){
-            $arr[] = "('$mem_id','$title','$des')";
+            $arr[] = "('$mem_id','1','$title','$des')";
         }
         $qry_to_insert_info .= implode(',',$arr);
         $response_from_info = mysqli_query($conn,$qry_to_insert_info);
@@ -144,7 +160,7 @@ function createUser(){
 
 
 
-    
+
 
 }
 

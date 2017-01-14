@@ -64,7 +64,7 @@ $_SESSION['email'] = $email;
     Welcome to HRIS UCSC !
 </div>
 <div>
-    <form action="submitForm.php" name="welcomeForm" id="form" method="post" enctype="multipart/form-data">
+    <form action="submitForm.php" name="welcomeForm" id="form" method="post" enctype="multipart/form-data" onsubmit="return checkSetupForm();">
 
         <!--Set email address to hiden element-->
         
@@ -339,6 +339,10 @@ $_SESSION['email'] = $email;
 
         });
 
+        $( "input#step4" ).click(function() {
+            $( "#form" ).submit();
+        });
+
 
 
         /*-------------------------------------------------------------------------------*/
@@ -384,6 +388,14 @@ $_SESSION['email'] = $email;
 
         //Function for check birth day fields
         $('#birthDayFields').birthdaypicker();
+
+        $('#form').on('keyup keypress', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
 
     });
 
@@ -459,7 +471,7 @@ $_SESSION['email'] = $email;
         var opt = document.getElementById("conatct_info_opt").value;
         var code = "<div class=\"contact_info_item edit_profile_contactinfo_item\">" +
             "<div class=\"edit_profile_contactinfo_item_field\">"+opt+"</div>" +
-            "<div class=\"edit_profile_contactinfo_item_remove\" onclick=\'this.parentElement.outerHTML=\"\";\'>" +
+            "<div class=\"edit_profile_contactinfo_item_remove\" onclick=\"this.parentElement.outerHTML=\'\'; removeEle(\'"+val+"\');\">" +
             "</div><div class=\"edit_profile_contactinfo_item_value\">"+val+"</div></div>";
         par.innerHTML += code;
         $("<input type='hidden' value='"+val+"' />")
@@ -477,7 +489,7 @@ $_SESSION['email'] = $email;
         var par = document.getElementById("skill_item_container");
         var val = document.getElementById("new_skill_input").value;
         var code =  "<div class=\"skill_item\">" +
-                    "<div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\">" +
+                    "<div onclick=\"this.parentElement.outerHTML=\'\';removeEle(\'"+val+"\');\" class=\"edit_profile_contactinfo_item_remove_skill\">" +
                     "</div>"+val+"</div>";
         par.innerHTML += code;
         $("<input type='hidden' value='"+val+"' />")
@@ -508,6 +520,43 @@ $_SESSION['email'] = $email;
         var val = document.getElementById("new_language_input").value;
         var code = "<div class=\"skill_item language_item\"><div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
         par.innerHTML += code;
+    }
+
+    //Contact info adding through input
+    $('#new_contact_input').on('keyup',function(e){
+        var keyCode = e.keyCode;
+        if (keyCode === 13) {
+            insertContactInfo();
+            return false;
+        }
+    });
+
+    //Skills add through input
+    $('#new_skill_input').on('keyup',function(e){
+        var keyCode = e.keyCode;
+        if (keyCode === 13) {
+            insertSkill();
+            return false;
+        }
+    });
+
+
+    //Functin to remove element
+    function removeEle(ele) {
+        var elem = document.getElementById(ele);
+        elem.remove();
+    }
+
+    function checkSetupForm() {
+        if($("input[type=submit]").val()){
+            console.log('click nnooooo....');
+            console.log($("input[type=submit]").val());
+            return true;
+        }else{
+            console.log('nooooo....');
+            console.log($("input[type=submit]").val());
+            return false;
+        }
     }
 
 </script>
