@@ -1130,7 +1130,7 @@ body {
     position: relative;
     left: 230px;
     top: -200px;
-    max-width: 600px;
+    max-width: 750px;
     transition: all 0.2s linear;
 }
 
@@ -1313,7 +1313,7 @@ body {
 
 .profile_section_main_right{
     float: left;
-    width: 50%;
+    width: 45%;
 }
 
 .profile_section_aboutme{

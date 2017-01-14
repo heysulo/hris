@@ -21,8 +21,12 @@ document.getElementById('groups').addEventListener("click",function () {
     location.href=path+"user/groups.php";
 });
 
-document.getElementById('admin').addEventListener("click",function () {
-    location.href=path+"admin/administration.php";
+$(document).ready(function(){
+    if($('#admin').length > 0){
+        document.getElementById('admin').addEventListener("click",function () {
+            location.href=path+"admin/administration.php";
+        });
+    }
 });
 
 document.getElementById('advancedSearch').addEventListener("click",function () {

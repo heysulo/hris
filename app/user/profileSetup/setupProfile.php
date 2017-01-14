@@ -71,7 +71,7 @@ $_SESSION['email'] = $email;
     Welcome to HRIS UCSC !
 </div>
 <div>
-    <form action="submitForm.php" name="welcomeForm" id="form" method="post" enctype="multipart/form-data" onsubmit="return checkSetupForm();">
+    <form action="submitForm.php" name="welcomeForm" id="form" method="post" enctype="multipart/form-data">
 
         <!--Set email address to hiden element-->
         
@@ -215,6 +215,7 @@ $_SESSION['email'] = $email;
                 <br>
                 <div style="text-align: center; margin-top: auto">
 
+                    <input type="hidden" name="token" value="<?php echo $_GET['token']?>">
                     <input class="user_choose_button welcome_continue_button" value="Complete Profile Setup" type="submit" id="step4" name="submit">
                     <input class="user_choose_button welcome_back_button" value="Back" type="button" id="back3">
 
@@ -396,11 +397,10 @@ $_SESSION['email'] = $email;
         //Function for check birth day fields
         $('#birthDayFields').birthdaypicker();
 
-        $('#form').on('keyup keypress', function(e) {
+        $(document).on('keyup keypress', function(e) {
             var keyCode = e.keyCode || e.which;
-            if (keyCode === 13) {
+            if (keyCode == 13) {
                 e.preventDefault();
-                return false;
             }
         });
 
@@ -532,18 +532,18 @@ $_SESSION['email'] = $email;
     //Contact info adding through input
     $('#new_contact_input').on('keyup',function(e){
         var keyCode = e.keyCode;
-        if (keyCode === 13) {
+        if (keyCode == 13) {
+            e.preventDefault();
             insertContactInfo();
-            return false;
         }
     });
 
     //Skills add through input
     $('#new_skill_input').on('keyup',function(e){
         var keyCode = e.keyCode;
-        if (keyCode === 13) {
+        if (keyCode == 13) {
+            e.preventDefault();
             insertSkill();
-            return false;
         }
     });
 
@@ -554,17 +554,6 @@ $_SESSION['email'] = $email;
         elem.remove();
     }
 
-    function checkSetupForm() {
-        if($("input[type=submit]").val()){
-            console.log('click nnooooo....');
-            console.log($("input[type=submit]").val());
-            return true;
-        }else{
-            console.log('nooooo....');
-            console.log($("input[type=submit]").val());
-            return false;
-        }
-    }
 
 </script>
 
