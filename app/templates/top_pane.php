@@ -31,7 +31,7 @@
                 <div class="topbox_account_settings" id="setting"></div>
                 <div class="top_dropdown_content_click" id="dropdown">
                         <a href="#">Account Settings</a>
-                        <a href="logout.php">Logout</a>
+                        <a href="<?php echo $appPath?>user/logout.php">Logout</a>
                         <a href="#">Go Offline</a>
 
                 </div>

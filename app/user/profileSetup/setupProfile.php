@@ -215,6 +215,7 @@ $_SESSION['email'] = $email;
                 <br>
                 <div style="text-align: center; margin-top: auto">
 
+                    <input type="hidden" name="token" value="<?php echo $_GET['token']?>">
                     <input class="user_choose_button welcome_continue_button" value="Complete Profile Setup" type="submit" id="step4" name="submit">
                     <input class="user_choose_button welcome_back_button" value="Back" type="button" id="back3">
 
@@ -346,6 +347,10 @@ $_SESSION['email'] = $email;
 
         });
 
+        $( "input#step4" ).click(function() {
+            $( "#form" ).submit();
+        });
+
 
 
         /*-------------------------------------------------------------------------------*/
@@ -391,6 +396,13 @@ $_SESSION['email'] = $email;
 
         //Function for check birth day fields
         $('#birthDayFields').birthdaypicker();
+
+        $(document).on('keyup keypress', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == 13) {
+                e.preventDefault();
+            }
+        });
 
     });
 
@@ -466,7 +478,7 @@ $_SESSION['email'] = $email;
         var opt = document.getElementById("conatct_info_opt").value;
         var code = "<div class=\"contact_info_item edit_profile_contactinfo_item\">" +
             "<div class=\"edit_profile_contactinfo_item_field\">"+opt+"</div>" +
-            "<div class=\"edit_profile_contactinfo_item_remove\" onclick=\'this.parentElement.outerHTML=\"\";\'>" +
+            "<div class=\"edit_profile_contactinfo_item_remove\" onclick=\"this.parentElement.outerHTML=\'\'; removeEle(\'"+val+"\');\">" +
             "</div><div class=\"edit_profile_contactinfo_item_value\">"+val+"</div></div>";
         par.innerHTML += code;
         $("<input type='hidden' value='"+val+"' />")
@@ -484,7 +496,7 @@ $_SESSION['email'] = $email;
         var par = document.getElementById("skill_item_container");
         var val = document.getElementById("new_skill_input").value;
         var code =  "<div class=\"skill_item\">" +
-                    "<div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\">" +
+                    "<div onclick=\"this.parentElement.outerHTML=\'\';removeEle(\'"+val+"\');\" class=\"edit_profile_contactinfo_item_remove_skill\">" +
                     "</div>"+val+"</div>";
         par.innerHTML += code;
         $("<input type='hidden' value='"+val+"' />")
@@ -516,6 +528,32 @@ $_SESSION['email'] = $email;
         var code = "<div class=\"skill_item language_item\"><div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\"></div>"+val+"</div>";
         par.innerHTML += code;
     }
+
+    //Contact info adding through input
+    $('#new_contact_input').on('keyup',function(e){
+        var keyCode = e.keyCode;
+        if (keyCode == 13) {
+            e.preventDefault();
+            insertContactInfo();
+        }
+    });
+
+    //Skills add through input
+    $('#new_skill_input').on('keyup',function(e){
+        var keyCode = e.keyCode;
+        if (keyCode == 13) {
+            e.preventDefault();
+            insertSkill();
+        }
+    });
+
+
+    //Functin to remove element
+    function removeEle(ele) {
+        var elem = document.getElementById(ele);
+        elem.remove();
+    }
+
 
 </script>
 
