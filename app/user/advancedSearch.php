@@ -180,7 +180,22 @@
                 </select>
             </div>
 
-            <input type="button" value="Add More Engagements" class="adv_srch_addmore_btn">
+            <div class="dbox">
+                <div class="adv_search_subtitle">Skills and Interests</div>
+                <div id="skill_item_container">
+                    <!--<div class="skill_item">
+                        <!--<div class="edit_profile_contactinfo_item_remove_skill" onclick='this.parentElement.outerHTML=""'></div>-->
+                    <!--// item added here...
+                </div>-->
+                </div>
+
+                <input id="new_skill_input" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text">
+                <input type="button" onclick="insertSkill();" class="add_new_item_btn" value="Add Skill">
+                <div style="clear: both;"></div>
+            </div>
+
+<!--            <input type="button" value="Add More Engagements" class="adv_srch_addmore_btn">-->
+            <input name="skills" type="hidden" value="" id="skill_list" >
         </div>
         <div style="clear: both;;background-color: transparent"></div>
     </div>
@@ -193,15 +208,24 @@ include_once('../templates/_footer.php');
 ?>
 
 <script>
+
+
     function insertSkill() {
         var par = document.getElementById("skill_item_container");
         var val = document.getElementById("new_skill_input").value;
         if (val !="") {
             var code = "<div class=\"skill_item\">" +
                 "<div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\">" +
-                "</div>" + val + "<input type='hidden' name='interestSkillItem[" + 'skill' + "]' value='" + val + "'></div>";
+                "</div>" + val + "<input type='hidden' class='blank_skill' value='" + val + "'></div>";
             par.innerHTML += code;
             document.getElementById("new_skill_input").value = "";
+        }
+        var s = document.getElementById("skill_list");
+        var x = document.getElementsByClassName("blank_skill");
+        var i;
+        s.value = "";
+        for (i = 0; i < x.length; i++) {
+            s.value += x[i].value + ";";
         }
         //
     }
