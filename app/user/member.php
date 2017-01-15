@@ -153,7 +153,7 @@
 					<?php
 					if ($row['email'] == $_SESSION['email']){
 					?>
-					<button class="msgbox_button group_writer_button" type="button" onclick="checkinvite();">Edit Profile</button>
+					<button class="msgbox_button group_writer_button" type="button" onclick="location.href='editprofile.php';">Edit Profile</button>
 					<?php }?>
 				</div>
 				<div class="profile_online_status_box">

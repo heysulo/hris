@@ -399,7 +399,7 @@ $_SESSION['email'] = $email;
 
         $(document).on('keyup keypress', function(e) {
             var keyCode = e.keyCode || e.which;
-            if (keyCode == 13) {
+            if (keyCode == 13 && $(e.target)[0]!=$("textarea")[0]) {
                 e.preventDefault();
             }
         });

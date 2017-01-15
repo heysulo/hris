@@ -1610,6 +1610,9 @@ body {
     height: 160px;
     background-color: #fff;
     border: 1px solid #dfe0e4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.05em;
+    padding: 5px;
 }
 
 .new_propic{
