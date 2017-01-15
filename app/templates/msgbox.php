@@ -42,7 +42,15 @@
 				<?php
 			}else{
 				?>
-				<button class="<?php echo $buttonclass;?>" onclick='closemsgbox();<?php if($_REQUEST['def_function']!="undefined"){echo "window[\"".$_REQUEST['def_function']."\"]()";} ?>'><?php echo $_REQUEST['btn_default_txt'] ?></button>
+				<button class="<?php echo $buttonclass;?>" onclick='closemsgbox();
+                <?php
+                if($_REQUEST['def_function']!="undefined"){
+                    echo "window[\"" . $_REQUEST['def_function'] . "\"](";
+                    echo $_REQUEST['data'] != "" ? $_REQUEST['data']:'';
+                    echo ")";
+                } ?>'>
+                    <?php echo $_REQUEST['btn_default_txt'] ?>
+                </button>
 				<?php
 			}
 		?>

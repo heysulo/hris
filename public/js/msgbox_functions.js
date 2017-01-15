@@ -2,7 +2,7 @@
  * Created by sulochana on 9/18/16.
  */
 
-function msgbox(body,title,type,btn_default_txt,def_function,btn_optional_txt,opt_function) {
+function msgbox(body,title,type,btn_default_txt,def_function,btn_optional_txt,opt_function,data) {
     var xhttp = new XMLHttpRequest();
     if (type=="undefined"){
         type = 0;
@@ -20,7 +20,8 @@ function msgbox(body,title,type,btn_default_txt,def_function,btn_optional_txt,op
                 btn_optional_txt="+btn_optional_txt+"&\
                 def_function="+def_function+"&\
                 opt_function="+opt_function+"&\
-                type="+type);
+                type="+type+"&\
+                data="+data);
 }
 
 

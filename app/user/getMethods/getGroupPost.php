@@ -6,6 +6,8 @@
  * Time: 4:59 PM
  */
 
+define('hris_access',true);
+require_once('../../templates/path.php');
 $conn = null;
 require_once("../config.conf");
 require_once("../../database/database.php");
@@ -22,7 +24,10 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
     $qry = "SELECT * FROM group_post WHERE group_id = '$gid' ORDER BY added_time DESC";
     $res = mysqli_query($conn,$qry);
 
+    $valid_b = true;
+
     if($userValid == 000){
+        $valid_b = false;
         $valid = 'display:none';
     }
 
@@ -40,23 +45,57 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
 
         //send html as respond to ajax request
 
-        echo "<div class=\"dbox group_dbox_post\">
+        if($row['image'] == '0') {
+
+            echo "<div class=\"dbox group_dbox_post\">
                 <div class=\"group_post_head\">
                     <div class=\"group_post_user_image\" style=\"background-image: url('$path_pro_pic')\"></div>
                     <div class=\"group_post_head_content\">
-                        <div class=\"group_post_head_user_name\">".$qres['first_name']." ".$qres['last_name']."</div>
-                        <div class=\"group_post_head_role\">".$role."</div>
-                        <div class=\"group_post_head_timestamp\">".$row['added_time']."</div>
-                    </div>
+                        <div class=\"group_post_head_user_name\">" . $qres['first_name'] . " " . $qres['last_name'] . "</div>
+                        <div class=\"group_post_head_role\">" . $role . "</div>
+                        <div class=\"group_post_head_timestamp\">" . $row['added_time'] . "</div>
+                    </div>";
+            if($valid_b){
+                echo "
                     <div class=\"group_post_head_options\" style='$valid'>
                         <div class=\"group_post_head_options_item\" onclick='delete_post($post_id)'>Delete Post</div>
                         <div class=\"group_post_head_options_item\">Pin Post</div>
                         <div class=\"group_post_head_options_item\">Ban Member</div>
-                    </div>
+                    </div>";
+
+            }
+            echo "
                 </div>
                 <div class=\"group_post_content\">
-                    ".$row['content']."
+                    " . $row['content'] . "
                 </div>
             </div>";
+
+        }else{
+            echo "<div class=\"dbox group_dbox_post\">
+                <div class=\"group_post_head\">
+                    <div class=\"group_post_user_image\" style=\"background-image: url('$path_pro_pic')\"></div>
+                    <div class=\"group_post_head_content\">
+                        <div class=\"group_post_head_user_name\">" . $qres['first_name'] . " " . $qres['last_name'] . "</div>
+                        <div class=\"group_post_head_role\">" . $role . "</div>
+                        <div class=\"group_post_head_timestamp\">" . $row['added_time'] . "</div>
+                    </div>";
+            if($valid_b){
+                echo "
+                    <div class=\"group_post_head_options\" style='$valid'>
+                        <div class=\"group_post_head_options_item\" onclick='delete_post($post_id)'>Delete Post</div>
+                        <div class=\"group_post_head_options_item\">Pin Post</div>
+                        <div class=\"group_post_head_options_item\">Ban Member</div>
+                    </div>";
+
+            }
+            echo "
+                </div>
+                <div class=\"group_post_content\">
+                    " . $row['content'] . "
+                </div>
+                <div class='post_image' style=\"background-image: url('../images/group/".$row['image']."\")'></div>
+            </div>";
+        }
     }
 }

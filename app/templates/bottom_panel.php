@@ -70,7 +70,7 @@
 
                     <div class="notification_content">
                         <div class="meeting_request_element" onclick="meeting_indepth(<?=$row_qt['meeting_id']?>)">
-                            <img style="width: 80px;background-color: #00ee00;height: 80px;float: left;" src="../images/pro_pic/<?php echo $row_qt['profile_picture']?>">
+                            <img style="width: 5em;background-color: #00ee00;height: 5em;float: left;" src="../images/pro_pic/<?php echo $row_qt['profile_picture']?>">
                             <div style="width: calc(100% - 200px);height: 60px;float: left;">
                                 <div class="met_req_name"><?= $name_full?></div>
                                 <div class="met_req_field">Date & Time : <?=$meeting_dt?></div>

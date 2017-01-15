@@ -1893,6 +1893,26 @@ body {
     padding: 0px 10px;
     height: 115px;
 }
+
+.group_post_image_preview{
+    width: 670px;
+    height: 322px;
+    position: relative;
+    background-image: url("../img/addphoto.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.post_image{
+    margin-top: 7px ;
+    width: 670px;
+    height: 322px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
 /***************************/
 /*********************************/
 /********MSGBOX**********/
