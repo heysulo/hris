@@ -1912,6 +1912,11 @@ body {
     background-size: contain;
 }
 
+.member_request{
+    max-height: 300px;
+}
+
+
 
 /***************************/
 /*********************************/
@@ -3593,3 +3598,105 @@ li.active a, li.active a:hover {
 .tg .tg-yw4l{vertical-align:top}
 .disabled_cell{background-color: #3F4E5E}
 .numud{width:140px;text-align: center;border: none;}
+
+/***********************************************************************/
+                        /*transcript*/
+/***********************************************************************/
+
+.war1
+{
+    color:#ff0000;
+    font-size: 12px;
+}
+/* Basic Grey */
+.basic-grey {
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 600px;
+    background: #ffffff;
+    padding: 25px 15px 25px 10px;
+    font: 15px Arial, "Times New Roman", Times, serif;
+    color: #888;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #E4E4E4;
+}
+.basic-grey h1 {
+    font-size: 25px;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom:1px solid #E4E4E4;
+    margin: -10px -15px 30px -10px;;
+    color: #888;
+}
+.basic-grey h1>span {
+    display: block;
+    font-size: 12px;
+    /*color:#ff0000;*/
+}
+.basic-grey .h {
+    display: block;
+    margin: 0px;
+    float: left;
+    color: #888;
+}
+
+.basic-grey input[type="text"], .basic-grey textarea, .basic-grey select {
+    border: 1px solid #DADADA;
+    color: #888;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 320px;
+    font-size: 12px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+.basic-grey textarea{
+    padding: 5px 3px 3px 5px;
+}
+
+
+input:focus::-webkit-input-placeholder
+{
+    color: transparent;
+}
+
+.basic-grey select {
+    background: #FFF url('../../skilldirectory/trans/down-arrow.png') no-repeat right;
+    background: #FFF url('down-arrow.png') no-repeat right);
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+
+    height: 35px;
+    line-height: 25px;
+}
+.basic-grey textarea{
+    height:70px;
+
+}
+.basic-grey .button {
+    background: #0066ff;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+}
+.basic-grey .button:hover {
+    background: #4d4dff
+}
+
+.error {
+    color: #FF0000;
+    font-size: 18px;
+}

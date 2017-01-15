@@ -31,10 +31,12 @@
         $memberDetails = mysqli_fetch_assoc(mysqli_query($conn, $Qry_to_getUserType));
 
         $userValid = 111;
+        $valid_b = true;
         $requestJoin = "display:none";
         if (!$memberDetails) {
             $valid = "display:none;";
             $userValid = 000;
+            $valid_b = false;
             $requestJoin = "display:block";
         }
 
@@ -57,46 +59,46 @@
         //Get profile picture..
         $imageUploaded = false;
 
-        if(isset($_FILES['post_img'])){
+        if (isset($_FILES['post_img'])) {
             $targetDir = "../images/group/";
             $uploadImgName = $_FILES['post_img']['name'];
             $uploadImgSize = $_FILES['post_img']['size'];
 
-            if(is_uploaded_file($_FILES['post_img']['tmp_name'])){
+            if (is_uploaded_file($_FILES['post_img']['tmp_name'])) {
 
                 //Change uploaded file name
-                $un = mysqli_real_escape_string($conn,$_POST['post_content']);
-                $preFix = substr(strtolower($un),0,2);
-                $imgExtention = strtolower(pathinfo($uploadImgName,PATHINFO_EXTENSION));
-                if($imgExtention == 'jpg' || $imgExtention == 'JPG' || $imgExtention == 'png' || $imgExtention == 'jpeg' || $imgExtention == 'JPEG' || $imgExtention == 'jpe'){
+                $un = mysqli_real_escape_string($conn, $_POST['post_content']);
+                $preFix = substr(strtolower($un), 0, 2);
+                $imgExtention = strtolower(pathinfo($uploadImgName, PATHINFO_EXTENSION));
+                if ($imgExtention == 'jpg' || $imgExtention == 'JPG' || $imgExtention == 'png' || $imgExtention == 'jpeg' || $imgExtention == 'JPEG' || $imgExtention == 'jpe') {
 
-                    $postImg = $preFix.rand(100000,100000000000).".".$imgExtention;
-                    $targetFile = $targetDir.$postImg;
+                    $postImg = $preFix . rand(100000, 100000000000) . "." . $imgExtention;
+                    $targetFile = $targetDir . $postImg;
 
-                    if ($uploadImgSize<5000000 AND $uploadImgSize > 0){
-                        if(!move_uploaded_file($_FILES['post_img']['tmp_name'],$targetFile)){
+                    if ($uploadImgSize < 5000000 AND $uploadImgSize > 0) {
+                        if (!move_uploaded_file($_FILES['post_img']['tmp_name'], $targetFile)) {
                             echo "Image not moved. ";
-                        }else{
+                        } else {
                             $imageUploaded = true;
                         }
-                    }else{
+                    } else {
                         echo "Not valid image.";
                     }
 
-                }else{
+                } else {
                     echo "Not valid image type.";
                 }
 
-            }else{
+            } else {
                 echo "Not valid image.";
             }
 
-        }else{
+        } else {
             $imageUploaded = true;
             $postImg = "0";
         }
 
-        if($imageUploaded) {
+        if ($imageUploaded) {
 
             $post_content = $_POST['post_content'];
             $post_query = "INSERT INTO group_post(group_id,added_user_id,content,image,added_time) VALUES('$group_id','$user_id','$post_content','$postImg',NOW())";
@@ -118,7 +120,7 @@
                     
                   </script>";
             }
-        }else{
+        } else {
 
         }
 
@@ -182,17 +184,21 @@
                         <ul class="group_post_writer_navbar">
                             <li class="group_post_writer_navbar_item group_post_writer_text" id="write">Write Post</li>
                             <li class="group_post_writer_navbar_item_seperator"></li>
-                            <li class="group_post_writer_navbar_item group_post_writer_image" onclick="document.getElementById('post_img').click();">Add Photo</li>
+                            <li class="group_post_writer_navbar_item group_post_writer_image"
+                                onclick="document.getElementById('post_img').click();">Add Photo
+                            </li>
 
                             <!--                        <li class="group_post_writer_navbar_item_seperator"></li>-->
                             <!--                        <li class="group_post_writer_navbar_item group_post_writer_file">Add File</li>-->
                         </ul>
                     </div>
-                    <input type="file" style="display: none" accept="image/*" name="post_img" id="post_img" >
+                    <input type="file" style="display: none" accept="image/*" name="post_img" id="post_img">
                     <div id="post_img_pre" class="group_post_image_preview" style="display:none;"></div>
-                    <textarea id="post_text" name="post_content" class="group_post_writer_textarea" placeholder="Post your content here ...." required></textarea>
+                    <textarea id="post_text" name="post_content" class="group_post_writer_textarea"
+                              placeholder="Post your content here ...." required></textarea>
                     <div class="group_writer_bottom" align="right">
-                        <input type="submit" id="img_input" name="add_post" value="Post" class="msgbox_button group_writer_button"
+                        <input type="submit" id="img_input" name="add_post" value="Post"
+                               class="msgbox_button group_writer_button"
                                onclick='closemsgbox();window.alert(";)");'>
                     </div>
                 </form>
@@ -230,29 +236,58 @@
         <div class="group_div_content_extra">
 
             <!--Extra box for further dev-->
-            <div class="dbox group_div_content_extra" style="<?php echo $requestJoin ?>">
-                <center>
-                    <p style="font-size: .8em">Join this group to see the discussion, post and comment.</p>
-                    <button class="msgbox_button group_writer_button" id="joinGroup">Join Group</button>
-                </center>
+            <?php
 
-            </div>
+            // TODO remove join button if already sent request and invisible accept request button from others..
+            $qry_to_check_request = "SELECT * FROM group_member_request WHERE group_id='$group_id' AND member_id='$user_id'";
+            $res_check = mysqli_query($conn, $qry_to_check_request);
+            if (mysqli_num_rows($res_check)) { ?>
+                <div class="dbox group_div_content_extra" id="join_group_area" style="<?php echo $requestJoin ?>">
+                    <center>
+                        <p style="font-size: .8em">Join this group to see the more discussion, post and comment.</p>
+                        <div class="alert-green" style="width: 150px">Already you have send request.</div>
 
-            <div class="dbox group_div_content_extra" style="<?php echo $memberRequest ?>">
+                    </center>
 
-                <div class="group_role_title">New Request</div>
-                <div id="request">
-                    <!--<div class="dbox" style="height: 45px; padding-top: 0px; ">
-                        <div class="group_member_facearea" style="margin: 5px">
-                            <div class="group_member_face tooltip"><span class="tooltiptext">--</span> </div>
-                        </div>
-                        <div style="float: left; margin: 10px">
-                            <button class="msgbox_button group_writer_button" id="acceptRequest">Accept</button>
-                            <button class="msgbox_button group_writer_button red_button" id="ignoreRequest">Ignore</button>
-                        </div>
-                    </div>-->
                 </div>
-            </div>
+                <?php
+            } else { ?>
+                <div class="dbox group_div_content_extra" id="join_group_area" style="<?php echo $requestJoin ?>">
+                    <center>
+                        <p style="font-size: .8em">Join this group to see the more discussion, post and comment.</p>
+                        <button class="msgbox_button group_writer_button" id="joinGroup">Join Group</button>
+
+                    </center>
+
+                </div>
+                <?php
+            }
+
+
+            ?>
+
+            <?php
+            if($valid_b) { ?>
+                <div class="dbox group_div_content_extra member_request" style="<?php echo $memberRequest ?>">
+
+                    <div class="group_role_title">New Request</div>
+                    <div id="request" style="overflow: auto;max-height: 240px">
+                        <!--<div class="dbox" style="height: 45px; padding-top: 0px; ">
+                            <div class="group_member_facearea" style="margin: 5px">
+                                <div class="group_member_face tooltip"><span class="tooltiptext">--</span> </div>
+                            </div>
+                            <div style="float: left; margin: 10px">
+                                <button class="msgbox_button group_writer_button" id="acceptRequest">Accept</button>
+                                <button class="msgbox_button group_writer_button red_button" id="ignoreRequest">Ignore</button>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+
+                <?php
+            }
+
+            ?>
 
             <!--view group members area-->
             <div class="dbox group_div_content_extra">
@@ -617,9 +652,9 @@ include_once('../templates/_footer.php');
         updateMemberRequest();
 
         //change post method
-        $('#write').click(function(){
-            $('#post_img_pre').css('display','none');
-            $('#img_input').prop('required',false);
+        $('#write').click(function () {
+            $('#post_img_pre').css('display', 'none');
+            $('#img_input').prop('required', false);
         });
 
     });
@@ -658,6 +693,9 @@ include_once('../templates/_footer.php');
             }
         });
 
+        <?php
+        if($valid_b){ ?>
+
         //Get new request
         $.ajax({
             type: "GET",
@@ -666,6 +704,10 @@ include_once('../templates/_footer.php');
                 $('#request').html(response4);
             }
         });
+        <?php
+        }
+        ?>
+
     }
 
     //Delete group post function
@@ -705,11 +747,11 @@ include_once('../templates/_footer.php');
             dataType: 'json',
             success: function (response) {
                 if (response) {
+                    $('#joinGroup').remove();
+                    $("<center><div class=\"alert-green\" style=\"width: 150px\">Already you have send request.</div></center>").appendTo("#join_group_area");
                     msgbox('You requested to join this group send.', 'Request send!', 1);
-                    //swal("Request send!", "Your request to join this group send.", "success");
                 } else {
-                    msgbox('Sorry, Your request not send!', 'Error', 3);
-                    //swal("Error", "Sorry, Your request not send!", "error");
+                    msgbox('Sorry, Your request not send!. Please try again later.', 'Error', 3);
                 }
             }
         })
@@ -730,18 +772,44 @@ include_once('../templates/_footer.php');
             dataType: 'json',
             success: function (response) {
                 if (response) {
-                    swal("Member Add!", "New member added to group.", "success");
+                    msgbox("New member added to group.","Member Add!",1);
+                    //swal("Member Add!", "New member added to group.", "success");
                     updateMemberRequest();
                 } else {
-                    swal("Error", "Sorry, member does not add!", "error");
+                    msgbox("Sorry, member does not add. Something went wrong. Please try again later.","Error!",3);
+                    //swal("Error", "Sorry, member does not add!", "error");
+                }
+            }
+        });
+    });
+
+    $('#request').on('click', '.ignoreRequest', function () {
+
+        $.ajax({
+            type: 'POST',
+            url: 'updateMethods/groupController.php',
+            data: {
+                'request': 'ignore',
+                'req_id': this.id,
+                'group': '<?php echo $group_id ?>'
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response) {
+                    msgbox("Member request ignored.","Ignore",1);
+                    //swal("Member Add!", "New member added to group.", "success");
+                    updateMemberRequest();
+                } else {
+                    msgbox("Sorry, Something went wrong. Please try again later.","Error!",3);
+                    //swal("Error", "Sorry, member does not add!", "error");
                 }
             }
         });
     });
 
     // Function for Preview post Image.
-    $(function() {
-        $("#post_img").change(function() {
+    $(function () {
+        $("#post_img").change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
                 reader.onload = imageIsLoaded;
@@ -750,8 +818,8 @@ include_once('../templates/_footer.php');
         });
     });
     function imageIsLoaded(e) {
-        $('#img_input').prop('required',true);
-        $('#post_img_pre').css('display','block').css('background-image', 'url('+e.target.result+')');
+        $('#img_input').prop('required', true);
+        $('#post_img_pre').css('display', 'block').css('background-image', 'url(' + e.target.result + ')');
     }
 
 
