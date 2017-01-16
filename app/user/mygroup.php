@@ -23,7 +23,7 @@
         $getGroupDetail = "SELECT * FROM groups WHERE group_id = '$group_id'";
 
         $res = mysqli_query($conn, $getGroupDetail);
-        if(!mysqli_num_rows($res)){
+        if (!mysqli_num_rows($res)) {
             header("location:../../index.php");
         }
         $group_detail = mysqli_fetch_assoc($res);
@@ -62,7 +62,7 @@
         //Get profile picture..
         $imageUploaded = false;
 
-        if (isset($_FILES['post_img'])) {
+        if (file_exists($_FILES['post_img']['tmp_name']) || is_uploaded_file($_FILES['post_img']['tmp_name'])) {
             $targetDir = "../images/group/";
             $uploadImgName = $_FILES['post_img']['name'];
             $uploadImgSize = $_FILES['post_img']['size'];
@@ -103,17 +103,20 @@
 
         if ($imageUploaded) {
 
-            $post_content = $_POST['post_content'];
+            $do_tweet = mysqli_escape_string($conn,$_POST['do_tweet']);
+            $post_content = mysqli_escape_string($conn,$_POST['post_content']);
             $post_query = "INSERT INTO group_post(group_id,added_user_id,content,image,added_time) VALUES('$group_id','$user_id','$post_content','$postImg',NOW())";
 
             $res = mysqli_query($conn, $post_query);
             if ($res) {
-                echo "<script>
+                if($do_tweet){
+                    echo "<script>
                     //alert('Post add successfully.');
                     setTimeout(function () { 
                         msgbox('New post added successfully.','Success!',1);    
                     }, 1000);
                   </script>";
+                }
             } else {
                 echo "<script>
                     setTimeout(function () { 
@@ -171,7 +174,7 @@
             <li class="group_main_menu_item" id="main_menu_members" onclick="activate_tab(2);">Members</li>
             <li class="group_main_menu_item" id="main_menu_administration" onclick="activate_tab(3);">Administration
             </li>
-<!--            <li class="group_main_menu_item" id="main_menu_options" onclick="activate_tab(4);">Group Options</li>-->
+            <!--            <li class="group_main_menu_item" id="main_menu_options" onclick="activate_tab(4);">Group Options</li>-->
         </ul>
     </div>
 
@@ -200,9 +203,9 @@
                     <textarea id="post_text" name="post_content" class="group_post_writer_textarea"
                               placeholder="Post your content here ...." required></textarea>
                     <div class="group_writer_bottom" align="right">
+                        <div><input type="checkbox" name="do_tweet" value="true">Tweet</div>
                         <input type="submit" id="img_input" name="add_post" value="Post"
-                               class="msgbox_button group_writer_button"
-                               onclick='closemsgbox();window.alert(";)");'>
+                               class="msgbox_button group_writer_button">
                     </div>
                 </form>
             </div>
@@ -254,7 +257,7 @@
                 </div>
                 <?php
             } else {
-                if($valid_b) {
+                if ($valid_b) {
                     ?>
                     <div class="dbox group_div_content_extra" id="join_group_area" style="<?php echo $requestJoin ?>">
                         <center>
@@ -564,7 +567,8 @@
                 <div class="group_administration_content_field">
                     <div class="group_administration_content_field_name">Add New Member</div>
                     <div class="group_administration_content_field_value">
-                        <input type="text" id="addMemberEmail" class="group_administration_txtbox" placeholder="Enter Member Email">
+                        <input type="text" id="addMemberEmail" class="group_administration_txtbox"
+                               placeholder="Enter Member Email">
 
                         <button class="msgbox_button group_writer_button" onclick='addNewMember()'>
                             Add Member
@@ -602,7 +606,8 @@
                 <div class="group_administration_content_field">
                     <div class="group_administration_content_field_name">Update Member</div>
                     <div class="group_administration_content_field_value">
-                        <input type="email" id="removeMember"  class="group_administration_txtbox" placeholder="Enter Member Email">
+                        <input type="email" id="removeMember" class="group_administration_txtbox"
+                               placeholder="Enter Member Email">
                         <button class="msgbox_button group_writer_button red_button"
                                 onclick='removeMember()'>Remove Member
                         </button>
@@ -610,17 +615,21 @@
                     </div>
                 </div>
 
-<!--                Add twitter handler [Consumer key , secret / Access key,secret-->
+                <!--                Add twitter handler [Consumer key , secret / Access key,secret-->
                 <div class="group_administration_content_field">
                     <div class="group_administration_content_field_name">Group Twitter</div>
                     <div class="group_administration_content_field_value">
-                        <input type="text" id=""  class="group_administration_txtbox twitter_input" placeholder="Consumer Key"><br>
-                        <input type="password" id=""  class="group_administration_txtbox twitter_input" placeholder="Consumer Secret"><br>
-                        <input type="text" id=""  class="group_administration_txtbox twitter_input" placeholder="Access Key"><br>
-                        <input type="password" id=""  class="group_administration_txtbox twitter_input" placeholder="Access Secret"><br>
+                        <input type="text" id="con_key_id" class="group_administration_txtbox twitter_input"
+                               placeholder="Consumer Key" value="<?=$group_detail['twitter_consumer_key']?>"><br>
+                        <input type="text" id="con_sec_id" class="group_administration_txtbox twitter_input"
+                               placeholder="Consumer Secret" value="<?=$group_detail['twitter_consumer_secret']?>"><br>
+                        <input type="text" id="acc_key_id" class="group_administration_txtbox twitter_input"
+                               placeholder="Access Key" value="<?=$group_detail['twitter_access_token']?>"><br>
+                        <input type="text" id="acc_sec_id" class="group_administration_txtbox twitter_input"
+                               placeholder="Access Secret" value="<?=$group_detail['twitter_access_token_secret']?>"><br>
 
                         <button class="msgbox_button group_writer_button green_button"
-                                onclick=''> Twitter Handler
+                                onclick='addTwitter()'> Twitter Handler
                         </button>
 
                     </div>
@@ -629,27 +638,27 @@
             </div>
         </div>
 
-        <?php if(false){ ?>
-        <!--Group Option Panel-->
-        <div class="group_div_content" id="tab_options">
-            <div class="dbox group_tab_members group_members_dbox">
+        <?php if (false) { ?>
+            <!--Group Option Panel-->
+            <div class="group_div_content" id="tab_options">
+                <div class="dbox group_tab_members group_members_dbox">
 
-                <div class="group_tab_members_role">Group Settings</div>
-                <br>
-                <div class="ui group_administration_checkbox">
-                    <input type="checkbox" class="ui group_administration_checkbox">
-                    <label>Email me all the posts</label>
+                    <div class="group_tab_members_role">Group Settings</div>
+                    <br>
+                    <div class="ui group_administration_checkbox">
+                        <input type="checkbox" class="ui group_administration_checkbox">
+                        <label>Email me all the posts</label>
+                    </div>
+                    <br>
+                    &nbsp;
+                    <button class="msgbox_button group_writer_button red_button"
+                            onclick='closemsgbox();window.alert(";)");'>
+                        Leave Group
+                    </button>
                 </div>
-                <br>
-                &nbsp;
-                <button class="msgbox_button group_writer_button red_button"
-                        onclick='closemsgbox();window.alert(";)");'>
-                    Leave Group
-                </button>
-            </div>
 
-        </div>
-        <?php }?>
+            </div>
+        <?php } ?>
     <?php } ?>
 
 
@@ -675,29 +684,60 @@ include_once('../templates/_footer.php');
 
     });
 
+    //Function to add twitter credentials
+    function addTwitter() {
+        var con_key = $('#con_key_id').val();
+        var con_sec = $('#con_sec_id').val();
+        var acc_key = $('#acc_key_id').val();
+        var acc_sec = $('#acc_sec_id').val();
+
+        $.ajax({
+            type: "POST",
+            url: "updateMethods/groupController.php",
+            data: {
+                'group':<?=$group_id?>,
+                'func': 'twitter',
+                'con_key':con_key,
+                'con_sec':con_sec,
+                'acc_key':acc_key,
+                'acc_sec':acc_sec
+            },
+            dataType: 'JSON',
+            success: function (response) {
+                if (response) {
+                    msgbox('Twitter handler credetials added.', 'Success !', 1);
+                } else {
+                    msgbox('Sorry, Something went wrong, Please try again later.', 'Error !', 3);
+
+                }
+            }
+        });
+    }
+
+
     //Function to remove member
     function removeMember() {
         var em = $('#removeMember').val();
 
-        if(isValidEmailAddress(em)){
+        if (isValidEmailAddress(em)) {
 
             $.ajax({
                 type: "POST",
                 url: "updateMethods/groupController.php",
-                data:{
-                    'member':em,
+                data: {
+                    'member': em,
                     'group':<?=$group_id?>,
-                    'func':'remove'
+                    'func': 'remove'
                 },
-                dataType:'JSON',
-                success:function(response) {
-                    if(response[0]){
+                dataType: 'JSON',
+                success: function (response) {
+                    if (response[0]) {
                         msgbox('Member removed.', 'Success !', 1);
                         updateMemberRequest();
-                    }else{
-                        if(response[1]=='Fail'){
+                    } else {
+                        if (response[1] == 'Fail') {
                             msgbox('Sorry, Something went wrong, Please try again later.', 'Error !', 3);
-                        }else if(response[1]=='No'){
+                        } else if (response[1] == 'No') {
                             msgbox('Sorry, There are no associate user to given email address.Please check again.', 'Error !', 3);
                         }
                     }
@@ -710,25 +750,25 @@ include_once('../templates/_footer.php');
     function addNewMember() {
         var em = $('#addMemberEmail').val();
 
-        if(isValidEmailAddress(em)){
+        if (isValidEmailAddress(em)) {
 
             $.ajax({
                 type: "POST",
                 url: "updateMethods/groupController.php",
-                data:{
-                    'member':em,
+                data: {
+                    'member': em,
                     'group':<?=$group_id?>,
-                    'func':'add'
+                    'func': 'add'
                 },
-                dataType:'JSON',
-                success:function(response) {
-                    if(response[0]){
+                dataType: 'JSON',
+                success: function (response) {
+                    if (response[0]) {
                         msgbox('New member added.', 'Success !', 1);
                         updateMemberRequest();
-                    }else{
-                        if(response[1]=='Fail'){
+                    } else {
+                        if (response[1] == 'Fail') {
                             msgbox('Sorry, Something went wrong, Please try again later.', 'Error !', 3);
-                        }else if(response[1]=='No'){
+                        } else if (response[1] == 'No') {
                             msgbox('Sorry, There are no associate user to given email address.Please check again.', 'Error !', 3);
                         }
                     }
@@ -744,17 +784,17 @@ include_once('../templates/_footer.php');
         $.ajax({
             type: "POST",
             url: "updateMethods/groupController.php",
-            data:{
-                    'role':role,
-                    'group':<?=$group_id?>,
-                    'func':'deleteRole'
-                },
-            dataType:'JSON',
+            data: {
+                'role': role,
+                'group':<?=$group_id?>,
+                'func': 'deleteRole'
+            },
+            dataType: 'JSON',
             success: function (response) {
-                if(response){
+                if (response) {
                     msgbox('Group role has been deleted.', 'Deleted!', 1);
                     $("#removeSelector option[value=role]").remove();
-                }else{
+                } else {
                     msgbox('Sorry, Something went wrong, Please try again later.', 'Error !', 3);
                 }
             }
@@ -821,7 +861,7 @@ include_once('../templates/_footer.php');
         $.ajax({
             type: "GET",
             url: "updateMethods/deleteGroupPost.php?group=<?php echo $group_id?>&p=<?php echo $userValid?>&i=" + post_id,
-            dataType:'JSON',
+            dataType: 'JSON',
             success: function (response) {
                 if (response) {
                     console.log(post_id);
@@ -928,7 +968,8 @@ include_once('../templates/_footer.php');
     function isValidEmailAddress(emailAddress) {
         var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
         return pattern.test(emailAddress);
-    };
+    }
+    ;
 
 
 </script>
@@ -999,3 +1040,8 @@ include_once('../templates/_footer.php');
 
 </body>
 </html>
+
+<!--fjoQCVZwbwxh5pptCVvtZ9SWr-->
+<!--MybfdQyHgWZA5dVpUCDpz7cNZCbwm1I69kU19Rtby9ghAdgefg-->
+<!--820942167417856000-sHo05mbyyvR1EXWpAjZ58MkjNp1UOYK-->
+<!--ya2azn3329b9fUThAoDWw27WxqL40APuKQwbVftpXHMuX-->

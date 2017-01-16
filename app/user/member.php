@@ -181,10 +181,14 @@
 				</div>
 				<div class="profile_basic_summery">
 					Role : <?php echo $row['category'];?><br>
-					Academic Year : <?php echo $row['academic_year'];?><br>
-					Gender : <?php echo $row['gender'];?><br>
-					Course : <?php echo "404"?><br>
-					Hometown : <?php echo $row['gender'];?><br>
+                    <?php if($row['academic_year'] != "2000"){ ?>
+                        Academic Year : <?php echo $row['academic_year'];?><br>
+                    <?php }?>
+                    Gender : <?php echo $row['gender'];?><br>
+					<?php if($row['course'] != ""){ ?>
+                        Course : <?php echo $row['course']?><br>
+                    <?php }?>
+                    Hometown : <?php echo $row['home_town'];?><br>
 					Username : <?php echo $row['username'];?><br>
 				</div>
 				<div class="profile_gpa_value">

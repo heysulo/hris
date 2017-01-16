@@ -146,6 +146,23 @@ if(!isset($_SESSION['email'])){
         }
     }
 
+    function addTwitter($conn){
+
+        $con_key = mysqli_escape_string($conn,$_POST['con_key']);
+        $con_sec = mysqli_escape_string($conn,$_POST['con_sec']);
+        $acc_key = mysqli_escape_string($conn,$_POST['acc_key']);
+        $acc_sec = mysqli_escape_string($conn,$_POST['acc_sec']);
+        $group_id = mysqli_escape_string($conn,$_POST['group']);
+
+        $qry_to_add_twitter = "UPDATE groups SET `twitter_consumer_key`='$con_key' , `twitter_consumer_secret`='$con_sec', `twitter_access_token`='$acc_key', `twitter_access_token_secret`='$acc_sec' WHERE group_id='$group_id'";
+        if(mysqli_query($conn,$qry_to_add_twitter)){
+            echo json_encode(true);
+        }else{
+            echo json_encode(false);
+        }
+
+    }
+
 
     if (isset($_POST['create_role']) && isset($_POST['group_id'])) {
         createRole($conn);
@@ -165,6 +182,10 @@ if(!isset($_SESSION['email'])){
             case 'remove':
                 removeMember($conn);
                 break;
+        }
+    }elseif (isset($_POST['group']) && isset($_POST['func'])){
+        if($_POST['func'] == 'twitter'){
+            addTwitter($conn);
         }
     }
 }

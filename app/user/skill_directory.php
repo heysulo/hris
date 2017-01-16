@@ -20,6 +20,24 @@
 
     ?>
     <title>HRIS | Skill Directory</title>
+
+    <style>
+        h3 {
+            text-align: center;
+            font-family: Arial;
+            color: #727272;
+            border-bottom: 1px solid #EEE;
+            padding: 5px;
+            font-size: 35px;
+            margin-top: 50px;
+        }
+
+        #name, #index, #regno, #Address, #Year
+        {
+            float: left;
+        }
+    </style>
+
 </head>
 <body>
 <div style="padding: 0px;">

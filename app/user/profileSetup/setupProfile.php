@@ -150,8 +150,8 @@ $_SESSION['email'] = $email;
                         ?>
 
                         <div>
-                        <input type="text" style="display: none" id="reg_number" name="registration_number" class="welcome_inputbox" placeholder="Registration Number">
-                        <input style="display: none" type="text" id="index_number" name="index_number" class="welcome_inputbox" placeholder="Index Number">
+                        <input type="text" style="display: none" id="reg_number" name="registration_number" class="welcome_inputbox" placeholder="Registration Number eg: 2014/CS/##">
+                        <input style="display: none" type="text" id="index_number" name="index_number" class="welcome_inputbox" placeholder="Index Number eg:140#####">
 
                         </div>
                         <br>
