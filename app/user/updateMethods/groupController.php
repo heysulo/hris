@@ -11,9 +11,9 @@ if(!isset($_SESSION['email'])){
     function createRole($conn)
     {
         //Get user inputs
-        $createRole = $_POST['createRole'];
-        $role_name = mysqli_real_escape_string($conn,$_POST['role_name']);
-        $group_id = $_POST['group_id'];
+        $createRole = mysqli_escape_string($conn,$_POST['createRole']);
+        $role_name = mysqli_escape_string($conn,$_POST['role_name']);
+        $group_id = mysqli_escape_string($conn,$_POST['group_id']);
         $val_string = [0,0,0,0,0,0,0,0,0,0,0];
         foreach ($createRole as $item) {
             $val_string[intval($item)-1] = 1;
@@ -37,8 +37,8 @@ if(!isset($_SESSION['email'])){
     function deleteRole($conn)
     {
         //Get user inputs
-        $role = $_POST['role'];
-        $group_id = $_POST['group'];
+        $role = mysqli_escape_string($conn,$_POST['role']);
+        $group_id = mysqli_escape_string($conn,$_POST['group']);
         $qry = "DELETE FROM group_role WHERE role_id='$role' and group_id='$group_id'";
         $res = mysqli_query($conn,$qry);
         if($res){
@@ -49,8 +49,8 @@ if(!isset($_SESSION['email'])){
     }
     function acceptMemberRequest($conn){
         //Get user id and group id
-        $request_id = $_POST['req_id'];
-        $group_id = $_POST['group'];
+        $request_id = mysqli_escape_string($conn,$_POST['req_id']);
+        $group_id = mysqli_escape_string($conn,$_POST['group']);
         //Get requester id
         $sql_get_requester = "SELECT member_id FROM group_member_request WHERE group_id='$group_id' AND request_id ='$request_id'";
         $res = mysqli_query($conn,$sql_get_requester);
@@ -84,8 +84,8 @@ if(!isset($_SESSION['email'])){
     }
     function ignoreMemberRequest($conn){
         //Get user id and group id
-        $request_id = $_POST['req_id'];
-        $group_id = $_POST['group'];
+        $request_id = mysqli_escape_string($conn,$_POST['req_id']);
+        $group_id = mysqli_escape_string($conn,$_POST['group']);
         //Get requester id
         $sql_get_requester = "SELECT member_id FROM group_member_request WHERE group_id='$group_id' AND request_id ='$request_id'";
         $res = mysqli_query($conn,$sql_get_requester);
@@ -103,8 +103,8 @@ if(!isset($_SESSION['email'])){
 
     function addNewMember($conn){
 //Get user id and group id
-        $email = $_POST['member'];
-        $group_id = $_POST['group'];
+        $email = mysqli_escape_string($conn,$_POST['member']);
+        $group_id = mysqli_escape_string($conn,$_POST['group']);
 
 //Get member id
         $sql_get_member = "SELECT member_id FROM member WHERE email='$email'";
