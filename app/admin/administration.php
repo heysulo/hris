@@ -423,6 +423,12 @@
 				return;
 			}
 			var xhttp = new XMLHttpRequest();
+			var dimmer = document.getElementById("popup_dimmer");
+			var popupscreen = document.getElementById("popupscreen");
+			var popupcontentareax = document.getElementById("popup_content_area");
+			var animation = document.getElementById("ajaxloadinganimation");
+			popupcontentareax.innerHTML = animation.innerHTML;
+			popupscreen.style.display="block";
 
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -434,6 +440,7 @@
 					}else if(res="00"){
 						var role_id = document.getElementById("new_member_role").value;
 						var xhr = new XMLHttpRequest();
+
 						xhr.onreadystatechange = function () {
 							if (xhr.readyState ==4 && xhr.status == 200){
 								switch (xhr.responseText.split("_")[0]){
@@ -460,6 +467,7 @@
 										msgbox("A serious error occured while the action was in process","Error Ocuured",3);
 										break;
 								}
+								popupscreen.style.display="none";
 							}
 						};
 						xhr.open("POST", "./administration_events/invite_member.php", true);
