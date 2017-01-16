@@ -167,6 +167,13 @@ function createUser(){
                 }
             }
 
+            // Update batch details
+            if($aca_year_temp != ""){
+                $qry_to_update_batch = "UPDATE $aca_year_temp SET account='1' WHERE index_number='$index_num'";
+                mysqli_query($conn,$qry_to_update_batch);
+            }
+
+
             //Remove request details from server.
             $qry_to_remove_request = "DELETE FROM invitation WHERE email='$email'";
             $response_from_remove =  mysqli_query($conn,$qry_to_remove_request);
