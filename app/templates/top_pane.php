@@ -39,7 +39,7 @@
 
             <!--User detail showing bar-->
             <div class="topsearchbar">
-                <form action="basic_search.php" method="get">
+                <form action="<?=$appPath?>user/basic_search.php" method="get">
 
                     <input type="text" name="search" placeholder="Search.." class="topheadersearch" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">
                 </form>
