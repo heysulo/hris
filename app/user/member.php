@@ -186,7 +186,7 @@
                     <?php }?>
                     Gender : <?php echo $row['gender'];?><br>
 					<?php if($row['course'] != ""){ ?>
-                        Course : <?php echo $row['course']?><br>
+                        Course : <?php if($row['course']=="CS"){echo "Computer Science";}else{echo "Information Systems";}?><br>
                     <?php }?>
                     Hometown : <?php echo $row['home_town'];?><br>
 					Username : <?php echo $row['username'];?><br>
@@ -200,8 +200,9 @@
                     $course = $row['course'];
                     $table = 'B'.$aca_year.'_'.$course;
                     $qry_to_check = "SELECT GPA,rank FROM $table JOIN member ON $table.index_num = member.index_number AND member_id=$user_id";
+					//echo $qry_to_check;
                     $res_of_check = mysqli_query($conn,$qry_to_check);
-                    if(mysqli_num_rows($res_of_check)>0){
+                    if(@mysqli_num_rows($res_of_check)>0){
                         $result = mysqli_fetch_assoc($res_of_check);
 
                         ?>

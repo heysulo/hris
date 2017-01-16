@@ -57,7 +57,7 @@ function loginUser(){
             $_SESSION['last_login'] = $row['last_login'];
             $_SESSION['availability_status'] = $row['availability_status'];
             $_SESSION['availability_text'] = $row['availability_text'];
-            $_SESSION['system_role_name'] = $row['system_role'];
+            $_SESSION['system_role_name'] = $row['name'];
             $_SESSION['system_admin_panel_access'] = $row['system_admin_panel_access'];
             $_SESSION['system_member_add_power'] = $row['system_member_add_power'];
             $_SESSION['system_member_add_power_needed'] = $row['system_member_add_power_needed'];

@@ -441,6 +441,7 @@ h3{
 
 .topbox_profile_role{
     font-size: 12px;
+    padding-top: 2px;
     color: #6D6D6D;
     word-wrap: break-word;
 }

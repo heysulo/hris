@@ -70,7 +70,7 @@
                         <img class="group_member_hd_propic" src="../images/pro_pic/<?php echo $row_qt['profile_picture']?>">
                         <div class="group_member_hd_name"><a class="no_link_effects" href="member.php?id=<?php echo $row_qt["member_id"]?>"><?php echo $row_qt["first_name"]." ".$row_qt["middle_name"]." ".$row_qt["last_name"];?></a></div>
                         <div class="group_member_hd_role"><?php echo $row_qt["category"] ?></div>
-                        <div class="group_member_hd_role"><?php echo $row_qt["gender"] ?></div>
+                        <div class="group_member_hd_role"><?php if($row_qt['course']=="CS"){echo "Computer Science";}else{echo "Information Systems";}?></div>
                     </div>
 
                     <?php
