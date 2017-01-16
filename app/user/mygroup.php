@@ -190,7 +190,7 @@
                 <br>
             </div>
             <div class="group_short_description">
-                <?php echo $group_detail['description']; ?>
+                <?php echo substr($group_detail['description'],0,400); ?>...
             </div>
 
         </div>
@@ -234,7 +234,7 @@
                     <textarea id="post_text" name="post_content" class="group_post_writer_textarea"
                               placeholder="Post your content here ...." required></textarea>
                     <div class="group_writer_bottom" align="right">
-                        <div><input type="checkbox" name="do_tweet" value="true">Tweet</div>
+                        <div class="tweet_txt"><input type="checkbox" name="do_tweet" value="true">Send this as a Twitter Message</div>
                         <input type="submit" id="img_input" name="add_post" value="Post"
                                class="msgbox_button group_writer_button">
                     </div>
@@ -244,27 +244,17 @@
             <!--Show notification here-->
             <div id="group_post_content">
                 <!--Sample data-->
-                <div class="dbox group_dbox_post">
-                    <div class="group_post_head">
-                        <div class="group_post_user_image"></div>
-                        <div class="group_post_head_content">
-                            <div class="group_post_head_user_name">Group Admin</div>
-                            <div class="group_post_head_role">Admin</div>
-                            <div class="group_post_head_timestamp"></div>
-                        </div>
-                        <!--
-                        <div class="group_post_head_options">
-                            <div class="group_post_head_options_item">Delete Post</div>
-                            <div class="group_post_head_options_item">Pin Post</div>
-                            <div class="group_post_head_options_item">Ban Member</div>
-                        </div>
-                        -->
-                    </div>
-                    <!--                    <div class="group_post_content">-->
-                    <!--                        This is a sapmle data.. IF you see this, that means you unable to get data from database.Please-->
-                    <!--                        check your connection of complains to remalsha@gmail.com.-->
-                    <!--                    </div>-->
-                </div>
+<!--                <div class="dbox group_dbox_post">-->
+<!--                    <div class="group_post_head">-->
+<!--                        <div class="group_post_user_image"></div>-->
+<!--                        <div class="group_post_head_content">-->
+<!--                            <div class="group_post_head_user_name">Group Admin</div>-->
+<!--                            <div class="group_post_head_role">Admin</div>-->
+<!--                            <div class="group_post_head_timestamp"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                </div>-->
             </div>
 
         </div>
@@ -288,7 +278,7 @@
                 </div>
                 <?php
             } else {
-                if ($valid_b) {
+
                     ?>
                     <div class="dbox group_div_content_extra" id="join_group_area" style="<?php echo $requestJoin ?>">
                         <center>
@@ -299,7 +289,7 @@
 
                     </div>
                     <?php
-                }
+                
             }
 
 
@@ -838,7 +828,7 @@ include_once('../templates/_footer.php');
     function updateGroupPost() {
         $.ajax({
             type: "GET",
-            url: "getMethods/getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
+            url: "getMethods/getGroupPost.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
             success: function (response) {
                 $('#group_post_content').html(response);
             }

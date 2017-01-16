@@ -446,6 +446,12 @@ h3{
     word-wrap: break-word;
 }
 
+.tweet_txt{
+    font-size: 15px;
+    color : #323232;
+    float: left;
+}
+
 .top_dropdown{
     display: block;
     visibility:hidden;
