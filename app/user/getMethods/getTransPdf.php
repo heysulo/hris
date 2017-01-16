@@ -4,7 +4,7 @@ require_once('../../templates/path.php');
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require_once($publicPath.'/fpdf/fpdf.php');
+require_once($publicPath.'fpdf/fpdf.php');
 $indexno = $_POST['index'];
 $IScourse = array("IS1001");
 $CScourse = array("SCS1101","SCS1102","SCS1103","SCS1104","SCS1105","SCS1106","ENH1101","SCS1107","SCS1108","SCS1109","SCS1110","SCS1111","SCS1112","SCS1113","ENH1102");
@@ -13,7 +13,7 @@ $CScourse = array("SCS1101","SCS1102","SCS1103","SCS1104","SCS1105","SCS1106","E
 $pdf = new FPDF();
 $pdf->AddPage();
 
-$pdf->Image('ucsc_logo.png',90,15,22.5);
+$pdf->Image( '../../../public/img/ucsc_logo.png',90,15,22.5);
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();

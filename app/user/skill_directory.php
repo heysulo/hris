@@ -31,7 +31,7 @@
 <div class = "bottomPanel">
     <div class="txt_paneltitle">Undergraduate Transcript</div>
     <div class ="head_space"></div>
-    <form name="transcript" method="post" class="basic-grey" action="trans/getpdf.php" onsubmit="return validateForm()">
+    <form name="transcript" method="post" class="basic-grey" action="getMethods/getTransPdf.php" onsubmit="return validateForm()">
         <table>
             <tr>
                 <h1>Application for undergraduate transcript </h1></br></br>
