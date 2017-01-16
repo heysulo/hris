@@ -110,6 +110,12 @@
             $res = mysqli_query($conn, $post_query);
             if ($res) {
                 if($do_tweet){
+                    require_once ($server_folder."tweet.php");
+                    $getGroupDetail = "SELECT * FROM groups WHERE group_id = '$group_id'";
+                    $res = mysqli_query($conn, $getGroupDetail);
+                    $group_detail = mysqli_fetch_assoc($res);
+
+                    //tweet($group_detail['twitter_consumer_key'],$group_detail['twitter_consumer_secret'],$group_detail['twitter_access_token'],$group_detail['twitter_access_token_secret'],$post_content);
                     echo "<script>
                     //alert('Post add successfully.');
                     setTimeout(function () { 
