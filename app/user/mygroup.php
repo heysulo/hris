@@ -564,9 +564,9 @@
                 <div class="group_administration_content_field">
                     <div class="group_administration_content_field_name">Add New Member</div>
                     <div class="group_administration_content_field_value">
-                        <input type="text" class="group_administration_txtbox" placeholder="Enter Member Email">
+                        <input type="text" id="addMemberEmail" class="group_administration_txtbox" placeholder="Enter Member Email">
 
-                        <button class="msgbox_button group_writer_button" onclick=''>
+                        <button class="msgbox_button group_writer_button" onclick='addNewMember()'>
                             Add Member
                         </button>
                         <button class="msgbox_button group_writer_button" onclick=''>
@@ -659,6 +659,34 @@ include_once('../templates/_footer.php');
 
     });
 
+    //Function to add new member
+    function addNewMember() {
+        var em = $('#addMemberEmail').val();
+
+        $.ajax({
+            type: "POST",
+            url: "updateMethods/groupController.php",
+            data:{
+                    'member':em,
+                    'group':<?=$group_id?>,
+                    'func':'add'
+            },
+            dataType:'JSON',
+            success:function(response) {
+                if(response[0]){
+                    msgbox('New member added.', 'Success !', 1);
+                    updateMemberRequest();
+                }else{
+                    if(response[1]=='Fail'){
+                        msgbox('Sorry, Something went wrong, Please try again later.', 'Error !', 3);
+                    }else if(response[1]=='No'){
+                        msgbox('Sorry, There are no associate user to given email address.Please check again.', 'Error !', 3);
+                    }
+                }
+            }
+        });
+    }
+
     //Function to remove groupe role
     function deleteRole() {
         var role = $('#deleteRoleId').val();
@@ -670,6 +698,7 @@ include_once('../templates/_footer.php');
                     'group':<?=$group_id?>,
                     'func':'deleteRole'
                 },
+            dataType:'JSON',
             success: function (response) {
                 if(response){
                     msgbox('Group role has been deleted.', 'Deleted!', 1);
@@ -741,6 +770,7 @@ include_once('../templates/_footer.php');
         $.ajax({
             type: "GET",
             url: "updateMethods/deleteGroupPost.php?group=<?php echo $group_id?>&p=<?php echo $userValid?>&i=" + post_id,
+            dataType:'JSON',
             success: function (response) {
                 if (response) {
                     console.log(post_id);
