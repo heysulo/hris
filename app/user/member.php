@@ -347,7 +347,6 @@
 								<?php
 							}
 						}else{
-							echo $contact_query;
 							echo "No Contact Info Found";
 						}
 						?>
@@ -360,7 +359,7 @@
 							</div>
 						</div>
 						<?php
-						$contact_query = "select x.role_name,groups.name,groups.description from (select group_role.role_name,group_member.group_id from group_member JOIN group_role on group_member.role = group_role.role_id and member_id=$view_id) as x join groups on groups.group_id = x.group_id";
+						$contact_query = "SELECT groups.*,group_member.role FROM groups join group_member on group_member.group_id = groups.group_id and group_member.member_id = $view_id";
 						//echo $contact_query;
 						$res_contact_query = mysqli_query($conn,$contact_query);
 						echo mysqli_error($conn);
@@ -368,9 +367,10 @@
 							while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
 								?>
 								<div class="society_item">
-									<div class="society_item_club"><?php echo $row_qt['name'] ;?></div><div class="society_item_role"><?php echo $row_qt['role_name'] ;?></div>
+									<div class="society_item_club"><?=$row_qt['name']?></div><div class="society_item_role"><?=$row_qt['role']?></div>
 									<div class="society_item_extra">
-										<?php echo $row_qt['description'];?>
+										<?=$row_qt['description']?>
+
 									</div>
 								</div>
 								<?php
@@ -387,21 +387,15 @@
 							</div>
 						</div>
 						<div>
-							<?php
-							$contact_query = "select language.language from (SELECT * FROM member_info where category = 2 and member_id=$view_id) as x join language on language.language_id = (SELECT CAST(x.value AS UNSIGNED))";
-							$res_contact_query = mysqli_query($conn,$contact_query);
-							if (mysqli_num_rows($res_contact_query)){
-								while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
-									?>
-									<div class="skill_item language_item">
-										<?= $row_qt['language'];?>
-									</div>
-									<?php
-								}
-							}else{
-								echo "No Compatible Languages Detected";
-							}
-							?>
+							<div class="skill_item language_item">
+								Sinhala
+							</div>
+							<div class="skill_item language_item">
+								English
+							</div>
+							<div class="skill_item language_item">
+								Tamil
+							</div>
 						</div>
 					</div>
 				</div>
@@ -465,7 +459,7 @@
 						</div>
 						<div>
 							<?php
-							$contact_query = "select skill.skill from (SELECT * FROM member_info where category = 4 and member_id=$view_id) as x join skill on skill.skill_id = (SELECT CAST(x.value AS UNSIGNED))";
+							$contact_query = "select * from skill_interest join member on skill_interest.member_id = member.member_id and skill_interest.member_id = $view_id";
 							$res_contact_query = mysqli_query($conn,$contact_query);
 							if (mysqli_num_rows($res_contact_query)){
 								while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){

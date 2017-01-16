@@ -86,7 +86,7 @@
                         <input type="submit" class="user_choose_button" value="General Public" name="publicUserBtn">
                     </div>
                 </form>-->
-                        <a href="dev/dashboard/index.php">
+                        <a href="app/public_user/public.php">
                         <input type="button" class="user_choose_button" value="General Public"></a>
             </div>
         </center>
