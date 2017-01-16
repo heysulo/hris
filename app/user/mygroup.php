@@ -288,7 +288,7 @@
                 </div>
                 <?php
             } else {
-                if ($valid_b) {
+
                     ?>
                     <div class="dbox group_div_content_extra" id="join_group_area" style="<?php echo $requestJoin ?>">
                         <center>
@@ -299,7 +299,7 @@
 
                     </div>
                     <?php
-                }
+
             }
 
 

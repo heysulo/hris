@@ -58,7 +58,7 @@
             <ul>
                 <li class="group_main_menu_item group_main_menu_item_active" id="main_menu_course" onclick="activate_tab(1);">Course</li>
                 <li class="group_main_menu_item" id="main_menu_result" onclick="activate_tab(2);">Result</li>
-                <li class="group_main_menu_item" id="main_menu_analysis" onclick="activate_tab(3);">Analytics</li>
+<!--                <li class="group_main_menu_item" id="main_menu_analysis" onclick="activate_tab(3);">Analytics</li>-->
             </ul>
         </div>
 
@@ -386,6 +386,8 @@
 
                 <?php }?>
 
+
+
             </div>
         </div>
     </div>
@@ -433,6 +435,35 @@ include_once('../templates/_footer.php');
         });
     });
 
+
+</script>
+
+<script>
+    function activate_tab(x) {
+        var tab_batch = document.getElementById("tab_batch");
+        var tab_result = document.getElementById("tab_result");
+
+        var main_menu_course = document.getElementById("main_menu_course");
+        var main_menu_result = document.getElementById("main_menu_result");
+
+        switch (x){
+            case 2:
+                tab_result.style.display = "block";
+                tab_batch.style.display = "none";
+                main_menu_course.className = "group_main_menu_item";
+                main_menu_result.className = "group_main_menu_item group_main_menu_item_active";
+                break;
+            case 1:
+                tab_result.style.display = "none";
+                tab_batch.style.display = "block";
+                main_menu_course.className = "group_main_menu_item group_main_menu_item_active";
+                main_menu_result.className = "group_main_menu_item";
+                break;
+
+        }
+    }
+
+    activate_tab(1);
 </script>
 
 </body>
