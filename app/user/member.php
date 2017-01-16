@@ -206,7 +206,7 @@
 
                         ?>
                         <div class="profile_gpa_value">
-                            <?=str_pad($result['GPA'],2, "0", STR_PAD_LEFT)?>
+                            <?php echo round(str_pad($result['GPA'],2, "0", STR_PAD_LEFT),1)?>
                         </div>
                         <div class="profile_txt_gpa">Current GPA</div>
                         <div class="profile_txt_gpa">Rank : #<?=$result['rank']?></div>
@@ -487,6 +487,7 @@
 							<?php
 							$contact_query = "select * from skill_interest join member on skill_interest.member_id = member.member_id and skill_interest.member_id = $view_id";
 							$res_contact_query = mysqli_query($conn,$contact_query);
+							//echo $contact_query;
 							if (mysqli_num_rows($res_contact_query)){
 								while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
 									?>

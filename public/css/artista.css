@@ -3349,6 +3349,7 @@ li.active a, li.active a:hover {
 
 .notification_elem_box{
 
+    min-height:calc(100vh - 390px);
     margin: 2px 0 2px 0;
     overflow: auto;
     max-height: 250px;

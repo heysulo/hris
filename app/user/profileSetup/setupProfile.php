@@ -17,12 +17,7 @@
     $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
     $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
 
-    if ($_SERVER['HTTP_HOST'] != 'localhost'){
-        $publicPath = "http://".$_SERVER['HTTP_HOST']."/public/";
-        $templatePath = "http://".$_SERVER['HTTP_HOST']."/app/templates/";
-        $imagePath = "http://".$_SERVER['HTTP_HOST']."/app/images";
 
-    }
 
     if (session_status() == PHP_SESSION_NONE) {
         session_start();

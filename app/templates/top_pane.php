@@ -175,7 +175,7 @@
     }
     //window.onload = function () { notificationpoll(); }
 
-    //notificationpoll(); //init call
+    notificationpoll(); //init call
 
 
 

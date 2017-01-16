@@ -428,7 +428,6 @@
 			var popupcontentareax = document.getElementById("popup_content_area");
 			var animation = document.getElementById("ajaxloadinganimation");
 			popupcontentareax.innerHTML = animation.innerHTML;
-			popupscreen.style.display="block";
 
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
