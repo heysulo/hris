@@ -211,8 +211,6 @@
                         <div class="profile_txt_gpa">Current GPA</div>
                         <div class="profile_txt_gpa">Rank : #<?=$result['rank']?></div>
                         <?php
-                    }else{
-                        echo mysqli_error($conn);
                     }
                 }
 

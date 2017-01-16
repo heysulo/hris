@@ -147,12 +147,14 @@ if (!isset($_SESSION['email'])){
 
         $res = mysqli_query($conn ,$sql);
         if ($res) {
-            echo "swal('Success','New course added.','success')";
+            //echo "swal('Success','New course added.','success')";
             header("location:" . $_SERVER['HTTP_REFERER']);
         }else{
             if(mysqli_errno($conn) == 1062){
+                header("location:" . $_SERVER['HTTP_REFERER']);
                 echo "You already have entered these Course";
             }else{
+                header("location:" . $_SERVER['HTTP_REFERER']);
                 echo mysqli_error($conn);
             }
         }
@@ -170,12 +172,14 @@ if (!isset($_SESSION['email'])){
             $sql_to_drop_table = "DROP TABLE $code";
             $resp = mysqli_query($conn,$sql_to_drop_table);
             if ($resp){
-                echo "swal('Success','Course details deleted.','success')";
+                //echo "swal('Success','Course details deleted.','success')";
                 header("location:" . $_SERVER['HTTP_REFERER']);
             }else{
+                header("location:" . $_SERVER['HTTP_REFERER']);
                 echo mysqli_error($conn);
             }
         }else{
+            header("location:" . $_SERVER['HTTP_REFERER']);
             echo mysqli_error($conn);
         }
 
@@ -209,7 +213,7 @@ if (!isset($_SESSION['email'])){
             $sql_to_alter_gpa_table = "ALTER TABLE $course_batch ADD $course FLOAT(10)";
             $qu = mysqli_query($conn,$sql_to_alter_gpa_table);
             if($qu){
-                echo "New column added ";
+                //echo "New column added ";
 
                 $sql_to_insert_gpv_val =  "	UPDATE $course_batch
 						    INNER join
@@ -220,21 +224,31 @@ if (!isset($_SESSION['email'])){
 
                 $res = mysqli_query($conn,$sql_to_insert_gpv_val);
                 if($res){
-                    echo "data passed";
+                    //echo "data passed";
                     $cr = mysqli_fetch_assoc(mysqli_query($conn,"SELECT credit FROM course WHERE course_code = '$course'"));
                     $final_q = mysqli_query($conn,"UPDATE tablelist SET sum_of_credit = sum_of_credit +".$cr['credit']." WHERE tablename = '$course_batch'");
                     if ($final_q) {
-                        echo " tablelist updated";
+                        header("location:" . $_SERVER['HTTP_REFERER']);
+                        echo "<script>
+                            setTimeout(function () { 
+                                msgbox('GPA Generation done.','Success!',1);    
+                            }, 1000);
+                          </script>";
+                        //echo " tablelist updated";
                     }else{
+                        header("location:" . $_SERVER['HTTP_REFERER']);
                         echo mysqli_error($conn);
                     }
                 }else{
+                    header("location:" . $_SERVER['HTTP_REFERER']);
                     echo mysqli_error($conn);
                 }
 
             }elseif(mysqli_errno($conn) == 1060){
+                header("location:" . $_SERVER['HTTP_REFERER']);
                 echo "Course $course is already added to GPA calculation.";
             }else{
+                header("location:" . $_SERVER['HTTP_REFERER']);
                 echo mysqli_error($conn);
                 echo mysqli_errno($conn);
             }
@@ -267,7 +281,7 @@ if (!isset($_SESSION['email'])){
             $sql_to_update .= ")/".$res['sum_of_credit'].",4)";
 
             if(mysqli_query($conn, $sql_to_update)){
-                echo "GPA Calculated";
+                //echo "GPA Calculated";
 
                 $sql_to_ranking = "UPDATE $course_batch JOIN 
 								  (SELECT index_num, GPA, 
@@ -278,14 +292,22 @@ if (!isset($_SESSION['email'])){
 
                 $res_rank = mysqli_query($conn,$sql_to_ranking);
                 if($res_rank){
-                    echo " Ranking done";
+                    header("location:" . $_SERVER['HTTP_REFERER']);
+                    echo "<script>
+                            setTimeout(function () { 
+                                msgbox('GPA Calculation done.','Success!',1);    
+                            }, 1000);
+                          </script>";
+                    //echo " Ranking done";
                 }else{
+                    header("location:" . $_SERVER['HTTP_REFERER']);
                     echo mysqli_error($conn);
                 }
 
             }else{
+                header("location:" . $_SERVER['HTTP_REFERER']);
                 echo mysqli_error($conn);
-                echo $sql_to_update;
+//                echo $sql_to_update;
             }
 
         }
