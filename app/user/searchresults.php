@@ -106,7 +106,7 @@
         require_once("../user/config.conf");
         require_once ("../database/database.php");
         
-        if ($cs !="select * from member where 1=1 "){
+        if ($cs !="select * from member where 1=1 " or $meminfo != "select * from member_info where 1=1 "){
             $res_contact_query = mysqli_query($conn,$cs);
             if (mysqli_num_rows($res_contact_query)){
                 while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){

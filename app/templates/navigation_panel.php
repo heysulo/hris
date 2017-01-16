@@ -12,13 +12,16 @@ $advancedSearch= null;
         case 'dashboard':
             $dashbord = "active";
             break;
-        case 'profile':
+        case 'member':
             $profile = "active";
             break;
         case 'skill_directory';
             $skill_directory = "active";
             break;
         case 'groups';
+            $groups = "active";
+            break;
+        case 'mygroup';
             $groups = "active";
             break;
         case 'administration';

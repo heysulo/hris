@@ -317,6 +317,17 @@ h3{
 
 /*~~~~TOPPANE~~~~~~*/
 
+.small_hint_ss{
+    font-size: 12px;
+    padding-top: 6px;
+    padding-left: 95px;
+    color: #6c6c6c;
+}
+
+.notification_box{
+    min-height: calc(100vh - 360px);
+}
+
 .top_notification_icon{
     height: 40px;
     width: 40px;
