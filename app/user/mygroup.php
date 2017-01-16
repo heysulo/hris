@@ -1,74 +1,127 @@
 <!DOCTYPE html>
 <head xmlns="http://www.w3.org/1999/html">
     <?php
-    define("hris_access",true);
+    define("hris_access", true);
     require_once('../templates/path.php');
     include('../templates/_header.php');
     $conn = null;
     require_once("config.conf");
-    require_once ("../database/database.php");
+    require_once("../database/database.php");
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
     $user_id = $_SESSION['user_id'];
 
-    if (!isset($_SESSION['email']) or !isset($_GET['group'])){
+    if (!isset($_SESSION['email']) or !isset($_GET['group'])) {
         header("location:../../index.php");
-    }else{
+    } else {
 
         //get group id from GET method\
         $group_id = mysqli_real_escape_string($conn, $_GET['group']);
 
         $getGroupDetail = "SELECT * FROM groups WHERE group_id = '$group_id'";
 
-        $res = mysqli_query($conn,$getGroupDetail);
+        $res = mysqli_query($conn, $getGroupDetail);
         $group_detail = mysqli_fetch_assoc($res);
-        $path = '../images/group/'.$group_detail['logo'];
+        $path = '../images/group/' . $group_detail['logo'];
 
         //get user type according to user
         $Qry_to_getUserType = "SELECT * FROM group_member WHERE member_id='$user_id' AND group_id='$group_id'";
-        $memberDetails =mysqli_fetch_assoc(mysqli_query($conn, $Qry_to_getUserType));
+        $memberDetails = mysqli_fetch_assoc(mysqli_query($conn, $Qry_to_getUserType));
 
         $userValid = 111;
+        $valid_b = true;
         $requestJoin = "display:none";
-        if (!$memberDetails){
+        if (!$memberDetails) {
             $valid = "display:none;";
             $userValid = 000;
+            $valid_b = false;
             $requestJoin = "display:block";
         }
 
+        $get_mem_count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUTN(*) AS mem_c FROM group_member WHERE group_id='$group_id'"));
+        $mem_c = $get_mem_count['mem_c'];
 
 
     }
 
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
-    $type  = $_SESSION['type'];
+    $type = $_SESSION['type'];
     $email = $_SESSION['email'];
     $pro_pic = $_SESSION['pro_pic'];
 
 
     //Submit post to database;
-    if (isset($_POST['add_post']) && $_POST['post_content'] !=""){
-        $post_content = $_POST['post_content'];
-        $post_query = "INSERT INTO group_post(group_id,added_user_id,content,added_time) VALUES('$group_id','$user_id','$post_content',NOW())";
+    if (isset($_POST['add_post']) && $_POST['post_content'] != "") {
 
-        $res = mysqli_query($conn,$post_query);
-        if ($res){
-            echo "<script>
+        //Get profile picture..
+        $imageUploaded = false;
+
+        if (isset($_FILES['post_img'])) {
+            $targetDir = "../images/group/";
+            $uploadImgName = $_FILES['post_img']['name'];
+            $uploadImgSize = $_FILES['post_img']['size'];
+
+            if (is_uploaded_file($_FILES['post_img']['tmp_name'])) {
+
+                //Change uploaded file name
+                $un = mysqli_real_escape_string($conn, $_POST['post_content']);
+                $preFix = substr(strtolower($un), 0, 2);
+                $imgExtention = strtolower(pathinfo($uploadImgName, PATHINFO_EXTENSION));
+                if ($imgExtention == 'jpg' || $imgExtention == 'JPG' || $imgExtention == 'png' || $imgExtention == 'jpeg' || $imgExtention == 'JPEG' || $imgExtention == 'jpe') {
+
+                    $postImg = $preFix . rand(100000, 100000000000) . "." . $imgExtention;
+                    $targetFile = $targetDir . $postImg;
+
+                    if ($uploadImgSize < 5000000 AND $uploadImgSize > 0) {
+                        if (!move_uploaded_file($_FILES['post_img']['tmp_name'], $targetFile)) {
+                            echo "Image not moved. ";
+                        } else {
+                            $imageUploaded = true;
+                        }
+                    } else {
+                        echo "Not valid image.";
+                    }
+
+                } else {
+                    echo "Not valid image type.";
+                }
+
+            } else {
+                echo "Not valid image.";
+            }
+
+        } else {
+            $imageUploaded = true;
+            $postImg = "0";
+        }
+
+        if ($imageUploaded) {
+
+            $post_content = $_POST['post_content'];
+            $post_query = "INSERT INTO group_post(group_id,added_user_id,content,image,added_time) VALUES('$group_id','$user_id','$post_content','$postImg',NOW())";
+
+            $res = mysqli_query($conn, $post_query);
+            if ($res) {
+                echo "<script>
                     //alert('Post add successfully.');
                     setTimeout(function () { 
-                        swal(\"Success!\", \"New post added successfully.\", \"success\");
+                        msgbox('New post added successfully.','Success!',1);    
                     }, 1000);
                   </script>";
-        }else{
-            echo "<script>
+            } else {
+                echo "<script>
                     setTimeout(function () { 
-                        swal(\"Error\", \"Unable to add post!\", \"error\");    
+                        msgbox('Sorry, Unable to add post.','Error',3);
+                           
                     }, 1000);
-                    //alert('Sorry, Unable to add post.');
+                    
                   </script>";
+            }
+        } else {
+
         }
 
     }
@@ -84,7 +137,7 @@
     <?php include_once('../templates/top_pane.php'); ?>
 
 
-    </div>
+</div>
 <!--Other content goes here-->
 <div class="bottomPanel">
 
@@ -96,7 +149,8 @@
 
             <div>
                 <?php echo $group_detail['category']; ?> Group<br>
-                <div id="num_member">1 Members</div><br>
+                <div id="num_member"><?= $mem_c ?> Members</div>
+                <br>
             </div>
             <div class="group_short_description">
                 <?php echo $group_detail['description']; ?>
@@ -108,10 +162,13 @@
     <!--Navigation menu -->
     <div class="group_main_menu" style="<?PHP echo $valid ?>">
         <ul>
-            <li class="group_main_menu_item group_main_menu_item_active" id="main_menu_notices" onclick="activate_tab(1);">Notices</li>
+            <li class="group_main_menu_item group_main_menu_item_active" id="main_menu_notices"
+                onclick="activate_tab(1);">Notices
+            </li>
             <li class="group_main_menu_item" id="main_menu_members" onclick="activate_tab(2);">Members</li>
-            <li class="group_main_menu_item" id="main_menu_administration"  onclick="activate_tab(3);">Administration</li>
-            <li class="group_main_menu_item" id="main_menu_options" onclick="activate_tab(4);" >Group Options</li>
+            <li class="group_main_menu_item" id="main_menu_administration" onclick="activate_tab(3);">Administration
+            </li>
+            <li class="group_main_menu_item" id="main_menu_options" onclick="activate_tab(4);">Group Options</li>
         </ul>
     </div>
 
@@ -120,21 +177,29 @@
 
         <!--add new post / file / photo-->
         <div class="group_div_content_post">
-            <div class="dbox group_dbox_post"  style="<?php echo $valid?>">
+            <div class="dbox group_dbox_post" style="<?php echo $valid ?>">
 
-                <div class="group_post_writer_navbar_area">
-                    <ul class="group_post_writer_navbar">
-                        <li class="group_post_writer_navbar_item group_post_writer_text">Write Post</li>
-                        <li class="group_post_writer_navbar_item_seperator"></li>
-                        <li class="group_post_writer_navbar_item group_post_writer_image">Add Photo</li>
-                        <li class="group_post_writer_navbar_item_seperator"></li>
-                        <li class="group_post_writer_navbar_item group_post_writer_file">Add File</li>
-                    </ul>
-                </div>
-                <form action="" method="post">
-                    <textarea name="post_content" class="group_post_writer_textarea" placeholder="Post your content here ...." required></textarea>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="group_post_writer_navbar_area">
+                        <ul class="group_post_writer_navbar">
+                            <li class="group_post_writer_navbar_item group_post_writer_text" id="write">Write Post</li>
+                            <li class="group_post_writer_navbar_item_seperator"></li>
+                            <li class="group_post_writer_navbar_item group_post_writer_image"
+                                onclick="document.getElementById('post_img').click();">Add Photo
+                            </li>
+
+                            <!--                        <li class="group_post_writer_navbar_item_seperator"></li>-->
+                            <!--                        <li class="group_post_writer_navbar_item group_post_writer_file">Add File</li>-->
+                        </ul>
+                    </div>
+                    <input type="file" style="display: none" accept="image/*" name="post_img" id="post_img">
+                    <div id="post_img_pre" class="group_post_image_preview" style="display:none;"></div>
+                    <textarea id="post_text" name="post_content" class="group_post_writer_textarea"
+                              placeholder="Post your content here ...." required></textarea>
                     <div class="group_writer_bottom" align="right">
-                        <input type="submit" name="add_post" value="Post" class="msgbox_button group_writer_button" onclick='closemsgbox();window.alert(";)");'>
+                        <input type="submit" id="img_input" name="add_post" value="Post"
+                               class="msgbox_button group_writer_button"
+                               onclick='closemsgbox();window.alert(";)");'>
                     </div>
                 </form>
             </div>
@@ -159,7 +224,8 @@
                         -->
                     </div>
                     <div class="group_post_content">
-                        This is a sapmle data.. IF you see this, that means you unable to get data from database.Please check your connection of complains to remalsha@gmail.com.
+                        This is a sapmle data.. IF you see this, that means you unable to get data from database.Please
+                        check your connection of complains to remalsha@gmail.com.
                     </div>
                 </div>
             </div>
@@ -170,36 +236,66 @@
         <div class="group_div_content_extra">
 
             <!--Extra box for further dev-->
-            <div class="dbox group_div_content_extra" style="<?php echo $requestJoin ?>">
-                <center>
-                    <p style="font-size: .8em">Join this group to see the discussion, post and comment.</p>
-                    <button class="msgbox_button group_writer_button" id="joinGroup">Join Group</button>
-                </center>
+            <?php
 
-            </div>
+            // TODO remove join button if already sent request and invisible accept request button from others..
+            $qry_to_check_request = "SELECT * FROM group_member_request WHERE group_id='$group_id' AND member_id='$user_id'";
+            $res_check = mysqli_query($conn, $qry_to_check_request);
+            if (mysqli_num_rows($res_check)) { ?>
+                <div class="dbox group_div_content_extra" id="join_group_area" style="<?php echo $requestJoin ?>">
+                    <center>
+                        <p style="font-size: .8em">Join this group to see the more discussion, post and comment.</p>
+                        <div class="alert-green" style="width: 150px">Already you have send request.</div>
 
-            <div class="dbox group_div_content_extra" style="<?php echo $memberRequest ?>">
+                    </center>
 
-                <div class="group_role_title">New Request</div>
-                <div id="request">
-                    <!--<div class="dbox" style="height: 45px; padding-top: 0px; ">
-                        <div class="group_member_facearea" style="margin: 5px">
-                            <div class="group_member_face tooltip"><span class="tooltiptext">--</span> </div>
-                        </div>
-                        <div style="float: left; margin: 10px">
-                            <button class="msgbox_button group_writer_button" id="acceptRequest">Accept</button>
-                            <button class="msgbox_button group_writer_button red_button" id="ignoreRequest">Ignore</button>
-                        </div>
-                    </div>-->
                 </div>
-            </div>
+                <?php
+            } else { ?>
+                <div class="dbox group_div_content_extra" id="join_group_area" style="<?php echo $requestJoin ?>">
+                    <center>
+                        <p style="font-size: .8em">Join this group to see the more discussion, post and comment.</p>
+                        <button class="msgbox_button group_writer_button" id="joinGroup">Join Group</button>
+
+                    </center>
+
+                </div>
+                <?php
+            }
+
+
+            ?>
+
+            <?php
+            if($valid_b) { ?>
+                <div class="dbox group_div_content_extra member_request" style="<?php echo $memberRequest ?>">
+
+                    <div class="group_role_title">New Request</div>
+                    <div id="request" style="overflow: auto;max-height: 240px">
+                        <!--<div class="dbox" style="height: 45px; padding-top: 0px; ">
+                            <div class="group_member_facearea" style="margin: 5px">
+                                <div class="group_member_face tooltip"><span class="tooltiptext">--</span> </div>
+                            </div>
+                            <div style="float: left; margin: 10px">
+                                <button class="msgbox_button group_writer_button" id="acceptRequest">Accept</button>
+                                <button class="msgbox_button group_writer_button red_button" id="ignoreRequest">Ignore</button>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+
+                <?php
+            }
+
+            ?>
 
             <!--view group members area-->
             <div class="dbox group_div_content_extra">
                 <div class="group_role_section">
                     <div class="group_role_title">Members</div>
                     <div class="group_member_facearea">
-                        <div class="group_member_face tooltip"><span class="tooltiptext">Sulochana Kodituwakku</span> </div>
+                        <div class="group_member_face tooltip"><span class="tooltiptext">Sulochana Kodituwakku</span>
+                        </div>
                         <!--<div class="group_member_face tooltip"><span class="tooltiptext">Sulochana Kodituwakku</span> </div>
                         <div class="group_member_face tooltip"><span class="tooltiptext">Sulochana Kodituwakku</span> </div>-->
                     </div>
@@ -234,7 +330,8 @@
             <div class="group_administration_content_field">
                 <div class="group_administration_content_field_name">Group Name</div>
                 <div class="group_administration_content_field_value">
-                    <input type="text" class="group_administration_txtbox" name="group_name" value="<?php echo $group_detail['name']?>">
+                    <input type="text" class="group_administration_txtbox" name="group_name"
+                           value="<?php echo $group_detail['name'] ?>">
                 </div>
             </div>
             <div class="group_administration_content_field">
@@ -244,7 +341,7 @@
                         <?php
                         $dist = "Community,Sports,Student Branch,Club,Society";
                         $ary = explode(',', $dist);
-                        foreach($ary as $dist){
+                        foreach ($ary as $dist) {
                             echo "<option value='$dist'>$dist</option>";
                         }
                         ?>
@@ -258,7 +355,7 @@
                         <?php
                         $dist = "Public,Closed,Secret";
                         $ary = explode(',', $dist);
-                        foreach($ary as $dist){
+                        foreach ($ary as $dist) {
                             echo "<option value='$dist'>$dist</option>";
                         }
                         ?>
@@ -268,80 +365,94 @@
             <div class="group_administration_content_field">
                 <div class="group_administration_content_field_name">Group Description</div>
                 <div class="group_administration_content_field_value">
-                    <textarea class="group_administration_textarea" placeholder="Describe this group"><?php echo $group_detail['description']; ?></textarea>
+                    <textarea class="group_administration_textarea"
+                              placeholder="Describe this group"><?php echo $group_detail['description']; ?></textarea>
                 </div>
             </div>
 
             <!--Group Roles Manage Area-->
             <div class="group_administration_content_field">
-                
+
                 <!--Create group Roles-->
                 <form action="updateMethods/groupController.php" method="POST">
                     <div class="group_administration_content_field_name">Create Group Roles</div>
                     <div class="group_administration_content_field_value">
                         <div class="group_administration_content_field_value_sub">
 
-                            <input type="text" name="role_name" class="group_administration_txtbox" placeholder="Enter Role Name" required>
+                            <input type="text" name="role_name" class="group_administration_txtbox"
+                                   placeholder="Enter Role Name" required>
 
                             <div class="ui group_administration_checkbox">
 
-                                <label><input type="checkbox" name="createRole[]" value="1" class="ui group_administration_checkbox" >
-                                Allow admin panel Access</label>
+                                <label><input type="checkbox" name="createRole[]" value="1"
+                                              class="ui group_administration_checkbox">
+                                    Allow admin panel Access</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="2" class="ui group_administration_checkbox" >
-                                Allow adding new members to the group</label>
+                                <label><input type="checkbox" name="createRole[]" value="2"
+                                              class="ui group_administration_checkbox">
+                                    Allow adding new members to the group</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="3" class="ui group_administration_checkbox" >
-                                Allow removing members from the group</label>
+                                <label><input type="checkbox" name="createRole[]" value="3"
+                                              class="ui group_administration_checkbox">
+                                    Allow removing members from the group</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="4" class="ui group_administration_checkbox" >
-                                Allow changing roles of members</label>
+                                <label><input type="checkbox" name="createRole[]" value="4"
+                                              class="ui group_administration_checkbox">
+                                    Allow changing roles of members</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="5" class="ui group_administration_checkbox" >
-                                Allow group setting modifications</label>
+                                <label><input type="checkbox" name="createRole[]" value="5"
+                                              class="ui group_administration_checkbox">
+                                    Allow group setting modifications</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="6" class="ui group_administration_checkbox" >
-                                Allow group deletion</label>
+                                <label><input type="checkbox" name="createRole[]" value="6"
+                                              class="ui group_administration_checkbox">
+                                    Allow group deletion</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="7" class="ui group_administration_checkbox" >
-                                Allow user to post in the group</label>
+                                <label><input type="checkbox" name="createRole[]" value="7"
+                                              class="ui group_administration_checkbox">
+                                    Allow user to post in the group</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="8" class="ui group_administration_checkbox" >
-                                Allow user to delete posts in group</label>
+                                <label><input type="checkbox" name="createRole[]" value="8"
+                                              class="ui group_administration_checkbox">
+                                    Allow user to delete posts in group</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="9" class="ui group_administration_checkbox" >
-                                Allow user to pin/unpin posts</label>
+                                <label><input type="checkbox" name="createRole[]" value="9"
+                                              class="ui group_administration_checkbox">
+                                    Allow user to pin/unpin posts</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="10" class="ui group_administration_checkbox" >
-                                Allow user to send gorup messages via Email</label>
+                                <label><input type="checkbox" name="createRole[]" value="10"
+                                              class="ui group_administration_checkbox">
+                                    Allow user to send gorup messages via Email</label>
                             </div>
 
                             <div class="ui group_administration_checkbox">
-                                <label><input type="checkbox" name="createRole[]" value="11" class="ui group_administration_checkbox" >
-                                Allow user to Tweet</label>
+                                <label><input type="checkbox" name="createRole[]" value="11"
+                                              class="ui group_administration_checkbox">
+                                    Allow user to Tweet</label>
                             </div>
                             <br>
 
                             <input type="hidden" value="<?php echo $group_id ?>" name="group_id">
-                            <input type="submit" class="msgbox_button group_writer_button" name="create_role" id="create_role" value="Create New Role">
+                            <input type="submit" class="msgbox_button group_writer_button" name="create_role"
+                                   id="create_role" value="Create New Role">
                         </div>
                         <div style="clear: both"></div>
                     </div>
@@ -357,16 +468,18 @@
                         <option value="">-- Select --</option>
                         <?php
 
-                        $res_name = mysqli_query($conn,"SELECT role_name FROM group_role WHERE group_id = '$group_id' ");
+                        $res_name = mysqli_query($conn, "SELECT role_name FROM group_role WHERE group_id = '$group_id' ");
 
-                        while($row = mysqli_fetch_assoc($res_name)){
+                        while ($row = mysqli_fetch_assoc($res_name)) {
                             $dist = $row['role_name'];
                             echo "<option value='$dist'>$dist</option>";
                         }
                         ?>
                     </select>
 
-                    <button class="msgbox_button group_writer_button red_button" onclick='closemsgbox();window.alert(";)");'>Delete Group Role</button>
+                    <button class="msgbox_button group_writer_button red_button"
+                            onclick='closemsgbox();window.alert(";)");'>Delete Group Role
+                    </button>
                 </div>
             </div>
 
@@ -379,70 +492,72 @@
                             <option value="">-- Select --</option>
                             <?php
 
-                            $res_name = mysqli_query($conn,"SELECT role_name FROM group_role WHERE group_id = '$group_id' ");
+                            $res_name = mysqli_query($conn, "SELECT role_name FROM group_role WHERE group_id = '$group_id' ");
 
-                            while($row = mysqli_fetch_assoc($res_name)){
+                            while ($row = mysqli_fetch_assoc($res_name)) {
                                 $dist = $row['role_name'];
                                 echo "<option value='$dist'>$dist</option>";
                             }
                             ?>
                         </select>
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow admin panel Access</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow adding new members to the group</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow removing members from the group</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow changing roles of members</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow group setting modifications</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow group deletion</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow user to post in the group</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow user to delete posts in group</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow user to pin/unpin posts</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow user to send gorup messages via Email</label>
                         </div>
 
                         <div class="ui group_administration_checkbox">
-                            <input type="checkbox" class="ui group_administration_checkbox" >
+                            <input type="checkbox" class="ui group_administration_checkbox">
                             <label>Allow user to Tweet</label>
                         </div>
                         <br>
-                        <button class="msgbox_button group_writer_button yellow_button" onclick='closemsgbox();window.alert(";)");'>Update Group Role</button>
+                        <button class="msgbox_button group_writer_button yellow_button"
+                                onclick='closemsgbox();window.alert(";)");'>Update Group Role
+                        </button>
                     </div>
                     <div style="clear: both"></div>
                 </div>
@@ -454,8 +569,12 @@
                 <div class="group_administration_content_field_value">
                     <input type="text" class="group_administration_txtbox" placeholder="Enter Member Email">
 
-                    <button class="msgbox_button group_writer_button" onclick='closemsgbox();window.alert(";)");'>Add Member</button>
-                    <button class="msgbox_button group_writer_button" onclick='closemsgbox();window.alert(";)");'>Bulk Add</button>
+                    <button class="msgbox_button group_writer_button" onclick='closemsgbox();window.alert(";)");'>Add
+                        Member
+                    </button>
+                    <button class="msgbox_button group_writer_button" onclick='closemsgbox();window.alert(";)");'>Bulk
+                        Add
+                    </button>
 
                 </div>
             </div>
@@ -469,12 +588,14 @@
                         <?php
                         $dist = "President,Vice President,Secratory,Member";
                         $ary = explode(',', $dist);
-                        foreach($ary as $dist){
+                        foreach ($ary as $dist) {
                             echo "<option value='$dist'>$dist</option>";
                         }
                         ?>
                     </select>
-                    <button class="msgbox_button group_writer_button yellow_button" onclick='closemsgbox();window.alert(";)");'>Update Member</button>
+                    <button class="msgbox_button group_writer_button yellow_button"
+                            onclick='closemsgbox();window.alert(";)");'>Update Member
+                    </button>
 
                 </div>
             </div>
@@ -485,7 +606,9 @@
                 <div class="group_administration_content_field_name">Update Member</div>
                 <div class="group_administration_content_field_value">
                     <input type="text" class="group_administration_txtbox" placeholder="Enter Member Email">
-                    <button class="msgbox_button group_writer_button red_button" onclick='closemsgbox();window.alert(";)");'>Remove Member</button>
+                    <button class="msgbox_button group_writer_button red_button"
+                            onclick='closemsgbox();window.alert(";)");'>Remove Member
+                    </button>
 
                 </div>
             </div>
@@ -498,12 +621,17 @@
     <div class="group_div_content" id="tab_options">
         <div class="dbox group_tab_members group_members_dbox">
 
-            <div class="group_tab_members_role">Group Settings</div><br>
+            <div class="group_tab_members_role">Group Settings</div>
+            <br>
             <div class="ui group_administration_checkbox">
-                <input type="checkbox" class="ui group_administration_checkbox" >
+                <input type="checkbox" class="ui group_administration_checkbox">
                 <label>Email me all the posts</label>
-            </div><br>
-            &nbsp;<button class="msgbox_button group_writer_button red_button" onclick='closemsgbox();window.alert(";)");'>Leave Group</button>
+            </div>
+            <br>
+            &nbsp;
+            <button class="msgbox_button group_writer_button red_button" onclick='closemsgbox();window.alert(";)");'>
+                Leave Group
+            </button>
         </div>
 
     </div>
@@ -523,28 +651,33 @@ include_once('../templates/_footer.php');
         //updatea member request and member list
         updateMemberRequest();
 
+        //change post method
+        $('#write').click(function () {
+            $('#post_img_pre').css('display', 'none');
+            $('#img_input').prop('required', false);
+        });
 
     });
 
     //Function to update group post
-    function updateGroupPost(){
+    function updateGroupPost() {
         $.ajax({
-            type:"GET",
-            url:"getMethods/getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
-            success:function (response) {
+            type: "GET",
+            url: "getMethods/getGroupPost.php?group=<?php echo $group_id?>&c=<?php echo $group_detail['group_color']?>&u=<?php echo $userValid?>",
+            success: function (response) {
                 $('#group_post_content').html(response);
             }
         });
     }
 
     //Function to update group member and member requests list
-    function updateMemberRequest(){
+    function updateMemberRequest() {
         //Get group members
         $.ajax({
-            type:"GET",
-            url:"getMethods/getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
-            data:{'use':'sub'},
-            success:function (response2) {
+            type: "GET",
+            url: "getMethods/getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
+            data: {'use': 'sub'},
+            success: function (response2) {
                 $('.group_member_facearea').html(response2);
                 var number_members = $('.group_member_facearea').size();
                 $('#num_member').html(number_members + " Members ");
@@ -552,68 +685,73 @@ include_once('../templates/_footer.php');
         });
 
         $.ajax({
-            type:"GET",
-            url:"getMethods/getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
-            data:{'use':'main'},
-            success:function (response3) {
+            type: "GET",
+            url: "getMethods/getGroupMembers.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
+            data: {'use': 'main'},
+            success: function (response3) {
                 $('.group_tab_members_view_area').html(response3);
             }
         });
 
+        <?php
+        if($valid_b){ ?>
+
         //Get new request
         $.ajax({
-            type:"GET",
-            url:"getMethods/getNewRequest.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
-            success:function (response4) {
+            type: "GET",
+            url: "getMethods/getNewRequest.php?group=<?php echo $group_id?>&u=<?php echo $userValid?>",
+            success: function (response4) {
                 $('#request').html(response4);
             }
         });
+        <?php
+        }
+        ?>
+
     }
 
     //Delete group post function
     function delete_post(post_id) {
-        swal({
-                title: "Are you sure?",
-                text: "You will not be able to recover this post!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                closeOnConfirm: false
-            },
-            function(){
-
-                $.ajax({
-                    type:"GET",
-                    url:"updateMethods/deleteGroupPost.php?group=<?php echo $group_id?>&p=<?php echo $userValid?>&i="+post_id,
-                    success:function (response) {
-                        if(response){
-                            swal("Deleted!", "Your post has been deleted.", "success");
-                            updateGroupPost();
-                        }else{
-                            swal("Error", "Unable to delete post!", "error");
-                        }
-                    }
-                });
-            });
+        msgbox('You will not be able to recover this post!', "Are you sure?", 2, 'Yes, Delete it', 'msgboxdef', 'Cancel', 'no', post_id);
     }
+
+    function msgboxdef(post_id) {
+        $.ajax({
+            type: "GET",
+            url: "updateMethods/deleteGroupPost.php?group=<?php echo $group_id?>&p=<?php echo $userValid?>&i=" + post_id,
+            success: function (response) {
+                if (response) {
+                    console.log(post_id);
+                    msgbox('Post has been deleted.', 'Deleted!', 1);
+                    //swal("Deleted!", "Your post has been deleted.", "success");
+                    updateGroupPost();
+                } else {
+                    msgbox('Unable to delete post.', 'Error', 3);
+                    //swal("Error", "Unable to delete post!", "error");
+                }
+            }
+        });
+    }
+
 
     //function to join group
     $('#joinGroup').click(function () {
 
         $.ajax({
-            type:'POST',
-            url:'updateMethods/joinGroup.php',
-            data:{
+            type: 'POST',
+            url: 'updateMethods/joinGroup.php',
+            data: {
                 'user': '<?php echo $user_id ?>',
-                'group':'<?php echo $group_id ?>'
+                'group': '<?php echo $group_id ?>'
             },
-            dataType:'json',
-            success:function (response) {
-                if (response){
-                    swal("Request send!", "Your request to join this group send.", "success");
-                }else{
-                    swal("Error", "Sorry, Your request not send!", "error");
+            dataType: 'json',
+            success: function (response) {
+                if (response) {
+                    $('#joinGroup').remove();
+                    $("<center><div class=\"alert-green\" style=\"width: 150px\">Already you have send request.</div></center>").appendTo("#join_group_area");
+                    msgbox('You requested to join this group send.', 'Request send!', 1);
+                } else {
+                    msgbox('Sorry, Your request not send!. Please try again later.', 'Error', 3);
                 }
             }
         })
@@ -621,27 +759,68 @@ include_once('../templates/_footer.php');
     });
 
     //Function to handle member request
-    $('#request').on('click','.acceptRequest',function () {
+    $('#request').on('click', '.acceptRequest', function () {
 
         $.ajax({
-            type:'POST',
-            url:'updateMethods/groupController.php',
-            data:{
-                'request':'accept',
+            type: 'POST',
+            url: 'updateMethods/groupController.php',
+            data: {
+                'request': 'accept',
                 'req_id': this.id,
-                'group':'<?php echo $group_id ?>'
+                'group': '<?php echo $group_id ?>'
             },
-            dataType:'json',
-            success:function (response) {
-                if (response){
-                    swal("Member Add!", "New member added to group.", "success");
+            dataType: 'json',
+            success: function (response) {
+                if (response) {
+                    msgbox("New member added to group.","Member Add!",1);
+                    //swal("Member Add!", "New member added to group.", "success");
                     updateMemberRequest();
-                }else{
-                    swal("Error", "Sorry, member does not add!", "error");
+                } else {
+                    msgbox("Sorry, member does not add. Something went wrong. Please try again later.","Error!",3);
+                    //swal("Error", "Sorry, member does not add!", "error");
                 }
             }
         });
     });
+
+    $('#request').on('click', '.ignoreRequest', function () {
+
+        $.ajax({
+            type: 'POST',
+            url: 'updateMethods/groupController.php',
+            data: {
+                'request': 'ignore',
+                'req_id': this.id,
+                'group': '<?php echo $group_id ?>'
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response) {
+                    msgbox("Member request ignored.","Ignore",1);
+                    //swal("Member Add!", "New member added to group.", "success");
+                    updateMemberRequest();
+                } else {
+                    msgbox("Sorry, Something went wrong. Please try again later.","Error!",3);
+                    //swal("Error", "Sorry, member does not add!", "error");
+                }
+            }
+        });
+    });
+
+    // Function for Preview post Image.
+    $(function () {
+        $("#post_img").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    });
+    function imageIsLoaded(e) {
+        $('#img_input').prop('required', true);
+        $('#post_img_pre').css('display', 'block').css('background-image', 'url(' + e.target.result + ')');
+    }
 
 
 </script>
@@ -659,7 +838,7 @@ include_once('../templates/_footer.php');
         var main_menu_administration = document.getElementById("main_menu_administration");
         var main_menu_options = document.getElementById("main_menu_options");
 
-        switch (x){
+        switch (x) {
             case 1:
                 tab_notices.style.display = "block";
                 tab_members.style.display = "none";

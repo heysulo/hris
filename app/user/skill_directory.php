@@ -28,8 +28,75 @@
     <?php //include_once('../templates/bottom_panel.php'); ?>
 </div>
 
+<div class = "bottomPanel">
+    <div class="txt_paneltitle">Undergraduate Transcript</div>
+    <div class ="head_space"></div>
+    <form name="transcript" method="post" class="basic-grey" action="trans/getpdf.php" onsubmit="return validateForm()">
+        <table>
+            <tr>
+                <h1>Application for undergraduate transcript </h1></br></br>
+                    <span class="error">* Required fields.</span>
+            </tr>
+
+            <tr>
+                <td class="h">Full Name :</td>
+                <td><input id="name" type="text" name="name" pattern="^[a-zA-Z ]*$" placeholder="Your full name" required/></td>
+                <td class="error">* </td>
+            </tr>
+
+            <tr>
+                <td class="h">Index no :</td>
+                <td><input id="index" type="text" name="index" placeholder="1400XXXX" pattern="[0-9]{8}" required/></td>
+                <td class="error">*</td>
+            </tr>
+
+            <tr>
+                <td class="h">Registration no :</td>
+                <td><input id="regno" type="text" name="regno" placeholder="2014CSXXX" pattern="[A-Za-z0-9]{9}" required/></td>
+                <td class="error">* </td>
+            </tr>
+
+            <tr>
+                <td class="h">Year :</td>
+                <td><select name="year" required>
+                        <option selected value="default">Please select an option.</option>
+                        <option value=1 >first year</option>
+                        <option value=2 >second year</option>
+                        <option value=3 >third year</option>
+                        <option value=4 >fourth year</option>
+                    </select></td>
+                <td class="error">*</td>
+            </tr>
+
+            <tr>
+                <td class="h">&nbsp;</td>
+                <td><input type="submit" class="button" value="Generate PDF" name="submit"/></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
+
 <?php
 include_once('../templates/_footer.php');
 ?>
+
+<script type="text/javascript">
+    function validateForm()
+    {
+        var year = document.forms["transcript"]["year"].value;
+
+
+        if (year == "default")
+        {
+            alert("Please select an Acaemic Year.");
+            return false;
+        }
+
+
+    }
+</script>
+
 </body>
 </html>

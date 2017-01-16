@@ -34,10 +34,11 @@ if(!isset($_SESSION['email'])){
                     window.history.go(-1);
                   </script>";
         }else{
-            echo "<script>
-                    alert('Sorry, Unable to create new role.');
-                    window.history.go(-1);
-                    </script>";
+            echo mysqli_error($conn);
+//            echo "<script>
+//                    alert('Sorry, Unable to create new role.');
+//                    window.history.go(-1);
+//                    </script>";
         }
     }
 
@@ -80,11 +81,34 @@ if(!isset($_SESSION['email'])){
 
     }
 
+    function ignoreMemberRequest($conn){
+        //Get user id and group id
+        $request_id = $_POST['req_id'];
+        $group_id = $_POST['group'];
+
+        //Get requester id
+        $sql_get_requester = "SELECT member_id FROM group_member_request WHERE group_id='$group_id' AND request_id ='$request_id'";
+        $res = mysqli_query($conn,$sql_get_requester);
+        if(mysqli_num_rows($res)){
+            $qry_to_ignore_request = "DELETE FROM group_member_request WHERE request_id='$request_id'";
+            if(mysqli_query($conn,$qry_to_ignore_request)){
+                echo json_encode(true);
+            }else{
+                echo json_encode(false);
+            }
+        }else{
+            echo json_encode(false);
+        }
+
+    }
+
     if (isset($_POST['create_role']) && isset($_POST['group_id'])) {
         createRole($conn);
     }elseif (isset($_POST['request']) && isset($_POST['group']) && isset($_POST['req_id'])){
         if($_POST['request'] == 'accept'){
             acceptMemberRequest($conn);
+        }else if ($_POST['request'] == 'ignore'){
+            ignoreMemberRequest($conn);
         }
     }
 

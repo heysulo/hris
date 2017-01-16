@@ -438,7 +438,7 @@
 							if (xhr.readyState ==4 && xhr.status == 200){
 								switch (xhr.responseText.split("_")[0]){
 									case "success":
-										msgbox("An invitation has being successfully sent to " + email + " with instructions to join the system. Email delivery will take upto 20 minutes depending on the network<br><br><a href='hris/app/user/profileSetup/setupProfile.php?token="+xhr.responseText.split("_")[1]+"'>Invite Link<a/>","Invitation Sent",1);
+										msgbox("An invitation has being successfully sent to " + email + " with instructions to join the system. Email delivery will take upto 20 minutes depending on the network<br><br><a href=' <?php echo $appPath?>user/profileSetup/setupProfile.php?token="+xhr.responseText.split("_")[1]+"'>Invite Link<a/>","Invitation Sent",1);
 										document.getElementById("new_member_email").value = "";
 										break;
 									case "0x4":

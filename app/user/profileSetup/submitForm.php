@@ -164,7 +164,7 @@ function createUser(){
 
             if ($response_from_remove){
                 if (session_destroy()){
-                    header("location:../../index.php");
+                    header("location:success.php");
                 }
             }else{
                 echo mysqli_error($conn);

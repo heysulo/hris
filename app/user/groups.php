@@ -47,8 +47,10 @@
                 $qry_to_get_group_ids = "SELECT * FROM groups WHERE creator ='".$_SESSION['user_id']."'";
                 $group_details = mysqli_query($conn, $qry_to_get_group_ids);
 
+                $mygroup = [];
                 while($row = mysqli_fetch_assoc($group_details)){
                     $path = '../images/group/'.$row['logo'];
+                    $mygroup[] = $row['group_id'];
                     ?>
 
                     <div class="dbox group_manage_group_dbox" style="border-top-color: <?php echo $row['color'] ?>;" id='<?php echo $row['group_id'] ?>'>
@@ -84,6 +86,7 @@
                 $group_ids = mysqli_query($conn, $qry_to_get_group_ids);
 
                 while($gid = mysqli_fetch_assoc($group_ids)){
+                    if(!in_array($gid['group_id'],$mygroup)){
                     $qry_to_get_groups = "SELECT * FROM groups WHERE group_id='".$gid['group_id']."'";
                     $res = mysqli_query($conn,$qry_to_get_groups);
 
@@ -99,7 +102,9 @@
                         <div class="group_dbox_description"><?php echo $row['description'] ?></div>
                     </div>
 
-                <?php } ?>
+                <?php }
+
+                }?>
 
             </div>
         </div>
@@ -117,6 +122,9 @@
                 $res = mysqli_query($conn,$qry_get_groups);
                 while($row = mysqli_fetch_assoc($res)){
                     $path = '../images/group/'.$row['logo'];
+
+                    $description = explode('.',$row['description']);
+
                     ?>
 
 
@@ -125,7 +133,7 @@
                         <div class="group_dbox_title"><?php echo $row['name'] ?></div>
 
                         <div class="group_dbox_category"><?php echo $row['category'] ?></div>
-                        <div class="group_dbox_description"><?php echo $row['description'] ?></div>
+                        <div class="group_dbox_description"><?php echo $description[0];?></div>
                     </div>
 
                 <?php } ?>

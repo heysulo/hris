@@ -36,13 +36,13 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
             //send html as respond to ajax request
             //echo "<div class=\"group_member_face tooltip\" style='background-image: url(\" " . $path_pro_pic . " \");'><span class=\"tooltiptext\">" . $qres['first_name'] . " " . $qres['last_name'] . "</span> </div>";
 
-            echo "<div class=\"dbox\" style=\"height: 45px; padding-top: 0px; \">
-                    <div class=\"group_member_facearea\" style=\"margin: 5px\">
+            echo "<div class=\"dbox\" style=\"height: 45px; padding-top: 0px; border-radius: 2px; margin-bottom: -8px; \">
+                    <div class=\"group_member_facearea\">
                         <div class=\"group_member_face tooltip\" style=\"background-image: url( " . $path_pro_pic . " ); \"><span class=\"tooltiptext\">".$qres['first_name']." ".$qres['last_name']."</span> </div>
                     </div>
                     <div style=\"float: left; margin: 10px\">
                         <button class=\"msgbox_button group_writer_button acceptRequest\" id=\"". $row['request_id'] . "\">Accept</button>
-                        <button class=\"msgbox_button group_writer_button red_button ignoreRequest  \" id=\"". $row['request_id'] ."\">Ignore</button>
+                        <button class=\"msgbox_button group_writer_button red_button ignoreRequest  \" name='".$row['request_id']."' id=\"". $row['request_id'] ."\">Ignore</button>
                     </div>
                 </div>";
         }

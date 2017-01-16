@@ -399,7 +399,7 @@ $_SESSION['email'] = $email;
 
         $(document).on('keyup keypress', function(e) {
             var keyCode = e.keyCode || e.which;
-            if (keyCode == 13) {
+            if (keyCode == 13 && $(e.target)[0]!=$("textarea")[0]) {
                 e.preventDefault();
             }
         });
@@ -415,6 +415,7 @@ $_SESSION['email'] = $email;
             $('#batch_id').prop('required',true);
         }else{
             $('#batch_id').css('display','none');
+            $('#batch_id').prop('required',false);
             $('#reg_number').css('display','none');
             $('#index_number').css('display','none');
             $('#index_validate_alert').css('display','none');
