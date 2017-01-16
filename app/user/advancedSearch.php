@@ -107,64 +107,24 @@
             <div class="dbox">
                 <div class="adv_search_subtitle">Clubs & Organization Engagements</div>
                 <div class="adv_search_subtitle_2">Club/Society Name :</div>
-                <select class="adv_search_dropdown" style="width: 100%;">
-                    <option value="Unset" selected>Unset</option>
-                    <option value="Jaffna">Jaffna</option>
-                    <option value="Kilinochchi">Kilinochchi</option>
-                    <option value="Mannar">Mannar</option>
-                    <option value="Mullaitivu">Mullaitivu</option>
-                    <option value="Vavuniya">Vavuniya</option>
-                    <option value="Puttalam">Puttalam</option>
-                    <option value="Kurunegala">Kurunegala</option>
-                    <option value="Gampaha">Gampaha</option>
-                    <option value="Colombo">Colombo</option>
-                    <option value="Kalutara">Kalutara</option>
-                    <option value="Anuradhapura">Anuradhapura</option>
-                    <option value="Polonnaruwa">Polonnaruwa</option>
-                    <option value="Matale">Matale</option>
-                    <option value="Kandy">Kandy</option>
-                    <option value="Nuwara Eliya">Nuwara Eliya</option>
-                    <option value="Kegalle">Kegalle</option>
-                    <option value="Ratnapura">Ratnapura</option>
-                    <option value="Trincomalee">Trincomalee</option>
-                    <option value="Batticaloa">Batticaloa</option>
-                    <option value="Ampara">Ampara</option>
-                    <option value="Badulla">Badulla</option>
-                    <option value="Monaragala">Monaragala</option>
-                    <option value="Hambantota">Hambantota</option>
-                    <option value="Matara">Matara</option>
-                    <option value="Galle">Galle</option>
+                <select class="adv_search_dropdown" id="group_id" name="group_selection" style="width: 100%;" onchange="getroles();">
+                    <option value="-1" selected>Unset</option>
+                    <?php
+                    $query32 = "SELECT * FROM groups ORDER BY name asc;";
+                    $result = mysqli_query($conn,$query32);
+                    if (mysqli_num_rows($result)){
+                        while ($row_qt =  mysqli_fetch_assoc($result)){
+                            echo "<option value='".$row_qt['group_id']."'>".$row_qt['name']."</option>";
+                        }
+                    }
+                    ?>
                 </select>
                 <br>
                 <br>
                 <div class="adv_search_subtitle_2">Role :</div>
-                <select class="adv_search_dropdown" style="width: 100%;">
-                    <option value="Unset" selected>Unset</option>
-                    <option value="Jaffna">Jaffna</option>
-                    <option value="Kilinochchi">Kilinochchi</option>
-                    <option value="Mannar">Mannar</option>
-                    <option value="Mullaitivu">Mullaitivu</option>
-                    <option value="Vavuniya">Vavuniya</option>
-                    <option value="Puttalam">Puttalam</option>
-                    <option value="Kurunegala">Kurunegala</option>
-                    <option value="Gampaha">Gampaha</option>
-                    <option value="Colombo">Colombo</option>
-                    <option value="Kalutara">Kalutara</option>
-                    <option value="Anuradhapura">Anuradhapura</option>
-                    <option value="Polonnaruwa">Polonnaruwa</option>
-                    <option value="Matale">Matale</option>
-                    <option value="Kandy">Kandy</option>
-                    <option value="Nuwara Eliya">Nuwara Eliya</option>
-                    <option value="Kegalle">Kegalle</option>
-                    <option value="Ratnapura">Ratnapura</option>
-                    <option value="Trincomalee">Trincomalee</option>
-                    <option value="Batticaloa">Batticaloa</option>
-                    <option value="Ampara">Ampara</option>
-                    <option value="Badulla">Badulla</option>
-                    <option value="Monaragala">Monaragala</option>
-                    <option value="Hambantota">Hambantota</option>
-                    <option value="Matara">Matara</option>
-                    <option value="Galle">Galle</option>
+                <select class="adv_search_dropdown" style="width: 100%;" id="role_lst" name="role_selection">
+                    <option value="-1" selected>Unset</option>
+
                 </select>
             </div>
 
@@ -196,6 +156,24 @@ include_once('../templates/_footer.php');
 ?>
 
 <script>
+    
+    function getroles() {
+        var spanner = document.getElementById("role_lst");
+        var selection = document.getElementById("group_id");
+        if (selection.value == -1){
+            return true;
+        }
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                spanner.innerHTML = this.responseText;
+                //alert(this.responseText);
+            }
+
+        };
+        xhttp.open("GET", "getgrouproles.php?id="+selection.value, true);
+        xhttp.send();
+    }
 
     $("#new_skill_input").on('keyup keypress', function(e) {
         var keyCode = e.keyCode || e.which;
