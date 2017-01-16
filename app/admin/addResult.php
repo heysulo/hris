@@ -54,6 +54,9 @@
     <?php include_once('../templates/navigation_panel.php'); ?>
     <?php include_once('../templates/top_pane.php'); ?>
     <?php //include_once('../templates/bottom_panel.php'); ?>
+    <?php
+    include_once('../templates/_footer.php');
+    ?>
     <div class="bottomPanel" style="height: 100%;">
 
 
@@ -61,16 +64,16 @@
             <div class="dbox group_tab_members group_members_dbox">
 
                 <?php if($_SESSION['system_admin_panel_access']){?>
-                    <!-------------------------------ADD Subject Details--------------------------->
+                    <!-------------------------------ADD Course Details--------------------------->
                     <div class="group_administration_content_field">
-                        <div class="group_administration_content_field_name">Add Subject Details</div>
+                        <div class="group_administration_content_field_name">Adding Results</div>
                         <div class="group_administration_content_field_value">
 
                             <?php
 
                             if (isset($_POST['add_result'])) {
 
-                                $subject = mysqli_escape_string($conn, $_POST['subject']);
+                                $subject = mysqli_escape_string($conn, $_POST['course']);
                                 $batch = mysqli_escape_string($conn, $_POST['batch']);
                                 $bb = ltrim($batch, 'B');
 
@@ -85,7 +88,7 @@
                                     $jsonFile = array();
                                     ?>
                                     <div>
-                                        Subject : <?php echo $subject ?> &nbsp; &nbsp; &nbsp; &nbsp;
+                                        Course : <?php echo $subject ?> &nbsp; &nbsp; &nbsp; &nbsp;
                                         Batch : <?php echo $bb ?>
 
                                     </div>
@@ -121,7 +124,7 @@
 
                                     // Create table and add data...
                                     $batch = mysqli_escape_string($conn, $_POST['batch']);
-                                    $tableName = mysqli_escape_string($conn, $_POST['subject']);
+                                    $tableName = mysqli_escape_string($conn, $_POST['course']);
                                     $sql_to_table = "CREATE TABLE IF NOT EXISTS $tableName (
                                                         batch VARCHAR (6) NOT NULL,
                                                         index_num VARCHAR (10) NOT NULL,
@@ -135,7 +138,7 @@
 
                                     if ($response) {
 
-                                        $sql_to_get_credits = "SELECT credit FROM subject WHERE subject_code='$tableName'";
+                                        $sql_to_get_credits = "SELECT credit FROM course WHERE course_code='$tableName'";
                                         $q_credit = mysqli_query($conn, $sql_to_get_credits);
                                         $res_credit = mysqli_fetch_assoc($q_credit);
                                         $credit = $res_credit['credit'];
@@ -200,6 +203,7 @@
 
                                         $sql_pre .= implode(",", $stringlist);
 
+
                                         $final_res = mysqli_query($conn, $sql_pre);
                                         if ($final_res) {
                                             # code...
@@ -251,10 +255,6 @@
     </div>
 </div>
 
-<?php
-include_once('../templates/_footer.php');
-?>
-
-
 </body>
+
 </html>

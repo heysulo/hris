@@ -103,25 +103,50 @@
 
         if ($imageUploaded) {
 
-            $do_tweet = mysqli_escape_string($conn,$_POST['do_tweet']);
-            $post_content = mysqli_escape_string($conn,$_POST['post_content']);
+            $do_tweet = mysqli_escape_string($conn, $_POST['do_tweet']);
+            $post_content = mysqli_escape_string($conn, $_POST['post_content']);
             $post_query = "INSERT INTO group_post(group_id,added_user_id,content,image,added_time) VALUES('$group_id','$user_id','$post_content','$postImg',NOW())";
 
             $res = mysqli_query($conn, $post_query);
             if ($res) {
-                if($do_tweet){
-                    require_once ($server_folder."tweet.php");
+                if ($do_tweet) {
+
                     $getGroupDetail = "SELECT * FROM groups WHERE group_id = '$group_id'";
                     $res = mysqli_query($conn, $getGroupDetail);
                     $group_detail = mysqli_fetch_assoc($res);
 
-                    //tweet($group_detail['twitter_consumer_key'],$group_detail['twitter_consumer_secret'],$group_detail['twitter_access_token'],$group_detail['twitter_access_token_secret'],$post_content);
-                    echo "<script>
-                    //alert('Post add successfully.');
-                    setTimeout(function () { 
-                        msgbox('New post added successfully.','Success!',1);    
-                    }, 1000);
-                  </script>";
+                    $consumerkey = $group_detail['twitter_consumer_key'];
+                    $consumersecret = $group_detail['twitter_consumer_secret'];
+                    $apptoken = $group_detail['twitter_access_token'];
+                    $appsecret = $group_detail['twitter_access_token_secret'];
+
+                    require_once('../services/src/codebird.php');
+                    \Codebird\Codebird::setConsumerKey($consumerkey, $consumersecret);
+                    $cb = \Codebird\Codebird::getInstance();
+                    $cb->setToken($apptoken, $appsecret);
+
+                    $params = array('status' => "" . $post_content);
+                    $reply = $cb->statuses_update($params);
+                    $re = "";
+                    foreach ($reply as $key => $val){
+                        if($key == "httpstatus"){
+                            $re = $val;
+                        }
+                    }
+
+                    if($re == 200){
+                        echo "<script>
+                            setTimeout(function () { 
+                                msgbox('New post added successfully and tweet send','Success!',1);    
+                            }, 1000);
+                          </script>";
+                    }else{
+                        echo "<script>
+                            setTimeout(function () { 
+                                msgbox('New post added successfully but tweet not send','Warning!',2);    
+                            }, 1000);
+                          </script>";
+                    }
                 }
             } else {
                 echo "<script>
@@ -151,7 +176,7 @@
 
 </div>
 <!--Other content goes here-->
-<div class="bottomPanel">
+<div class="bottomPanel" style="padding-top: 40px">
 
     <!--Main group details-->
     <div class="group_div_intro" style="border-left-color:<?php echo $group_detail['color']; ?> ">
@@ -626,13 +651,15 @@
                     <div class="group_administration_content_field_name">Group Twitter</div>
                     <div class="group_administration_content_field_value">
                         <input type="text" id="con_key_id" class="group_administration_txtbox twitter_input"
-                               placeholder="Consumer Key" value="<?=$group_detail['twitter_consumer_key']?>"><br>
+                               placeholder="Consumer Key" value="<?= $group_detail['twitter_consumer_key'] ?>"><br>
                         <input type="text" id="con_sec_id" class="group_administration_txtbox twitter_input"
-                               placeholder="Consumer Secret" value="<?=$group_detail['twitter_consumer_secret']?>"><br>
+                               placeholder="Consumer Secret"
+                               value="<?= $group_detail['twitter_consumer_secret'] ?>"><br>
                         <input type="text" id="acc_key_id" class="group_administration_txtbox twitter_input"
-                               placeholder="Access Key" value="<?=$group_detail['twitter_access_token']?>"><br>
+                               placeholder="Access Key" value="<?= $group_detail['twitter_access_token'] ?>"><br>
                         <input type="text" id="acc_sec_id" class="group_administration_txtbox twitter_input"
-                               placeholder="Access Secret" value="<?=$group_detail['twitter_access_token_secret']?>"><br>
+                               placeholder="Access Secret"
+                               value="<?= $group_detail['twitter_access_token_secret'] ?>"><br>
 
                         <button class="msgbox_button group_writer_button green_button"
                                 onclick='addTwitter()'> Twitter Handler
@@ -703,10 +730,10 @@ include_once('../templates/_footer.php');
             data: {
                 'group':<?=$group_id?>,
                 'func': 'twitter',
-                'con_key':con_key,
-                'con_sec':con_sec,
-                'acc_key':acc_key,
-                'acc_sec':acc_sec
+                'con_key': con_key,
+                'con_sec': con_sec,
+                'acc_key': acc_key,
+                'acc_sec': acc_sec
             },
             dataType: 'JSON',
             success: function (response) {

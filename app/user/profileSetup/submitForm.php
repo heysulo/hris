@@ -91,9 +91,11 @@ function createUser(){
         $aca_year = ltrim($aca_year_temp,'B');
         $c = explode('/',$_POST['registration_number']);
         $course =strtoupper($c[1]);
+        $index_num = mysqli_escape_string($conn,$_POST['index_number']);
     }else{
         $aca_year = 0000;
         $course = "";
+        $index_num = null;
     }
 
     $gender = mysqli_real_escape_string($conn,$_POST['gender']);
@@ -116,7 +118,7 @@ function createUser(){
     $res = mysqli_fetch_assoc(mysqli_query($conn,$qry_to_get_role));
     $role = $res['system_role_id'];
 
-    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town,about,system_role,course,joined_date) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year','$gender','$userImg',1,'$userbirthDay','$current_city','$hometown','$about_me','$role','$course',NOW())";
+    $qry_to_insert = "INSERT INTO member(username,email,password,first_name,middle_name,last_name,category,academic_year,gender,profile_picture,profile_completed,date_of_birth,current_city,home_town,about,system_role,course,index_number,joined_date) VALUES ('$username','$email','$password','$fname','$mname','$lname','$category','$aca_year','$gender','$userImg',1,'$userbirthDay','$current_city','$hometown','$about_me','$role','$course','$index_num',NOW())";
 
 
     //echo base64_encode('remalsha@gmail.com'); //cmVtYWxzaGFAZ21haWwuY29t

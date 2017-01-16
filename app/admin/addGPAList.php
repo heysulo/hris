@@ -61,9 +61,9 @@
             <div class="dbox group_tab_members group_members_dbox">
 
                 <?php if($_SESSION['system_admin_panel_access']){?>
-                    <!-------------------------------ADD Subject Details--------------------------->
+                    <!-------------------------------ADD degree wise details--------------------------->
                     <div class="group_administration_content_field">
-                        <div class="group_administration_content_field_name">Add Subject Details</div>
+                        <div class="group_administration_content_field_name">Added Details</div>
                         <div class="group_administration_content_field_value">
 
                             <?php
@@ -101,9 +101,9 @@
                                     <?php
 
                                     $batch = mysqli_escape_string($conn,$_POST['batch']);
-                                    $course = mysqli_escape_string($conn,$_POST['course']);
+                                    $degree = mysqli_escape_string($conn,$_POST['degree']);
 
-                                    $tableName = $batch."_".$course;
+                                    $tableName = $batch."_".$degree;
 
                                     $sql_to_table = "CREATE TABLE IF NOT EXISTS $tableName (
                                                         reg_num VARCHAR(10) NOT NULL,

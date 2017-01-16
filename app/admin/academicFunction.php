@@ -259,7 +259,7 @@
 
                     <!-- ----------------------------- Add GPA table ------------------------- -->
                     <div class="group_administration_content_field">
-                        <div class="group_administration_content_field_name">Add GPA List </div>
+                        <div class="group_administration_content_field_name">Add Student By Degree </div>
                         <div class="group_administration_content_field_value">
 
                             <form action="addGPAList.php" method="post" enctype="multipart/form-data">
@@ -414,20 +414,23 @@ include_once('../templates/_footer.php');
 
     });
 
-    $('#course_batch').change(function(){
-        var valw = this.value;
 
-        $.ajax({
-            url:"adminFunction.php",
-            type:'POST',
-            data:{'sub':valw},
-            success:function(res){
+    $(document).ready(function(){
+        $('#course_batch').change(function(){
+            var valw = this.value;
+            console.log(valw);
+            $.ajax({
+                url:"adminFunction.php",
+                type:'POST',
+                data:{'sub':valw},
+                success:function(res){
 
-                $('#checkBox').html(res);
+                    $('#checkBox').html(res);
 
-            }
+                }
+            });
+
         });
-
     });
 
 </script>
