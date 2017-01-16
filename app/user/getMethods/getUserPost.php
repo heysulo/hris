@@ -14,10 +14,12 @@ if (isset($_GET['action'])){
     $user_id = $_GET['user_id'];
 
     //New way to data get
-    $sql = "SELECT GP.post_id,G.color,G.name,M.first_name,M.last_name,GP.content,GP.added_time FROM groups G,member M,group_post GP,group_member GM WHERE GM.member_id='$user_id' AND M.member_id=GP.added_user_id AND G.group_id = GP.group_id GROUP BY GP.post_id ORDER BY GP.added_time DESC";
+    $sql = "SELECT GP.post_id,G.group_id,G.color,G.name,M.first_name,M.last_name,GP.content,GP.added_time FROM groups G,member M,group_post GP,group_member GM WHERE GM.member_id='$user_id' AND M.member_id=GP.added_user_id AND G.group_id = GP.group_id GROUP BY GP.post_id ORDER BY GP.added_time DESC";
     $res = mysqli_query($conn,$sql);
     while($row = mysqli_fetch_assoc($res)){
 
+        $p_id = $row['post_id'];
+        $g_id = $row['group_id'];
         $g_color = $row['color'];
         $g_name = $row['name'];
         $f_name = $row['first_name'];
@@ -26,7 +28,7 @@ if (isset($_GET['action'])){
         $added_time = $row['added_time'];
 
         //send html as respond to ajax request
-        echo "<div class=\"newsfeed_item_box\" style = \"border-color:$g_color\">";
+        echo "<div class=\"newsfeed_item_box\" id=\"$g_id\" name=\"$p_id\" style = \"border-color:$g_color\">";
         echo "<div class=\"newsfeed_item_colorbar\" style=\"background-color:$g_color;border-radius: 2px\"></div>";
         echo "<div class=\"newsfeed_item_content\"><b>".$g_name." (".$f_name." ".$l_name.")</b> </br> " .$content." </div>";
         echo "<div class=\"newsfeed_item_timestamp\">".$added_time."</div>";

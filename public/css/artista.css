@@ -3710,3 +3710,7 @@ input:focus::-webkit-input-placeholder
     color: rgba(255, 10, 3, 0.65);
     font-size: 18px;
 }
+
+.twitter_input{
+    margin: 5px;
+}

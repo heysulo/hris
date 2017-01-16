@@ -194,7 +194,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td style="column-span: 2"> <input type="submit" value="Create Group" name="createGroup" class="green_btn" style="float: right; font-weight: 600"></td>
+                            <td style="column-span: 2"> <input type="submit" value="Create Group" name="createGroup" class="msgbox_button group_writer_button" style="float: right; font-weight: 600"></td>
                         </tr>
                     </tbody>
                 </table>

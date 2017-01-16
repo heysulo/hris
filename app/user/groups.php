@@ -37,7 +37,7 @@
             <!--Groups member manage-->
             <div class="txt_paneltitle">GROUPS YOU MANAGE</div>
             <div style="margin-left: 30px;">
-                <input type="button" value="+ Create New Group" class="green_btn" onclick="window.location.href='createGroup.php';" style="font-weight: 600; color: white">
+                <input type="button" value="Create New Group" class="msgbox_button group_writer_button" onclick="window.location.href='createGroup.php';" style="font-weight: 600; color: white">
             </div>
 
             <div style="float: left; margin-left: 20px;s " id="managedGroup">
