@@ -187,7 +187,7 @@ h3{
     font-size: .9em;
     z-index: 4;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.8s;
 }
 
 .user_choose_button:hover {
@@ -1297,8 +1297,10 @@ body {
 
 .society_item{
     width: auto;
+
+    padding: 5px;
     cursor:pointer !important;
-    max-height: 20px;
+    max-height: 15px;
     background-image: url('../img/ico_verified.png');
     background-position: 470px 1px;
     background-repeat: no-repeat;
@@ -1311,8 +1313,9 @@ body {
     margin-top: 15px;
     max-height: 200px;
     margin-bottom: 15px;
-    background-color: #e9ebee;
-    border: 1px solid #365899;
+    color: #4080ff;
+    background-color: #fafafa;
+    border: 1px solid #4080ff;
 }
 
 .society_item_extra{
@@ -3714,4 +3717,16 @@ input:focus::-webkit-input-placeholder
 /*****public*********/
 .view_public_header{
 
+}
+
+.pub_box_help{
+    text-align: center;
+    font-size: 14px;
+    color: #6c6c6c;
+}
+
+.skill_cont{
+
+    text-align: center;
+    margin: 20px
 }
