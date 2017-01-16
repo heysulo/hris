@@ -1,8 +1,8 @@
 var path = "/hris/app/";
-if (window.location.host == "localhost"){
-    path = "/hris/app/";
-}else{
+if (window.location.host == "hrisucsc.azurewebsites.net"){
     path = "/app/";
+}else{
+    path = "/hris/app/";
 }
 
 document.getElementById('dashboard').addEventListener("click",function () {

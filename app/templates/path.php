@@ -36,13 +36,21 @@ if ($_SERVER['HTTP_HOST'] == 'localhost'){
     $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
     $realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/ping.php";
     $server_folder = "http://".$_SERVER['HTTP_HOST']."/hris/app/services/";
-}else{
+}elseif($_SERVER['HTTP_HOST'] == 'http://hrisucsc.azurewebsites.net/'){
     $appPath = "http://".$_SERVER['HTTP_HOST']."/app/";
     $publicPath = "http://".$_SERVER['HTTP_HOST']."/public/";
     $templatePath = "http://".$_SERVER['HTTP_HOST']."/app/templates/";
     $imagePath = "http://".$_SERVER['HTTP_HOST']."/app/images";
     $realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/app/templates/ping.php";
     $server_folder = "http://".$_SERVER['HTTP_HOST']."/app/services/";
+
+}else{
+    $appPath = "http://".$_SERVER['HTTP_HOST']."/hris/app/";
+    $publicPath = "http://".$_SERVER['HTTP_HOST']."/hris/public/";
+    $templatePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/";
+    $imagePath = "http://".$_SERVER['HTTP_HOST']."/hris/app/images";
+    $realtime_ping_path = "http://".$_SERVER['HTTP_HOST']."/hris/app/templates/ping.php";
+    $server_folder = "http://".$_SERVER['HTTP_HOST']."/hris/app/services/";
 
 }
 

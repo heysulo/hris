@@ -27,4 +27,3 @@ function tweet($consumerkey,$consumersecret,$apptoken,$appsecret,$msg)
 }
 //[httpstatus] => 200
 
-//tweet('5OVXuPQNu8mL4O9cKzjt1Kn3j','p3NMJNzmK0p4dKQATDp6HOFSTVtO87r7P8seCrtxq8ZB5TTgwW','820942167417856000-sOjwGmHBmKUwOey6mbrM4Dcj06BF7Sl','sujSWekHskfXNu25J16nI36kyrbImKLrBafj9dTnIlqbw','tweet me 4');
