@@ -3678,8 +3678,7 @@ input:focus::-webkit-input-placeholder
 }
 
 .basic-grey select {
-    background: #FFF url('../../skilldirectory/trans/down-arrow.png') no-repeat right;
-    background: #FFF url('down-arrow.png') no-repeat right);
+    background: #FFF url('../img/down-arrow.png') no-repeat right;
     appearance:none;
     -webkit-appearance:none;
     -moz-appearance: none;
@@ -3710,4 +3709,9 @@ input:focus::-webkit-input-placeholder
 .error {
     color: #FF0000;
     font-size: 18px;
+}
+
+/*****public*********/
+.view_public_header{
+
 }
