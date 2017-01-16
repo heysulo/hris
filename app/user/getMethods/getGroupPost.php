@@ -18,14 +18,14 @@ if (session_status() == PHP_SESSION_NONE) {
 if (!isset($_SESSION['email']) and !isset($_GET['group'])){
     header("location:../groups.php");
 }else{
-    $gcolor = $_GET['c'];
+    //$gcolor = $_GET['c'];
     $gid = $_GET['group'];
     $userValid = $_GET['u'];
     $qry = "SELECT * FROM group_post WHERE group_id = '$gid' ORDER BY added_time DESC";
     $res = mysqli_query($conn,$qry);
 
     $valid_b = true;
-
+    $valid = 'display:block';
     if($userValid == 000){
         $valid_b = false;
         $valid = 'display:none';

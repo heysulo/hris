@@ -30,9 +30,7 @@
             <div class="top_dropdown_click">
                 <div class="topbox_account_settings" id="setting"></div>
                 <div class="top_dropdown_content_click" id="dropdown">
-                        <a href="#">Account Settings</a>
                         <a href="<?php echo $appPath?>user/logout.php">Logout</a>
-                        <a href="#">Go Offline</a>
 
                 </div>
             </div>
@@ -84,7 +82,7 @@
 
                     <div class=""><img class="topprofilepicture" src=" <?php echo "$imagePath/pro_pic/$pro_pic"; ?> " alt=""></div>
                     <div class="topbox_profile_name"> <?php echo "$fname $lname"?></div>
-                    <div class="topbox_profile_role"><?php echo "$type"?></div>
+                    <div class="topbox_profile_role"><?php echo $_SESSION['system_role_name']?></div>
                 </div>
                 
             </div>

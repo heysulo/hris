@@ -186,7 +186,7 @@
                     <?php }?>
                     Gender : <?php echo $row['gender'];?><br>
 					<?php if($row['course'] != ""){ ?>
-                        Course : <?php echo $row['course']?><br>
+                        Course : <?php if($row['course']=="CS"){echo "Computer Science";}else{echo "Information Systems";}?><br>
                     <?php }?>
                     Hometown : <?php echo $row['home_town'];?><br>
 					Username : <?php echo $row['username'];?><br>
@@ -200,13 +200,14 @@
                     $course = $row['course'];
                     $table = 'B'.$aca_year.'_'.$course;
                     $qry_to_check = "SELECT GPA,rank FROM $table JOIN member ON $table.index_num = member.index_number AND member_id=$user_id";
+					//echo $qry_to_check;
                     $res_of_check = mysqli_query($conn,$qry_to_check);
-                    if(mysqli_num_rows($res_of_check)>0){
+                    if(@mysqli_num_rows($res_of_check)>0){
                         $result = mysqli_fetch_assoc($res_of_check);
 
                         ?>
                         <div class="profile_gpa_value">
-                            <?=str_pad($result['GPA'],2, "0", STR_PAD_LEFT)?>
+                            <?php echo round(str_pad($result['GPA'],2, "0", STR_PAD_LEFT),1)?>
                         </div>
                         <div class="profile_txt_gpa">Current GPA</div>
                         <div class="profile_txt_gpa">Rank : #<?=$result['rank']?></div>
@@ -485,6 +486,7 @@
 							<?php
 							$contact_query = "select * from skill_interest join member on skill_interest.member_id = member.member_id and skill_interest.member_id = $view_id";
 							$res_contact_query = mysqli_query($conn,$contact_query);
+							//echo $contact_query;
 							if (mysqli_num_rows($res_contact_query)){
 								while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
 									?>

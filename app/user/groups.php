@@ -7,6 +7,7 @@
     $conn = null;
     require_once("config.conf");
     require_once ("../database/database.php");
+    include('../templates/refresher.php');
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -37,7 +38,9 @@
             <!--Groups member manage-->
             <div class="txt_paneltitle">GROUPS YOU MANAGE</div>
             <div style="margin-left: 30px;">
+                <?php if($_SESSION['system_group_create_power']==1){?>
                 <input type="button" value="Create New Group" class="msgbox_button group_writer_button" onclick="window.location.href='createGroup.php';" style="font-weight: 600; color: white">
+                <?php } ?>
             </div>
 
             <div style="float: left; margin-left: 20px;s " id="managedGroup">
@@ -99,7 +102,7 @@
                         <div class="group_dbox_title"><?php echo $row['name'] ?></div>
 
                         <div class="group_dbox_category"><?php echo $row['category'] ?></div>
-                        <div class="group_dbox_description"><?php echo $row['description'] ?></div>
+                        <div class="group_dbox_description"><?php echo substr($row['description'],0,150); ?></div>
                     </div>
 
                 <?php }

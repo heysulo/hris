@@ -8,11 +8,12 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+define('hris_access',true);
 $conn = null;
 require_once("../config.conf");
 require_once("../../database/database.php");
 require_once("../../templates/refresher.php");
-require_once("../../templates/path.php");
+$appPath = "http://".$_SERVER['HTTP_HOST']."/hris/app/";
 $email = htmlspecialchars($_REQUEST['email']);
 $role_id = htmlspecialchars($_REQUEST['role']);
 if (isset($_SESSION["system_admin_panel_access"])){
@@ -32,7 +33,7 @@ if (isset($_SESSION["system_admin_panel_access"])){
                 if ($res4){
                     $subject = "Your invitation for HRIS";
                     $body = "This is your invitation email for the University of Colombo School of computing Human Resource Information System. Visit the following linke to complete your profile setup <br>".$appPath."user/profileSetup/setupProfile.php?token=".$tokenx;
-                    require_once ($server_folder."mailer.php");
+                    //require_once ($server_folder."mailer.php");
                     //sendemail($email,$subject,$body);
                     echo "success_$tokenx";
                 }else{

@@ -32,7 +32,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <div class="dbox welcome_section_maindbox">
     <?php include ("./template/steps.php"); ?>
     <div class="resetpassword_support_text">
-        In prder to reset your password please enter your Email address. This email address should be the same email address which is used to create your account.
+        In order to reset your password please enter your Email address. This email address should be the same email address which is used to create your account.
 
     </div>
     <div id="invalid_password_error" style="display:none;">

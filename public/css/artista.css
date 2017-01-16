@@ -441,8 +441,15 @@ h3{
 
 .topbox_profile_role{
     font-size: 12px;
+    padding-top: 2px;
     color: #6D6D6D;
     word-wrap: break-word;
+}
+
+.tweet_txt{
+    font-size: 15px;
+    color : #323232;
+    float: left;
 }
 
 .top_dropdown{
@@ -3349,6 +3356,7 @@ li.active a, li.active a:hover {
 
 .notification_elem_box{
 
+    min-height:calc(100vh - 390px);
     margin: 2px 0 2px 0;
     overflow: auto;
     max-height: 250px;
