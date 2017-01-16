@@ -171,7 +171,7 @@
             <li class="group_main_menu_item" id="main_menu_members" onclick="activate_tab(2);">Members</li>
             <li class="group_main_menu_item" id="main_menu_administration" onclick="activate_tab(3);">Administration
             </li>
-            <li class="group_main_menu_item" id="main_menu_options" onclick="activate_tab(4);">Group Options</li>
+<!--            <li class="group_main_menu_item" id="main_menu_options" onclick="activate_tab(4);">Group Options</li>-->
         </ul>
     </div>
 
@@ -602,9 +602,25 @@
                 <div class="group_administration_content_field">
                     <div class="group_administration_content_field_name">Update Member</div>
                     <div class="group_administration_content_field_value">
-                        <input type="text" class="group_administration_txtbox" placeholder="Enter Member Email">
+                        <input type="email" id="removeMember"  class="group_administration_txtbox" placeholder="Enter Member Email">
                         <button class="msgbox_button group_writer_button red_button"
-                                onclick='closemsgbox();window.alert(";)");'>Remove Member
+                                onclick='removeMember()'>Remove Member
+                        </button>
+
+                    </div>
+                </div>
+
+<!--                Add twitter handler [Consumer key , secret / Access key,secret-->
+                <div class="group_administration_content_field">
+                    <div class="group_administration_content_field_name">Group Twitter</div>
+                    <div class="group_administration_content_field_value">
+                        <input type="text" id=""  class="group_administration_txtbox twitter_input" placeholder="Consumer Key"><br>
+                        <input type="password" id=""  class="group_administration_txtbox twitter_input" placeholder="Consumer Secret"><br>
+                        <input type="text" id=""  class="group_administration_txtbox twitter_input" placeholder="Access Key"><br>
+                        <input type="password" id=""  class="group_administration_txtbox twitter_input" placeholder="Access Secret"><br>
+
+                        <button class="msgbox_button group_writer_button green_button"
+                                onclick=''> Twitter Handler
                         </button>
 
                     </div>
@@ -613,7 +629,7 @@
             </div>
         </div>
 
-
+        <?php if(false){ ?>
         <!--Group Option Panel-->
         <div class="group_div_content" id="tab_options">
             <div class="dbox group_tab_members group_members_dbox">
@@ -633,7 +649,7 @@
             </div>
 
         </div>
-
+        <?php }?>
     <?php } ?>
 
 
@@ -658,6 +674,37 @@ include_once('../templates/_footer.php');
         });
 
     });
+
+    //Function to remove member
+    function removeMember() {
+        var em = $('#removeMember').val();
+
+        if(isValidEmailAddress(em)){
+
+            $.ajax({
+                type: "POST",
+                url: "updateMethods/groupController.php",
+                data:{
+                    'member':em,
+                    'group':<?=$group_id?>,
+                    'func':'remove'
+                },
+                dataType:'JSON',
+                success:function(response) {
+                    if(response[0]){
+                        msgbox('Member removed.', 'Success !', 1);
+                        updateMemberRequest();
+                    }else{
+                        if(response[1]=='Fail'){
+                            msgbox('Sorry, Something went wrong, Please try again later.', 'Error !', 3);
+                        }else if(response[1]=='No'){
+                            msgbox('Sorry, There are no associate user to given email address.Please check again.', 'Error !', 3);
+                        }
+                    }
+                }
+            });
+        }
+    }
 
     //Function to add new member
     function addNewMember() {
@@ -933,17 +980,17 @@ include_once('../templates/_footer.php');
                 main_menu_administration.className = "group_main_menu_item group_main_menu_item_active";
                 main_menu_options.className = "group_main_menu_item";
                 break;
-            case 4:
-                tab_notices.style.display = "none";
-                tab_members.style.display = "none";
-                tab_administration.style.display = "none";
-                tab_options.style.display = "block";
-
-                main_menu_notices.className = "group_main_menu_item ";
-                main_menu_members.className = "group_main_menu_item";
-                main_menu_administration.className = "group_main_menu_item";
-                main_menu_options.className = "group_main_menu_item group_main_menu_item_active";
-                break;
+//            case 4:
+//                tab_notices.style.display = "none";
+//                tab_members.style.display = "none";
+//                tab_administration.style.display = "none";
+//                tab_options.style.display = "block";
+//
+//                main_menu_notices.className = "group_main_menu_item ";
+//                main_menu_members.className = "group_main_menu_item";
+//                main_menu_administration.className = "group_main_menu_item";
+//                main_menu_options.className = "group_main_menu_item group_main_menu_item_active";
+//                break;
         }
     }
 

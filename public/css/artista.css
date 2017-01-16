@@ -3731,3 +3731,7 @@ input:focus::-webkit-input-placeholder
     text-align: center;
     margin: 20px
 }
+
+.twitter_input{
+    margin: 5px;
+}

@@ -117,22 +117,26 @@
 
 
         $('.newsfeed_content').on('click','.newsfeed_item_box',function () {
-            var state = $(this).data('state');
-            var color = $(this).children('.newsfeed_item_colorbar').css("background-color");
-            switch (state){
-                case 1 :
-                case undefined:
-                    $(this).css("height","100%");
-                    $(this).css("max-height","500px");
-                    $(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
-                    $(this).data('state',2);
-                    break;
-                case 2:
-                    $(this).css("max-height","70px");
-                    $(this).data('state',1);
-                    $(this).children('.newsfeed_item_colorbar').css("background-color",color);
-                    break;
-            }
+            //var state = $(this).data('state');
+            var gid = $(this).attr('id');
+            var pid = $(this).attr('name');
+            console.log(gid,pid);
+            location.href = 'mygroup.php?group='+gid+'#'+pid;
+//            var color = $(this).children('.newsfeed_item_colorbar').css("background-color");
+//            switch (state){
+//                case 1 :
+//                case undefined:
+//                    $(this).css("height","100%");
+//                    $(this).css("max-height","100px");
+//                    $(this).children('.newsfeed_item_colorbar').css("background-color","#4CAF50");
+//                    $(this).data('state',2);
+//                    break;
+//                case 2:
+//                    $(this).css("max-height","50px");
+//                    $(this).data('state',1);
+//                    $(this).children('.newsfeed_item_colorbar').css("background-color",color);
+//                    break;
+//            }
 
         });
 
@@ -185,7 +189,8 @@
                     dataType:"json",
                     success:function (res) {
                         if(!res){
-                            alert('Sorry, Unable to set availability status.');
+                            msgbox("Unable to set availability status.","Error",3);
+                            //alert('Sorry, Unable to set availability status.');
                         }else{
                             msgbox("Your availability status text has being changed to <b>"+text+"</b>","Availability Status",0);
                         }

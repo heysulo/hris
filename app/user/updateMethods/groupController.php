@@ -102,11 +102,11 @@ if(!isset($_SESSION['email'])){
     }
 
     function addNewMember($conn){
-//Get user id and group id
+        //Get user id and group id
         $email = mysqli_escape_string($conn,$_POST['member']);
         $group_id = mysqli_escape_string($conn,$_POST['group']);
 
-//Get member id
+        //Get member id
         $sql_get_member = "SELECT member_id FROM member WHERE email='$email'";
         $res = mysqli_query($conn,$sql_get_member);
         if(mysqli_num_rows($res)){
@@ -124,6 +124,28 @@ if(!isset($_SESSION['email'])){
 
     }
 
+    function removeMember($conn){
+        //Get user id and group id
+        $email = mysqli_escape_string($conn,$_POST['member']);
+        $group_id = mysqli_escape_string($conn,$_POST['group']);
+
+        //Get member id
+        $sql_get_member = "SELECT member_id FROM member WHERE email='$email'";
+        $res = mysqli_query($conn,$sql_get_member);
+        if(mysqli_num_rows($res)){
+            $r = mysqli_fetch_assoc($res);
+            $mem_id = $r['member_id'];
+            $qry_to_add_member = "DELETE FROM group_member WHERE group_id='$group_id' and member_id='$mem_id'";
+            if(mysqli_query($conn,$qry_to_add_member)){
+                echo json_encode([true,'Done']);
+            }else{
+                echo json_encode([false,'Fail']);
+            }
+        }else{
+            echo json_encode([false,'No']);
+        }
+    }
+
 
     if (isset($_POST['create_role']) && isset($_POST['group_id'])) {
         createRole($conn);
@@ -136,7 +158,14 @@ if(!isset($_SESSION['email'])){
             ignoreMemberRequest($conn);
         }
     }elseif (isset($_POST['group']) && isset($_POST['func']) && isset($_POST['member']) ){
-        addNewMember($conn);
+        switch ($_POST['func']){
+            case 'add':
+                addNewMember($conn);
+                break;
+            case 'remove':
+                removeMember($conn);
+                break;
+        }
     }
 }
 ?>

@@ -47,7 +47,7 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
 
         if($row['image'] == '0') {
 
-            echo "<div class=\"dbox group_dbox_post\">
+            echo "<div class=\"dbox group_dbox_post\" id=\"$post_id\">
                 <div class=\"group_post_head\">
                     <div class=\"group_post_user_image\" style=\"background-image: url('$path_pro_pic')\"></div>
                     <div class=\"group_post_head_content\">
@@ -59,8 +59,6 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
                 echo "
                     <div class=\"group_post_head_options\" style='$valid'>
                         <div class=\"group_post_head_options_item\" onclick='delete_post($post_id)'>Delete Post</div>
-                        <div class=\"group_post_head_options_item\">Pin Post</div>
-                        <div class=\"group_post_head_options_item\">Ban Member</div>
                     </div>";
 
             }
@@ -84,8 +82,6 @@ if (!isset($_SESSION['email']) and !isset($_GET['group'])){
                 echo "
                     <div class=\"group_post_head_options\" style='$valid'>
                         <div class=\"group_post_head_options_item\" onclick='delete_post($post_id)'>Delete Post</div>
-                        <div class=\"group_post_head_options_item\">Pin Post</div>
-                        <div class=\"group_post_head_options_item\">Ban Member</div>
                     </div>";
 
             }
