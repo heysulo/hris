@@ -118,7 +118,7 @@
 
                 <?php
                 //get group details
-                $qry_get_groups = "SELECT * FROM groups";
+                $qry_get_groups = "SELECT * FROM groups WHERE privacy='Public'";
                 $res = mysqli_query($conn,$qry_get_groups);
                 while($row = mysqli_fetch_assoc($res)){
                     $path = '../images/group/'.$row['logo'];

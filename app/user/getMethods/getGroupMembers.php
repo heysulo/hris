@@ -68,7 +68,7 @@ function getMainUse($conn){
         //send html as respond to ajax request
         echo "<div class=\"group_member_hd_box\">
                     <div class=\"group_member_hd_propic\" style=\"background-image: url('$path_pro_pic')\"></div>
-                    <div class=\"group_member_hd_name\">".$qres['first_name']." ".$qres['last_name']."</div>
+                    <div class=\"group_member_hd_name\"><a style='text-decoration: none;color: inherit' href='member.php?id=".$row['member_id']."'>".$qres['first_name']." ".$qres['last_name']."</a></div>
                     <div class=\"group_member_hd_role\">Member</div>
                     <div class=\"group_member_hd_role\">".$course."</div>
                 </div>";

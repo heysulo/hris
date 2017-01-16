@@ -34,11 +34,26 @@ if(!isset($_SESSION['email'])){
                     window.history.go(-1);
                   </script>";
         }else{
-            echo mysqli_error($conn);
-//            echo "<script>
-//                    alert('Sorry, Unable to create new role.');
-//                    window.history.go(-1);
-//                    </script>";
+            echo "<script>
+                    alert('Sorry, Unable to create new role.');
+                    window.history.go(-1);
+                    </script>";
+        }
+    }
+
+    function deleteRole($conn)
+    {
+        //Get user inputs
+        $role = $_POST['role'];
+        $group_id = $_POST['group'];
+
+        $qry = "DELETE FROM group_role WHERE role_id='$role' and group_id='$group_id'";
+        $res = mysqli_query($conn,$qry);
+
+        if($res){
+            echo json_encode(true);
+        }else{
+            echo json_encode(false);
         }
     }
 
@@ -104,6 +119,8 @@ if(!isset($_SESSION['email'])){
 
     if (isset($_POST['create_role']) && isset($_POST['group_id'])) {
         createRole($conn);
+    }elseif (isset($_POST['group']) && isset($_POST['func']) && isset($_POST['role']) ) {
+        deleteRole($conn);
     }elseif (isset($_POST['request']) && isset($_POST['group']) && isset($_POST['req_id'])){
         if($_POST['request'] == 'accept'){
             acceptMemberRequest($conn);

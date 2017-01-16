@@ -80,9 +80,9 @@
                     $resp = mysqli_query($conn,"SELECT group_id FROM groups WHERE name='$g_name'");
                     $data = mysqli_fetch_assoc($resp);
                     $g_id = $data['group_id'];
-                    $qry_to_add_member = "INSERT INTO group_member VALUES ('$g_id','$user_id','Administrator','Created this group in this system.',NOW())";
+                    $qry_to_add_member = "INSERT INTO group_member(`group_id`,`member_id`,`role`,`description`,`join_date`) VALUES ('$g_id','$user_id','Administrator','Created this group in this system.',NOW())";
                     $respo = mysqli_query($conn,$qry_to_add_member);
-                    /*$error = mysqli_error($conn);*/
+                    echo mysqli_error($conn);
                 }else{
                     $error = mysqli_error($conn);
                 }
@@ -97,7 +97,8 @@
     <title>HRIS | Groups</title>
 
     <style>
-        th{
+
+        .form_create_group th {
             float: right;
             margin-right: 10px;
             vertical-align: top;
@@ -105,24 +106,29 @@
             font-size: .9em;
         }
 
-        input[type=text]{
+        .form_create_group input[type=text] {
             width: 300px;
             padding: 8px;
         }
 
-        input{
+        .form_create_group input {
             font-size: .9em;
         }
 
-        select{
+        .form_create_group textarea {
+            font-size: 1.2em;
+        }
+
+        .form_create_group select {
             font-size: .8em;
         }
 
-        .div_input{
+        .form_create_group .div_input {
             font-size: .8em;
             padding: 5px;
             margin-left: 23px;
         }
+
     </style>
 
 </head>
@@ -133,7 +139,7 @@
 
     <div class="bottomPanel" style="height: 100%;">
         <div class="cbox" style="padding: 20px; width: 500px; margin-top: 50px;margin-bottom: 10px">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="" method="post" class="form_create_group" enctype="multipart/form-data">
                 <table style="margin: auto;">
                     <tbody>
                         <tr>
@@ -142,7 +148,7 @@
                         </tr>
                         <tr>
                             <th>Description</th>
-                            <td><input type="text" name="g_description" class="txt_input" required></td>
+                            <td><textarea name="g_description" class="txt_input" cols="42" rows="5" required></textarea></td>
                         </tr>
                         <tr>
                             <th>Category</th>
@@ -158,7 +164,7 @@
                         </tr>
                         <tr>
                             <th>Group Logo</th>
-                            <td><input type="file" name="g_logo" accept="image/*" style="padding:5px; border-radius: 5px;" ></td>
+                            <td><input type="file" name="g_logo" accept="image/*" style="padding:5px; border-radius: 5px;" required></td>
                         </tr>
                         <tr>
                             <th>Group Color</th>
