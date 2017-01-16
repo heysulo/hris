@@ -975,6 +975,7 @@ body {
     overflow: hidden;
     line-height: 15px;
     border:0px solid green;
+    cursor: pointer;
     transition: all 0.2s linear;
 }
 
