@@ -322,7 +322,7 @@
 						</div>
 
 						<?php
-						$contact_query = "SELECT field,f_val FROM member_info WHERE category=1 and member_id=$view_id and system_vision_power_needed<=$vision_power";
+						$contact_query = "SELECT field,f_val FROM member_info WHERE category=1 and member_id=$view_id";
 						$res_contact_query = mysqli_query($conn,$contact_query);
 						if (mysqli_num_rows($res_contact_query)){
 							while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
@@ -347,6 +347,7 @@
 								<?php
 							}
 						}else{
+							echo $contact_query;
 							echo "No Contact Info Found";
 						}
 						?>
@@ -414,7 +415,7 @@
 
 						</div>
 						<?php
-						$contact_query = "SELECT field,f_val FROM member_info WHERE member_id=$view_id and system_vision_power_needed<=$vision_power";
+						$contact_query = "SELECT field,f_val FROM member_info WHERE member_id=$view_id";
 						$res_contact_query = mysqli_query($conn,$contact_query);
 						if (mysqli_num_rows($res_contact_query)){
 							while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){

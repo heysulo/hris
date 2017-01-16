@@ -61,7 +61,7 @@
             $user_input = htmlspecialchars($_GET["search"]);
                 //sample_qry = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%';
                 //$contact_query = "SELECT * from member where lcase(concat(first_name,\" \",last_name))=lcase(\"$user_input\") or lcase(concat(first_name,\" \",middle_name,\" \",last_name))=lcase(\"$user_input\") or  lcase(concat(first_name,\" \",middle_name))=lcase(\"$user_input\") or  lcase(concat(middle_name,\" \",last_name))=lcase(\"$user_input\") or lcase(first_name)=lcase(\"$user_input\")  or lcase(middle_name)=lcase(\"$user_input\") or lcase(last_name)=lcase(\"$user_input\")";
-                $contact_query = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%'";
+                $contact_query = "SELECT * FROM member WHERE first_name LIKE \"$user_input%\" OR last_name LIKE \"$user_input%\" OR middle_name LIKE \"$user_input%\" OR concat(first_name,' ',last_name) LIKE \"%$user_input%\"";
                 $res_contact_query = mysqli_query($conn,$contact_query);
             if (mysqli_num_rows($res_contact_query)){
                 while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
@@ -79,10 +79,10 @@
                 $flag = 1;
             }
 
-            $user_input = htmlspecialchars($_GET["search"]);
+            $user_input = addslashes($_GET["search"]);
             //sample_qry = "SELECT * FROM member WHERE first_name LIKE '$user_input%' OR last_name LIKE '$user_input%' OR middle_name LIKE '$user_input%' OR concat(first_name,' ',last_name) LIKE '%$user_input%';
             //$contact_query = "SELECT * from member where lcase(concat(first_name,\" \",last_name))=lcase(\"$user_input\") or lcase(concat(first_name,\" \",middle_name,\" \",last_name))=lcase(\"$user_input\") or  lcase(concat(first_name,\" \",middle_name))=lcase(\"$user_input\") or  lcase(concat(middle_name,\" \",last_name))=lcase(\"$user_input\") or lcase(first_name)=lcase(\"$user_input\")  or lcase(middle_name)=lcase(\"$user_input\") or lcase(last_name)=lcase(\"$user_input\")";
-            $contact_query = "SELECT * FROM groups WHERE name LIKE '$user_input%'";
+            $contact_query = "SELECT * FROM groups WHERE name LIKE \"$user_input%\"";
             $res_contact_query = mysqli_query($conn,$contact_query);
             if (mysqli_num_rows($res_contact_query)){
                 while ($row_qt =  mysqli_fetch_assoc($res_contact_query)){
@@ -98,6 +98,7 @@
                 }
             }else{
                 if ($flag == 1) {
+
                     ?>
                     <div class="no_search_results_page_box">
                         <div class="error_page_text">We couldnt find anything

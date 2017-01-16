@@ -193,37 +193,7 @@
             </div>
         </div>
 
-        <div class="dbox notification_box">
-            <div class="dboxheader dbox_head_request">
-                <div class="dboxtitle">
-                    Meeting Requests
-                </div>
-                <div class="notification_content">
-                    <div class="request-tabs">
-                        <ul class="tab-links">
-                            <li class="active"><a href="#all_request">All Request</a></li>
-                            <li><a href="#meeting">Meeting</a></li>
-                            <li><a href="#information">Information</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div id="all_request" class="tab active">
-                                <p>All Requests listed in here.</p>
-                                <p></p>
-                            </div>
-                            <!----------------------------------->
-                            <div id="meeting" class="tab">
-                                <p>All meeting schedules shows here.</p>
-                            </div>
-                            <!----------------------------------->
-                            <div id="information" class="tab">
-                                <p>Some information shows here.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
     </div>
 </div>

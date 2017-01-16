@@ -11,9 +11,10 @@ require_once("../../database/database.php");
     <div class="msgbox_title">Add New System Role</div>
     <div class="popup_close_button" onclick='document.getElementById("popupscreen").style.display = "none"'></div>
 </div>
-<div style="margin: 20px;max-height: 450px;overflow: auto;">
+<div style="margin: 20px;max-height: 460px;overflow: auto;">
     Role Name : <input type="text" class="group_administration_txtbox" placeholder="Enter Role Name. Eg: Administrator" maxlength="15" pattern="[A-Za-z]{1,15}" name="txt_role_name" title="The role name should contain only letters" required>
-    <br><br>
+    <div class="small_hint_ss">Only alphabetical characters are allowed</div>
+    <br>
     <table class="tg">
         <tr>
             <th class="tg-yw4l"></th>

@@ -36,7 +36,7 @@
 <?php include_once('../templates/navigation_panel.php'); ?>
 <?php include_once('../templates/top_pane.php'); ?>
 <div class="bottomPanel">
-    <form method="get" action="searchresults.php">
+    <form method="get" action="searchresults.php" onkeypress="return event.keyCode != 13;">
     <div style="width:auto;">
         <div class="txt_paneltitle">Advanced Search</div>
     </div>
@@ -97,19 +97,7 @@
                 </div>
 
             </div>
-            <div class="dbox">
-                <div class="adv_search_subtitle">Skills and Interests</div>
-                <div id="skill_item_container">
-                    <!--<div class="skill_item">
-                        <!--<div class="edit_profile_contactinfo_item_remove_skill" onclick='this.parentElement.outerHTML=""'></div>-->
-                    <!--// item added here...
-                </div>-->
-                </div>
-
-                <input id="new_skill_input" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text">
-                <input type="button" onclick="insertSkill();" class="add_new_item_btn" value="Add Skill">
-                <div style="clear: both;"></div>
-            </div>
+            
             <input type="submit" class="adv_srch_float_btn" value="Advanced Search">
             <div style="clear: both;"></div>
         </div>
@@ -208,6 +196,13 @@ include_once('../templates/_footer.php');
 ?>
 
 <script>
+
+    $("#new_skill_input").on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode == 13) {
+            insertSkill();
+        }
+    });
 
 
     function insertSkill() {
