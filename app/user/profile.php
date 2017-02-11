@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+<html>
 <head>
     <?php
-        define(hris_access,true);
+        define('hris_access',true);
         require_once('../templates/path.php');
         include('../templates/_header.php');
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
         if (!isset($_SESSION['email'])){
             header("location:../../index.php");
@@ -14,38 +17,74 @@
         $lname = $_SESSION['lname'];
         $type  = $_SESSION['type'];
         $email = $_SESSION['email'];
-        $pro_pic = $_SESSION['pro_pic'];
+        $pro_pic= $_SESSION['pro_pic'];
+        $category = $_SESSION['category'];
+        $aca_year = $_SESSION['aca_year'];
+        $gender = $_SESSION['gender'];
+        $lastLogin = $_SESSION['last_login'];
+
+        $pro_picture = $pro_pic != "" ? $pro_pic : "defimg.jpg";
+
+        $lastLoginData = explode(" ",$lastLogin);
 
     ?>
 <title>HRIS | My Profile</title>
 </head>
 <body>
-<div style="padding: 0px;">
+<div>
     <?php include_once('../templates/navigation_panel.php'); ?>
     <?php include_once('../templates/top_pane.php'); ?>
 
     <!--Content goes here...-->
     <div class="bottomPanel">
         <!--Content on top area-->
-        <div class="profile_section_intro">
-            <div class="profile_profile_image"></div>
-            <div class="profile_name">
-                <?php echo $fname." ".$lname?> <!--Print user name-->
-                <button onclick="location.href='../editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
+        <div id="profile_section_intro" class="profile_section_intro_new" style="border-bottom: 25px solid;" onchange="resize_profile_intro();">
+            <?php
+            $display_name = "";
+            if ($row["middle_name"]!=""){
+                $display_name= $fname. " " .$row['middle_name'] ." " . $lname ;
+            }else{
+                $display_name = $fname. " " . $lname ;
+            }
+            ?>
+
+            <img class="profile_profile_image_new" src="<?php echo "$imagePath/pro_pic/$pro_picture"; ?>" alt="Profile Picture">
+            <div id="profile_name" class="profile_name" >
+                <?php echo $display_name;?>
+                <button onclick="location.href='../../dev/editProfile/index.php';" class="edit_profile_button">Edit Profile</button>
             </div>
+            <!--Availability status area-->
             <div class="profile_online_status_box">
                 <div class="profile_availability_icon"></div>
-                <div class="profile_availability_text">Available till 2.00 PM</div>
+                <div class="profile_availability_text"></div>
+                <div class="profile_availability_text_2"></div>
             </div>
+            <!--last seen data area-->
             <div class="profile_last_seen_box">
-                <div class="profile_last_seen_text">Last seen : 15 minutes ago</div>
+                <div class="profile_last_seen_text">Last seen : <?php echo $lastLoginData[0]." at ".$lastLoginData[1]; ?> <!--15 minutes ago--></div>
             </div>
             <div class="profile_basic_summery">
-                Role : Student<br>
-                Academic Year : 2014/2015<br>
-                Gender : Male<br>
+                Role : <?php echo $row['category'];?><br>
+                Academic Year : <?php echo $row['academic_year'];?><br>
+                Gender : <?php echo $row['gender'];?><br>
+                <!--Course : <?php /*echo "404"*/?><br>-->
+                Hometown : <div id="ht"></div><?php //echo $row['gender'];?>
+                Username : <?php echo $row['username'];?><br>
             </div>
+            <div class="profile_gpa_value">
+                <a href="http://localhost:3000/search?index=14020017" target="_blank" style="text-decoration: none;color: #666666">3.2</a>
+            </div>
+            <div class="profile_txt_gpa">Current GPA</div>
+            <div class="profile_txt_gpa">Rank : #225</div>
         </div>
+
+            <!--Profile basic data area-->
+<!--            <div class="profile_basic_summery">-->
+<!--                Role : --><?php //echo $category?><!--<br>-->
+<!--                --><?php //if($aca_year != 0000){ echo "Academic Year : $aca_year"; } ?><!--<br>-->
+<!--                Gender : --><?php //echo $gender ?><!--<br>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="profile_section_main">
             <!--Left side-->
@@ -63,14 +102,6 @@
                         <div class="contact_info_item_field">Email :</div>
                         <div class="contact_info_item_value"><?php echo $email ?></div>
                     </div>
-                    <div class="contact_info_item">
-                        <div class="contact_info_item_field">Email :</div>
-                        <div class="contact_info_item_value"><?php echo $email ?></div>
-                    </div>
-                    <div class="contact_info_item">
-                        <div class="contact_info_item_field">Email :</div>
-                        <div class="contact_info_item_value"><?php echo $email ?></div>
-                    </div>
 
                 </div>
 
@@ -84,31 +115,13 @@
 
                     <!--Content info add from here-->
                     <div class="society_item">
-                        <div class="society_item_club">Society : Gavel Club University of Colombo</div>
-                        <div class="society_item_role">My Role : Super Long President</div>
-                        <br>
+                        <div class="society_item_club">Gavel Club University of Colombo</div><div class="society_item_role">Member</div>
                         <div class="society_item_extra">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                            Nulla consequat massa quis enim.
-                        </div>
-                    </div>
-                    <hr>
+                            The University of Colombo Gavel Club is affiliated to Toastmasters International USA and was chartered in October 2014. The main objectives of the club are to develop communication, presentation and leadership skills among the undergraduates. Our educational meetings are held on Mondays from 4pm to 6pm at the NPLT (New Physics Lecture Theatre), Department of Physics, Faculty of Science University of Colombos
 
-                    <!--Content info add from here-->
-                    <div class="society_item">
-                        <div class="society_item_club">Society : Gavel Club University of Colombo</div>
-                        <div class="society_item_role">My Role : Super Long President</div>
-                        <br>
-                        <div class="society_item_extra">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                            Nulla consequat massa quis enim.
                         </div>
                     </div>
-                    <hr>
+
                 </div>
 
                 <!--Skilled programming technology-->
@@ -119,15 +132,27 @@
                         </div>
                     </div>
                     <div>
-                        <?php
-                        $str =  "Af-Soomaali,Afrikaans,Azərbaycan dili,Bahasa Indonesia,Bahasa Melayu,Basa Jawa,Bisaya,Bosanski,Brezhoneg";
-                        $ary = explode(',', $str);
-                        foreach($ary as $str){
-                        echo "<div class='skill_item language_item'>
-	                                $str
-                              </div>";
-                        }
-                        ?>
+                        <div class='skill_item language_item'>
+                            Java
+                        </div>
+                        <div class='skill_item language_item'>
+                            PHP
+                        </div>
+                        <div class='skill_item language_item'>
+                            Python
+                        </div>
+                        <div class='skill_item language_item'>
+                            MYSQL
+                        </div>
+                        <div class='skill_item language_item'>
+                            AngularJS
+                        </div>
+                        <div class='skill_item language_item'>
+                            Graphic Designing
+                        </div><div class='skill_item language_item'>
+                            Networking
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -144,10 +169,22 @@
 
                     </div>
                     <!--Personal info content goes here.-->
-                    <div class="contact_info_item">
+                    <div class="contact_info_item" id="current_city">
+                        <div class="contact_info_item_field">Current City</div>
+                        <div class="contact_info_item_value"></div>
+                    </div>
+                    <div class="contact_info_item" id="home_town">
+                        <div class="contact_info_item_field">Hometown</div>
+                        <div class="contact_info_item_value"></div>
+                    </div>
+                    <div class="contact_info_item" id="religion">
+                        <div class="contact_info_item_field">Religion</div>
+                        <div class="contact_info_item_value"></div>
+                    </div>
+                    <!--<div class="contact_info_item" id="">
                         <div class="contact_info_item_field">School :</div>
                         <div class="contact_info_item_value">St. Aloysius' College, Galle</div>
-                    </div>
+                    </div>-->
 
                 </div>
 
@@ -157,15 +194,7 @@
                         <div class="dboxtitle botmarg">
                             About Me
                         </div>
-                        <p>     Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                            Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-                            Nulla consequat massa quis enim.
-                            Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                            In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-                            Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                            Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+                        <p id="about_me"></p>
                     </div>
                 </div>
 
@@ -177,15 +206,25 @@
                         </div>
                     </div>
                     <div>
-                        <?php
-                        $str =  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.";
-                        $ary = explode(' ', $str);
-                        foreach($ary as $str){
-                            echo "<div class='skill_item'>
-                                    $str
-                                  </div>";
-                        }
-                        ?>
+                        <div class='skill_item'>
+                            Climbing
+                        </div>
+                        <div class='skill_item'>
+                            Reading
+                        </div>
+                        <div class='skill_item'>
+                            PLaying Video Games
+                        </div>
+                        <div class='skill_item'>
+                            Coding
+                        </div>
+                        <div class='skill_item'>
+                            Creative Writing
+                        </div><div class='skill_item'>
+                            Singing
+                        </div><div class='skill_item'>
+                            Swimming
+                        </div>
 
                     </div>
                 </div>
@@ -193,12 +232,86 @@
 
         </div>
     </div>
-
+    </div>
 
 </div>
 
 <?php
 include_once('../templates/_footer.php');
 ?>
+
+<script>
+    $(document).ready(function () {
+        //Update availability status
+        $.ajax({
+            type:"POST",
+            url:"getMethods/getAvailabilityStatus.php",
+            data:{'check':'get'},
+            dataType:"json",
+            success:function (response) {
+                //availability status updates...
+                var res = response['availability_status'];
+                var val = res.split('_');
+                var value = val[0];
+                var col = val[1];
+                $('.profile_availability_text').html(value);
+                $('.profile_availability_icon').css('background-color',col);
+                $('.profile_profile_image').css('box-shadow','0px 0px 8px 2px'+col);
+                $('.profile_section_intro_new').css('border-color',col);
+
+                //availability text update...
+                var text_res = response['availability_text'];
+                $('.profile_availability_text_2').html(text_res);
+            }
+        });
+
+        //Update user information.
+        $.ajax({
+            type:"POST",
+            url:"getMethods/getUserInfo.php",
+            data:{'check':'get'},
+            dataType:"json",
+            success:function (info) {
+                console.log(info);
+
+                //Personal info content
+                var curr_city = info['current_city'];
+                if (curr_city == null){
+                    $('#current_city').css('display','none');
+                }else{
+                    $('#current_city > .contact_info_item_value').html(' : '+curr_city);
+                }
+
+                var home_town = info['home_town'];
+                if (home_town == null){
+                    $('#home_town').css('display','none');
+                }else{
+                    $('#home_town > .contact_info_item_value').html(' : '+home_town);
+                    $('#ht').html(home_town);
+                }
+
+                var religion = info['religion'];
+                if (home_town == null){
+                    $('#religion').css('display','none');
+                }else{
+                    $('#religion > .contact_info_item_value').html(' : '+religion);
+                }
+
+                var about= info['about'];
+                if (about == null){
+                    $('#about_me').css('display','none');
+                }else{
+                    $('#about_me').html(about);
+                }
+
+                var emailAddr = info['email'];
+                
+
+            }
+        })
+
+
+    });
+</script>
 </body>
 </html>

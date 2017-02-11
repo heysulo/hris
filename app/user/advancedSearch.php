@@ -8,10 +8,15 @@
 <!DOCTYPE html>
 <head>
     <?php
-    define(hris_access,true);
+    define('hris_access',true);
+    $conn = null;
+    require_once("./config.conf");
+    require_once("../database/database.php");
     require_once('../templates/path.php');
     include('../templates/_header.php');
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     if (!isset($_SESSION['email'])){
         header("location:../../index.php");
@@ -27,155 +32,176 @@
     <title>HRIS | Groups</title>
 </head>
 <body>
-<div class="clearfix">
-    <?php include_once('../templates/navigation_panel.php'); ?>
-    <?php include_once('../templates/top_pane.php'); ?>
 
-    <!--Content goes here-->
-    <div class="bottomPanel">
+<?php include_once('../templates/navigation_panel.php'); ?>
+<?php include_once('../templates/top_pane.php'); ?>
+<div class="bottomPanel">
+    <form method="get" action="searchresults.php" onkeypress="return event.keyCode != 13;">
+    <div style="width:auto;">
+        <div class="txt_paneltitle">Advanced Search</div>
+    </div>
+    <div class="adv_search_mainbox">
+        <div style="width: 50%;height: 40px;float: left;background-color: transparent">
 
-        <div style="float:left;width:auto;">
-            <div class="txt_paneltitle">Advanced Search</div>
-        </div>
-        <div class="profile_section_main">
-
-            <!--Basic details search options.-->
-            <div class="dbox advacnedsearch_section_basic">
-                <div class="dboxheader dbox_head_advancedsearch_basic">
-                    <div class="dboxtitle botmarg">
-                        Search People
-                    </div>
-                    <form>
-                        <div class="clearfloat">
-                            <input type="checkbox">First name: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
-                        </div>
-                        <div class="clearfloat">
-                            <input type="checkbox">Last name: <input class="advancedsearch_textbox floatright" type="text" name="lname"><br>
-
-                        </div>
-                        <hr class="advancedsearch_hr">
-                        <input type="checkbox">Birthday :
-                        <select>
-                            <?php
-                            for($i = 1900; $i < 2016; ++$i) {
-                                echo "<option value='$i'>$i</option>";
-                            }
-                            ?>
-                        </select>
-                        <select>
-                            <?php
-                            for($i = 1; $i < 13; ++$i) {
-                                echo "<option value='$i'>$i</option>";
-                            }
-                            ?>
-                        </select><br>
-                        <input type="checkbox">Gender : <input type="radio" name="gender" value="male" checked> Male
-                        <input type="radio" name="gender" value="female"> Female<br>
-                        <hr class="advancedsearch_hr">
-                        <input type="checkbox">From : &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                        <select>
-                            <?php
-                            $dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
-                            $ary = explode(',', $dist);
-                            foreach($ary as $dist){
-                                echo "<option value='$dist'>$dist</option>";
-                            }
-                            ?>
-                        </select><br>
-                        <input type="checkbox">Lives in :&nbsp;&nbsp;
-                        <select>
-                            <?php
-                            $dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
-                            $ary = explode(',', $dist);
-                            foreach($ary as $dist){
-                                echo "<option value='$dist'>$dist</option>";
-                            }
-                            ?>
-                        </select><br>
-                        <hr class="advancedsearch_hr">
-                        <div class="clearfloat">
-                            <input type="checkbox">Skills/Interests: <br>
-                            <div class="advancedsearch_interestpick_area">
-                            </div>
-                        </div>
-                        <hr class="advancedsearch_hr">
-                        <div class="clearfloat">
-                            <input type="checkbox">Clubs and Societies: <br>
-                            <div class="advancedsearch_interestpick_area">
-                            </div>
-                        </div>
-                        <hr class="advancedsearch_hr">
-                        <div class="clearfloat">
-                            <input type="checkbox">Languages: <br>
-                            <div class="advancedsearch_interestpick_area">
-                            </div>
-                        </div>
-                        <hr class="advancedsearch_hr">
-
-                        <div class="clearfloat">
-                            <input type="checkbox">Filter: <input class="advancedsearch_textbox floatright" type="text" name="fname"><br>
-                        </div>
-                        <br>
-
-                        <button class="default_button availability_status_button">Search</button>
-                    </form>
-                </div>
+            <div class="dbox">
+                <div class="adv_search_subtitle">Name</div>
+                <input type="text" id="pw" name="fname" class="adv_search_txtbox" placeholder="First Name" pattern="[a-zA-Z]+" style="width: 92%;">
+                <input type="text" id="pw" name="mname" class="adv_search_txtbox" placeholder="Middle Name" pattern="[a-zA-Z]+" style="width: 92%;">
+                <input type="text" id="pw" name="lname" class="adv_search_txtbox" placeholder="Last Name" pattern="[a-zA-Z]+" style="width: 92%;">
             </div>
 
-            <!--Groups details search here-->
-            <div class="dbox advacnedsearch_section_basic">
-                <div class="dboxheader dbox_head_advancedsearch_basic">
-                    <div class="dboxtitle botmarg">
-                        Search Groups and Societies
-                    </div>
-                    <input class="group_searchbar" type="text" name="fname">
-                    <br>
-                    <br>
-                    <button class="default_button availability_status_button">Search</button>
-                </div>
+            <div class="dbox">
+                <div class="adv_search_subtitle">Birthday</div>
+                <input type="text" id="pw" name="dob_y" class="adv_search_txtbox" placeholder="Year" pattern="[1|2]{1}[0-9]{1}[0-9]{1}[0-9]{1}" style="width: 25%;">
+                <input type="text" id="pw" name="dob_m" class="adv_search_txtbox" placeholder="Month" pattern="[1-12]+" style="width: 25%;">
+                <input type="text" id="pw" name="dob_d" class="adv_search_txtbox" placeholder="Day" pattern="[1-31]+" style="width: 25%;">
+                <div class="adv_search_subtitle">Gender</div>
+                <span>
+                <input type="radio" name="gender" value="male" checked> Male
+                <input type="radio" name="gender" value="female"> Female
+                <input type="radio" name="gender" value="any" checked> Ignore Gender
+                </span>
+
             </div>
 
-
-            <!--Group representative details search in here-->
-            <div class="dbox advacnedsearch_section_basic">
-                <div class="dboxheader dbox_head_advancedsearch_basic">
-                    <div class="dboxtitle botmarg">
-                        Search Society Representatives
-                    </div>
-                    Society :&nbsp;&nbsp;
-                    <select class="advancedsearch_socity_representive_dropdown">
+            <div class="dbox" style="background-color: #fff; overflow:hidden; ">
+                <div style="width: 50%;float: left;">
+                    <div class="adv_search_subtitle">Hometown</div>
+                    <select name="hometown" class="adv_search_dropdown">
+                        <option value="-1" selected>Unset</option>
                         <?php
-                        $dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
-                        $ary = explode(',', $dist);
-                        foreach($ary as $dist){
-                            echo "<option value='$dist'>$dist</option>";
+                        $query32 = "SELECT * FROM district ORDER BY name asc;";
+                        $result = mysqli_query($conn,$query32);
+                        if (mysqli_num_rows($result)){
+                            while ($row_qt =  mysqli_fetch_assoc($result)){
+                                echo "<option value='".$row_qt['name']."'>".$row_qt['name']."</option>";
+                            }
                         }
                         ?>
-                    </select><br>
-
-                    <hr class="advancedsearch_hr">
-                    Role :&nbsp;&nbsp;
-                    <select class="advancedsearch_socity_representive_dropdown">
+                    </select>
+                </div>
+                <div style="width: 50%;float: left">
+                    <div class="adv_search_subtitle">Current City</div>
+                    <select name="currentcity" class="adv_search_dropdown">
+                        <option value="-1" selected>Unset</option>
                         <?php
-                        $dist = "Jaffna,Kilinochchi,Mannar,Mullaitivu,Vavuniya,Puttalam,Kurunegala,Gampaha,Colombo,Kalutara,Anuradhapura,Polonnaruwa,Matale,Kandy,Nuwara Eliya,Kegalle,Ratnapura,Trincomalee,Batticaloa,Ampara,Badulla,Monaragala,Hambantota,Matara,Galle";
-                        $ary = explode(',', $dist);
-                        foreach($ary as $dist){
-                            echo "<option value='$dist'>$dist</option>";
+                        $query32 = "SELECT * FROM district ORDER BY name asc;";
+                        $result = mysqli_query($conn,$query32);
+                        if (mysqli_num_rows($result)){
+                            while ($row_qt =  mysqli_fetch_assoc($result)){
+                                echo "<option value='".$row_qt['name']."'>".$row_qt['name']."</option>";
+                            }
                         }
                         ?>
-                    </select><br>
-                    <br>
-                    <button class="default_button availability_status_button">Search</button>
+                    </select>
                 </div>
+
+            </div>
+            
+            <input type="submit" class="adv_srch_float_btn" value="Advanced Search">
+            <div style="clear: both;"></div>
+        </div>
+
+
+        <div style="width: 50%;height: 40px;float: left;background-color: transparent">
+            <div class="dbox">
+                <div class="adv_search_subtitle">Clubs & Organization Engagements</div>
+                <div class="adv_search_subtitle_2">Club/Society Name :</div>
+                <select class="adv_search_dropdown" id="group_id" name="group_selection" style="width: 100%;" onchange="getroles();">
+                    <option value="-1" selected>Unset</option>
+                    <?php
+                    $query32 = "SELECT * FROM groups ORDER BY name asc;";
+                    $result = mysqli_query($conn,$query32);
+                    if (mysqli_num_rows($result)){
+                        while ($row_qt =  mysqli_fetch_assoc($result)){
+                            echo "<option value='".$row_qt['group_id']."'>".$row_qt['name']."</option>";
+                        }
+                    }
+                    ?>
+                </select>
+                <br>
+                <br>
+                <div class="adv_search_subtitle_2">Role :</div>
+                <select class="adv_search_dropdown" style="width: 100%;" id="role_lst" name="role_selection">
+                    <option value="-1" selected>Unset</option>
+
+                </select>
             </div>
 
+            <div class="dbox">
+                <div class="adv_search_subtitle">Skills and Interests</div>
+                <div id="skill_item_container">
+                    <!--<div class="skill_item">
+                        <!--<div class="edit_profile_contactinfo_item_remove_skill" onclick='this.parentElement.outerHTML=""'></div>-->
+                    <!--// item added here...
+                </div>-->
+                </div>
+
+                <input id="new_skill_input" class="edit_profile_contactinfo_item_value_field" placeholder="Enter Field Value type" Here="text">
+                <input type="button" onclick="insertSkill();" class="add_new_item_btn" value="Add Skill">
+                <div style="clear: both;"></div>
+            </div>
+
+<!--            <input type="button" value="Add More Engagements" class="adv_srch_addmore_btn">-->
+            <input name="skills" type="hidden" value="" id="skill_list" >
         </div>
+        <div style="clear: both;;background-color: transparent"></div>
     </div>
 
+    </form>
 </div>
 
 <?php
 include_once('../templates/_footer.php');
 ?>
+
+<script>
+    
+    function getroles() {
+        var spanner = document.getElementById("role_lst");
+        var selection = document.getElementById("group_id");
+        if (selection.value == -1){
+            return true;
+        }
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                spanner.innerHTML = this.responseText;
+                //alert(this.responseText);
+            }
+
+        };
+        xhttp.open("GET", "getgrouproles.php?id="+selection.value, true);
+        xhttp.send();
+    }
+
+    $("#new_skill_input").on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode == 13) {
+            insertSkill();
+        }
+    });
+
+
+    function insertSkill() {
+        var par = document.getElementById("skill_item_container");
+        var val = document.getElementById("new_skill_input").value;
+        if (val !="") {
+            var code = "<div class=\"skill_item\">" +
+                "<div onclick='this.parentElement.outerHTML=\"\";' class=\"edit_profile_contactinfo_item_remove_skill\">" +
+                "</div>" + val + "<input type='hidden' class='blank_skill' value='" + val + "'></div>";
+            par.innerHTML += code;
+            document.getElementById("new_skill_input").value = "";
+        }
+        var s = document.getElementById("skill_list");
+        var x = document.getElementsByClassName("blank_skill");
+        var i;
+        s.value = "";
+        for (i = 0; i < x.length; i++) {
+            s.value += x[i].value + ";";
+        }
+        //
+    }
+</script>
 </body>
 </html>

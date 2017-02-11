@@ -16,38 +16,40 @@ Group{
 	description
 	category
 	icon_id
-	members
-	roles
+	        members --> meka enne na..
+	        roles
 	creation_date
 	creator
-	twitter_id
+	        twitter_id
 }
 
 Member{
 	Basic{
-		id_member
-		category
-		availability
-		last_seen
-		batch_number
-		academicyear
-		course
-		first_name
-		middle_name
-		last_name
-		DateofBirth
-		Gender
-		Languages
-		ReligousView
+		id_member -k
+		category -k
+		academicyear -k
+		first_name -k
+		middle_name -k
+		last_name -k
+		course -k
+		Gender -k
+		emailAddress -k
+		DateofBirth -k
+		joined_date -k
+		handler -k
+		availability -k
+		last_seen -k
+		current_city -k
+		home_town -k
+		ReligousView -k
+		About -k
+
 		Office_Location
-		About
-		emailAddress
 		phoneNumber
-		last_seen
+		batch_number
+		Languages
 		skills
 		college
-		current_city
-		home_town
 		instagram
 		twitter
 		YouTube
@@ -56,38 +58,34 @@ Member{
 		Soundcloud
 		LinkedIn
 		Skype
-		joined_date
-		handler
 	}
 
 	Member_Permissions{
 		System{
-			b_system_adminpanel_access
-			b_system_member_add_power
+			b_system_adminpanel_access -k
+			b_system_member_add_power -k
 
-			i_system_member_suspend_power
-			i_system_member_suspend_power_needed
+			i_system_member_suspend_power -k
+			i_system_member_suspend_power_needed -k
 
 			i_system_member_forcepasswordchange_power
 			i_system_member_forcepasswordchange_power_needed
 
-			1_system_member_delete_power
-			i_system_member_delete_power_needed
+			1_system_member_delete_power -k
+			i_system_member_delete_power_needed -k
 
-			i_system_member_suspend_power
-			i_system_member_suspend_power_needed
-
-			i_system_member_complain_power
-			i_system_member_complain_power_needed
-			b_system_member_complain_access
-
-			i_system_member_message_power
-			i_system_member_message_power_needed
 
 			i_system_meeting_request_power
 			i_system_meeting_request_power_needed
 
 			b_system_group_create_power
+
+			i_system_member_message_power
+			i_system_member_message_power_needed
+
+			i_system_member_complain_power
+			i_system_member_complain_power_needed
+			b_system_member_complain_access
 		}
 
 		Group{

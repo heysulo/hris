@@ -1,18 +1,36 @@
 <?php
     define(hris_access,true);
 ?>
-<!DOCTYPR>
+<!DOCTYPE html>
 <html>
 <head>
+
+    <meta charset="utf-8">
+    <meta name="Description" content="The Human Resource Information System is a place where you can access the shared information of the academic staff and the students of the University of Colombo School of Computing.">
+    <meta name="Keywords" content="HRIS,UCSC,University Students Information,Skill Directory">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
     <title>HRIS UCSC</title>
     <link rel="stylesheet" type="text/css" href="public/css/artista.css">
+    <?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['email'])){
+        header("Location: "."./app/user/dashboard.php");
+        die();
+    }
+    ?>
+
+
 </head>
 <body>
+    <script>msgbox("body","sdsds");</script>
     <div class="loginmaindiv">
         <div>
             <div class="introbox">
                 <center>
-                    <img src="public/img/ucsc_logo.png">
+                    <img src="public/img/ucsc_logo.png" alt="logo">
                     <h1 class="head1" style="color:#000">Human Resource Information System</h1>
                     <div>
                         <p class="logindesc">The Human Resource Information System is a place where you can access the shared information of the academic staff and the students of the University of Colombo School of Computing.
@@ -48,15 +66,15 @@
 
                         <div class="spacerx"></div>
                         <div>
-                            <a class="txtassist" href="Google.lk" style="text-align: left;">Forgot your password</a>
+                            <a class="txtassist" href="app/user/password_reset/password_reset.php" style="text-align: left;">Forgot your password</a>
                             &nbsp; &nbsp; &nbsp; &nbsp;
-                            <a class="txtassist" href="Google.lk" style="text-align: right; ">Contact Administrator</a>
+                            <a class="txtassist" href="mailto:admin@ucsc.lk" style="text-align: right; ">Contact Administrator</a>
                         </div>
                         <div class="spacerx"></div>
                         <div class="spacerx"></div>
                         <hr class="hrstyle">
                         <div class="spacerx"></div>
-                        <center style="font-size:13px;color:#5F5F5F;"><p class="anitxt1">Login to the Human Resource
+                        <center style="color:#5F5F5F;"><p class="anitxt1">Login to the Human Resource
                                 Information Center of UCSC as guest and access the skill directory.</p></center>
                 </form>
                         <!-- _________________ separated to two forms ______________________ -->
@@ -68,21 +86,21 @@
                         <input type="submit" class="user_choose_button" value="General Public" name="publicUserBtn">
                     </div>
                 </form>-->
-                        <a href="./dashboard/index.php">
-                            <input type="button" class="user_choose_button" value="General Public"></a>
-                    </div>
-
+                        <a href="app/public_user/public.php">
+                        <input type="button" class="user_choose_button" value="General Public"></a>
             </div>
-        </center> 
+        </center>
     </div>
+
     <div class="bottomline">
         <center>
-        <p>All rights reserved by University of Colombo School of Computing<br>
-No: 35, Reid Avenue, Colombo 7, Sri Lanka.</p>
+            <p>All rights reserved by University of Colombo School of Computing<br>
+            No: 35, Reid Avenue, Colombo 7, Sri Lanka.</p>
         </center>
     </div>
 
     <div class="bg_blurredimg"></div>
+    
 
 </body>
 </html>
