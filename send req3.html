@@ -1,0 +1,368 @@
+<?php
+
+class Relation {
+    
+  /**
+   * The user who is currently logged in
+   * 
+   * @var User
+   */
+  private $loggedInUser;
+  
+  /**
+   * Database connection
+   * 
+   * @var mysqli
+   */
+  private $dbCon;
+  
+  /**
+   * @param mysqli $dbCon
+   * @param User $loggedInUser
+   * @return boolean|Relation
+   */
+  public function __construct($dbCon, User $loggedInUser) {
+    if ($dbCon == 'undefined') {
+      return false; // or you could throw an exception
+    }
+    // Current loggedin user
+    $this->loggedInUser = $loggedInUser;
+    // Database Connection
+    $this->dbCon = $dbCon;
+  }
+    
+  /**
+   * Return the friend of the current logged in user in the relationship object
+   * 
+   * @param Relationship $rel
+   * @return User $friend
+   */
+  public function req_meetup(Relationship $rel) {
+    if ($rel->getUserOne()->getUserId() === $this->loggedInUser->getUserId()) {
+      $meetups = $rel->getUserTwo();
+    } else {
+      $meetups = $rel->getUserOne();
+    }
+    
+    return $meetups;
+  }
+  
+  /**
+   * Get all the meetups list for the currently loggedin user
+   * 
+   * @return array Relationship Objects
+   */
+  public function getMeetupList() {
+    $id = (int)$this->loggedInUser->getUserId();
+    
+    $sql = 'SELECT * FROM `relationship` WHERE ' .
+            '(`user_one_id` = ' . $id . ' OR `user_two_id` = '. $id .') ' .
+            'AND `status` = 1';
+            
+    $resultObj = $this->dbCon->query($sql);
+    
+    $rels = array();
+    
+    while($row = $resultObj->fetch_assoc()) {
+      $rel = new Relationship();
+      $rel->arrToRelationship($row, $this->dbCon);
+      $rels[] = $rel;
+    }
+    
+    return $rels;
+  }
+  
+  /**
+   * Get the list of meetup requests sent by the logged in user
+   * 
+   * @return array Relationship Objects
+   */
+  public function getSentMeetupRequests() {
+    $id = (int) $this->loggedInUser->getUserId();
+    
+    $sql = 'SELECT * FROM `relationship` WHERE ' . 
+            '(`user_one_id` = ' . $id . ' OR `user_two_id` = ' . $id . ') ' . 
+            'AND `status` = 0 '. 
+            'AND `action_user_id` = ' . $id;
+            
+    $resultObj = $this->dbCon->query($sql);
+    
+    $rels = array();
+    
+    while($row = $resultObj->fetch_assoc()) {
+      $rel = new Relationship();
+      $rel->arrToRelationship($row, $this->dbCon);
+      $rels[] = $rel;
+    }
+    
+    return $rels;
+  }
+  
+  /**
+   * Get the list of meetup requests for the logged in user
+   * 
+   * @return array Relationship Objects
+   */
+  public function getMeetupRequests() {
+    $id = (int) $this->loggedInUser->getUserId();
+    
+    $sql = 'SELECT * FROM `relationship` ' . 
+            'WHERE (`user_one_id` = ' . $id . ' OR `user_two_id` = '. $id .')' . 
+            ' AND `status` = 0 ' . 
+            'AND `action_user_id` != ' . $id;
+    
+    $resultObj = $this->dbCon->query($sql);
+    
+    $rels = array();
+    
+    while($row = $resultObj->fetch_assoc()) {
+      $rel = new Relationship();
+      $rel->arrToRelationship($row, $this->dbCon);
+      $rels[] = $rel;
+    }
+    
+    return $rels;
+  }
+  
+  /**
+   * Get the list of meetups rejected by the current user.
+   * 
+   * @return \Relationship array
+   */
+  public function getCanceledMeetups() {
+    $id = (int) $this->loggedInUser->getUserId();
+    
+    $sql = 'SELECT * FROM `relationship` ' . 
+            'WHERE (`user_one_id` = ' . $id . ' OR `user_two_id` = '. $id .')' . 
+            ' AND `status` = 3 ' . 
+            'AND `action_user_id` = ' . $id;
+    
+    $resultObj = $this->dbCon->query($sql);
+    
+    $rels = array();
+    
+    while($row = $resultObj->fetch_assoc()) {
+      $rel = new Relationship();
+      $rel->arrToRelationship($row, $this->dbCon);
+      $rels[] = $rel;
+    }
+    
+    return $rels;
+  }
+  
+  
+  
+  /**
+   * Insert a new meetup request
+   * 
+   * @param User $user - User to which the meetup req must be added with.
+   * @return Boolean
+   */
+  public function addSendndRequest(User $user) {
+    $user_one = (int) $this->loggedInUser->getUserId();
+    $action_user_id = $user_one;
+    $user_two = (int) $user->getUserId();
+    
+    if ($user_one > $user_two) {
+        $temp = $user_one;
+        $user_one = $user_two;
+        $user_two = $temp;
+    }
+    
+    $sql = 'INSERT INTO `relationship` '
+            . '(`user_one_id`, `user_two_id`, `status`, `action_user_id`) '
+            . 'VALUES '
+            . '(' . $user_one . ', '. $user_two .', 0, '. $action_user_id .')';
+    
+    $this->dbCon->query($sql);
+    
+    if ($this->dbCon->affected_rows > 0) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  /**
+   * Accept a meetup request
+   * 
+   * @param User $user - User to whome the meetup request must be accepted with.
+   * @return Boolean
+   */
+  public function acceptmeetupRequest(User $user) {
+    $user_one = (int) $this->loggedInUser->getUserId();
+    $action_user_id = $user_one;
+    $user_two = $user->getUserId();
+    
+    if ($user_one > $user_two) {
+      $temp = $user_one;
+      $user_one = $user_two;
+      $user_two = $temp;
+    }
+    
+    $sql = 'UPDATE `relationship` '
+            . 'SET `status` = 1, `action_user_id` = '. $action_user_id 
+            .' WHERE `user_one_id` = '. $user_one 
+            .' AND `user_two_id` = ' . $user_two;
+    
+    $this->dbCon->query($sql);
+    
+    if ($this->dbCon->affected_rows > 0) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  /**
+   * Decline a meetup request for the user
+   * 
+   * @params User $user - The user whose request to be declined
+   * @return Boolean
+   */
+  public function declineMeetupRequest(User $user) {
+    $user_one = (int) $this->loggedInUser->getUserId();
+    $action_user_id = $user_one;
+    $user_two = $user->getUserId();
+    
+    if ($user_one > $user_two) {
+      $temp = $user_one;
+      $user_one = $user_two;
+      $user_two = $temp;
+    }
+    
+    $sql = 'UPDATE `relationship` '
+            . 'SET `status` = 2, `action_user_id` = '. $action_user_id 
+            .' WHERE `user_one_id` = '. $user_one 
+            .' AND `user_two_id` = ' . $user_two;
+            
+    $this->dbCon->query($sql);
+    
+    if ($this->dbCon->affected_rows > 0) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  /**
+   * Cancel a meetup request
+   * 
+   * @param User $user - The meetup details
+   * @return Boolean
+   */
+  public function cancelMeetupRequest(User $user) {
+    $user_one = (int) $this->loggedInUser->getUserId();
+    $user_two = (int) $user->getUserId();
+    
+    if ($user_one > $user_two) {
+      $temp = $user_one;
+      $user_one = $user_two;
+      $user_two = $temp;
+    }
+    
+    $sql = 'DELETE FROM `relationship` ' .
+            'WHERE `user_one_id` = ' . $user_one . 
+            ' AND `user_two_id` = ' . $user_two .
+            ' AND `status` = 0';
+    
+    $this->dbCon->query($sql);
+    
+    if ($this->dbCon->affected_rows > 0) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  /**
+   * Remove a meetup from the mee list
+   * 
+   * @param User $user - The meetup details
+   * @return Boolean
+   */
+  public function CancelMeetup(User $user) {
+    $user_one = (int) $this->loggedInUser->getUserId();
+    $user_two = (int) $user->getUserId();
+    
+    if ($user_one > $user_two) {
+      $temp = $user_one;
+      $user_one = $user_two;
+      $user_two = $temp;
+    }
+    
+    $sql = 'DELETE FROM `relationship` ' .
+            'WHERE `user_one_id` = ' . $user_one . 
+            ' AND `user_two_id` = ' . $user_two .
+            ' AND `status` = 1';
+    
+    $this->dbCon->query($sql);
+    
+    if ($this->dbCon->affected_rows > 0) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  /**
+   * Block a particular user
+   * 
+   * @param User $user - The user to be blocked
+   * @return Boolean
+   */
+  public function block(User $user) {
+    $user_one = (int) $this->loggedInUser->getUserId();
+    $action_user_id = $user_one;
+    $user_two = $user->getUserId();
+    
+    if ($user_one > $user_two) {
+      $temp = $user_one;
+      $user_one = $user_two;
+      $user_two = $temp;
+    }
+    
+    $sql = 'UPDATE `relationship` '
+            . 'SET `status` = 3, `action_user_id` = '. $action_user_id 
+            .' WHERE `user_one_id` = '. $user_one 
+            .' AND `user_two_id` = ' . $user_two;
+            
+    $this->dbCon->query($sql);
+    
+    if ($this->dbCon->affected_rows > 0) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  /**
+   * Unblock a user who is blocked already.
+   * 
+   * @param User $user
+   * @return boolean
+   */
+  public function unblockUser(User $user) {
+    $user_one = (int) $this->loggedInUser->getUserId();
+    $user_two = (int) $user->getUserId();
+    
+    if ($user_one > $user_two) {
+      $temp = $user_one;
+      $user_one = $user_two;
+      $user_two = $temp;
+    }
+    
+    $sql = 'DELETE FROM `relationship` ' .
+            'WHERE `user_one_id` = ' . $user_one . 
+            ' AND `user_two_id` = ' . $user_two .
+            ' AND `status` = 3';
+    
+    $this->dbCon->query($sql);
+    
+    if ($this->dbCon->affected_rows > 0) {
+      return true;
+    }
+    
+    return false;
+  }
+}
